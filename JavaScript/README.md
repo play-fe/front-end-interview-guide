@@ -1,4 +1,4 @@
-## JavaScript 知识点
+# JavaScript 知识点
 
 ## 目录
 
