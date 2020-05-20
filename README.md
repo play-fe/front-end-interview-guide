@@ -8,7 +8,7 @@
 - [CSS](./CSS)
 - [JavaScript](./JavaScript)
 - [计算机网络](./Network)
-- 算法
+- [算法](./Algorithm)
 - ...
 
 ## 排版
