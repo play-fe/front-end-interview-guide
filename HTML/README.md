@@ -420,7 +420,6 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置、存�
 
   - 从 HTML5 我们可以看出，标准是倾向于以语义化的方式来构建网页的，比如新增了 header 、footer 这些语义标签，删除了 big 、font 这些没有语义的标签。
 
-
 详细资料可以参考：
 [《语义化的 HTML 结构到底有什么好处？》](https://www.html.cn/archives/1668)
 [《如何理解 Web 语义化？》](https://www.zhihu.com/question/20455165)
@@ -464,11 +463,13 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置、存�
 - 如何使用：
 
   1. 创建一个和 html 同名的 manifest 文件，然后在页面头部像下面一样加入一个 manifest 的属性。
+
      ```
      <html lang="en" manifest="index.manifest">
      ```
 
   2. 在如下 cache.manifest 文件的编写离线存储的资源。
+
      ```
      CACHE MANIFEST
      #v0.11
@@ -479,7 +480,8 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置、存�
      resourse/logo.png
      FALLBACK:
      / /offline.html
-     ``` 
+     ```
+
      CACHE：表示需要离线存储的资源列表，由于包含 manifest 文件的页面将被自动离线存储，所以不需要把页面自身也列出来。
 
      NETWORK：表示在它下面列出来的资源只有在在线的情况下才能访问，他们不会被离线存储，所以在离线情况下无法使用这些资源。不过，如果在 CACHE 和 NETWORK 中有一个相同的资源，那么这个资源还是会被离线存储，也就是说 CACHE 的优先级更高。
@@ -489,24 +491,25 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置、存�
   3. 在离线状态时，操作 window.applicationCache 进行离线缓存的操作。
 
      如何更新缓存：  
-    （1）更新 manifest 文件。    
-    （2）通过 JavaScript 操作。    
-    （3）清除浏览器缓存。  
+     （1）更新 manifest 文件。  
+     （2）通过 JavaScript 操作。  
+     （3）清除浏览器缓存。
 
-- 注意事项：  
+- 注意事项：
+
   1. 浏览器对缓存数据的容量限制可能不太一样（某些浏览器设置的限制是每个站点 5MB）。
 
-   2. 如果 manifest 文件，或者内部列举的某一个文件不能正常下载，整个更新过程都将失败，浏览器继续全部使用老的缓存。  
+  2. 如果 manifest 文件，或者内部列举的某一个文件不能正常下载，整个更新过程都将失败，浏览器继续全部使用老的缓存。
 
-   3. 引用 manifest 的 html 必须与 manifest 文件同源，在同一个域下。
+  3. 引用 manifest 的 html 必须与 manifest 文件同源，在同一个域下。
 
-   4. FALLBACK 中的资源必须和 manifest 文件同源。  
+  4. FALLBACK 中的资源必须和 manifest 文件同源。
 
-   5. 当一个资源被缓存后，该浏览器直接请求这个绝对路径也会访问缓存中的资源。  
+  5. 当一个资源被缓存后，该浏览器直接请求这个绝对路径也会访问缓存中的资源。
 
-   6. 站点中的其他页面即使没有设置 manifest 属性，请求的资源如果在缓存中也从缓存中访问。  
+  6. 站点中的其他页面即使没有设置 manifest 属性，请求的资源如果在缓存中也从缓存中访问。
 
-   7. 当 manifest 文件发生改变时，资源请求本身也会触发更新。  
+  7. 当 manifest 文件发生改变时，资源请求本身也会触发更新。
 
 详细的使用可以参考：
 [《HTML5 离线缓存-manifest 简介》](https://yanhaijing.com/html/2014/12/28/html5-manifest/)
@@ -553,8 +556,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置、存�
 
     cookie 在所有同源窗口中都是共享的。
 
-
-- 回答：
+* 回答：
 
   - 浏览器端常用的存储技术是 cookie、localStorage 和 sessionStorage。
 
@@ -647,9 +649,9 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置、存�
 ### 42. 页面可见性（Page Visibility API）可以有哪些用途？
 
 - 这个新的 API 的意义在于，通过监听网页的可见性，可以预判网页的卸载，还可以用来节省资源，减缓电能的消耗。比如，一旦用户不看网页，下面这些网页行为都是可以暂停的。  
-（1）对服务器的轮询。  
-（2）网页动画。  
-（3）正在播放的音频或视频。
+  （1）对服务器的轮询。  
+  （2）网页动画。  
+  （3）正在播放的音频或视频。
 
 详细资料可以参考：
 [《Page Visibility API 教程》](http://www.ruanyifeng.com/blog/2018/10/page_visibility_api.html)
@@ -691,193 +693,175 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置、存�
 
 ### 48. 网页验证码的作用？是为了解决什么安全问题
 
-```
-（1）区分用户是计算机还是人的公共全自动程序，可以防止恶意破解密码、刷票、论坛灌水。
-（2）有效防止黑客对某一个特定注册用户用特定程序暴力破解方式进行不断的登陆尝试
-```
+- 区分用户是计算机还是人的公共全自动程序，可以防止恶意破解密码、刷票、论坛灌水。
+
+- 有效防止黑客对某一个特定注册用户用特定程序暴力破解方式进行不断的登陆尝试
 
 ### 49. 渐进增强和优雅降级的定义
 
-```
-渐进增强：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
+- 渐进增强：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
 
-优雅降级：一开始就根据高版本浏览器构建完整的功能，然后再针对低版本浏览器进行兼容。
-```
+- 优雅降级：一开始就根据高版本浏览器构建完整的功能，然后再针对低版本浏览器进行兼容。
 
 ### 50. attribute 和 property 的区别是什么？
 
-```
-attribute 是 DOM 元素在文档中作为 HTML 标签拥有的属性；
-property 是 DOM 元素在 JS 中作为对象拥有的属性。
-对于 HTML 的标准属性来说，attribute 和 property 是同步的，是会自动更新的，但是对于自定义的属性来说，他们是不同步的。
-```
+- attribute 是 DOM 元素在文档中作为 HTML 标签拥有的属性；
+
+- property 是 DOM 元素在 JS 中作为对象拥有的属性。
+
+- 对于 HTML 的标准属性来说，attribute 和 property 是同步的，是会自动更新的，但是对于自定义的属性来说，他们是不同步的。
 
 ### 51. 对 Web 标准、可用性、可访问性的理解
 
-```
-可用性（Usability）：产品是否容易上手，用户能否完成任务，效率如何，以及这过程中用户的主观感受可好，是从用户的角度来看产品的质量。可用性好意味着产品质量高，是企业的核心竞争力。
+- 可用性（Usability）：产品是否容易上手，用户能否完成任务，效率如何，以及这过程中用户的主观感受可好，是从用户的角度来看产品的质量。可用性好意味着产品质量高，是企业的核心竞争力。
 
-可访问性（Accessibility）：Web 内容对于残障用户的可阅读和可理解性。
+- 可访问性（Accessibility）：Web 内容对于残障用户的可阅读和可理解性。
 
-可维护性（Maintainability）：一般包含两个层次，一是当系统出现问题时，快速定位并解决问题的成本，成本低则可维护性好。二是代码是否容易被人理解，是否容易修改和增强功能。
-```
+- 可维护性（Maintainability）：一般包含两个层次，一是当系统出现问题时，快速定位并解决问题的成本，成本低则可维护性好。二是代码是否容易被人理解，是否容易修改和增强功能。
 
 ### 52. IE 各版本和 Chrome 可以并行下载多少个资源？
 
-```
-（1）IE6 2 个并发。
-（2）IE7 升级之后的 6 个并发，之后版本也是 6 个。
-（3）Firefox、Chrome 也是6个。
-```
+- IE6 2 个并发。
+- IE7 升级之后的 6 个并发，之后版本也是 6 个。
+- Firefox、Chrome 也是 6 个。
 
 ### 53. Flash、Ajax 各自的优缺点，在使用中如何取舍？
 
-```
-Flash：
-（1）Flash 适合处理多媒体、矢量图形、访问机器。
-（2）对 CSS、处理文本上不足，不容易被搜索。
+- Flash：
 
-Ajax：
-（1）Ajax 对 CSS、文本支持很好，支持搜索。
-（2）多媒体、矢量图形、机器访问不足。
+  - Flash 适合处理多媒体、矢量图形、访问机器。
+  - 对 CSS、处理文本上不足，不容易被搜索。
 
-共同点：
-（1）与服务器的无刷新传递消息。
-（2）可以检测用户离线和在线状态。
-（3）操作 DOM。
-```
+- Ajax：
+
+  - Ajax 对 CSS、文本支持很好，支持搜索。
+  - 多媒体、矢量图形、机器访问不足。
+
+- 共同点：
+  - 与服务器的无刷新传递消息。
+  - 可以检测用户离线和在线状态。
+  - 操作 DOM。
 
 ### 54. 怎么重构页面？
 
-```
-（1）编写 CSS。
-（2）让页面结构更合理化，提升用户体验。
-（3）实现良好的页面效果和提升性能。
-```
+- 编写 CSS。
+- 让页面结构更合理化，提升用户体验。
+- 实现良好的页面效果和提升性能。
 
 ### 55. 浏览器架构
 
-```
-* 用户界面
-  * 主进程
-  * 内核
-      * 渲染引擎
-      * JS 引擎
-          * 执行栈
-      * 事件触发线程
-          * 消息队列
-              * 微任务
-              * 宏任务
-      * 网络异步线程
-      * 定时器线程
-```
+- 用户界面
+  - 主进程
+  - 内核
+    - 渲染引擎
+    - JS 引擎
+      - 执行栈
+    - 事件触发线程
+      - 消息队列
+        - 微任务
+        - 宏任务
+    - 网络异步线程
+    - 定时器线程
 
 ### 56. 常用的 meta 标签
 
-```
-<meta> 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
+- meta 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
 
-<meta> 标签位于文档的头部，不包含任何内容。
+- meta 标签位于文档的头部，不包含任何内容。
 
-<meta> 标签的属性定义了与文档相关联的名称/值对。
+- meta 标签的属性定义了与文档相关联的名称/值对。
 
-<!DOCTYPE html> H5标准声明，使用 HTML5 doctype，不区分大小写。
+- `<!DOCTYPE html>` H5标准声明，使用 HTML5 doctype，不区分大小写。
 
-<head lang="en"> 标准的 lang 属性写法。
+- `<head lang="en">` 标准的 lang 属性写法。
 
-<meta charset="utf-8"> 声明文档使用的字符编码。
+- `<meta charset="utf-8">` 声明文档使用的字符编码。
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/> 优先使用 IE 最新版本和 Chrome。
+- `<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>` 优先使用 IE 最新版本和 Chrome。
 
-<meta name="description" content="..."/> 页面描述。
+- `<meta name="description" content="..."/>` 页面描述。
 
- <meta name="keywords" content="..."/> 页面关键词者。
+- `<meta name="keywords" content="..."/>` 页面关键词者。
 
- <meta name="author" content="..."/> 网页作者。
+- `<meta name="author" content="..."/>` 网页作者。
 
- <meta name="robots" content="..."/> 搜索引擎抓取。
+- `<meta name="robots" content="..."/>` 搜索引擎抓取。
 
- <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no"> 为移动设备添加 viewport。
+- `<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">` 为移动设备添加 viewport。
 
- <meta name="apple-mobile-web-app-title" content="..."> iOS 设备 begin。
+- `<meta name="apple-mobile-web-app-title" content="...">` iOS 设备 begin。
 
- <meta name="apple-mobile-web-app-capable" content="yes"/> 添加到主屏后的标题（iOS 6 新增）
+- `<meta name="apple-mobile-web-app-capable" content="yes"/>` 添加到主屏后的标题（iOS 6 新增）
  是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏。
 
- <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL"> 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari）。
+- `<meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">` 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari）。
 
- <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+- <meta name="apple-mobile-web-app-status-bar-style" content="black"/> 设置苹果工具栏颜色。
 
- <meta name="format-detection" content="telphone=no, email=no"/> 设置苹果工具栏颜色。
+- `<meta name="renderer" content="webkit">` 启用360浏览器的极速模式(webkit)。
 
- <meta name="renderer" content="webkit"> 启用360浏览器的极速模式(webkit)。
- <meta http-equiv="X-UA-Compatible" content="IE=edge"> 避免IE使用兼容模式。
- <meta http-equiv="Cache-Control" content="no-siteapp"/> 不让百度转码。
- <meta name="HandheldFriendly" content="true"> 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓。
+- `<meta http-equiv="X-UA-Compatible" content="IE=edge">` 避免IE使用兼容模式。
 
- <meta name="MobileOptimized" content="320″> 微软的老式浏览器。
+- `<meta http-equiv="Cache-Control" content="no-siteapp"/>` 不让百度转码。
 
- <meta name="screen-orientation" content="portrait"> UC强制竖屏。
+- `<meta name="HandheldFriendly" content="true">` 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓。
 
- <meta name="x5-orientation" content="portrait"> QQ强制竖屏。
+- `<meta name="MobileOptimized" content="320″>` 微软的老式浏览器。
 
- <meta name="full-screen" content="yes"> UC强制全屏。
+- `<meta name="screen-orientation" content="portrait">` UC强制竖屏。
 
- <meta name="x5-fullscreen" content="true"> QQ强制全屏。
+- `<meta name="x5-orientation" content="portrait">` QQ强制竖屏。
 
- <meta name="browsermode" content="application"> UC应用模式。
+- `<meta name="full-screen" content="yes">` UC强制全屏。
 
- <meta name="x5-page-mode" content="app"> QQ应用模式。
+- `<meta name="x5-fullscreen" content="true">` QQ强制全屏。
 
- <meta name="msapplication-tap-highlight" content="no"> Windows phone 点击无高光。
+- `<meta name="browsermode" content="application">` UC应用模式。
 
- <meta http-equiv="pragma" content="no-cache"> 设置页面不缓存。
+- `<meta name="x5-page-mode" content="app">` QQ应用模式。
 
- <meta http-equiv="cache-control" content="no-cache">
+- `<meta name="msapplication-tap-highlight" content="no">` Windows phone 点击无高光。
 
- <meta http-equiv="expires" content="0″>
-```
+- `<meta http-equiv="pragma" content="no-cache">` 设置页面不缓存。
 
 详细资料可以参考：
 [《Meta 标签用法大全》](http://www.cnblogs.com/qiumohanyu/p/5431859.html)
 
-### 57. css reset 和 normalize.css 有什么区别？
+### 57. CSS reset 和 normalize.css 有什么区别？
 
-相关知识点：
+- 相关知识点：
 
-```
-为什么会有 CSS Reset 的存在呢？那是因为早期的浏览器支持和理解的 CSS 规范不同，导致渲染页面时效果不一致，会出现很多兼容性问题。
+  - 为什么会有 CSS Reset 的存在呢？那是因为早期的浏览器支持和理解的 CSS 规范不同，导致渲染页面时效果不一致，会出现很多兼容性问题。
 
-reset 的目的是将所有的浏览器的自带样式重置掉，这样更易于保持各浏览器渲染的一致性。
+  - reset 的目的是将所有的浏览器的自带样式重置掉，这样更易于保持各浏览器渲染的一致性。
 
-normalize 的理念则是尽量保留浏览器的默认样式，不进行太多的重置，而尽力让这些样式保持一致并尽可能与现代标准相符合。
+  - normalize 的理念则是尽量保留浏览器的默认样式，不进行太多的重置，而尽力让这些样式保持一致并尽可能与现代标准相符合。
 
-1、Normalize.css 保护了有价值的默认值 Reset
-通过为几乎所有的元素施加默认样式，强行使得元素有相同的视觉效果。相比之下，Normalize.css 保持了许多默认的浏览器样式。 这就意味着你不用再为所有公共的排版元素重新设置样式。当一个元素在不同的浏览器中有不同的默认值时，Normalize.css 会力求让这些样式保持一致并尽可能与现代标准相符合。
+  - Normalize.css 保护了有价值的默认值 Reset
 
-2、Normalize.css 修复了浏览器的 bug
+    通过为几乎所有的元素施加默认样式，强行使得元素有相同的视觉效果。相比之下，Normalize.css 保持了许多默认的浏览器样式。 这就意味着你不用再为所有公共的排版元素重新设置样式。当一个元素在不同的浏览器中有不同的默认值时，Normalize.css 会力求让这些样式保持一致并尽可能与现代标准相符合。
 
-它修复了常见的桌面端和移动端浏览器的 bug。这往往超出了 Reset 所能做到的范畴。关于这一点，Normalize.css 修复的问题包含了 HTML5 元素的显示设置、预格式化文字的 font-size 问题、在 IE9 中 SVG 的溢出、许多出现在各浏览器和操作系统中的与表单相关的 bug。
+  - Normalize.css 修复了浏览器的 bug
 
-3、Normalize.css 没有复杂的继承链
-使用 Reset 最让人困扰的地方莫过于在浏览器调试工具中大段大段的继承链。在 Normalize.css 中就不会有这样的问题，因为在我们的准则中对多选择器的使用时非常谨慎的，我们仅会有目的地对目标元素设置样式。
+    它修复了常见的桌面端和移动端浏览器的 bug。这往往超出了 Reset 所能做到的范畴。关于这一点，Normalize.css 修复的问题包含了 HTML5 元素的显示设置、预格式化文字的 font-size 问题、在 IE9 中 SVG 的溢出、许多出现在各浏览器和操作系统中的与表单相关的 bug。
 
-4、Normalize.css 是模块化的
-这个项目已经被拆分为多个相关却又独立的部分，这使得你能够很容易也很清楚地知道哪些元素被设置了特定的值。因此这能让你自己选择性地移除掉某些永远不会用到部分（比如表单的一般化）。
+  - Normalize.css 没有复杂的继承链
 
-5、Normalize.css 拥有详细的文档
-Normalize.css 的代码基于详细而全面的跨浏览器研究与测试。这个文件中拥有详细的代码说明并在 GitHub Wiki 中有进一步的说明。这意味着你可以找到每一行代码具体完成了什么工作、为什么要写这句代码、浏览器之间的差异，并且你可以更容易地进行自己的测试。
+    使用 Reset 最让人困扰的地方莫过于在浏览器调试工具中大段大段的继承链。在 Normalize.css 中就不会有这样的问题，因为在我们的准则中对多选择器的使用时非常谨慎的，我们仅会有目的地对目标元素设置样式。
 
-```
+  - Normalize.css 是模块化的
 
-回答：
+    这个项目已经被拆分为多个相关却又独立的部分，这使得你能够很容易也很清楚地知道哪些元素被设置了特定的值。因此这能让你自己选择性地移除掉某些永远不会用到部分（比如表单的一般化）。
 
-```
-CSS reset 是最早的一种解决浏览器间样式不兼容问题的方案，它的基本思想是将浏览器的所有样式都重置掉，从而达到所有浏览器样式保持一致的效果。但是使用这种方法，可能会带来一些性能上的问题，并且对于一些元素的不必要的样式的重置，其实反而会造成画蛇添足的效果。
+  - Normalize.css 拥有详细的文档
 
-后面出现一种更好的解决浏览器间样式不兼容的方法，就是 normalize.css，它的思想是尽量的保留浏览器自带的样式，通过在原有的样式的基础上进行调整，来保持各个浏览器间的样式表现一致。相对与 css reset，normalize.css 的方法保留了有价值的默认值，并且修复了一些浏览器的 bug，而且使用 normalize.css 不会造成元素复杂的继承链。
+    Normalize.css 的代码基于详细而全面的跨浏览器研究与测试。这个文件中拥有详细的代码说明并在 GitHub Wiki 中有进一步的说明。这意味着你可以找到每一行代码具体完成了什么工作、为什么要写这句代码、浏览器之间的差异，并且你可以更容易地进行自己的测试。
 
-```
+- 回答：
+
+  - CSS reset 是最早的一种解决浏览器间样式不兼容问题的方案，它的基本思想是将浏览器的所有样式都重置掉，从而达到所有浏览器样式保持一致的效果。但是使用这种方法，可能会带来一些性能上的问题，并且对于一些元素的不必要的样式的重置，其实反而会造成画蛇添足的效果。
+
+  - 后面出现一种更好的解决浏览器间样式不兼容的方法，就是 normalize.css，它的思想是尽量的保留浏览器自带的样式，通过在原有的样式的基础上进行调整，来保持各个浏览器间的样式表现一致。相对与 css reset，normalize.css 的方法保留了有价值的默认值，并且修复了一些浏览器的 bug，而且使用 normalize.css 不会造成元素复杂的继承链。
 
 详细资料可以参考：
 [《关于 CSS Reset 那些事（一）之 历史演变与 Normalize.css》](https://segmentfault.com/a/1190000003021766#articleHeader0)
@@ -885,46 +869,38 @@ CSS reset 是最早的一种解决浏览器间样式不兼容问题的方案，�
 
 ### 58. 用于预格式化文本的标签是？
 
-```
-预格式化就是保留文字在源码中的格式 最后显示出来样式与源码中的样式一致 所见即所得。
+- 预格式化就是保留文字在源码中的格式 最后显示出来样式与源码中的样式一致 所见即所得。
 
-<pre> 定义预格式文本，保持文本原有的格式。
-```
+- `<pre>` 定义预格式文本，保持文本原有的格式。
 
 ### 59. DHTML 是什么？
 
-```
-DHTML 将 HTML、JavaScript、DOM 以及 CSS 组合在一起，用于创造动态性更强的网页。通过 JavaScript 和 HTML DOM，能够动态地改变 HTML 元素的样式。
+- DHTML 将 HTML、JavaScript、DOM 以及 CSS 组合在一起，用于创造动态性更强的网页。通过 JavaScript 和 HTML DOM，能够动态地改变 HTML 元素的样式。
 
-DHTML 实现了网页从 Web 服务器下载后无需再经过服务的处理，而在浏览器中直接动态地更新网页的内容、排版样式和动画的功能。例如，当鼠标指针移到文章段落中时，段落能够变成蓝色，或者当鼠标指针移到一个超级链接上时，会自动生成一个下拉式子链接目录等。
+- DHTML 实现了网页从 Web 服务器下载后无需再经过服务的处理，而在浏览器中直接动态地更新网页的内容、排版样式和动画的功能。例如，当鼠标指针移到文章段落中时，段落能够变成蓝色，或者当鼠标指针移到一个超级链接上时，会自动生成一个下拉式子链接目录等。
 
-包括：
-（1）动态内容（Dynamic Content）：动态地更新网页内容，可“动态”地插入、修改或删除网页的元件，如文字、图像、标记等。
+- 包括：
+  - 动态内容（Dynamic Content）：动态地更新网页内容，可“动态”地插入、修改或删除网页的元件，如文字、图像、标记等。
 
-（2）动态排版样式（Dynamic Style Sheets）：W3C 的 CSS 样式表提供了设定 HTML 标记的字体大小、字形、样式、粗细、文字颜色、行高度、加底线或加中间横线、缩排、与边缘距离、靠左右或置中、背景图片或颜色等排版功能，而“动态排版样式”即可以“动态”地改变排版样式。
-```
+  - 动态排版样式（Dynamic Style Sheets）：W3C 的 CSS 样式表提供了设定 HTML 标记的字体大小、字形、样式、粗细、文字颜色、行高度、加底线或加中间横线、缩排、与边缘距离、靠左右或置中、背景图片或颜色等排版功能，而“动态排版样式”即可以“动态”地改变排版样式。
 
 ### 60. head 标签中必不少的是？
 
-```
-<head> 标签用于定义文档的头部，它是所有头部元素的容器。<head> 中的元素可以引用脚本、指示浏览器在哪里找到样式表、提供元信息等等。
+- `<head>` 标签用于定义文档的头部，它是所有头部元素的容器。`<head>` 中的元素可以引用脚本、指示浏览器在哪里找到样式表、提供元信息等等。
 
-文档的头部描述了文档的各种属性和信息，包括文档的标题、在 Web 中的位置以及和其他文档的关系等。绝大多数文档头部包含的数据都不会真正作为内容显示给读者。
+- 文档的头部描述了文档的各种属性和信息，包括文档的标题、在 Web 中的位置以及和其他文档的关系等。绝大多数文档头部包含的数据都不会真正作为内容显示给读者。
 
-下面这些标签可用在 head 部分：<base>、<link>、<meta>、<script>、<style> 以及 <title>。
+- 这些标签可用在 head 部分：`<base>`、`<link>`、`<meta>`、`<script>`、`<style>` 以及 `<title>`。
 
-<title> 定义文档的标题，它是 head 部分中唯一必需的元素。
-```
+- `<title>` 定义文档的标题，它是 head 部分中唯一必需的元素。
 
 ### 61. HTML5 新增的表单元素有？
 
-```
-datalist 规定输入域的选项列表，通过 option 创建。
+- datalist 规定输入域的选项列表，通过 option 创建。
 
-keygen 提供一种验证用户的可靠方法，密钥对生成器，私钥存于客户端，公钥发到服务器，用于之后验证客户端证书。
+- keygen 提供一种验证用户的可靠方法，密钥对生成器，私钥存于客户端，公钥发到服务器，用于之后验证客户端证书。
 
-output 元素用于不同类型的输出。
-```
+- output 元素用于不同类型的输出。
 
 ### 62. 在 HTML5 中，哪个方法用于获得用户的当前位置？
 
@@ -934,68 +910,62 @@ getCurrentPosition()
 
 ### 63. 文档的不同注释方式？
 
-```
-HTML 的注释方法：<!-- 注释内容 -->
+- HTML 的注释方法：`<!-- 注释内容 -->`
 
-CSS 的注释方法：/* 注释内容 */
+- CSS 的注释方法：`/* 注释内容 */`
 
-JavaScript 的注释方法：/* 多行注释方式 */、// 单行注释方式
-```
+- JavaScript 的注释方法：
+  - `/* 多行注释方式 */`
+  - `// 单行注释方式`
 
 ### 64. disabled 和 readonly 的区别？
 
-```
-disabled 指当 input 元素加载时禁用此元素。input 内容不会随着表单提交。
+- disabled 指当 input 元素加载时禁用此元素。input 内容不会随着表单提交。
 
-readonly 规定输入字段为只读。input 内容会随着表单提交。
+- readonly 规定输入字段为只读。input 内容会随着表单提交。
 
-无论设置 readonly 还是 disabled，通过 JS 都能更改 input 的 value。
-```
+- 无论设置 readonly 还是 disabled，通过 JS 都能更改 input 的 value。
 
 ### 65. 主流浏览器内核私有属性 CSS 前缀？
 
-```
-mozilla 内核 （firefox,flock 等）    -moz
-webkit  内核 （safari,chrome 等）    -webkit
-opera   内核 （opera 浏览器）         -o
-trident 内核 （ie 浏览器）            -ms
-```
+- mozilla 内核 （firefox,flock 等）    -moz
+- webkit  内核 （safari,chrome 等）    -webkit
+- opera   内核 （opera 浏览器）         -o
+- trident 内核 （ie 浏览器）            -ms
 
 ### 66. 前端性能优化？
 
-```
-前端性能优化主要是为了提高页面的加载速度，优化用户的访问体验。我认为可以从这些方面来进行优化。
+- 前端性能优化主要是为了提高页面的加载速度，优化用户的访问体验。我认为可以从这些方面来进行优化。
 
-第一个方面是页面的内容方面
+- 第一个方面是页面的内容方面
 
-（1）通过文件合并、CSS 雪碧图、使用 base64 等方式来减少 HTTP 请求数，避免过多的请求造成等待的情况。
+  - 通过文件合并、CSS 雪碧图、使用 base64 等方式来减少 HTTP 请求数，避免过多的请求造成等待的情况。
 
-（2）通过 DNS 缓存等机制来减少 DNS 的查询次数。
+  - 通过 DNS 缓存等机制来减少 DNS 的查询次数。
 
-（3）通过设置缓存策略，对常用不变的资源进行缓存。
+  - 通过设置缓存策略，对常用不变的资源进行缓存。
 
-（4）使用延迟加载的方式，来减少页面首屏加载时需要请求的资源。延迟加载的资源当用户需要访问时，再去请求加载。
+  - 使用延迟加载的方式，来减少页面首屏加载时需要请求的资源。延迟加载的资源当用户需要访问时，再去请求加载。
 
-（5）通过用户行为，对某些资源使用预加载的方式，来提高用户需要访问资源时的响应速度。
+  - 通过用户行为，对某些资源使用预加载的方式，来提高用户需要访问资源时的响应速度。
 
-第二个方面是服务器方面
+- 第二个方面是服务器方面
 
-（1）使用 CDN 服务，来提高用户对于资源请求时的响应速度。
+  - 使用 CDN 服务，来提高用户对于资源请求时的响应速度。
 
-（2）服务器端启用 Gzip、Deflate 等方式对于传输的资源进行压缩，减小文件的体积。
+  - 服务器端启用 Gzip、Deflate 等方式对于传输的资源进行压缩，减小文件的体积。
 
-（3）尽可能减小 cookie 的大小，并且通过将静态资源分配到其他域名下，来避免对静态资源请求时携带不必要的 cookie。
+  - 尽可能减小 cookie 的大小，并且通过将静态资源分配到其他域名下，来避免对静态资源请求时携带不必要的 cookie。
 
-第三个方面是 CSS 和 JavaScript 方面
+- 第三个方面是 CSS 和 JavaScript 方面
 
-（1）把样式表放在页面的 head 标签中，减少页面的首次渲染的时间。
+  - 把样式表放在页面的 head 标签中，减少页面的首次渲染的时间。
 
-（2）避免使用 @import 标签。
+  - 避免使用 @import 标签。
 
-（3）尽量把 JS 放在页面底部或者使用 defer 或 async 属性，避免脚本的加载和执行阻塞页面的渲染。
+  - 尽量把 JS 放在页面底部或者使用 defer 或 async 属性，避免脚本的加载和执行阻塞页面的渲染。
 
-（4）通过对 JavaScript 和 CSS 的文件进行压缩，来减小文件的体积。
-```
+  - 通过对 JavaScript 和 CSS 的文件进行压缩，来减小文件的体积。
 
 详细的资料可以参考：
 [《前端性能优化之雅虎 35 条军规》](https://juejin.im/post/5b73ef38f265da281e048e51#heading-10)
@@ -1010,12 +980,9 @@ trident 内核 （ie 浏览器）            -ms
 
 ### 68. 扫描二维码登录网页是什么原理，前后两个事件是如何联系的？
 
-```
-核心过程应该是：浏览器获得一个临时 id，通过长连接等待客户端扫描带有此 id 的二维码后，从长连接中获得客户端上报给 server 的帐号信息进行展示。并在客户端点击确认后，获得服务器授信的令牌，进行随后的信息交互过程。在超时、网络断开、其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程形成有效的安全防护。
+- 核心过程应该是：浏览器获得一个临时 id，通过长连接等待客户端扫描带有此 id 的二维码后，从长连接中获得客户端上报给 server 的帐号信息进行展示。并在客户端点击确认后，获得服务器授信的令牌，进行随后的信息交互过程。在超时、网络断开、其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程形成有效的安全防护。
 
-我的理解：
-二维码登录网页的基本原理是，用户进入登录网页后，服务器生成一个 uid 来标识一个用户。对应的二维码对应了一个对应 uid 的链接，任何能够识别二维码的应用都可以获得这个链接，但是它们没有办法和对应登录的服务器响应。比如微信的二维码登录，只有用微信识这个二维码才有效。当微信客户端打开这个链接时，对应的登录服务器就获得了用户的相关信息。这个时候登录网页根据先前的长连接获取到服务器传过来的用户信息进行显示。然后提前预加载一些登录后可能用到的信息。当客户端点击确认授权登陆后，服务器生成一个权限令牌给网页，网页之后使用这个令牌进行信息的交互过程。由于整个授权的过程都是在手机端进行的，因此能够很好的防止 PC 上泛滥的病毒。并且在超时、网络断开、其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程能够形成有效的安全防护。
-```
+- 二维码登录网页的基本原理是，用户进入登录网页后，服务器生成一个 uid 来标识一个用户。对应的二维码对应了一个对应 uid 的链接，任何能够识别二维码的应用都可以获得这个链接，但是它们没有办法和对应登录的服务器响应。比如微信的二维码登录，只有用微信识这个二维码才有效。当微信客户端打开这个链接时，对应的登录服务器就获得了用户的相关信息。这个时候登录网页根据先前的长连接获取到服务器传过来的用户信息进行显示。然后提前预加载一些登录后可能用到的信息。当客户端点击确认授权登陆后，服务器生成一个权限令牌给网页，网页之后使用这个令牌进行信息的交互过程。由于整个授权的过程都是在手机端进行的，因此能够很好的防止 PC 上泛滥的病毒。并且在超时、网络断开、其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程能够形成有效的安全防护。
 
 详细资料可以参考：
 [《微信扫描二维码登录网页》](https://www.zhihu.com/question/20368066)
