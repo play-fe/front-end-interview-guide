@@ -632,117 +632,108 @@ list-style-type、list-style-image、list-style-position、list-style。
 详细资料可以参考：
 [《li 与 li 之间有看不见的空白间隔是什么原因引起的？》](https://blog.csdn.net/sjinsa/article/details/70919546)
 
-### 19.为什么要初始化 CSS 样式？
+### 19. 为什么要初始化 CSS 样式？
 
-```
--因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
+- 因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对 CSS 初始化往往会出现浏览器之间的页面显示差异。
 
--当然，初始化样式会对SEO有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。
+- 当然，初始化样式会对 SEO 有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。
 
-最简单的初始化方法：*{padding:0;margin:0;}（强烈不建议）
+- 最简单的初始化方法：`*{padding:0; margin:0;}`。（强烈不建议）
 
-淘宝的样式初始化代码：
-body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend
-,button,input,textarea,th,td{margin:0;padding:0;}
-body,button,input,select,textarea{font:12px/1.5tahoma,arial,\5b8b\4f53;}
-h1,h2,h3,h4,h5,h6{font-size:100%;}
-address,cite,dfn,em,var{font-style:normal;}
-code,kbd,pre,samp{font-family:couriernew,courier,monospace;}
-small{font-size:12px;}
-ul,ol{list-style:none;}
-a{text-decoration:none;}
-a:hover{text-decoration:underline;}
-sup{vertical-align:text-top;}
-sub{vertical-align:text-bottom;}
-legend{color:#000;}
-fieldset,img{border:0;}
-button,input,select,textarea{font-size:100%;}
-table{border-collapse:collapse;border-spacing:0;}
-```
+- 淘宝的样式初始化代码：
+  ```
+  body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0; padding: 0;
+  }
+  body, button, input, select, textarea {
+    font: 12px/1.5tahoma, arial, \5b8b\4f53;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size:100%;
+  }
+  address, cite, dfn, em, var {
+    font-style:normal;
+  }
+  code, kbd, pre, samp {
+    font-family: couriernew, courier, monospace;
+  }
+  small { font-size: 12px;
+  }
+  ul, ol {
+    list-style: none;
+  }
+  a { text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  sup { vertical-align: text-top; }
+  sub { vertical-align: text-bottom; }
+  legend { color:#000; }
+  fieldset, img { border: 0; }
+  button, input, select, textarea { font-size:100%; }
+  table { border-collapse: collapse; border-spacing: 0; }
+  ```
 
-### 20.什么是包含块，对于包含块的理解?
+### 20. 什么是包含块，对于包含块的理解?
 
-```
-包含块（containingblock）就是元素用来计算和定位的一个框。
+- 包含块（containingblock）就是元素用来计算和定位的一个框。
 
-（1）根元素（很多场景下可以看成是<html>）被称为“初始包含块”，其尺寸等同于浏览器可视窗口的大小。
+- 根元素（很多场景下可以看成是 `<html>`）被称为“初始包含块”，其尺寸等同于浏览器可视窗口的大小。
 
-（2）对于其他元素，如果该元素的position是relative或者static，则“包含块”由其最近的块容器祖先盒的contentbox
-边界形成。
+- 对于其他元素，如果该元素的 position 是 relative 或者 static，则“包含块”由其最近的块容器祖先盒的 contentbox边界形成。
 
-（3）如果元素position:fixed，则“包含块”是“初始包含块”。
+- 如果元素 `position: fixed`，则“包含块”是“初始包含块”。
 
-（4）如果元素position:absolute，则“包含块”由最近的position不为static的祖先元素建立，具体方式如下：
+- 如果元素 `position: absolute`，则“包含块”由最近的 position 不为 static 的祖先元素建立，具体方式如下：
+  - 如果该祖先元素是纯 inline 元素，则规则略复杂：
+    假设给内联元素的前后各生成一个宽度为 0 的内联盒子（inlinebox），则这两个内联盒子的 paddingbox 外面的包围盒就是内联元素的“包含块”；
 
-如果该祖先元素是纯inline元素，则规则略复杂：
-•假设给内联元素的前后各生成一个宽度为0的内联盒子（inlinebox），则这两个内联盒子的paddingbox外面的包
-围盒就是内联元素的“包含块”；
-•如果该内联元素被跨行分割了，那么“包含块”是未定义的，也就是CSS2.1规范并没有明确定义，浏览器自行发挥
-否则，“包含块”由该祖先的paddingbox边界形成。
+  - 如果该内联元素被跨行分割了，那么“包含块”是未定义的，也就是 CSS2.1 规范并没有明确定义，浏览器自行发挥，否则，“包含块”由该祖先的 paddingbox 边界形成。
 
-如果没有符合条件的祖先元素，则“包含块”是“初始包含块”。
-```
+  - 如果没有符合条件的祖先元素，则“包含块”是“初始包含块”。
 
-### 21.CSS 里的 visibility 属性有个 collapse 属性值是干什么用的？在不同浏览器下以后什么区别？
+### 21. CSS 里的 visibility 属性有个 collapse 属性值是干什么用的？在不同浏览器下以后什么区别？
 
-```
-（1）对于一般的元素，它的表现跟visibility：hidden;是一样的。元素是不可见的，但此时仍占用页面空间。
+- 对于一般的元素，它的表现跟 `visibility: hidden;` 是一样的。元素是不可见的，但此时仍占用页面空间。
 
-（2）但例外的是，如果这个元素是table相关的元素，例如table行，tablegroup，table列，tablecolumngroup，它的
-表现却跟display:none一样，也就是说，它们占用的空间也会释放。
+- 但例外的是，如果这个元素是 table 相关的元素，例如 table 行，tablegroup，table 列，tablecolumngroup，它的表现却跟 `display: none;` 一样，也就是说，它们占用的空间也会释放。
 
-在不同浏览器下的区别：
+- 在不同浏览器下的区别：
 
-在谷歌浏览器里，使用collapse值和使用hidden值没有什么区别。
+  - 在谷歌浏览器里，使用 collapse 值和使用 hidden 值没有什么区别。
 
-在火狐浏览器、Opera和IE11里，使用collapse值的效果就如它的字面意思：table的行会消失，它的下面一行会补充它的位
-置。
-
-```
+  - 在火狐浏览器、Opera 和 IE11 里，使用 collapse 值的效果就如它的字面意思：table 的行会消失，它的下面一行会补充它的位置。
 
 详细资料可以参考：
 [《CSS 里的 visibility 属性有个鲜为人知的属性值：collapse》](http://www.webhek.com/post/visibility-collapse.html)
 
-### 22.width:auto 和 width:100%的区别
+### 22. width:auto 和 width:100% 的区别
 
-```
-一般而言
+- width:100% 会使元素 box 的宽度等于父元素的 contentbox 的宽度。
 
-width:100%会使元素box的宽度等于父元素的contentbox的宽度。
+- width:auto 会使元素撑满整个父元素，margin、border、padding、content 区域会自动分配水平空间。
 
-width:auto会使元素撑满整个父元素，margin、border、padding、content区域会自动分配水平空间。
-```
+### 23. 绝对定位元素与非绝对定位元素的百分比计算的区别
 
-### 23.绝对定位元素与非绝对定位元素的百分比计算的区别
+- 绝对定位元素的宽高百分比是相对于临近的 position 不为 static 的祖先元素的 paddingbox 来计算的。
 
-```
-绝对定位元素的宽高百分比是相对于临近的position不为static的祖先元素的paddingbox来计算的。
+- 非绝对定位元素的宽高百分比则是相对于父元素的 contentbox 来计算的。
 
-非绝对定位元素的宽高百分比则是相对于父元素的contentbox来计算的。
-```
+### 24. 简单介绍使用图片 base64 编码的优点和缺点。
 
-### 24.简单介绍使用图片 base64 编码的优点和缺点。
+- base64 编码是一种图片处理格式，通过特定的算法将图片编码成一长串字符串，在页面上显示的时候，可以用该字符串来代替图片的 url 属性。
 
-```
-base64编码是一种图片处理格式，通过特定的算法将图片编码成一长串字符串，在页面上显示的时候，可以用该字符串来代替图片的
-url属性。
+- 使用base64的优点是：
 
-使用base64的优点是：
+  - 减少一个图片的HTTP请求。
 
-（1）减少一个图片的HTTP请求
+- 使用base64的缺点是：
 
-使用base64的缺点是：
+  - 根据 base64 的编码原理，编码后的大小会比原文件大 1/3，如果把大图片编码到 HTML 或 CSS 中，不仅会造成文件体积的增加，影响文件的加载速度，还会增加浏览器对 HTML 或 CSS 文件解析渲染的时间。
 
-（1）根据base64的编码原理，编码后的大小会比原文件大小大1/3，如果把大图片编码到html/css中，不仅会造成文件体
-积的增加，影响文件的加载速度，还会增加浏览器对html或css文件解析渲染的时间。
+  - 使用 base64 无法直接缓存，要缓存只能缓存包含 base64 的文件，比如 HTML 或 CSS，这相比域直接缓存图片的效果要差很多。
 
-（2）使用base64无法直接缓存，要缓存只能缓存包含base64的文件，比如HTML或者CSS，这相比域直接缓存图片的效果要
-差很多。
+  - 兼容性的问题，IE8 以前的浏览器不支持。
 
-（3）兼容性的问题，ie8以前的浏览器不支持。
-
-一般一些网站的小图标可以使用base64图片来引入。
-```
+- 一般一些网站的小图标可以使用 base64 图片来引入。
 
 详细资料可以参考：
 [《玩转图片 base64 编码》](https://www.cnblogs.com/coco1s/p/4375774.html)
@@ -751,137 +742,98 @@ url属性。
 
 ### 25. display、position 和 float 的相互关系？
 
-```
-（1）首先我们判断display属性是否为none，如果为none，则position和float属性的值不影响元素最后的表现。
+- 首先我们判断 display 属性是否为 none，如果为 none，则 position 和 float 属性的值不影响元素最后的表现。
 
-（2）然后判断position的值是否为absolute或者fixed，如果是，则float属性失效，并且display的值应该被
-设置为table或者block，具体转换需要看初始转换值。
+- 然后判断 position 的值是否为 absolute 或者 fixed，如果是，则float 属性失效，并且 display 的值应该被设置为 table 或者 block，具体转换需要看初始转换值。
 
-（3）如果position的值不为absolute或者fixed，则判断float属性的值是否为none，如果不是，则display
-的值则按上面的规则转换。注意，如果position的值为relative并且float属性的值存在，则relative相对
-于浮动后的最终位置定位。
+- 如果 position 的值不为 absolute 或者 fixed，则判断 float 属性的值是否为 none，如果不是，则 display 的值则按上面的规则转换。注意，如果 position 的值为 relative 并且 float 属性的值存在，则 relative 相对于浮动后的最终位置定位。
 
-（4）如果float的值为none，则判断元素是否为根元素，如果是根元素则display属性按照上面的规则转换，如果不是，
-则保持指定的display属性值不变。
+- 如果 float 的值为 none，则判断元素是否为根元素，如果是根元素则 display 属性按照上面的规则转换，如果不是，则保持指定的 display 属性值不变。
 
-总的来说，可以把它看作是一个类似优先级的机制，"position:absolute"和"position:fixed"优先级最高，有它存在
-的时候，浮动不起作用，'display'的值也需要调整；其次，元素的'float'特性的值不是"none"的时候或者它是根元素
-的时候，调整'display'的值；最后，非根元素，并且非浮动元素，并且非绝对定位的元素，'display'特性值同设置值。
-
-```
+- 总的来说，可以把它看作是一个类似优先级的机制 ` "position: absolute";` 和 `position: fixed;` 优先级最高，有它存在的时候，浮动不起作用，display 的值也需要调整；其次，元素的 float 特性的值不是 none 的时候或者它是根元素的时候，调整 display 的值；最后，非根元素，并且非浮动元素，并且非绝对定位的元素，display 特性值同设置值。
 
 详细资料可以参考：
 [《position 跟 display、margincollapse、overflow、float 这些特性相互叠加后会怎么样？》](https://www.cnblogs.com/jackyWHJ/p/3756087.html)
 
 ### 26.margin 重叠问题的理解。
 
-相关知识点：
+- 相关知识点：
 
-```
-块级元素的上外边距（margin-top）与下外边距（margin-bottom）有时会合并为单个外边距，这样的现象称为“margin合
-并”。
+  - 块级元素的上外边距（margin-top）与下外边距（margin-bottom）有时会合并为单个外边距，这样的现象称为“margin合并”。
 
-产生折叠的必备条件：margin必须是邻接的!
+  - 产生折叠的必备条件：margin 必须是邻接的!
 
-而根据w3c规范，两个margin是邻接的必须满足以下条件：
+  - 而根据 w3c 规范，两个 margin 是邻接的必须满足以下条件：
 
-•必须是处于常规文档流（非float和绝对定位）的块级盒子，并且处于同一个BFC当中。
-•没有线盒，没有空隙，没有padding和border将他们分隔开
-•都属于垂直方向上相邻的外边距，可以是下面任意一种情况
-•元素的margin-top与其第一个常规文档流的子元素的margin-top
-•元素的margin-bottom与其下一个常规文档流的兄弟元素的margin-top
-•height为auto的元素的margin-bottom与其最后一个常规文档流的子元素的margin-bottom
-•高度为0并且最小高度也为0，不包含常规文档流的子元素，并且自身没有建立新的BFC的元素的margin-top
-和margin-bottom
+    - 必须是处于常规文档流（非 float 和绝对定位）的块级盒子，并且处于同一个 BFC 当中。
+    - 没有线盒，没有空隙，没有 padding 和 border 将他们分隔开。
+    - 都属于垂直方向上相邻的外边距，可以是下面任意一种情况。
+    - 元素的 margin-top 与其第一个常规文档流的子元素的 margin-top。
+    - 元素的 margin-bottom 与其下一个常规文档流的兄弟元素的 margin-top
+    - height 为 auto 的元素的 margin-bottom 与其最后一个常规文档流的子元素的 margin-bottom。
+    - 高度为 0 并且最小高度也为 0，不包含常规文档流的子元素，并且自身没有建立新的 BFC 的元素的 margin-top 和 margin-bottom。
 
+  - margin 合并的 3 种场景：
 
-margin合并的3种场景：
+    - 相邻兄弟元素 margin 合并。
+      解决办法：设置块状格式化上下文元素（BFC）。
 
-（1）相邻兄弟元素margin合并。
+    - 父级和第一个或最后一个子元素的 margin 合并。
+      解决办法：
+      对于 margin-top 合并，可以进行如下操作（满足一个条件即可）：
+      父元素设置为块状格式化上下文元素；
+      父元素设置 border-top 值；
+      父元素设置 padding-top 值；
+      父元素和第一个子元素之间添加内联元素进行分隔。
 
-解决办法：
-•设置块状格式化上下文元素（BFC）
+      对于 margin-bottom 合并，可以进行如下操作（满足一个条件即可）：
+      父元素设置为块状格式化上下文元素；
+      父元素设置 border-bottom 值；
+      父元素设置 padding-bottom 值；
+      父元素和最后一个子元素之间添加内联元素进行分隔；
+      父元素设置 height、min-height 或 max-height。
 
-（2）父级和第一个/最后一个子元素的margin合并。
+    - 空块级元素的 margin 合并。
+      解决办法：
+      设置垂直方向的border；
+      设置垂直方向的padding；
+      里面添加内联元素（直接Space键空格是没用的）；
+      设置 height 或者 min-height。
 
-解决办法：
+- 回答：
+  - margin 重叠指的是在垂直方向上，两个相邻元素的 margin 发生重叠的情况。
+  一般来说可以分为四种情形：
 
-对于margin-top合并，可以进行如下操作（满足一个条件即可）：
-•父元素设置为块状格式化上下文元素；
-•父元素设置border-top值；
-•父元素设置padding-top值；
-•父元素和第一个子元素之间添加内联元素进行分隔。
+  第一种是相邻兄弟元素的 marin-bottom 和 margin-top 的值发生重叠。这种情况下我们可以通过设置其中一个元素为 BFC 来解决。
 
-对于margin-bottom合并，可以进行如下操作（满足一个条件即可）：
-•父元素设置为块状格式化上下文元素；
-•父元素设置border-bottom值；
-•父元素设置padding-bottom值；
-•父元素和最后一个子元素之间添加内联元素进行分隔；
-•父元素设置height、min-height或max-height。
+  第二种是父元素的 margin-top 和子元素的 margin-top 发生重叠。它们发生重叠是因为它们是相邻的，所以我们可以通过这一点来解决这个问题。我们可以为父元素设置 border-top、padding-top 值来分隔它们，当然我们也可以将父元素设置为 BFC 来解决。
 
-（3）空块级元素的margin合并。
+  第三种是高度为 auto 的父元素的 margin-bottom 和子元素的 margin-bottom 发生重叠。它们发生重叠一个是因为它们相邻，一个是因为父元素的高度不固定。因此我们可以为父元素设置 border-bottom、padding-bottom 来分隔它们，也可以为父元素设置一个高度，max-height 和 min-height 也能解决这个问题。当然将父元素设置为 BFC 是最简单的方法。
 
-解决办法：
-•设置垂直方向的border；
-•设置垂直方向的padding；
-•里面添加内联元素（直接Space键空格是没用的）；
-•设置height或者min-height。
-```
-
-回答：
-
-```
-margin重叠指的是在垂直方向上，两个相邻元素的margin发生重叠的情况。
-
-一般来说可以分为四种情形：
-
-第一种是相邻兄弟元素的marin-bottom和margin-top的值发生重叠。这种情况下我们可以通过设置其中一个元素为BFC
-来解决。
-
-第二种是父元素的margin-top和子元素的margin-top发生重叠。它们发生重叠是因为它们是相邻的，所以我们可以通过这
-一点来解决这个问题。我们可以为父元素设置border-top、padding-top值来分隔它们，当然我们也可以将父元素设置为BFC
-来解决。
-
-第三种是高度为auto的父元素的margin-bottom和子元素的margin-bottom发生重叠。它们发生重叠一个是因为它们相
-邻，一个是因为父元素的高度不固定。因此我们可以为父元素设置border-bottom、padding-bottom来分隔它们，也可以为
-父元素设置一个高度，max-height和min-height也能解决这个问题。当然将父元素设置为BFC是最简单的方法。
-
-第四种情况，是没有内容的元素，自身的margin-top和margin-bottom发生的重叠。我们可以通过为其设置border、pa
-dding或者高度来解决这个问题。
-```
+  第四种情况，是没有内容的元素，自身的 margin-top 和 margin-bottom 发生的重叠。我们可以通过为其设置 border、padding 或者高度来解决这个问题。
 
 ### 27.对 BFC 规范（块级格式化上下文：blockformattingcontext）的理解？
 
-相关知识点：
+- 相关知识点：
 
-```
-块格式化上下文（BlockFormattingContext，BFC）是Web页面的可视化CSS渲染的一部分，是布局过程中生成块级盒
-子的区域，也是浮动元素与其他元素的交互限定区域。
+  - 块格式化上下文（BlockFormattingContext，BFC）是 Web 页面的可视化 CSS 渲染的一部分，是布局过程中生成块级盒子的区域，也是浮动元素与其他元素的交互限定区域。
 
-通俗来讲
+  - 通俗来讲 BFC 是一个独立的布局环境，可以理解为一个容器，在这个容器中按照一定规则进行物品摆放，并且不会影响其它环境中的物品。
 
-•BFC是一个独立的布局环境，可以理解为一个容器，在这个容器中按照一定规则进行物品摆放，并且不会影响其它环境中的物品。
-•如果一个元素符合触发BFC的条件，则BFC中的元素布局不受外部影响。
+  - 如果一个元素符合触发 BFC 的条件，则 BFC 中的元素布局不受外部影响。
 
-创建BFC
+  - 创建BFC
+（1）根元素或包含根元素的元素。
+（2）浮动元素 float＝left|right 或 inherit（≠none）。
+（3）绝对定位元素 position ＝ absolute 或 fixed。
+（4）display ＝ inline-block|flex|inline-flex|table-cell 或 table-caption。
+（5）overflow＝hidden|auto 或 scroll(≠visible)。
 
-（1）根元素或包含根元素的元素
-（2）浮动元素float＝left|right或inherit（≠none）
-（3）绝对定位元素position＝absolute或fixed
-（4）display＝inline-block|flex|inline-flex|table-cell或table-caption
-（5）overflow＝hidden|auto或scroll(≠visible)
+- 回答：
 
-```
+- BFC 指的是块级格式化上下文，一个元素形成了 BFC 之后，那么它内部元素产生的布局不会影响到外部元素，外部元素的布局也不会影响到 BFC 中的内部元素。一个 BFC 就像是一个隔离区域，和其他区域互不影响。
 
-回答：
-
-```
-BFC指的是块级格式化上下文，一个元素形成了BFC之后，那么它内部元素产生的布局不会影响到外部元素，外部元素的布局也
-不会影响到BFC中的内部元素。一个BFC就像是一个隔离区域，和其他区域互不影响。
-
-一般来说根元素是一个BFC区域，浮动和绝对定位的元素也会形成BFC，display属性的值为inline-block、flex这些
-属性时也会创建BFC。还有就是元素的overflow的值不为visible时都会创建BFC。
-```
+- 一般来说根元素是一个 BFC 区域，浮动和绝对定位的元素也会形成 BFC，display 属性的值为 inline-block、flex 这些属性时也会创建 BFC。还有就是元素的 overflow 的值不为 visible 时都会创建 BFC。
 
 详细资料可以参考：
 [《深入理解 BFC 和 MarginCollapse》](https://www.w3cplus.com/css/understanding-bfc-and-margin-collapse.html)
@@ -889,13 +841,11 @@ BFC指的是块级格式化上下文，一个元素形成了BFC之后，那么�
 
 ### 28.IFC 是什么？
 
-```
-IFC指的是行级格式化上下文，它有这样的一些布局规则：
+- IFC 指的是行级格式化上下文，它有这样的一些布局规则：
 
-（1）行级上下文内部的盒子会在水平方向，一个接一个地放置。
-（2）当一行不够的时候会自动切换到下一行。
-（3）行级上下文的高度由内部最高的内联盒子的高度决定。
-```
+  - 行级上下文内部的盒子会在水平方向，一个接一个地放置。
+  - 当一行不够的时候会自动切换到下一行。
+  - 行级上下文的高度由内部最高的内联盒子的高度决定。
 
 详细资料可以参考：
 [《[译]:BFC 与 IFC》](https://segmentfault.com/a/1190000004466536#articleHeader5)
@@ -903,27 +853,21 @@ IFC指的是行级格式化上下文，它有这样的一些布局规则：
 
 ### 29.请解释一下为什么需要清除浮动？清除浮动的方式
 
-```
-浮动元素可以左右移动，直到遇到另一个浮动元素或者遇到它外边缘的包含框。浮动框不属于文档流中的普通流，当元素浮动之后，
-不会影响块级元素的布局，只会影响内联元素布局。此时文档流中的普通流就会表现得该浮动框不存在一样的布局模式。当包含框
-的高度小于浮动框的时候，此时就会出现“高度塌陷”。
+- 浮动元素可以左右移动，直到遇到另一个浮动元素或者遇到它外边缘的包含框。浮动框不属于文档流中的普通流，当元素浮动之后，不会影响块级元素的布局，只会影响内联元素布局。此时文档流中的普通流就会表现得该浮动框不存在一样的布局模式。当包含框的高度小于浮动框的时候，此时就会出现“高度塌陷”。
 
-清除浮动是为了清除使用浮动元素产生的影响。浮动的元素，高度会塌陷，而高度的塌陷使我们页面后面的布局不能正常显示。
+- 清除浮动是为了清除使用浮动元素产生的影响。浮动的元素，高度会塌陷，而高度的塌陷使我们页面后面的布局不能正常显示。
 
-清除浮动的方式
+- 清除浮动的方式：
 
-（1）使用clear属性清除浮动。参考28。
+  - 使用 clear 属性清除浮动。参考28。
 
-（2）使用BFC块级格式化上下文来清除浮动。参考26。
+  - 使用 BFC 块级格式化上下文来清除浮动。参考26。
 
-因为BFC元素不会影响外部元素的特点，所以BFC元素也可以用来清除浮动的影响，因为如果不清除，子元素浮动则父元
-素高度塌陷，必然会影响后面元素布局和定位，这显然有违BFC元素的子元素不会影响外部元素的设定。
-```
+- 因为 BFC 元素不会影响外部元素的特点，所以 BFC 元素也可以用来清除浮动的影响，因为如果不清除，子元素浮动则父元素高度塌陷，必然会影响后面元素布局和定位，这显然有违 BFC 元素的子元素不会影响外部元素的设定。
 
-### 30.使用 clear 属性清除浮动的原理？
+### 30. 使用 clear 属性清除浮动的原理？
 
-```
-使用clear属性清除浮动，其语法如下：
+使用 clear 属性清除浮动，其语法如下：
 
 clear:none|left|right|both
 
@@ -949,7 +893,6 @@ clear:both;
 
 clear属性只有块级元素才有效的，而::after等伪元素默认都是内联水平，这就是借助伪元素清除浮动影响时需要设置disp
 lay属性值的原因。
-```
 
 ### 31.zoom:1 的清除浮动原理?
 
