@@ -125,7 +125,7 @@
 
   - 盒模型都是由四个部分组成的，分别是 margin、border、padding 和 content。
 
-  - 标准盒模型和IE盒模型的区别在于设置 width 和 height 时，所对应的范围不同。标准盒模型的 width 和 height 属性的范围只包含了 content，而 IE 盒模型的 width 和 height 属性的范围包含了 border、padding 和 content。
+  - 标准盒模型和 IE 盒模型的区别在于设置 width 和 height 时，所对应的范围不同。标准盒模型的 width 和 height 属性的范围只包含了 content，而 IE 盒模型的 width 和 height 属性的范围包含了 border、padding 和 content。
 
   - 一般来说，我们可以通过修改元素的 box-sizing 属性来改变元素的盒模型。
 
@@ -134,7 +134,7 @@
 
 ### 2. CSS 选择符有哪些？
 
-- id选择器（#myid）
+- id 选择器（#myid）
 - 类选择器（.myclassname）
 - 标签选择器（div，h1，p）
 - 后代选择器（h1 p）
@@ -144,13 +144,13 @@
 - 属性选择器（a[rel="external"]）
 - 伪类选择器（a:hover，li:nth-child）
 - 伪元素选择器（::before，::after）
-- 通配符选择器（*）
+- 通配符选择器（\*）
 
 ### 3. ::before 和:after 中双冒号和单冒号有什么区别？解释一下这 2 个伪元素的作用。
 
 - 相关知识点：
 
-  - 单冒号（:）用于CSS3伪类，双冒号（::）用于 CSS3 伪元素。（伪元素由双冒号和伪元素名称组成）双冒号是在当前规范中引入的，用于区分伪类和伪元素。不过浏览器需要同时支持旧的已经存在的伪元素写法，比如 :first-line、:first-letter、:before、:after 等，而新的在CSS3中引入的伪元素则不允许再支持旧的单冒号的写法。
+  - 单冒号（:）用于 CSS3 伪类，双冒号（::）用于 CSS3 伪元素。（伪元素由双冒号和伪元素名称组成）双冒号是在当前规范中引入的，用于区分伪类和伪元素。不过浏览器需要同时支持旧的已经存在的伪元素写法，比如 :first-line、:first-letter、:before、:after 等，而新的在 CSS3 中引入的伪元素则不允许再支持旧的单冒号的写法。
 
   - 想让插入的内容出现在其它内容前，使用 ::before，否者，使用 ::after；在代码顺序上，::after 生成的内容也比 ::before 生成的内容靠后。如果按堆栈视角，::after 生成的内容会在 ::before 生成的内容之上。
 
@@ -168,7 +168,7 @@
 
 - 伪元素用于创建一些不在文档树中的元素，并为其添加样式。它们允许我们为元素的某些部分设置样式。比如说，我们可以通过 ::before 来在一个元素前增加一些文本，并为这些文本添加样式。虽然用户可以看到这些文本，但是这些文本实际上不在文档树中。
 
-- 有时你会发现伪元素使用了两个冒号（::）而不是一个冒号（:）。这是CSS3的一部分，并尝试区分伪类和伪元素。大多数浏览器都支持这两个值。按照规则应该使用（::）而不是（:），从而区分伪类和伪元素。但是，由于在旧版本的W3C规范并未对此进行特别区分，因此目前绝大多数的浏览器都支持使用这两种方式表示伪元素。
+- 有时你会发现伪元素使用了两个冒号（::）而不是一个冒号（:）。这是 CSS3 的一部分，并尝试区分伪类和伪元素。大多数浏览器都支持这两个值。按照规则应该使用（::）而不是（:），从而区分伪类和伪元素。但是，由于在旧版本的 W3C 规范并未对此进行特别区分，因此目前绝大多数的浏览器都支持使用这两种方式表示伪元素。
 
 详细资料可以参考：
 [《总结伪类与伪元素》](http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/)
@@ -183,25 +183,27 @@
 
   - 当元素的一个非继承属性（在 Mozillacode 里有时称之为 resetproperty）没有指定值时，则取属性的初始值 initialvalue（该值在该属性的概述里被指定）。
 
-  - 有继承性的属性：
-    1. 字体系列属性 
-font、font-family、font-weight、font-size、font-style、font-variant、font-stretch、font-size-adjust。
+  - 有继承性的属性： 1. 字体系列属性
+    font、font-family、font-weight、font-size、font-style、font-variant、font-stretch、font-size-adjust。
 
-    2. 文本系列属性 
-text-indent、text-align、text-shadow、line-height、word-spacing、letter-spacing、
-text-transform、direction、color。
+        2. 文本系列属性
 
-    3. 表格布局属性 
-caption-sideborder-collapseempty-cells。
+    text-indent、text-align、text-shadow、line-height、word-spacing、letter-spacing、
+    text-transform、direction、color。
 
-    4. 列表属性 
-list-style-type、list-style-image、list-style-position、list-style。
+        3. 表格布局属性
 
-    5. 光标属性 cursor。
+    caption-sideborder-collapseempty-cells。
 
-    6. 元素可见性 visibility。
+        4. 列表属性
 
-    7. 还有一些不常用的 speak、page 设置嵌套引用的引号类型quotes等属性。
+    list-style-type、list-style-image、list-style-position、list-style。
+
+        5. 光标属性 cursor。
+
+        6. 元素可见性 visibility。
+
+        7. 还有一些不常用的 speak、page 设置嵌套引用的引号类型quotes等属性。
 
   - 注意：当一个属性不是继承属性时，可以使用 inherit 关键字指定一个属性应从父元素继承它的值，inherit 关键字用于显式地指定继承性，可用于任何继承性/非继承性属性。
 
@@ -227,8 +229,8 @@ list-style-type、list-style-image、list-style-position、list-style。
 
     1. 标签内选择符 x 0 0 0。
     2. ID 选择符 0 x 0 0。
-    3. class 选择符/属性选择符/伪类选择符	0 0 x 0。
-    4. 元素和伪元素选择符0 0 0 x。
+    3. class 选择符/属性选择符/伪类选择符 0 0 x 0。
+    4. 元素和伪元素选择符 0 0 0 x。
 
   - 计算方法：
 
@@ -262,7 +264,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
   - 判断优先级时，首先我们会判断一条属性声明是否有权重，也就是是否在声明后面加上了 `!important`。一条声明如果加上了权重，那么它的优先级就是最高的，前提是它之后不再出现相同权重的声明。如果权重相同，我们则需要去比较匹配规则的特殊性。
 
-  - 一条匹配规则一般由多个选择器组成，一条规则的特殊性由组成它的选择器的特殊性累加而成。选择器的特殊性可以分为四个等级，第一个等级是行内样式，为 1000，第二个等级是 id 选择器，为 0100，第三个等级是类选择器、伪类选择器和属性选择器，为 0010，第四个等级是元素选择器和伪元素选择器，为0001。规则中每出现一个选择器，就将它的特殊性进行叠加，这个叠加只限于对应的等级的叠加，不会产生进位。选择器特殊性值的比较是从左向右排序的，也就是说以 1 开头的特殊性值比所有以 0 开头的特殊性值要大。比如说特殊性值为 1000 的规则优先级就要比特殊性值为 0999 的规则高。如果两个规则的特殊性值相等的时候，那么就会根据它们引入的顺序，后出现的规则的优先级最高。
+  - 一条匹配规则一般由多个选择器组成，一条规则的特殊性由组成它的选择器的特殊性累加而成。选择器的特殊性可以分为四个等级，第一个等级是行内样式，为 1000，第二个等级是 id 选择器，为 0100，第三个等级是类选择器、伪类选择器和属性选择器，为 0010，第四个等级是元素选择器和伪元素选择器，为 0001。规则中每出现一个选择器，就将它的特殊性进行叠加，这个叠加只限于对应的等级的叠加，不会产生进位。选择器特殊性值的比较是从左向右排序的，也就是说以 1 开头的特殊性值比所有以 0 开头的特殊性值要大。比如说特殊性值为 1000 的规则优先级就要比特殊性值为 0999 的规则高。如果两个规则的特殊性值相等的时候，那么就会根据它们引入的顺序，后出现的规则的优先级最高。
 
 对于组合声明的特殊性值计算可以参考：
 [《CSS 优先级计算及应用》](https://www.jianshu.com/p/1c4e639ff7d5)
@@ -275,7 +277,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 当链接未访问过时：
 
-  - 当鼠标滑过a链接时，满足:link和:hover两种状态，要改变a标签的颜色，就必须将:hover伪类在:link伪类后面声明；
+  - 当鼠标滑过 a 链接时，满足:link 和:hover 两种状态，要改变 a 标签的颜色，就必须将:hover 伪类在:link 伪类后面声明；
   - 当鼠标点击激活 a 链接时，同时满足 :link、:hover、:active 三种状态，要显示 a 标签激活时的样式 :active，必须将 :active 声明放到 :link 和 :hover 之后。因此得出 LVHA 这个顺序。
 
 - 当链接访问过时，情况基本同上，只不过需要将 :link 换成 :visited。
@@ -298,7 +300,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - elem:last-of-type 选中父元素下最后一个 elem 类型元素。
 
-- elem:only-of-type 如果父元素下的子元素只有一个elem 类型元素，则选中该元素。
+- elem:only-of-type 如果父元素下的子元素只有一个 elem 类型元素，则选中该元素。
 
 - elem:empty 选中不包含子元素和内容的 elem 类型元素。
 
@@ -318,7 +320,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 9.如何居中 div？
 
-- 水平居中：给 div 设置一个宽度，然后添加  `margin:0 auto;` 属性。
+- 水平居中：给 div 设置一个宽度，然后添加 `margin:0 auto;` 属性。
 
   ```css
   div {
@@ -446,13 +448,13 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 10. display 有哪些值？说明他们的作用。
 
-- block	块类型。默认宽度为父元素宽度，可设置宽高，换行显示。
+- block 块类型。默认宽度为父元素宽度，可设置宽高，换行显示。
 - none 元素不显示，并从文档流中移除。
 - inline 行内元素类型。默认宽度为内容宽度，不可设置宽高，同行显示。
 - inline-block 默认宽度为内容宽度，可以设置宽高，同行显示。
-- list-item	像块类型元素一样显示，并添加样式列表标记。
-- table	此元素会作为块级表格来显示。
-- inherit	规定应该从父元素继承 display 属性的值。
+- list-item 像块类型元素一样显示，并添加样式列表标记。
+- table 此元素会作为块级表格来显示。
+- inherit 规定应该从父元素继承 display 属性的值。
 
 详细资料可以参考：
 [《CSSdisplay 属性》](http://www.w3school.com.cn/css/pr_class_display.asp)
@@ -461,7 +463,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 相关知识点：
 
-  - absolute 生成绝对定位的元素，相对于值不为 static 的第一个父元素的 paddingbox 进行定位，也可以理解为离自己这一级元素最近的一级position 设置为 absolute 或者 relative 的父元素的 paddingbox 的左上角为原点的。
+  - absolute 生成绝对定位的元素，相对于值不为 static 的第一个父元素的 paddingbox 进行定位，也可以理解为离自己这一级元素最近的一级 position 设置为 absolute 或者 relative 的父元素的 paddingbox 的左上角为原点的。
 
   - fixed（老 IE 不支持）生成绝对定位的元素，相对于浏览器窗口进行定位。
 
@@ -501,36 +503,35 @@ list-style-type、list-style-image、list-style-position、list-style。
 
   - 容器默认存在两根轴：水平的主轴（mainaxis）和垂直的交叉轴（crossaxis），项目默认沿主轴排列。
 
+* 以下 6 个属性设置在容器上。
 
-  - 以下 6 个属性设置在容器上。
+  flex-direction 属性决定主轴的方向（即项目的排列方向）。
 
-    flex-direction 属性决定主轴的方向（即项目的排列方向）。
+  flex-wrap 属性定义，如果一条轴线排不下，如何换行。
 
-    flex-wrap 属性定义，如果一条轴线排不下，如何换行。
+  flex-flow 属性是 flex-direction 属性和 flex-wrap 属性的简写形式，默认值为 rownowrap。
 
-    flex-flow 属性是 flex-direction 属性和 flex-wrap 属性的简写形式，默认值为 rownowrap。
+  justify-content 属性定义了项目在主轴上的对齐方式。
 
-    justify-content 属性定义了项目在主轴上的对齐方式。
+  align-items 属性定义项目在交叉轴上如何对齐。
 
-    align-items 属性定义项目在交叉轴上如何对齐。
+  align-content 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
 
-    align-content 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+  - 以下 6 个属性设置在项目上。
 
-    - 以下 6 个属性设置在项目上。
+    order 属性定义项目的排列顺序。数值越小，排列越靠前，默认为 0。
 
-      order 属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
+    flex-grow 属性定义项目的放大比例，默认为 0，即如果存在剩余空间，也不放大。
 
-      flex-grow 属性定义项目的放大比例，默认为 0，即如果存在剩余空间，也不放大。
+    flex-shrink 属性定义了项目的缩小比例，默认为 1，即如果空间不足，该项目将缩小。
 
-      flex-shrink 属性定义了项目的缩小比例，默认为 1，即如果空间不足，该项目将缩小。
+    flex-basis 属性定义了在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为 auto，即项目的本来大小。
 
-      flex-basis 属性定义了在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为 auto，即项目的本来大小。
+    flex 属性是 flex-grow，flex-shrink 和 flex-basis 的简写，默认值为 0 1 auto。
 
-      flex 属性是 flex-grow，flex-shrink 和 flex-basis 的简写，默认值为 0 1 auto。
+    align-self 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖 align-items 属性。默认值为 auto，表示继承父元素的 align-items 属性，如果没有父元素，则等同于 stretch。
 
-      align-self 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖 align-items 属性。默认值为 auto，表示继承父元素的 align-items 属性，如果没有父元素，则等同于 stretch。
-
-- 回答：
+* 回答：
 
   - flex 布局是 CSS3 新增的一种布局方式，我们可以通过将一个元素的 display 属性值设置为 flex 从而使它成为一个 flex 容器，它的所有子元素都会成为它的项目。
 
@@ -552,7 +553,7 @@ list-style-type、list-style-image、list-style-position、list-style。
     height: 0;
     border-width: 20px;
     border-style: solid;
-    border-color: transparent transparent red transparent; 
+    border-color: transparent transparent red transparent;
   }
   ```
 
@@ -574,7 +575,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 17. 经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用 hack 的技巧？
 
-- png24 位的图片在 IE6 浏览器上出现背景。解决方案：做成PNG8，也可以引用一段脚本处理。
+- png24 位的图片在 IE6 浏览器上出现背景。解决方案：做成 PNG8，也可以引用一段脚本处理。
 
 - 浏览器默认的 margin 和 padding 不同。解决方案：加一个全局的 `*{margin:0; padding:0;}` 来统一。
 
@@ -589,20 +590,21 @@ list-style-type、list-style-image、list-style-position、list-style。
 - 渐进识别的方式，从总体中逐渐排除局部。
   首先，巧妙的使用“\9”这一标记，将 IE 游览器从所有情况中分离出来。
   接着，再次使用“+”将 IE8 和 IE7、IE6 分离开来，这样 IE8 已经独立识别。
+
   ```css
-  .bb{
-    background-color: #f1ee18;    /* 所有识别 */
+  .bb {
+    background-color: #f1ee18; /* 所有识别 */
     .background-color: #00deff\9; /* IE6/7/8 识别 */
-    +background-color: #a200ff;   /* IE6/7 识别 */
-    _background-color: #1e0bd1;   /* IE6 识别 */
+    +background-color: #a200ff; /* IE6/7 识别 */
+    _background-color: #1e0bd1; /* IE6 识别 */
   }
   ```
 
-- IE 下，可以使用获取常规属性的方法来获取自定义属性，也可以使用getAttribute() 获取自定义属性；Firefox 下，只能使用 getAttribute() 获取自定义属性。
-解决方法：统一通过getAttribute()获取自定义属性。
+- IE 下，可以使用获取常规属性的方法来获取自定义属性，也可以使用 getAttribute() 获取自定义属性；Firefox 下，只能使用 getAttribute() 获取自定义属性。
+  解决方法：统一通过 getAttribute()获取自定义属性。
 
 - IE 下，event 对象有 x、y 属性，但是没有 pageX、pageY 属性；Firefox 下，event 对象有 pageX、pageY 属性，但是没有 x、y 属性。
-解决方法：（条件注释）缺点是在 IE 浏览器下可能会增加额外的 HTTP 请求数。
+  解决方法：（条件注释）缺点是在 IE 浏览器下可能会增加额外的 HTTP 请求数。
 
 - Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示。
 
@@ -617,7 +619,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 18. li 与 li 之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
 
-- 浏览器会把 inline 元素间的空白字符（空格、换行、Tab等）渲染成一个空格。而为了美观。我们通常是一个 `<li>` 放在一行，这导致 `<li>` 换行后产生换行字符，它变成一个空格，占用了一个字符的宽度。
+- 浏览器会把 inline 元素间的空白字符（空格、换行、Tab 等）渲染成一个空格。而为了美观。我们通常是一个 `<li>` 放在一行，这导致 `<li>` 换行后产生换行字符，它变成一个空格，占用了一个字符的宽度。
 
 - 解决办法：
 
@@ -678,11 +680,12 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 根元素（很多场景下可以看成是 `<html>`）被称为“初始包含块”，其尺寸等同于浏览器可视窗口的大小。
 
-- 对于其他元素，如果该元素的 position 是 relative 或者 static，则“包含块”由其最近的块容器祖先盒的 contentbox边界形成。
+- 对于其他元素，如果该元素的 position 是 relative 或者 static，则“包含块”由其最近的块容器祖先盒的 contentbox 边界形成。
 
 - 如果元素 `position: fixed`，则“包含块”是“初始包含块”。
 
 - 如果元素 `position: absolute`，则“包含块”由最近的 position 不为 static 的祖先元素建立，具体方式如下：
+
   - 如果该祖先元素是纯 inline 元素，则规则略复杂：
     假设给内联元素的前后各生成一个宽度为 0 的内联盒子（inlinebox），则这两个内联盒子的 paddingbox 外面的包围盒就是内联元素的“包含块”；
 
@@ -721,11 +724,11 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - base64 编码是一种图片处理格式，通过特定的算法将图片编码成一长串字符串，在页面上显示的时候，可以用该字符串来代替图片的 url 属性。
 
-- 使用base64的优点是：
+- 使用 base64 的优点是：
 
-  - 减少一个图片的HTTP请求。
+  - 减少一个图片的 HTTP 请求。
 
-- 使用base64的缺点是：
+- 使用 base64 的缺点是：
 
   - 根据 base64 的编码原理，编码后的大小会比原文件大 1/3，如果把大图片编码到 HTML 或 CSS 中，不仅会造成文件体积的增加，影响文件的加载速度，还会增加浏览器对 HTML 或 CSS 文件解析渲染的时间。
 
@@ -744,13 +747,13 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 首先我们判断 display 属性是否为 none，如果为 none，则 position 和 float 属性的值不影响元素最后的表现。
 
-- 然后判断 position 的值是否为 absolute 或者 fixed，如果是，则float 属性失效，并且 display 的值应该被设置为 table 或者 block，具体转换需要看初始转换值。
+- 然后判断 position 的值是否为 absolute 或者 fixed，如果是，则 float 属性失效，并且 display 的值应该被设置为 table 或者 block，具体转换需要看初始转换值。
 
 - 如果 position 的值不为 absolute 或者 fixed，则判断 float 属性的值是否为 none，如果不是，则 display 的值则按上面的规则转换。注意，如果 position 的值为 relative 并且 float 属性的值存在，则 relative 相对于浮动后的最终位置定位。
 
 - 如果 float 的值为 none，则判断元素是否为根元素，如果是根元素则 display 属性按照上面的规则转换，如果不是，则保持指定的 display 属性值不变。
 
-- 总的来说，可以把它看作是一个类似优先级的机制 ` "position: absolute";` 和 `position: fixed;` 优先级最高，有它存在的时候，浮动不起作用，display 的值也需要调整；其次，元素的 float 特性的值不是 none 的时候或者它是根元素的时候，调整 display 的值；最后，非根元素，并且非浮动元素，并且非绝对定位的元素，display 特性值同设置值。
+- 总的来说，可以把它看作是一个类似优先级的机制 `"position: absolute";` 和 `position: fixed;` 优先级最高，有它存在的时候，浮动不起作用，display 的值也需要调整；其次，元素的 float 特性的值不是 none 的时候或者它是根元素的时候，调整 display 的值；最后，非根元素，并且非浮动元素，并且非绝对定位的元素，display 特性值同设置值。
 
 详细资料可以参考：
 [《position 跟 display、margincollapse、overflow、float 这些特性相互叠加后会怎么样？》](https://www.cnblogs.com/jackyWHJ/p/3756087.html)
@@ -759,7 +762,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 相关知识点：
 
-  - 块级元素的上外边距（margin-top）与下外边距（margin-bottom）有时会合并为单个外边距，这样的现象称为“margin合并”。
+  - 块级元素的上外边距（margin-top）与下外边距（margin-bottom）有时会合并为单个外边距，这样的现象称为“margin 合并”。
 
   - 产生折叠的必备条件：margin 必须是邻接的!
 
@@ -795,14 +798,15 @@ list-style-type、list-style-image、list-style-position、list-style。
 
     - 空块级元素的 margin 合并。
       解决办法：
-      设置垂直方向的border；
-      设置垂直方向的padding；
-      里面添加内联元素（直接Space键空格是没用的）；
+      设置垂直方向的 border；
+      设置垂直方向的 padding；
+      里面添加内联元素（直接 Space 键空格是没用的）；
       设置 height 或者 min-height。
 
 - 回答：
+
   - margin 重叠指的是在垂直方向上，两个相邻元素的 margin 发生重叠的情况。
-  一般来说可以分为四种情形：
+    一般来说可以分为四种情形：
 
   第一种是相邻兄弟元素的 marin-bottom 和 margin-top 的值发生重叠。这种情况下我们可以通过设置其中一个元素为 BFC 来解决。
 
@@ -822,12 +826,12 @@ list-style-type、list-style-image、list-style-position、list-style。
 
   - 如果一个元素符合触发 BFC 的条件，则 BFC 中的元素布局不受外部影响。
 
-  - 创建BFC
-（1）根元素或包含根元素的元素。
-（2）浮动元素 float＝left|right 或 inherit（≠none）。
-（3）绝对定位元素 position ＝ absolute 或 fixed。
-（4）display ＝ inline-block|flex|inline-flex|table-cell 或 table-caption。
-（5）overflow＝hidden|auto 或 scroll(≠visible)。
+  - 创建 BFC
+    （1）根元素或包含根元素的元素。
+    （2）浮动元素 float ＝ left|right 或 inherit（≠none）。
+    （3）绝对定位元素 position ＝ absolute 或 fixed。
+    （4）display ＝ inline-block|flex|inline-flex|table-cell 或 table-caption。
+    （5）overflow ＝ hidden|auto 或 scroll(≠visible)。
 
 - 回答：
 
@@ -859,9 +863,9 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 清除浮动的方式：
 
-  - 使用 clear 属性清除浮动。参考28。
+  - 使用 clear 属性清除浮动。参考 28。
 
-  - 使用 BFC 块级格式化上下文来清除浮动。参考26。
+  - 使用 BFC 块级格式化上下文来清除浮动。参考 26。
 
 - 因为 BFC 元素不会影响外部元素的特点，所以 BFC 元素也可以用来清除浮动的影响，因为如果不清除，子元素浮动则父元素高度塌陷，必然会影响后面元素布局和定位，这显然有违 BFC 元素的子元素不会影响外部元素的设定。
 
@@ -877,6 +881,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 - 还需要注意的一点是 clear 属性指的是元素盒子的边不能和前面的浮动元素相邻，注意这里“前面的”3 个字，也就是 clear 属性对“后面的”浮动元素是不闻不问的。考虑到 float 属性要么是 left，要么是 right，不可能同时存在，同时由于 clear 属性对“后面的”浮动元素不闻不问，因此，当 `clear: left;` 有效的时候，`clear: right` 必定无效，也就是此时 `clear: left;` 等同于设置 `clear: both;` 同样地，`clear: right;` 如果有效也是等同于设置 `clear: both;`。由此可见，`clear: left;` 和 `clear: right;` 这两个声明就没有任何使用的价值，至少在 CSS 世界中是如此，直接使用 `clear: both` 吧。
 
 - 一般使用伪元素的方式清除浮动
+
   ```
   .clear::after {
     content: '';
@@ -893,7 +898,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 当设置了 zoom 的值之后，所设置的元素就会就会扩大或者缩小，高度宽度就会重新计算了，这里一旦改变 zoom 值时其实也会发生重新渲染，运用这个原理，也就解决了 IE 下子元素浮动时候父元素不随着自动扩大的问题。
 
-- zoom 属性是 IE 浏览器的专有属性，火狐和老版本的 webkit 核心的浏览器都不支持这个属性。然而，zoom现在已经被逐步标准化，出现在 CSS3.0 规范草案中。
+- zoom 属性是 IE 浏览器的专有属性，火狐和老版本的 webkit 核心的浏览器都不支持这个属性。然而，zoom 现在已经被逐步标准化，出现在 CSS3.0 规范草案中。
 
 - 目前非 IE 由于不支持这个属性，它们又是通过什么属性来实现元素的缩放呢？可以通过 CSS3 里面的动画属性 scale 进行缩放。
 
@@ -911,7 +916,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 33. 使用 CSS 预处理器吗？喜欢哪个？
 
-- SASS（SASS、LESS 没有本质区别，只因为团队前端都是用的SASS）
+- SASS（SASS、LESS 没有本质区别，只因为团队前端都是用的 SASS）
 
 ### 34. CSS 优化、提高性能的方法有哪些？
 
@@ -923,11 +928,11 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 选择器性能：
 
-  - 关键选择器（keyselector）。选择器的最后面的部分为关键选择器（即用来匹配目标元素的部分）。CSS选择符是从右到左进行匹配的。当使用后代选择器的时候，浏览器会遍历所有子元素来确定是否是指定的元素等等；
+  - 关键选择器（keyselector）。选择器的最后面的部分为关键选择器（即用来匹配目标元素的部分）。CSS 选择符是从右到左进行匹配的。当使用后代选择器的时候，浏览器会遍历所有子元素来确定是否是指定的元素等等；
 
   - 如果规则拥有 ID 选择器作为其关键选择器，则不要为规则增加标签。过滤掉无关的规则（这样样式系统就不会浪费时间去匹配它们了）。
 
-  - 避免使用通配规则，如 *{} 计算次数惊人！只对需要用到的元素进行选择。
+  - 避免使用通配规则，如 \*{} 计算次数惊人！只对需要用到的元素进行选择。
 
   - 尽量少的去对标签进行选择，而是用 class。
 
@@ -945,7 +950,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
   - 属性值为 0 时，不加单位。
 
-  - 属性值为浮动小数 0.**，可以省略小数点之前的 0。
+  - 属性值为浮动小数 0.\*\*，可以省略小数点之前的 0。
 
   - 标准化各种浏览器前缀：带浏览器前缀的在前。标准属性在后。
 
@@ -957,7 +962,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
   - 正确使用 display 的属性，由于 display 的作用，某些样式组合会无效，徒增样式体积的同时也影响解析性能。
 
-  - 不滥用 web 字体。对于中文网站来说 WebFonts 可能很陌生，国外却很流行。webfonts通常体积庞大，而且一些浏览器在下载webfonts时会阻塞页面渲染损伤性能。
+  - 不滥用 web 字体。对于中文网站来说 WebFonts 可能很陌生，国外却很流行。webfonts 通常体积庞大，而且一些浏览器在下载 webfonts 时会阻塞页面渲染损伤性能。
 
 - 可维护性、健壮性：
 
@@ -973,7 +978,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 样式系统从关键选择器开始匹配，然后左移查找规则选择器的祖先元素。只要选择器的子树一直在工作，样式系统就会持续左移，直到和规则匹配，或者是因为不匹配而放弃该规则。
 
-- 试想一下，如果采用从左至右的方式读取CSS规则，那么大多数规则读到最后（最右）才会发现是不匹配的，这样做会费时耗能，最后有很多都是无用的；而如果采取从右向左的方式，那么只要发现最右边选择器不匹配，就可以直接舍弃了，避免了许多无效匹配。
+- 试想一下，如果采用从左至右的方式读取 CSS 规则，那么大多数规则读到最后（最右）才会发现是不匹配的，这样做会费时耗能，最后有很多都是无用的；而如果采取从右向左的方式，那么只要发现最右边选择器不匹配，就可以直接舍弃了，避免了许多无效匹配。
 
 详细资料可以参考：
 [《探究 CSS 解析原理》](https://juejin.im/entry/5a123c55f265da432240cc90)
@@ -999,9 +1004,10 @@ list-style-type、list-style-image、list-style-position、list-style。
 - padding 用于元素与内容之间的间隔，让内容（文字）与（包裹）元素之间有一段距离。
 
 - 何时应当使用 margin：
-  - 需要在border外侧添加空白时。
+
+  - 需要在 border 外侧添加空白时。
   - 空白处不需要背景（色）时。
-  - 上下相连的两个盒子之间的空白，需要相互抵消时。如 15px + 20px 的margin，将得到 20px 的空白。
+  - 上下相连的两个盒子之间的空白，需要相互抵消时。如 15px + 20px 的 margin，将得到 20px 的空白。
 
 - 何时应当时用 padding：
   - 需要在 border 内测添加空白时。
@@ -1030,9 +1036,9 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 40. 为什么不建议使用统配符初始化 css 样式。
 
-- 采用 *{pading:0;margin:0;} 这样的写法好处是写起来很简单，但是是通配符，需要把所有的标签都遍历一遍，当网站较大时，样式比较多，这样写就大大的加强了网站运行的负载，会使网站加载的时候需要很长一段时间，因此一般大型的网站都有分层次的一套初始化样式。
+- 采用 \*{pading:0;margin:0;} 这样的写法好处是写起来很简单，但是是通配符，需要把所有的标签都遍历一遍，当网站较大时，样式比较多，这样写就大大的加强了网站运行的负载，会使网站加载的时候需要很长一段时间，因此一般大型的网站都有分层次的一套初始化样式。
 
-- 出于性能的考虑，并不是所有标签都会有 padding 和 margin，因此对常见的具有默认 padding 和 margin 的元素初始化即可，并不需使用通配符 * 来初始化。
+- 出于性能的考虑，并不是所有标签都会有 padding 和 margin，因此对常见的具有默认 padding 和 margin 的元素初始化即可，并不需使用通配符 \* 来初始化。
 
 ### 41. absolute 的 containingblock（包含块）计算方式跟正常流有什么不同？
 
@@ -1085,7 +1091,8 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 47. 如何修改 chrome 记住密码后自动填充表单的黄色背景？
 
-- chrome 表单自动填充后，input 文本框的背景会变成黄色的，通过审查元素可以看到这是由于 chrome 会默认给自动填充的input表单加上 `input:-webkit-autofill` 私有属性，然后对其赋予以下样式：
+- chrome 表单自动填充后，input 文本框的背景会变成黄色的，通过审查元素可以看到这是由于 chrome 会默认给自动填充的 input 表单加上 `input:-webkit-autofill` 私有属性，然后对其赋予以下样式：
+
   ```
   {
     background-color: rgb(250,255,189) !important;
@@ -1098,9 +1105,11 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 使用足够大的纯色内阴影来覆盖 input 输入框的黄色背景，处理如下
   ```css
-  input:-webkit-autofill, textarea:-webkit-autofill,select:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px white inset;
-  border: 1px solid #CCC !important;
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    border: 1px solid #ccc !important;
   }
   ```
 
@@ -1114,7 +1123,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 解决办法：
 
-  - 可以使用Webkit的内核的 -webkit-text-size-adjust 的私有 CSS 属性来解决，只要加了 -webkit-text-size-adjust:none; 字体大小就不受限制了。但是 chrome 更新到 27 版本之后就不可以用了。所以高版本chrome谷歌浏览器已经不再支持 -webkit-text-size-adjust 样式，所以要使用时候慎用。
+  - 可以使用 Webkit 的内核的 -webkit-text-size-adjust 的私有 CSS 属性来解决，只要加了 -webkit-text-size-adjust:none; 字体大小就不受限制了。但是 chrome 更新到 27 版本之后就不可以用了。所以高版本 chrome 谷歌浏览器已经不再支持 -webkit-text-size-adjust 样式，所以要使用时候慎用。
 
   - 还可以使用 CSS3 的 transform 缩放属 -webkit-transform:scale(0.5); 注意 -webkit-transform:scale(0.75); 收缩的是整个元素的大小，这时候，如果是内联元素，必须要将内联元素转换成块元素，可以使用 display：block/inline-block/...；
 
@@ -1125,7 +1134,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 49. 让页面里的字体变清晰，变细用 CSS 怎么做？
 
-- webkit内核的私有属性：-webkit-font-smoothing，用于字体抗锯齿，使用后字体看起来会更清晰舒服。
+- webkit 内核的私有属性：-webkit-font-smoothing，用于字体抗锯齿，使用后字体看起来会更清晰舒服。
 
 - 在 MacOS 测试环境下面设置 -webkit-font-smoothing: antialiased; 但是这个属性仅仅是面向 MacOS，其他操作系统设置后无效。
 
@@ -1158,7 +1167,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 相关知识点：
 
-- 如果把移动设备上浏览器的可视区域设为 viewport 的话，某些网站就会因为viewport太窄而显示错乱，所以这些浏览器就决定默认情况下把 viewport 设为一个较宽的值，比如 980px，这样的话即使是那些为桌面设计的网站也能在移动浏览器上正常显示了。ppk 把这个浏览器默认的 viewport 叫做 layoutviewport。
+- 如果把移动设备上浏览器的可视区域设为 viewport 的话，某些网站就会因为 viewport 太窄而显示错乱，所以这些浏览器就决定默认情况下把 viewport 设为一个较宽的值，比如 980px，这样的话即使是那些为桌面设计的网站也能在移动浏览器上正常显示了。ppk 把这个浏览器默认的 viewport 叫做 layoutviewport。
 
 - layoutviewport 的宽度是大于浏览器可视区域的宽度的，所以我们还需要一个 viewport 来代表浏览器可视区域的大小，ppk 把这个 viewport 叫做 visualviewport。
 
@@ -1175,7 +1184,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 - 第二个视口指的是视觉视口，visualviewport 指的是移动设备上我们可见的区域的视口大小，一般为屏幕的分辨率的大小。visualviewport 和 layoutviewport 的关系，就像是我们通过窗户看外面的风景，视觉视口就是窗户，而外面的风景就是布局视口中的网页内容。
 
 - 第三个视口是理想视口，由于 layoutviewport 一般比 visualviewport 要大，所以想要看到整个页面必须通过拖动和缩放才
-能实现。所以又提出了 idealviewport 的概念，idealviewport 下用户不用缩放和滚动条就能够查看到整个页面，并且页面在不同分辨率下显示的内容大小相同。idealviewport 其实就是通过修改 layoutviewport 的大小，让它等于设备的宽度，这个宽度可以理解为是设备独立像素，因此根据 idealviewport 设计的页面，在不同分辨率的屏幕下，显示应该相同。
+  能实现。所以又提出了 idealviewport 的概念，idealviewport 下用户不用缩放和滚动条就能够查看到整个页面，并且页面在不同分辨率下显示的内容大小相同。idealviewport 其实就是通过修改 layoutviewport 的大小，让它等于设备的宽度，这个宽度可以理解为是设备独立像素，因此根据 idealviewport 设计的页面，在不同分辨率的屏幕下，显示应该相同。
 
 详细资料可以参考：
 [《移动前端开发之 viewport 的深入理解》](https://www.cnblogs.com/2050/p/3877280.html)
@@ -1194,7 +1203,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 54. 如果需要手动写动画，你认为最小时间间隔是多久，为什么？（阿里）
 
-- 多数显示器默认频率是 60 Hz，即 1 秒刷新 60 次，所以理论上最小间隔为 1/60*1000ms＝16.7ms。
+- 多数显示器默认频率是 60 Hz，即 1 秒刷新 60 次，所以理论上最小间隔为 1/60\*1000ms ＝ 16.7ms。
 
 ### 55.如何让去除 inline-block 元素间间距？
 
@@ -1223,9 +1232,9 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 - 相关知识点：
 
-  - BMP，是无损的、既支持索引色也支持直接色的、点阵图。这种图片格式几乎没有对数据进行压缩，所以BMP格式的图片通常具有较大的文件大小。
+  - BMP，是无损的、既支持索引色也支持直接色的、点阵图。这种图片格式几乎没有对数据进行压缩，所以 BMP 格式的图片通常具有较大的文件大小。
 
-  - GIF是无损的、采用索引色的、点阵图。采用LZW压缩算法进行编码。文件小，是 GIF 格式的优点，同时，GIF 格式还具有支持动画以及透明的优点。但，GIF格式仅支持 8 bit 的索引色，所以 GIF 格式适用于对色彩要求不高同时需要文件体积较小的场景。
+  - GIF 是无损的、采用索引色的、点阵图。采用 LZW 压缩算法进行编码。文件小，是 GIF 格式的优点，同时，GIF 格式还具有支持动画以及透明的优点。但，GIF 格式仅支持 8 bit 的索引色，所以 GIF 格式适用于对色彩要求不高同时需要文件体积较小的场景。
 
   - JPEG 是有损的、采用直接色的、点阵图。JPEG 的图片的优点，是采用了直接色，得益于更丰富的色彩，JPEG 非常适合用来存储照片，与 GIF 相比，JPEG 不适合用来存储企业 Logo、线框类的图。因为有损压缩会导致图片模糊，而直接色的选用，又会导致图片文件较 GIF 更大。
 
@@ -1238,7 +1247,7 @@ list-style-type、list-style-image、list-style-position、list-style。
   - WebP 是谷歌开发的一种新图片格式，WebP 是同时支持有损和无损压缩的、使用直接色的、点阵图。从名字就可以看出来它是为 Web 而生的，什么叫为 Web 而生呢？就是说相同质量的图片，WebP 具有更小的文件体积。现在网站上充满了大量的图片，如果能够降低每一个图片的文件大小，那么将大大减少浏览器和服务器之间的数据传输量，进而降低访问延迟，提升访问体验。
 
   - 在无损压缩的情况下，相同质量的 WebP 图片，文件大小要比 PNG 小 26%；
-  - 在有损压缩的情况下，具有相同图片精度的 WebP 图片，文件大小要比JPEG 小 25% ~ 34%；
+  - 在有损压缩的情况下，具有相同图片精度的 WebP 图片，文件大小要比 JPEG 小 25% ~ 34%；
   - WebP 图片格式支持图片透明度，一个无损压缩的 WebP 图片，如果要支持透明度只需要 22% 的格外文件大小。
 
   - 但是目前只有 Chrome 浏览器和 Opera 浏览器支持 WebP 格式，兼容性不太好。
@@ -1249,7 +1258,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
   - 第一种是 BMP 格式，它是无损压缩的，支持索引色和直接色的点阵图。由于它基本上没有进行压缩，因此它的文件体积一般比较大。
 
-  - 第二种是 GIF 格式，它是无损压缩的使用索引色的点阵图。由于使用了LZW 压缩方法，因此文件的体积很小。并且 GIF 还支持动画和透明度。但因为它使用的是索引色，所以它适用于一些对颜色要求不高且需要文件体积小的场景。
+  - 第二种是 GIF 格式，它是无损压缩的使用索引色的点阵图。由于使用了 LZW 压缩方法，因此文件的体积很小。并且 GIF 还支持动画和透明度。但因为它使用的是索引色，所以它适用于一些对颜色要求不高且需要文件体积小的场景。
 
   - 第三种是 JPEG 格式，它是有损压缩的使用直接色的点阵图。由于使用了直接色，色彩较为丰富，一般适用于来存储照片。但由于使用的是直接色，可能文件的体积相对于 GIF 格式来说更大。
 
@@ -1266,7 +1275,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 59. 浏览器如何判断是否支持 webp 格式图片
 
-- 宽高判断法。通过创建 image 对象，将其 src 属性设置为 webp 格式的图片，然后在 onload 事件中获取图片的宽高，如果能够获取，则说明浏览器支持 webp 格式图片。如果不能获取或者触发了 onerror 函数，那么就说明浏览器不支持webp格式的图片。
+- 宽高判断法。通过创建 image 对象，将其 src 属性设置为 webp 格式的图片，然后在 onload 事件中获取图片的宽高，如果能够获取，则说明浏览器支持 webp 格式图片。如果不能获取或者触发了 onerror 函数，那么就说明浏览器不支持 webp 格式的图片。
 
 - canvas 判断方法。我们可以动态的创建一个 canvas 对象，通过 canvas 的 toDataURL 将设置为 webp 格式，然后判断返回值中是否含有 image/webp 字段，如果包含则说明支持 WebP，反之则不支持。
 
@@ -1293,9 +1302,9 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 62. 什么是 CSS 预处理器/后处理器？
 
-- CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。通俗的说，CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的CSS文件。
+- CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。通俗的说，CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件。
 
-- 预处理器例如：LESS、Sass、Stylus，用来预编译 Sass 或lesscsssprite，增强了 CSS 代码的复用性，还有层级、mixin、变量、循环、函数等，具有很方便的UI组件模块化开发能力，极大的提高工作效率。
+- 预处理器例如：LESS、Sass、Stylus，用来预编译 Sass 或 lesscsssprite，增强了 CSS 代码的复用性，还有层级、mixin、变量、循环、函数等，具有很方便的 UI 组件模块化开发能力，极大的提高工作效率。
 
 - CSS 后处理器是对 CSS 进行处理，并最终生成 CSS 的预处理器，它属于广义上的 CSS 预处理器。我们很久以前就在用 CSS 后处理器了，最典型的例子是 CSS 压缩工具（如 clean-css），只不过以前没单独拿出来说过。还有最近比较火的 Autoprefixer，以 CanIUse 上的浏览器支持数据为基础，自动处理兼容性问题。
 
@@ -1306,10 +1315,10 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 63. 阐述一下 CSSSprites
 
-- 将一个页面涉及到的所有图片都包含到一张大图中去，然后利用 CSS 的background-image，background-repeat，background-position 的组合进行背景定位。利用 CSSSprites 能很好地减少网页的 http 请求，从而很好的提高页面的性能；CSSSprites 能减少图片的字节。
+- 将一个页面涉及到的所有图片都包含到一张大图中去，然后利用 CSS 的 background-image，background-repeat，background-position 的组合进行背景定位。利用 CSSSprites 能很好地减少网页的 http 请求，从而很好的提高页面的性能；CSSSprites 能减少图片的字节。
 
 - 优点：
-  减少HTTP请求数，极大地提高页面加载速度。
+  减少 HTTP 请求数，极大地提高页面加载速度。
   增加图片信息重复度，提高压缩比，减少图片大小。
   更换风格方便，只需在一张或几张图片上修改颜色或样式即可实现。
 
@@ -1326,9 +1335,9 @@ list-style-type、list-style-image、list-style-position、list-style。
   而且现在浏览器基本都已经支持 rem 了，兼容性也非常的好。
 
 - 缺点：
-  在奇葩的dpr设备上表现效果不太好，比如一些华为的高端机型用rem布局会出现错乱。
+  在奇葩的 dpr 设备上表现效果不太好，比如一些华为的高端机型用 rem 布局会出现错乱。
 
-  使用iframe引用也会出现问题。
+  使用 iframe 引用也会出现问题。
 
   rem 在多屏幕尺寸适配上与当前两大平台的设计哲学不一致。即大屏的出现到底是为了看得又大又清楚，还是为了看的更多的问题。
 
@@ -1406,7 +1415,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 73.什么是替换元素？
 
-- 通过修改某个属性值呈现的内容就可以被替换的元素就称为“替换元素”。因此，`<img>`、`<object>`、`<video>`、`<iframe>` 或者表单元素   `<textarea>` 和 `<input>` 和 `<select>` 都是典型的替换元素。
+- 通过修改某个属性值呈现的内容就可以被替换的元素就称为“替换元素”。因此，`<img>`、`<object>`、`<video>`、`<iframe>` 或者表单元素 `<textarea>` 和 `<input>` 和 `<select>` 都是典型的替换元素。
 
 - 替换元素除了内容可替换这一特性以外，还有以下一些特性。
 
@@ -1414,7 +1423,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
   - 有自己的尺寸。在 Web 中，很多替换元素在没有明确尺寸设定的情况下，其默认的尺寸（不包括边框）是 300 像素 × 150 像素，如 `<video>`、`<iframe>` 或者 `<canvas>` 等，也有少部分替换元素为 0 像素，如`<img>` 图片，而表单元素的替换元素的尺寸则和浏览器有关，没有明显的规律。
 
-  - 在很多 CSS 属性上有自己的一套表现规则。比较具有代表性的就是 vertical-align 属性，对于替换元素和非替换元素，vertical-align 属性值的解释是不一样的。比方说 vertical-align 的默认值的baseline，很简单的属性值，基线之意，被定义为字符 x 的下边缘，而替换元素的基线却被硬生生定义成了元素的下边缘。
+  - 在很多 CSS 属性上有自己的一套表现规则。比较具有代表性的就是 vertical-align 属性，对于替换元素和非替换元素，vertical-align 属性值的解释是不一样的。比方说 vertical-align 的默认值的 baseline，很简单的属性值，基线之意，被定义为字符 x 的下边缘，而替换元素的基线却被硬生生定义成了元素的下边缘。
 
   - 所有的替换元素都是内联水平元素，也就是替换元素和替换元素、替换元素和文字都是可以在一行显示的。但是，替换元素默认的 display 值却是不一样的，有的是 inline，有的是 inline-block。
 
@@ -1444,7 +1453,7 @@ list-style-type、list-style-image、list-style-position、list-style。
 
 ### 75.content 与替换元素的关系？
 
-content属性生成的对象称为“匿名替换元素”。
+content 属性生成的对象称为“匿名替换元素”。
 
 - 我们使用 content 生成的文本是无法选中、无法复制的，好像设置了 userselect: none; 声明一般，但是普通元素的文本却可以被轻松选中。同时，content 生成的文本无法被屏幕阅读设备读取，也无法被搜索引擎抓取，因此，千万不要自以为是地把重要的文本信息使用 content 属性生成，因为这对可访问性和 SEO 都很不友好。
 
@@ -1475,7 +1484,7 @@ content属性生成的对象称为“匿名替换元素”。
 
 - border-style 的默认值是 none，有一部分人可能会误以为是 solid。这也是单纯设置 border-width 或 border-color 没有边框显示的原因。
 
-- `border-style: double;` 的表现规则：双线宽度永远相等，中间间隔±1。
+- `border-style: double;` 的表现规则：双线宽度永远相等，中间间隔 ±1。
 
 - border-color 默认颜色就是 color 色值。
 
@@ -1483,7 +1492,7 @@ content属性生成的对象称为“匿名替换元素”。
 
 ### 79.什么是基线和 x-height？
 
-- 字母x的下边缘（线）就是我们的基线。
+- 字母 x 的下边缘（线）就是我们的基线。
 
 - x-height 指的就是小写字母 x 的高度，术语描述就是基线和等分线（meanline）（也称作中线，midline）之间的距离。在 CSS 世界中，middle 指的是基线往上 1/2x-height 高度。我们可以近似理解为字母 x 交叉点那个位置。
 
@@ -1501,15 +1510,15 @@ content属性生成的对象称为“匿名替换元素”。
 
 - 对于纯文本元素，line-height 直接决定了最终的高度。但是，如果同时有替换元素，则 line-height 只能决定最小高度。
 
-- 对于块级元素，line-height 对其本身是没有任何作用的，我们平时改变line-height，块级元素的高度跟着变化实际上是通过改变块级元素里面内联级别元素占据的高度实现的。
+- 对于块级元素，line-height 对其本身是没有任何作用的，我们平时改变 line-height，块级元素的高度跟着变化实际上是通过改变块级元素里面内联级别元素占据的高度实现的。
 
-- line-height的 默认值是 normal，还支持数值、百分比值以及长度值。为数值类型时，其最终的计算值是和当前 font-size 相乘后的值。为百分比值时，其最终的计算值是和当前font-size相乘后的值。为长度值时原意不变。
+- line-height 的 默认值是 normal，还支持数值、百分比值以及长度值。为数值类型时，其最终的计算值是和当前 font-size 相乘后的值。为百分比值时，其最终的计算值是和当前 font-size 相乘后的值。为长度值时原意不变。
 
 - 如果使用数值作为 line-height 的属性值，那么所有的子元素继承的都是这个值；但是，如果使用百分比值或者长度值作为属性值，那么所有的子元素继承的是最终的计算值。
 
 - 无论内联元素 line-height 如何设置，最终父级元素的高度都是由数值大的那个 line-height 决定的。
 
-- 只要有“内联盒子”在，就一定会有“行框盒子”，就是每一行内联元素外面包裹的一层看不见的盒子。然后，重点来了，在每个“行框盒子”前面有一个宽度为0的具有该元素的字体和行高属性的看不见的“幽灵空白节点”。
+- 只要有“内联盒子”在，就一定会有“行框盒子”，就是每一行内联元素外面包裹的一层看不见的盒子。然后，重点来了，在每个“行框盒子”前面有一个宽度为 0 的具有该元素的字体和行高属性的看不见的“幽灵空白节点”。
 
 ### 81. vertical-align 的特殊性？
 
@@ -1517,7 +1526,7 @@ content属性生成的对象称为“匿名替换元素”。
 
 - vertical-align:top; 就是垂直上边缘对齐，如果是内联元素，则和这一行位置最高的内联元素的顶部对齐；如果 display 计算值是 table-cell 的元素，我们不妨脑补成 `<td>` 元素，则和 `<tr>` 元素上边缘对齐。
 
-- vertical-align:middle; 是中间对齐，对于内联元素，元素的垂直中心点和行框盒子基线往上1/2x-height处对齐。对于 table-cell 元素，单元格填充盒子相对于外面的表格行居中对齐。
+- vertical-align:middle; 是中间对齐，对于内联元素，元素的垂直中心点和行框盒子基线往上 1/2x-height 处对齐。对于 table-cell 元素，单元格填充盒子相对于外面的表格行居中对齐。
 
 - vertical-align 支持数值属性，根据数值的不同，相对于基线往上或往下偏移，如果是负值，往下偏移，如果是正值，往上偏移。
 
@@ -1539,190 +1548,147 @@ content属性生成的对象称为“匿名替换元素”。
 
 ### 83.无依赖绝对定位是什么？
 
-```
-没有设置left/top/right/bottom属性值的绝对定位称为“无依赖绝对定位”。
+- 没有设置 left/top/right/bottom 属性值的绝对定位称为“无依赖绝对定位”。
 
-无依赖绝对定位其定位的位置和没有设置position:absolute时候的位置相关。
-```
+- 无依赖绝对定位其定位的位置和没有设置 `position: absolute;` 时候的位置相关。
 
 ### 84.absolute 与 overflow 的关系？
 
-```
-（1）如果overflow不是定位元素，同时绝对定位元素和overflow容器之间也没有定位元素，则overflow无法对absolute
-元素进行剪裁。
+- 如果 overflow 不是定位元素，同时绝对定位元素和 overflow 容器之间也没有定位元素，则 overflow 无法对 absolute 元素进行剪裁。
 
-（2）如果overflow的属性值不是hidden而是auto或者scroll，即使绝对定位元素高宽比overflow元素高宽还要大，也
-都不会出现滚动条。
+- 如果 overflow 的属性值不是 hidden 而是 auto 或者 scroll，即使绝对定位元素高宽比 overflow 元素高宽还要大，也都不会出现滚动条。
 
-（3）overflow元素自身transform的时候，Chrome和Opera浏览器下的overflow剪裁是无效的。
-```
+- overflow 元素自身 transform 的时候，Chrome 和 Opera 浏览器下的 overflow 剪裁是无效的。
 
 ### 85.clip 裁剪是什么？
 
-```
-所谓“可访问性隐藏”，指的是虽然内容肉眼看不见，但是其他辅助设备却能够进行识别和访问的隐藏。
+- 所谓“可访问性隐藏”，指的是虽然内容肉眼看不见，但是其他辅助设备却能够进行识别和访问的隐藏。
 
-clip剪裁被我称为“最佳可访问性隐藏”的另外一个原因就是，它具有更强的普遍适应性，任何元素、任何场景都可以无障碍使用。
-```
+- clip 剪裁被我称为“最佳可访问性隐藏”的另外一个原因就是，它具有更强的普遍适应性，任何元素、任何场景都可以无障碍使用。
 
 ### 86.relative 的特殊性？
 
-```
-（1）相对定位元素的left/top/right/bottom的百分比值是相对于包含块计算的，而不是自身。注意，虽然定位位移是相对自身，但是百分比值的计算值不是。
+- 相对定位元素的 left/top/right/bottom 的百分比值是相对于包含块计算的，而不是自身。注意，虽然定位位移是相对自身，但是百分比值的计算值不是。
 
-（2）top和bottom这两个垂直方向的百分比值计算跟height的百分比值是一样的，都是相对高度计算的。同时，如果包含块的高度是auto，那么计算值是0，偏移无效，也就是说，如果父元素没有设定高度或者不是“格式化高度”，那么relative类似top:20%的代码等同于top:0。
+- top 和 bottom 这两个垂直方向的百分比值计算跟 height 的百分比值是一样的，都是相对高度计算的。同时，如果包含块的高度是 auto，那么计算值是 0，偏移无效，也就是说，如果父元素没有设定高度或者不是“格式化高度”，那么 relative 类似 top: 20%; 的代码等同于 top: 0;。
 
-（3）当相对定位元素同时应用对立方向定位值的时候，也就是top/bottom和left/right同时使用的时候，只有一个方向的定位属性会起作用。而谁起作用则是与文档流的顺序有关的，默认的文档流是自上而下、从左往右，因此top/bottom同时使用的时候，bottom失效；left/right同时使用的时候，right失效。
-```
+- 当相对定位元素同时应用对立方向定位值的时候，也就是 top/bottom 和 left/right 同时使用的时候，只有一个方向的定位属性会起作用。而谁起作用则是与文档流的顺序有关的，默认的文档流是自上而下、从左往右，因此 top/bottom 同时使用的时候，bottom 失效；left/right 同时使用的时候，right 失效。
 
-### 87.什么是层叠上下文？
+### 87. 什么是层叠上下文？
 
-```
-层叠上下文，英文称作stackingcontext，是HTML中的一个三维的概念。如果一个元素含有层叠上下文，我们可以理解为这个元
-素在z轴上就“高人一等”。
+- 层叠上下文，英文称作 stackingcontext，是 HTML 中的一个三维的概念。如果一个元素含有层叠上下文，我们可以理解为这个元素在 z 轴上就“高人一等”。
 
-层叠上下文元素有如下特性：
+- 层叠上下文元素有如下特性：
 
-（1）层叠上下文的层叠水平要比普通元素高（原因后面会说明）。
-（2）层叠上下文可以阻断元素的混合模式。
-（3）层叠上下文可以嵌套，内部层叠上下文及其所有子元素均受制于外部的“层叠上下文”。
-（4）每个层叠上下文和兄弟元素独立，也就是说，当进行层叠变化或渲染的时候，只需要考虑后代元素。
-（5）每个层叠上下文是自成体系的，当元素发生层叠的时候，整个元素被认为是在父层叠上下文的层叠顺序中。
+  - 层叠上下文的层叠水平要比普通元素高（原因后面会说明）。
+  - 层叠上下文可以阻断元素的混合模式。
+  - 层叠上下文可以嵌套，内部层叠上下文及其所有子元素均受制于外部的“层叠上下文”。
+  - 每个层叠上下文和兄弟元素独立，也就是说，当进行层叠变化或渲染的时候，只需要考虑后代元素。
+  - 每个层叠上下文是自成体系的，当元素发生层叠的时候，整个元素被认为是在父层叠上下文的层叠顺序中。
 
+* 层叠上下文的创建：
 
-层叠上下文的创建：
+  - 页面根元素天生具有层叠上下文，称为根层叠上下文。根层叠上下文指的是页面根元素，可以看成是 `<html>` 元素。因此，页面中所有的元素一定处于至少一个“层叠结界”中。
 
-（1）页面根元素天生具有层叠上下文，称为根层叠上下文。根层叠上下文指的是页面根元素，可以看成是<html>元素。因此，页面中所有的元素一定处于至少一个“层叠结界”中。
+  - 对于 position 值为 relative/absolute 以及 Firefox/IE 浏览器（不包括 Chrome 浏览器）下含有 `position: fixed;` 声明的定位元素，当其 z-index 值不是 auto 的时候，会创建层叠上下文。Chrome 等 WebKit 内核浏览器下，`position: fixed;` 元素天然层叠上下文元素，无须 z-index 为数值。根据我的测试，目前 IE 和 Firefox 仍是老套路。
 
-（2）对于position值为relative/absolute以及Firefox/IE浏览器（不包括Chrome浏览器）下含有position:fixed声明的定位元素，当其z-index值不是auto的时候，会创建层叠上下文。Chrome等WebKit内核浏览器下，position:fixed元素天然层叠上下文元素，无须z-index为数值。根据我的测试，目前IE和Firefox仍是老套路。
+  - 其他一些 CSS3 属性，比如元素的 opacity 值不是 1。
 
-（3）其他一些CSS3属性，比如元素的opacity值不是1。
-```
+### 88. 什么是层叠水平？
 
-### 88.什么是层叠水平？
+- 层叠水平，英文称作 stackinglevel，决定了同一个层叠上下文中元素在 z 轴上的显示顺序。
 
-```
-层叠水平，英文称作stackinglevel，决定了同一个层叠上下文中元素在z轴上的显示顺序。
-
-显而易见，所有的元素都有层叠水平，包括层叠上下文元素，也包括普通元素。然而，对普通元素的层叠水平探讨只局限在当前层叠上
-下文元素中。
-```
+- 显而易见，所有的元素都有层叠水平，包括层叠上下文元素，也包括普通元素。然而，对普通元素的层叠水平探讨只局限在当前层叠上下文元素中。
 
 ### 89.元素的层叠顺序？
 
-层叠顺序，英文称作 stackingorder，表示元素发生层叠时有着特定的垂直显示顺序。
+- 层叠顺序，英文称作 stackingorder，表示元素发生层叠时有着特定的垂直显示顺序。
 
 ![层叠顺序](https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/note-15.png)
 
-### 90.层叠准则？
+### 90. 层叠准则？
 
-```
-（1）谁大谁上：当具有明显的层叠水平标识的时候，如生效的z-index属性值，在同一个层叠上下文领域，层叠水平值大的那一个覆盖小的那一个。
+- 谁大谁上：当具有明显的层叠水平标识的时候，如生效的 z-index 属性值，在同一个层叠上下文领域，层叠水平值大的那一个覆盖小的那一个。
 
-（2）后来居上：当元素的层叠水平一致、层叠顺序相同的时候，在DOM流中处于后面的元素会覆盖前面的元素。
-```
+- 后来居上：当元素的层叠水平一致、层叠顺序相同的时候，在 DOM 流中处于后面的元素会覆盖前面的元素。
 
-### 91.font-weight 的特殊性？
+### 91. font-weight 的特殊性？
 
-```
-如果使用数值作为font-weight属性值，必须是100～900的整百数。因为这里的数值仅仅是外表长得像数值，实际上是一个具有特定含义的关键字，并且这里的数值关键字和字母关键字之间是有对应关系的。
-```
+- 如果使用数值作为 font-weight 属性值，必须是 100 ～ 900 的整百数。因为这里的数值仅仅是外表长得像数值，实际上是一个具有特定含义的关键字，并且这里的数值关键字和字母关键字之间是有对应关系的。
 
 ### 92.text-indent 的特殊性？
 
-```
-（1）text-indent仅对第一行内联盒子内容有效。
+- text-indent 仅对第一行内联盒子内容有效。
 
-（2）非替换元素以外的display计算值为inline的内联元素设置text-indent值无效，如果计算值inline-block/inli
-ne-table则会生效。
+- 非替换元素以外的 display 计算值为 inline 的内联元素设置 text-indent 值无效，如果计算值 inline-block/inline-table 则会生效。
 
-（3）<input>标签按钮text-indent值无效。
+- `<input>` 标签按钮 text-indent 值无效。
 
-（4）<button>标签按钮text-indent值有效。
+- `<button>` 标签按钮 text-indent 值有效。
 
-（5）text-indent的百分比值是相对于当前元素的“包含块”计算的，而不是当前元素。
-```
+- text-indent 的百分比值是相对于当前元素的“包含块”计算的，而不是当前元素。
 
-### 93.letter-spacing 与字符间距？
+### 93. letter-spacing 与字符间距？
 
-```
-letter-spacing可以用来控制字符之间的间距，这里说的“字符”包括英文字母、汉字以及空格等。
+- letter-spacing 可以用来控制字符之间的间距，这里说的“字符”包括英文字母、汉字以及空格等。
 
-letter-spacing具有以下一些特性。
+- letter-spacing 具有以下一些特性。
+  - 继承性。
+  - 默认值是 normal 而不是 0。虽然说正常情况下，normal 的计算值就是 0，但两者还是有差别的，在有些场景下，letter-spacing 会调整 normal 的计算值以实现更好的版面布局。
+  - 支持负值，且值足够大的时候，会让字符形成重叠，甚至反向排列。
+  - 和 text-indent 属性一样，无论值多大或多小，第一行一定会保留至少一个字符。
+  - 支持小数值，即使 0.1px 也是支持的。
+  - 暂不支持百分比值。
 
-（1）继承性。
-（2）默认值是normal而不是0。虽然说正常情况下，normal的计算值就是0，但两者还是有差别的，在有些场景下，letter-spacing会调整normal的计算值以实现更好的版面布局。
-（3）支持负值，且值足够大的时候，会让字符形成重叠，甚至反向排列。
-（4）和text-indent属性一样，无论值多大或多小，第一行一定会保留至少一个字符。
-（5）支持小数值，即使0.1px也是支持的。
-（6）暂不支持百分比值。
-```
+### 94. word-spacing 与单词间距？
 
-### 94.word-spacing 与单词间距？
+- letter-spacing 作用于所有字符，但 word-spacing 仅作用于空格字符。换句话说，word-spacing 的作用就是增加空格的间隙宽度。
 
-```
-letter-spacing作用于所有字符，但word-spacing仅作用于空格字符。换句话说，word-spacing的作用就是增加空格的间隙
-宽度。
-```
+### 95. white-space 与换行和空格的控制？
 
-### 95.white-space 与换行和空格的控制？
+- white-space 属性声明了如何处理元素内的空白字符，这类空白字符包括 Space（空格）键、Enter（回车）键、Tab（制表符）键产生的空白。因此，white-space 可以决定图文内容是否在一行显示（回车空格是否生效），是否显示大段连续空白（空格是否生效）等。
 
-```
-white-space属性声明了如何处理元素内的空白字符，这类空白字符包括Space（空格）键、Enter（回车）键、Tab（制表符）
-键产生的空白。因此，white-space可以决定图文内容是否在一行显示（回车空格是否生效），是否显示大段连续空白（空格是否
-生效）等。
+- 其属性值包括下面这些。
+  - normal：合并空白字符和换行符。
+  - pre：空白字符不合并，并且内容只在有换行符的地方换行。
+  - nowrap：该值和 normal 一样会合并空白字符，但不允许文本环绕。
+  - pre-wrap：空白字符不合并，并且内容只在有换行符的地方换行，同时允许文本环绕。
+  - pre-line：合并空白字符，但只在有换行符的地方换行，允许文本环绕。
 
-其属性值包括下面这些。
-•normal：合并空白字符和换行符。
-•pre：空白字符不合并，并且内容只在有换行符的地方换行。
-•nowrap：该值和normal一样会合并空白字符，但不允许文本环绕。
-•pre-wrap：空白字符不合并，并且内容只在有换行符的地方换行，同时允许文本环绕。
-•pre-line：合并空白字符，但只在有换行符的地方换行，允许文本环绕。
-```
+### 96. 隐藏元素的 background-image 到底加不加载？
 
-### 96.隐藏元素的 background-image 到底加不加载？
+- 相关知识点：
 
-相关知识点：
+  - 根据测试，一个元素如果 display 计算值为 none，在 IE 浏览器下（IE8 ～ IE11，更高版本不确定）依然会发送图片请求，Firefox 浏览器不会，至于 Chrome 和 Safari 浏览器则似乎更加智能一点：如果隐藏元素同时又设置了 background-image，则图片依然会去加载；如果是父元素的 display 计算值为 none，则背景图不会请求，此时浏览器或许放心地认为这个背景图暂时是不会使用的。
 
-```
-根据测试，一个元素如果display计算值为none，在IE浏览器下（IE8～IE11，更高版本不确定）依然会发送图片请求，Fire
-fox浏览器不会，至于Chrome和Safari浏览器则似乎更加智能一点：如果隐藏元素同时又设置了background-image，则图片
-依然会去加载；如果是父元素的display计算值为none，则背景图不会请求，此时浏览器或许放心地认为这个背景图暂时是不会使
-用的。
+  - 如果不是 background-image，而是 `<img>` 元素，则设置 display: none; 在所有浏览器下依旧都会请求图片资源。
 
-如果不是background-image，而是<img>元素，则设置display:none在所有浏览器下依旧都会请求图片资源。
+  - 还需要注意的是如果设置的样式没有对应的元素，则 background-image 也不会加载。hover 情况下的 background-image，在触发时加载。
 
-还需要注意的是如果设置的样式没有对应的元素，则background-image也不会加载。hover情况下的background-image，在触
-发时加载。
-```
+- 回答：
 
-回答：
+  - 元素的背景图片，元素本身设置 `display: none;`，会请求图片。父级元素设置 `display: none;`，不会请求图片样式没有元素使用，不会请求 :hover 样式下，触发时请求。
 
--（1）元素的背景图片
-
--元素本身设置 display:none，会请求图片 -父级元素设置 display:none，不会请求图片 -样式没有元素使用，不会请求
--:hover 样式下，触发时请求
-
--（2）img 标签图片任何情况下都会请求图片
+  - img 标签图片任何情况下都会请求图片。
 
 详细资料可以参考：
 [《CSS 控制前端图片 HTTP 请求的各种情况示例》](https://www.jb51.net/css/469033.html)
 
-### 97.如何实现单行／多行文本溢出的省略（...）？
+### 97. 如何实现单行／多行文本溢出的省略（...）？
 
 ```css
-/*单行文本溢出*/
+/* 单行文本溢出 */
 p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/*多行文本溢出*/
+/* 多行文本溢出 */
 p {
   position: relative;
   line-height: 1.5em;
-  /*高度为需要显示的行数*行高，比如这里我们显示两行，则为3*/
+  /* 高度为需要显示的行数*行高，比如这里我们显示两行，则为3 */
   height: 3em;
   overflow: hidden;
 }
@@ -1742,19 +1708,19 @@ p:after {
 
 ### 98.常见的元素隐藏方式？
 
--（1）使用 display:none;隐藏元素，渲染树不会包含该渲染对象，因此该元素不会在页面中占据位置，也不会响应绑定的监听事件。
+- 使用 `display: none;` 隐藏元素，渲染树不会包含该渲染对象，因此该元素不会在页面中占据位置，也不会响应绑定的监听事件。
 
--（2）使用 visibility:hidden;隐藏元素。元素在页面中仍占据空间，但是不会响应绑定的监听事件。
+- 使用 `visibility: hidden;` 隐藏元素。元素在页面中仍占据空间，但是不会响应绑定的监听事件。
 
--（3）使用 opacity:0;将元素的透明度设置为 0，以此来实现元素的隐藏。元素在页面中仍然占据空间，并且能够响应元素绑定的监听事件。
+- 使用 `opacity: 0;` 将元素的透明度设置为 0，以此来实现元素的隐藏。元素在页面中仍然占据空间，并且能够响应元素绑定的监听事件。
 
--（4）通过使用绝对定位将元素移除可视区域内，以此来实现元素的隐藏。
+- 通过使用绝对定位将元素移除可视区域内，以此来实现元素的隐藏。
 
--（5）通过 z-index 负值，来使其他元素遮盖住该元素，以此来实现隐藏。
+- 通过 z-index 负值，来使其他元素遮盖住该元素，以此来实现隐藏。
 
--（6）通过 clip/clip-path 元素裁剪的方法来实现元素的隐藏，这种方法下，元素仍在页面中占据位置，但是不会响应绑定的监听事件。
+- 通过 clip/clip-path 元素裁剪的方法来实现元素的隐藏，这种方法下，元素仍在页面中占据位置，但是不会响应绑定的监听事件。
 
--（7）通过 transform:scale(0,0)来将元素缩放为 0，以此来实现元素的隐藏。这种方法下，元素仍在页面中占据位置，但是不会响应绑定的监听事件。
+- 通过 `transform:scale(0,0);` 来将元素缩放为 0，以此来实现元素的隐藏。这种方法下，元素仍在页面中占据位置，但是不会响应绑定的监听事件。
 
 详细资料可以参考：
 [《CSS 隐藏元素的八种方法》](https://juejin.im/post/584b645a128fe10058a0d625#heading-2)
@@ -1762,7 +1728,8 @@ p:after {
 ### 99.css 实现上下固定中间自适应布局？
 
 ```css
-利用绝对定位实现body {
+/* 利用绝对定位实现 */
+body {
   padding: 0;
   margin: 0;
 }
@@ -1791,7 +1758,8 @@ p:after {
   background: red;
 }
 
-利用flex布局实现html,
+/* 利用flex布局实现 */
+html,
 body {
   height: 100%;
 }
@@ -1822,13 +1790,15 @@ body {
 详细资料可以参考：
 [《css 实现上下固定中间自适应布局》](https://www.jianshu.com/p/30bc9751e3e8)
 
-### 100.css 两栏布局的实现？
+### 100. css 两栏布局的实现？
 
 相关资料：
 
 ```css
-/*两栏布局一般指的是页面中一共两栏，左边固定，右边自适应的布局，一共有四种实现的方式。*/
-/*以左边宽度固定为200px为例*/
+/* 
+  两栏布局一般指的是页面中一共两栏，左边固定，右边自适应的布局，一共有四种实现的方式。
+*/
+/* 以左边宽度固定为200px为例 */
 
 /*（1）利用浮动，将左边元素宽度设置为200px，并且设置向左浮动。将右边元素的margin-left设置为200px，宽度设置为auto（默认为auto，撑满整个父元素）。*/
 .outer {
@@ -1870,8 +1840,6 @@ body {
 
 .right {
   flex: auto;
-  /*11auto*/
-
   background: gold;
 }
 
@@ -1933,13 +1901,13 @@ body {
 
 以左边宽度固定为 200px 为例
 
--（1）利用浮动，将左边元素宽度设置为 200px，并且设置向左浮动。将右边元素的 margin-left 设置为 200px，宽度设置为 auto（默认为 auto，撑满整个父元素）。
+- 利用浮动，将左边元素宽度设置为 200px，并且设置向左浮动。将右边元素的 margin-left 设置为 200px，宽度设置为 auto（默认为 auto，撑满整个父元素）。
 
--（2）第二种是利用 flex 布局，将左边元素的放大和缩小比例设置为 0，基础大小设置为 200px。将右边的元素的放大比例设置为 1，缩小比例设置为 1，基础大小设置为 auto。
+- 第二种是利用 flex 布局，将左边元素的放大和缩小比例设置为 0，基础大小设置为 200px。将右边的元素的放大比例设置为 1，缩小比例设置为 1，基础大小设置为 auto。
 
--（3）第三种是利用绝对定位布局的方式，将父级元素设置相对定位。左边元素设置为 absolute 定位，并且宽度设置为 200px。将右边元素的 margin-left 的值设置为 200px。
+- 第三种是利用绝对定位布局的方式，将父级元素设置相对定位。左边元素设置为 absolute 定位，并且宽度设置为 200px。将右边元素的 margin-left 的值设置为 200px。
 
--（4）第四种还是利用绝对定位的方式，将父级元素设置为相对定位。左边元素宽度设置为 200px，右边元素设置为绝对定位，左边定位为 200px，其余方向定位为 0。
+- 第四种还是利用绝对定位的方式，将父级元素设置为相对定位。左边元素宽度设置为 200px，右边元素设置为绝对定位，左边定位为 200px，其余方向定位为 0。
 
 ### 101.css 三栏布局的实现？
 
@@ -1958,7 +1926,6 @@ body {
 
 .left {
   position: absolute;
-
   width: 100px;
   height: 100px;
   background: tomato;
@@ -1968,7 +1935,6 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-
   width: 200px;
   height: 100px;
   background: gold;
@@ -2038,10 +2004,8 @@ body {
 .left {
   position: relative;
   left: -100px;
-
   float: left;
   margin-left: -100%;
-
   width: 100px;
   height: 100px;
   background: tomato;
@@ -2050,10 +2014,8 @@ body {
 .right {
   position: relative;
   left: 200px;
-
   float: right;
   margin-left: -200px;
-
   width: 200px;
   height: 100px;
   background: gold;
@@ -2061,7 +2023,6 @@ body {
 
 .center {
   float: left;
-
   width: 100%;
   height: 100px;
   background: lightgreen;
@@ -2077,7 +2038,6 @@ body {
 .left {
   float: left;
   margin-left: -100%;
-
   width: 100px;
   height: 100px;
   background: tomato;
@@ -2086,7 +2046,6 @@ body {
 .right {
   float: left;
   margin-left: -200px;
-
   width: 200px;
   height: 100px;
   background: gold;
@@ -2094,7 +2053,6 @@ body {
 
 .wrapper {
   float: left;
-
   width: 100%;
   height: 100px;
   background: lightgreen;
@@ -2111,21 +2069,19 @@ body {
 
 回答：
 
-```
 三栏布局一般指的是页面中一共有三栏，左右两栏宽度固定，中间自适应的布局，一共有五种实现方式。
 
-这里以左边宽度固定为100px，右边宽度固定为200px为例。
+这里以左边宽度固定为 100px，右边宽度固定为 200px 为例。
 
-（1）利用绝对定位的方式，左右两栏设置为绝对定位，中间设置对应方向大小的margin的值。
+- 利用绝对定位的方式，左右两栏设置为绝对定位，中间设置对应方向大小的 margin 的值。
 
-（2）利用flex布局的方式，左右两栏的放大和缩小比例都设置为0，基础大小设置为固定的大小，中间一栏设置为auto。
+- 利用 flex 布局的方式，左右两栏的放大和缩小比例都设置为 0，基础大小设置为固定的大小，中间一栏设置为 auto。
 
-（3）利用浮动的方式，左右两栏设置固定大小，并设置对应方向的浮动。中间一栏设置左右两个方向的margin值，注意这种方式，中间一栏必须放到最后。
+- 利用浮动的方式，左右两栏设置固定大小，并设置对应方向的浮动。中间一栏设置左右两个方向的 margin 值，注意这种方式，中间一栏必须放到最后。
 
-（4）圣杯布局，利用浮动和负边距来实现。父级元素设置左右的pedding，三列均设置向左浮动，中间一列放在最前面，宽度设置为父级元素的宽度，因此后面两列都被挤到了下一行，通过设置margin负值将其移动到上一行，再利用相对定位，定位到两边。双飞翼布局中间列的宽度不能小于两边任意列的宽度，而双飞翼布局则不存在这个问题。
+- 圣杯布局，利用浮动和负边距来实现。父级元素设置左右的 pedding，三列均设置向左浮动，中间一列放在最前面，宽度设置为父级元素的宽度，因此后面两列都被挤到了下一行，通过设置 margin 负值将其移动到上一行，再利用相对定位，定位到两边。双飞翼布局中间列的宽度不能小于两边任意列的宽度，而双飞翼布局则不存在这个问题。
 
-（5）双飞翼布局，双飞翼布局相对于圣杯布局来说，左右位置的保留是通过中间列的margin值来实现的，而不是通过父元素的pedding来实现的。本质上来说，也是通过浮动和外边距负值来实现的。
-```
+- 双飞翼布局，双飞翼布局相对于圣杯布局来说，左右位置的保留是通过中间列的 margin 值来实现的，而不是通过父元素的 pedding 来实现的。本质上来说，也是通过浮动和外边距负值来实现的。
 
 ### 102.实现一个宽高自适应的正方形
 
@@ -2170,16 +2126,16 @@ body {
   height: 0;
   border-width: 100px;
   border-style: solid;
-  border-color: tomatotransparenttransparenttransparent;
+  border-color: tomato transparent transparent transparent;
 }
 ```
 
 [《三角形 demo 展示》](http://cavszhouyou.top/Demo-Display/Triangle/index.html)
 
-### 104.一个自适应矩形，水平垂直居中，且宽高比为 2:1
+### 104. 一个自适应矩形，水平垂直居中，且宽高比为 2:1
 
 ```css
-/*实现原理参考自适应正方形和水平居中方式*/
+/* 实现原理参考自适应正方形和水平居中方式 */
 .box {
   position: absolute;
   top: 0;
@@ -2187,7 +2143,6 @@ body {
   left: 0;
   bottom: 0;
   margin: auto;
-
   width: 10%;
   height: 0;
   padding-top: 20%;
