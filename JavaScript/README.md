@@ -227,11 +227,12 @@ js 一共有六种基本数据类型，分别是 Undefined、Null、Boolean、Nu
 
 所有 typeof 返回值为 "object" 的对象（如数组）都包含一个内部属性 [[Class]]（我们可以把它看作一个内部的分类，而非
 传统的面向对象意义上的类）。这个属性无法直接访问，一般通过 Object.prototype.toString(..) 来查看。例如：
+
 ```js
-Object.prototype.toString.call( [1,2,3] );
+Object.prototype.toString.call([1, 2, 3]);
 // "[object Array]"
 
-Object.prototype.toString.call( /regex-literal/i );
+Object.prototype.toString.call(/regex-literal/i);
 // "[object RegExp]"
 ```
 
@@ -295,7 +296,6 @@ Object.prototype.toString.call( /regex-literal/i );
 
 例如 arguments
 
-
 回答：
 
 js 中的内置对象主要指的是在程序执行前存在全局作用域里的由 js 定义的一些全局值属性、函数和用来实例化其他对象的构造函
@@ -311,7 +311,7 @@ js 中的内置对象主要指的是在程序执行前存在全局作用域里�
 - 已在作用域中声明但还没有赋值的变量，是 undefined 的。相反，还没有在作用域中声明过的变量，是 undeclared 的。
 
 - 对于 undeclared 变量的引用，浏览器会报引用错误，如 ReferenceError: b is not defined 。但是我们可以使用 typ
-eof 的安全防范机制来避免报错，因为对于 undeclared（或者 not defined ）变量，typeof 会返回 “undefined”。
+  eof 的安全防范机制来避免报错，因为对于 undeclared（或者 not defined ）变量，typeof 会返回 “undefined”。
 
 ### 7. null 和 undefined 的区别？
 
@@ -330,7 +330,7 @@ undefined 在 js 中不是一个保留字，这意味着我们可以使用 undef
 
 因为 undefined 是一个标识符，所以可以被当作变量来使用和赋值，但是这样会影响 undefined 的正常判断。
 
-表达式 void ___ 没有返回值，因此返回结果是 undefined。void 并不改变表达式的结果，只是让表达式不返回值。
+表达式 void \_\_\_ 没有返回值，因此返回结果是 undefined。void 并不改变表达式的结果，只是让表达式不返回值。
 
 按惯例我们用 void 0 来获得 undefined。
 
@@ -354,11 +354,11 @@ undefined 在 js 中不是一个保留字，这意味着我们可以使用 undef
 
 ### 10. JavaScript 原型，原型链？ 有什么特点？
 
-- 在 js 中我们是使用构造函数来新建一个对象的，每一个构造函数的内部都有一个 prototype 属性值，这个属性值是一个对象，这个对象包含了可以由该构造函数的所有实例共享的属性和方法。当我们使用构造函数新建一个对象后，在这个对象的内部将包含一个指针，这个指针指向构造函数的 prototype 属性对应的值，在 ES5 中这个指针被称为对象的原型。一般来说我们是不应该能够获取到这个值的，但是现在浏览器中都实现了 __proto__ 属性来让我们访问这个属性，但是我们最好不要使用这个属性，因为它不是规范中规定的。ES5 中新增了一个 Object.getPrototypeOf() 方法，我们可以通过这个方法来获取对象的原型。
+- 在 js 中我们是使用构造函数来新建一个对象的，每一个构造函数的内部都有一个 prototype 属性值，这个属性值是一个对象，这个对象包含了可以由该构造函数的所有实例共享的属性和方法。当我们使用构造函数新建一个对象后，在这个对象的内部将包含一个指针，这个指针指向构造函数的 prototype 属性对应的值，在 ES5 中这个指针被称为对象的原型。一般来说我们是不应该能够获取到这个值的，但是现在浏览器中都实现了 **proto** 属性来让我们访问这个属性，但是我们最好不要使用这个属性，因为它不是规范中规定的。ES5 中新增了一个 Object.getPrototypeOf() 方法，我们可以通过这个方法来获取对象的原型。
 
 - 当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么它就会去它的原型对象里找这个属性，这个原型对象又
-会有自己的原型，于是就这样一直找下去，也就是原型链的概念。原型链的尽头一般来说都是 Object.prototype 所以这就
-是我们新建的对象为什么能够使用 toString() 等方法的原因。
+  会有自己的原型，于是就这样一直找下去，也就是原型链的概念。原型链的尽头一般来说都是 Object.prototype 所以这就
+  是我们新建的对象为什么能够使用 toString() 等方法的原因。
 
 - 特点：
 
@@ -383,7 +383,7 @@ undefined 在 js 中不是一个保留字，这意味着我们可以使用 undef
 
 ### 13. js 中整数的安全范围是多少？
 
-安全整数指的是，在这个范围内的整数转化为二进制存储的时候不会出现精度丢失，能够被“安全”呈现的最大整数是 2^53 - 1，即9007199254740991，在 ES6 中被定义为 Number.MAX_SAFE_INTEGER。最小整数是 -9007199254740991，在 ES6 中被定义为 Number.MIN_SAFE_INTEGER。
+安全整数指的是，在这个范围内的整数转化为二进制存储的时候不会出现精度丢失，能够被“安全”呈现的最大整数是 2^53 - 1，即 9007199254740991，在 ES6 中被定义为 Number.MAX_SAFE_INTEGER。最小整数是 -9007199254740991，在 ES6 中被定义为 Number.MIN_SAFE_INTEGER。
 
 如果某次计算的结果得到了一个超过 JavaScript 数值范围的值，那么这个值会被自动转换为特殊的 Infinity 值。如果某次计算返回了正或负的 Infinity 值，那么该值将无法参与下一次的计算。判断一个数是不是有穷的，可以使用 isFinite 函数来判断。
 
@@ -437,7 +437,7 @@ NaN 是一个特殊值，它和自身不相等，是唯一一个非自反（自�
 
 （6）对象（包括数组）会首先被转换为相应的基本类型值，如果返回的是非数字的基本类型值，则再遵循以上规则将其强制转换为数字。
 
-为了将值转换为相应的基本类型值，抽象操作 ToPrimitive 会首先（通过内部操作 DefaultValue）检查该值是否有valueOf() 方法。如果有并且返回基本类型值，就使用该值进行强制类型转换。如果没有就使用 toString() 的返回值（如果存在）来进行强制类型转换。
+为了将值转换为相应的基本类型值，抽象操作 ToPrimitive 会首先（通过内部操作 DefaultValue）检查该值是否有 valueOf() 方法。如果有并且返回基本类型值，就使用该值进行强制类型转换。如果没有就使用 toString() 的返回值（如果存在）来进行强制类型转换。
 
 如果 valueOf() 和 toString() 均不返回基本类型值，会产 TypeError 错误。
 
@@ -492,8 +492,8 @@ ES5 规范 9.2 节中定义了抽象操作 ToBoolean，列举了布尔强制类�
 
 ### 26. || 和 && 操作符的返回值？
 
--  || 和 && 首先会对第一个操作数执行条件判断，如果其不是布尔值就先进行 ToBoolean 强制类型转换，然后再执行条件
-判断。
+- || 和 && 首先会对第一个操作数执行条件判断，如果其不是布尔值就先进行 ToBoolean 强制类型转换，然后再执行条件
+  判断。
 
 - 对于 || 来说，如果条件判断结果为 true 就返回第一个操作数的值，如果为 false 就返回第二个操作数的值。
 
@@ -506,7 +506,7 @@ ES5 规范 9.2 节中定义了抽象操作 ToBoolean，列举了布尔强制类�
 - ES6 允许从符号到字符串的显式强制类型转换，然而隐式强制类型转换会产生错误。
 
 - Symbol 值不能够被强制类型转换为数字（显式和隐式都会产生错误），但可以被强制类型转换为布尔值（显式和隐式结果
-都是 true ）。
+  都是 true ）。
 
 ### 28. == 操作符的强制类型转换规则？
 
@@ -542,7 +542,7 @@ ES5 规范 9.2 节中定义了抽象操作 ToBoolean，列举了布尔强制类�
 
 ```js
 function format(number) {
-  return number && number.replace(/(?!^)(?=(\d{3})+\.)/g, ",");
+  return number && number.replace(/(?!^)(?=(\d{3})+\.)/g, ',');
 }
 ```
 
@@ -680,8 +680,8 @@ function Person(name) {
   this.name = name;
 }
 
-Person.prototype.sayName = function() {
-  console.log("My name is " + this.name + ".");
+Person.prototype.sayName = function () {
+  console.log('My name is ' + this.name + '.');
 };
 
 function Student(name, grade) {
@@ -692,8 +692,8 @@ function Student(name, grade) {
 Student.prototype = Object.create(Person.prototype);
 Student.prototype.constructor = Student;
 
-Student.prototype.sayMyGrade = function() {
-  console.log("My grade is " + this.grade + ".");
+Student.prototype.sayMyGrade = function () {
+  console.log('My grade is ' + this.grade + '.');
 };
 ```
 
@@ -731,7 +731,7 @@ Student.prototype.sayMyGrade = function() {
 
 - 它的功能是把对应的字符串解析成 JS 代码并运行。
 
-- 应该避免使用 eval，不安全，非常耗性能（2次，一次解析成 js 语句，一次执行）。
+- 应该避免使用 eval，不安全，非常耗性能（2 次，一次解析成 js 语句，一次执行）。
 
 详细资料可以参考：
 [《eval()》](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval)
@@ -741,7 +741,7 @@ Student.prototype.sayMyGrade = function() {
 - DOM 指的是文档对象模型，它指的是把文档当做一个对象来对待，这个对象主要定义了处理网页内容的方法和接口。
 
 - BOM 指的是浏览器对象模型，它指的是把浏览器当做一个对象来对待，这个对象主要定义了与浏览器进行交互的法和接口。BOM 的核心是 window，而 window 对象具有双重角色，它既是通过 js 访问浏览器窗口的一个接口，又是一个 Global（全局）对象。这意味着在网页中定义的任何对象，变量和函数，都作为全局对象的一个属性或者方法存在。window 对象含有 locati
-on 对象、navigator 对象、screen 对象等子对象，并且 DOM 的最根本的对象 document 对象也是 BOM 的 window 对象的子对象。
+  on 对象、navigator 对象、screen 对象等子对象，并且 DOM 的最根本的对象 document 对象也是 BOM 的 window 对象的子对象。
 
 详细资料可以参考：
 [《DOM, DOCUMENT, BOM, WINDOW 有什么区别?》](https://www.zhihu.com/question/33453164)
@@ -755,39 +755,39 @@ on 对象、navigator 对象、screen 对象等子对象，并且 DOM 的最根�
 const EventUtils = {
   // 视能力分别使用 dom0 || dom2 || IE 方式 来绑定事件
   // 添加事件
-  addEvent: function(element, type, handler) {
+  addEvent: function (element, type, handler) {
     if (element.addEventListener) {
       element.addEventListener(type, handler, false);
     } else if (element.attachEvent) {
-      element.attachEvent("on" + type, handler);
+      element.attachEvent('on' + type, handler);
     } else {
-      element["on" + type] = handler;
+      element['on' + type] = handler;
     }
   },
 
   // 移除事件
-  removeEvent: function(element, type, handler) {
+  removeEvent: function (element, type, handler) {
     if (element.removeEventListener) {
       element.removeEventListener(type, handler, false);
     } else if (element.detachEvent) {
-      element.detachEvent("on" + type, handler);
+      element.detachEvent('on' + type, handler);
     } else {
-      element["on" + type] = null;
+      element['on' + type] = null;
     }
   },
 
   // 获取事件目标
-  getTarget: function(event) {
+  getTarget: function (event) {
     return event.target || event.srcElement;
   },
 
   // 获取 event 对象的引用，取到事件的所有信息，确保随时能使用 event
-  getEvent: function(event) {
+  getEvent: function (event) {
     return event || window.event;
   },
 
   // 阻止事件（主要是事件冒泡，因为 IE 不支持事件捕获）
-  stopPropagation: function(event) {
+  stopPropagation: function (event) {
     if (event.stopPropagation) {
       event.stopPropagation();
     } else {
@@ -796,7 +796,7 @@ const EventUtils = {
   },
 
   // 取消事件的默认行为
-  preventDefault: function(event) {
+  preventDefault: function (event) {
     if (event.preventDefault) {
       event.preventDefault();
     } else {
@@ -827,7 +827,7 @@ const EventUtils = {
 
 - 第一种事件模型是最早的 DOM0 级模型，这种模型不会传播，所以没有事件流的概念，但是现在有的浏览器支持以冒泡的方式实现，它可以在网页中直接定义监听函数，也可以通过 js 属性来指定监听函数。这种方式是所有浏览器都兼容的。
 
-- 第二种事件模型是 IE 事件模型，在该事件模型中，一次事件共有两个过程，事件处理阶段，和事件冒泡阶段。事件处理阶段会首先执行目标元素绑定的监听事件。然后是事件冒泡阶段，冒泡指的是事件从目标元素冒泡到  document，依次检查经过的节点是否绑定了事件监听函数，如果有则执行。这种模型通过 attachEvent 来添加监听函数，可以添加多个监听函数，会按顺序依次执行。
+- 第二种事件模型是 IE 事件模型，在该事件模型中，一次事件共有两个过程，事件处理阶段，和事件冒泡阶段。事件处理阶段会首先执行目标元素绑定的监听事件。然后是事件冒泡阶段，冒泡指的是事件从目标元素冒泡到 document，依次检查经过的节点是否绑定了事件监听函数，如果有则执行。这种模型通过 attachEvent 来添加监听函数，可以添加多个监听函数，会按顺序依次执行。
 
 - 第三种是 DOM2 级事件模型，在该事件模型中，一次事件共有三个过程，第一个过程是事件捕获阶段。捕获指的是事件从 document 一直向下传播到目标元素，依次检查经过的节点是否绑定了事件监听函数，如果有则执行。后面两个阶段和 IE 事件模型的两个阶段相同。这种事件模型，事件绑定的函数是 addEventListener，其中第三个参数可以指定事件是否在捕获阶段执行。
 
@@ -856,53 +856,42 @@ const EventUtils = {
 
 ### 46. 什么是闭包，为什么要用它？
 
-```
-闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，创建的函数可以
-访问到当前函数的局部变量。
+- 闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，创建的函数可以访问到当前函数的局部变量。
 
-闭包有两个常用的用途。
+- 闭包有两个常用的用途。
 
-闭包的第一个用途是使我们在函数外部能够访问到函数内部的变量。通过使用闭包，我们可以通过在外部调用闭包函数，从而在外
-部访问到函数内部的变量，可以使用这种方法来创建私有变量。
+  - 闭包的第一个用途是使我们在函数外部能够访问到函数内部的变量。通过使用闭包，我们可以通过在外部调用闭包函数，从而在外部访问到函数内部的变量，可以使用这种方法来创建私有变量。
 
-函数的另一个用途是使已经运行结束的函数上下文中的变量对象继续留在内存中，因为闭包函数保留了这个变量对象的引用，所以
-这个变量对象不会被回收。
+  - 函数的另一个用途是使已经运行结束的函数上下文中的变量对象继续留在内存中，因为闭包函数保留了这个变量对象的引用，所以这个变量对象不会被回收。
 
-其实闭包的本质就是作用域链的一个特殊的应用，只要了解了作用域链的创建过程，就能够理解闭包的实现原理。
-```
+  - 其实闭包的本质就是作用域链的一个特殊的应用，只要了解了作用域链的创建过程，就能够理解闭包的实现原理。
 
 详细资料可以参考：
 [《JavaScript 深入理解之闭包》](http://cavszhouyou.top/JavaScript%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%B9%8B%E9%97%AD%E5%8C%85.html)
 
 ### 47. javascript 代码中的 "use strict"; 是什么意思 ? 使用它区别是什么？
 
-相关知识点：
+- 相关知识点：
 
-```
-use strict 是一种 ECMAscript5 添加的（严格）运行模式，这种模式使得 Javascript 在更严格的条件下运行。
+  - `use strict` 是一种 ECMAscript5 添加的（严格）运行模式，这种模式使得 Javascript 在更严格的条件下运行。
 
-设立"严格模式"的目的，主要有以下几个：
-```
+  - 设立“严格模式”的目的，主要有以下几个：
 
-- 消除 Javascript 语法的一些不合理、不严谨之处，减少一些怪异行为;
-- 消除代码运行的一些不安全之处，保证代码运行的安全；
-- 提高编译器效率，增加运行速度；
-- 为未来新版本的 Javascript 做好铺垫。
+    消除 Javascript 语法的一些不合理、不严谨之处，减少一些怪异行为;
+    消除代码运行的一些不安全之处，保证代码运行的安全；
+    提高编译器效率，增加运行速度；
+    为未来新版本的 Javascript 做好铺垫。
 
-区别：
+  - 区别：
 
-- 1.禁止使用 with 语句。
-- 2.禁止 this 关键字指向全局对象。
-- 3.对象不能有重名的属性。
+    禁止使用 with 语句。
+    禁止 this 关键字指向全局对象。
+    对象不能有重名的属性。
 
-回答：
+- 回答：
 
-```
-use strict 指的是严格运行模式，在这种模式对 js 的使用添加了一些限制。比如说禁止 this 指向全局对象，还有禁止使
-用 with 语句等。设立严格模式的目的，主要是为了消除代码使用中的一些不安全的使用方式，也是为了消除 js 语法本身的一
-些不合理的地方，以此来减少一些运行时的怪异的行为。同时使用严格运行模式也能够提高编译的效率，从而提高代码的运行速度。
+use strict 指的是严格运行模式，在这种模式对 js 的使用添加了一些限制。比如说禁止 this 指向全局对象，还有禁止使用 with 语句等。设立严格模式的目的，主要是为了消除代码使用中的一些不安全的使用方式，也是为了消除 js 语法本身的一些不合理的地方，以此来减少一些运行时的怪异的行为。同时使用严格运行模式也能够提高编译的效率，从而提高代码的运行速度。
 我认为严格模式代表了 js 一种更合理、更安全、更严谨的发展方向。
-```
 
 详细资料可以参考：
 [《Javascript 严格模式详解》](http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html)
@@ -947,21 +936,20 @@ function myInstanceof(left, right) {
 ### 50. new 操作符具体干了什么呢？如何实现？
 
 ```js
-// （1）首先创建了一个新的空对象
+// （1）首先创建了一个新的空对象。
 // （2）设置原型，将对象的原型设置为函数的 prototype 对象。
-// （3）让函数的 this 指向这个对象，执行构造函数的代码（为这个新对象添加属性）
+// （3）让函数的 this 指向这个对象，执行构造函数的代码（为这个新对象添加属性）。
 // （4）判断函数的返回值类型，如果是值类型，返回创建的对象。如果是引用类型，就返回这个引用类型的对象。
 
 // 实现:
-
 function objectFactory() {
   let newObject = null,
     constructor = Array.prototype.shift.call(arguments),
     result = null;
 
   // 参数判断
-  if (typeof constructor !== "function") {
-    console.error("type error");
+  if (typeof constructor !== 'function') {
+    console.error('type error');
     return;
   }
 
@@ -973,7 +961,7 @@ function objectFactory() {
 
   // 判断返回对象
   let flag =
-    result && (typeof result === "object" || typeof result === "function");
+    result && (typeof result === 'object' || typeof result === 'function');
 
   // 判断返回结果
   return flag ? result : newObject;
@@ -989,92 +977,78 @@ function objectFactory() {
 
 ### 51. Javascript 中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？
 
-```
-hasOwnProperty
+- hasOwnProperty
 
-所有继承了 Object 的对象都会继承到 hasOwnProperty 方法。这个方法可以用来检测一个对象是否含有特定的自身属性，和
-in 运算符不同，该方法会忽略掉那些从原型链上继承到的属性。
-```
+- 所有继承了 Object 的对象都会继承到 hasOwnProperty 方法。这个方法可以用来检测一个对象是否含有特定的自身属性，和 in 运算符不同，该方法会忽略掉那些从原型链上继承到的属性。
 
 详细资料可以参考：
 [《Object.prototype.hasOwnProperty()》](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty)
 
 ### 52. 对于 JSON 的了解？
 
-相关知识点：
+- 相关知识点：
 
-```
-JSON 是一种数据交换格式，基于文本，优于轻量，用于交换数据。
+  - JSON 是一种数据交换格式，基于文本，优于轻量，用于交换数据。
 
-JSON 可以表示数字、布尔值、字符串、null、数组（值的有序序列），以及由这些值（或数组、对象）所组成的对象（字符串与
-值的映射）。
+  - JSON 可以表示数字、布尔值、字符串、null、数组（值的有序序列），以及由这些值（或数组、对象）所组成的对象（字符串与值的映射）。
 
-JSON 使用 JavaScript 语法，但是 JSON 格式仅仅是一个文本。文本可以被任何编程语言读取及作为数据格式传递。
-```
+  - JSON 使用 JavaScript 语法，但是 JSON 格式仅仅是一个文本。文本可以被任何编程语言读取及作为数据格式传递。
 
-回答：
+- 回答：
 
-```
-JSON 是一种基于文本的轻量级的数据交换格式。它可以被任何的编程语言读取和作为数据格式来传递。
+  - JSON 是一种基于文本的轻量级的数据交换格式。它可以被任何的编程语言读取和作为数据格式来传递。
 
-在项目开发中，我们使用 JSON 作为前后端数据交换的方式。在前端我们通过将一个符合 JSON 格式的数据结构序列化为 JSON 字符串，然后将它传递到后端，后端通过 JSON 格式的字符串解析后生成对应的数据结构，以此来实现前后端数据的一个传递。
+  - 在项目开发中，我们使用 JSON 作为前后端数据交换的方式。在前端我们通过将一个符合 JSON 格式的数据结构序列化为 JSON 字符串，然后将它传递到后端，后端通过 JSON 格式的字符串解析后生成对应的数据结构，以此来实现前后端数据的一个传递。
 
-因为 JSON 的语法是基于 js 的，因此很容易将 JSON 和 js 中的对象弄混，但是我们应该注意的是 JSON 和 js 中的对象不是一回事，JSON 中对象格式更加严格，比如说在 JSON 中属性值不能为函数，不能出现 NaN 这样的属性值等，因此大多数的 js 对象是不符合 JSON 对象的格式的。
+  - 因为 JSON 的语法是基于 js 的，因此很容易将 JSON 和 js 中的对象弄混，但是我们应该注意的是 JSON 和 js 中的对象不是一回事，JSON 中对象格式更加严格，比如说在 JSON 中属性值不能为函数，不能出现 NaN 这样的属性值等，因此大多数的 js 对象是不符合 JSON 对象的格式的。
 
-在 js 中提供了两个函数来实现 js 数据结构和 JSON 格式的转换处理，一个是 JSON.stringify 函数，通过传入一个符合 JSON 格式的数据结构，将其转换为一个 JSON 字符串。如果传入的数据结构不符合 JSON 格式，那么在序列化的时候会对这些值进行对应的特殊处理，使其符合规范。在前端向后端发送数据时，我们可以调用这个函数将数据对象转化为 JSON 格式的字符串。
+  - 在 js 中提供了两个函数来实现 js 数据结构和 JSON 格式的转换处理，一个是 JSON.stringify 函数，通过传入一个符合 JSON 格式的数据结构，将其转换为一个 JSON 字符串。如果传入的数据结构不符合 JSON 格式，那么在序列化的时候会对这些值进行对应的特殊处理，使其符合规范。在前端向后端发送数据时，我们可以调用这个函数将数据对象转化为 JSON 格式的字符串。
 
-另一个函数 JSON.parse() 函数，这个函数用来将 JSON 格式的字符串转换为一个 js 数据结构，如果传入的字符串不是标准的 JSON 格式的字符串的话，将会抛出错误。当我们从后端接收到 JSON 格式的字符串时，我们可以通过这个方法来将其解析为一个 js 数据结构，以此来进行数据的访问。
-```
+  - 另一个函数 JSON.parse() 函数，这个函数用来将 JSON 格式的字符串转换为一个 js 数据结构，如果传入的字符串不是标准的 JSON 格式的字符串的话，将会抛出错误。当我们从后端接收到 JSON 格式的字符串时，我们可以通过这个方法来将其解析为一个 js 数据结构，以此来进行数据的访问。
 
 详细资料可以参考：
 [《深入了解 JavaScript 中的 JSON 》](https://my.oschina.net/u/3284240/blog/874368)
 
 ### 53. [].forEach.call(\$\$("_"),function(a){a.style.outline="1px solid #"+(~~(Math.random()_(1<<24))).toString(16)}) 能解释一下这段代码的意思吗？
 
-```
-（1）选取页面所有 DOM 元素。在浏览器的控制台中可以使用$$()方法来获取页面中相应的元素，这是现代浏览器提供的一个命令行 API 相当于 document.querySelectorAll 方法。
+（1）选取页面所有 DOM 元素。在浏览器的控制台中可以使用 \$\$() 方法来获取页面中相应的元素，这是现代浏览器提供的一个命令行 API 相当于 document.querySelectorAll 方法。
 
 （2）循环遍历 DOM 元素
 
-（3）给元素添加 outline 。由于渲染的 outline 是不在 CSS 盒模型中的，所以为元素添加 outline 并不会影响元素的大小和页面的布局。
+（3）给元素添加 outline。由于渲染的 outline 是不在 CSS 盒模型中的，所以为元素添加 outline 并不会影响元素的大小和页面的布局。
 
-（4）生成随机颜色函数。Math.random()*(1<<24) 可以得到 0~2^24 - 1 之间的随机数，因为得到的是一个浮点数，但我们只需要整数部分，使用取反操作符 ~ 连续两次取反获得整数部分，然后再用 toString(16) 的方式，转换为一个十六进制的字符串。
-```
+（4）生成随机颜色函数。Math.random()\*(1<<24) 可以得到 0~2^24 - 1 之间的随机数，因为得到的是一个浮点数，但我们只需要整数部分，使用取反操作符 ~ 连续两次取反获得整数部分，然后再用 toString(16) 的方式，转换为一个十六进制的字符串。
 
 详细资料可以参考：
 [《通过一行代码学 JavaScript》](https://2008winstar.iteye.com/blog/2128290)
 
 ### 54. js 延迟加载的方式有哪些？
 
-相关知识点：
+- 相关知识点：
 
-```
-js 延迟加载，也就是等页面加载完成之后再加载 JavaScript 文件。 js 延迟加载有助于提高页面加载速度。
-```
+  - js 延迟加载，也就是等页面加载完成之后再加载 JavaScript 文件。 js 延迟加载有助于提高页面加载速度。
 
-一般有以下几种方式：
+  - 一般有以下几种方式：
 
-- defer 属性
-- async 属性
-- 动态创建 DOM 方式
-- 使用 setTimeout 延迟方法
-- 让 JS 最后加载
+    - defer 属性
+    - async 属性
+    - 动态创建 DOM 方式
+    - 使用 setTimeout 延迟方法
+    - 让 JS 最后加载
 
-回答：
+- 回答：
 
-```
-js 的加载、解析和执行会阻塞页面的渲染过程，因此我们希望 js 脚本能够尽可能的延迟加载，提高页面的渲染速度。
+  - js 的加载、解析和执行会阻塞页面的渲染过程，因此我们希望 js 脚本能够尽可能的延迟加载，提高页面的渲染速度。
 
-我了解到的几种方式是：
+  - 我了解到的几种方式是：
 
-第一种方式是我们一般采用的是将 js 脚本放在文档的底部，来使 js 脚本尽可能的在最后来加载执行。
+    第一种方式是我们一般采用的是将 js 脚本放在文档的底部，来使 js 脚本尽可能的在最后来加载执行。
 
-第二种方式是给 js 脚本添加 defer 属性，这个属性会让脚本的加载与文档的解析同步解析，然后在文档解析完成后再执行这个脚本文件，这样的话就能使页面的渲染不被阻塞。多个设置了 defer 属性的脚本按规范来说最后是顺序执行的，但是在一些浏览器中可能不是这样。
+    第二种方式是给 js 脚本添加 defer 属性，这个属性会让脚本的加载与文档的解析同步解析，然后在文档解析完成后再执行这个脚本文件，这样的话就能使页面的渲染不被阻塞。多个设置了 defer 属性的脚本按规范来说最后是顺序执行的，但是在一些浏览器中可能不是这样。
 
-第三种方式是给 js 脚本添加 async 属性，这个属性会使脚本异步加载，不会阻塞页面的解析过程，但是当脚本加载完成后立即执行 js 脚本，这个时候如果文档没有解析完成的话同样会阻塞。多个 async 属性的脚本的执行顺序是不可预测的，一般不会按照代码的顺序依次执行。
+    第三种方式是给 js 脚本添加 async 属性，这个属性会使脚本异步加载，不会阻塞页面的解析过程，但是当脚本加载完成后立即执行 js 脚本，这个时候如果文档没有解析完成的话同样会阻塞。多个 async 属性的脚本的执行顺序是不可预测的，一般不会按照代码的顺序依次执行。
 
-第四种方式是动态创建 DOM 标签的方式，我们可以对文档的加载事件进行监听，当文档加载完成后再动态的创建 script 标签来引入 js 脚本。
-```
+    第四种方式是动态创建 DOM 标签的方式，我们可以对文档的加载事件进行监听，当文档加载完成后再动态的创建 script 标签来引入 js 脚本。
 
 详细资料可以参考：
 [《JS 延迟加载的几种方式》](https://blog.csdn.net/meijory/article/details/76389762)
@@ -1082,110 +1056,107 @@ js 的加载、解析和执行会阻塞页面的渲染过程，因此我们希�
 
 ### 55. Ajax 是什么? 如何创建一个 Ajax？
 
-相关知识点：
+- 相关知识点：
 
-2005 年 2 月，AJAX 这个词第一次正式提出，它是 Asynchronous JavaScript and XML 的缩写，指的是通过 JavaScript 的
-异步通信，从服务器获取 XML 文档从中提取数据，再更新当前网页的对应部分，而不用刷新整个网页。
+  - 2005 年 2 月，AJAX 这个词第一次正式提出，它是 Asynchronous JavaScript and XML 的缩写，指的是通过 JavaScript 的异步通信，从服务器获取 XML 文档从中提取数据，再更新当前网页的对应部分，而不用刷新整个网页。
 
-具体来说，AJAX 包括以下几个步骤。
+- 具体来说，AJAX 包括以下几个步骤。
 
-- 1.创建 XMLHttpRequest 对象，也就是创建一个异步调用对象
-- 2.创建一个新的 HTTP 请求，并指定该 HTTP 请求的方法、URL 及验证信息
-- 3.设置响应 HTTP 请求状态变化的函数
-- 4.发送 HTTP 请求
-- 5.获取异步调用返回的数据
-- 6.使用 JavaScript 和 DOM 实现局部刷新
+  - 创建 XMLHttpRequest 对象，也就是创建一个异步调用对象
+  - 创建一个新的 HTTP 请求，并指定该 HTTP 请求的方法、URL 及验证信息
+  - 设置响应 HTTP 请求状态变化的函数
+  - 发送 HTTP 请求
+  - 获取异步调用返回的数据
+  - 使用 JavaScript 和 DOM 实现局部刷新
 
-一般实现：
+- 一般实现：
 
-```js
-const SERVER_URL = "/server";
+  ```js
+  const SERVER_URL = '/server';
 
-let xhr = new XMLHttpRequest();
+  let xhr = new XMLHttpRequest();
 
-// 创建 Http 请求
-xhr.open("GET", SERVER_URL, true);
+  // 创建 Http 请求
+  xhr.open('GET', SERVER_URL, true);
 
-// 设置状态监听函数
-xhr.onreadystatechange = function() {
-  if (this.readyState !== 4) return;
+  // 设置状态监听函数
+  xhr.onreadystatechange = function () {
+    if (this.readyState !== 4) return;
 
-  // 当请求成功时
-  if (this.status === 200) {
-    handle(this.response);
-  } else {
+    // 当请求成功时
+    if (this.status === 200) {
+      handle(this.response);
+    } else {
+      console.error(this.statusText);
+    }
+  };
+
+  // 设置请求失败时的监听函数
+  xhr.onerror = function () {
     console.error(this.statusText);
-  }
-};
+  };
 
-// 设置请求失败时的监听函数
-xhr.onerror = function() {
-  console.error(this.statusText);
-};
+  // 设置请求头信息
+  xhr.responseType = 'json';
+  xhr.setRequestHeader('Accept', 'application/json');
 
-// 设置请求头信息
-xhr.responseType = "json";
-xhr.setRequestHeader("Accept", "application/json");
+  // 发送 Http 请求
+  xhr.send(null);
 
-// 发送 Http 请求
-xhr.send(null);
+  // promise 封装实现：
 
-// promise 封装实现：
+  function getJSON(url) {
+    // 创建一个 promise 对象
+    let promise = new Promise(function (resolve, reject) {
+      let xhr = new XMLHttpRequest();
 
-function getJSON(url) {
-  // 创建一个 promise 对象
-  let promise = new Promise(function(resolve, reject) {
-    let xhr = new XMLHttpRequest();
+      // 新建一个 http 请求
+      xhr.open('GET', url, true);
 
-    // 新建一个 http 请求
-    xhr.open("GET", url, true);
+      // 设置状态的监听函数
+      xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) return;
 
-    // 设置状态的监听函数
-    xhr.onreadystatechange = function() {
-      if (this.readyState !== 4) return;
+        // 当请求成功或失败时，改变 promise 的状态
+        if (this.status === 200) {
+          resolve(this.response);
+        } else {
+          reject(new Error(this.statusText));
+        }
+      };
 
-      // 当请求成功或失败时，改变 promise 的状态
-      if (this.status === 200) {
-        resolve(this.response);
-      } else {
+      // 设置错误监听函数
+      xhr.onerror = function () {
         reject(new Error(this.statusText));
-      }
-    };
+      };
 
-    // 设置错误监听函数
-    xhr.onerror = function() {
-      reject(new Error(this.statusText));
-    };
+      // 设置响应的数据类型
+      xhr.responseType = 'json';
 
-    // 设置响应的数据类型
-    xhr.responseType = "json";
+      // 设置请求头信息
+      xhr.setRequestHeader('Accept', 'application/json');
 
-    // 设置请求头信息
-    xhr.setRequestHeader("Accept", "application/json");
+      // 发送 http 请求
+      xhr.send(null);
+    });
 
-    // 发送 http 请求
-    xhr.send(null);
-  });
+    return promise;
+  }
+  ```
 
-  return promise;
-}
-```
+- 回答：
 
-回答：
+  - 我对 ajax 的理解是，它是一种异步通信的方法，通过直接由 js 脚本向服务器发起 http 通信，然后根据服务器返回的数据，更新网页的相应部分，而不用刷新整个页面的一种方法。
 
-```
-我对 ajax 的理解是，它是一种异步通信的方法，通过直接由 js 脚本向服务器发起 http 通信，然后根据服务器返回的数据，更新网页的相应部分，而不用刷新整个页面的一种方法。
+  - 创建一个 ajax 有这样几个步骤：
 
-创建一个 ajax 有这样几个步骤
+    首先是创建一个 XMLHttpRequest 对象。
 
-首先是创建一个 XMLHttpRequest 对象。
+    然后在这个对象上使用 open 方法创建一个 http 请求，open 方法所需要的参数是请求的方法、请求的地址、是否异步和用户的认证信息。
 
-然后在这个对象上使用 open 方法创建一个 http 请求，open 方法所需要的参数是请求的方法、请求的地址、是否异步和用户的认证信息。
+    在发起请求前，我们可以为这个对象添加一些信息和监听函数。比如说我们可以通过 setRequestHeader 方法来为请求添加头信息。我们还可以为这个对象添加一个状态监听函数。一个 XMLHttpRequest 对象一共有 5 个状态，当它的状态变化时会触发 onreadystatechange 事件，我们可以通过设置监听函数，来处理请求成功后的结果。当对象的 readyState 变为 4 的时候，代表服务器返回的数据接收完成，这个时候我们可以通过判断请求的状态，如果状态是 2xx 或者 304 的话则代表返回正常。这个时候我们就可以通过 response 中的数据来对页面进行更新了。
 
-在发起请求前，我们可以为这个对象添加一些信息和监听函数。比如说我们可以通过 setRequestHeader 方法来为请求添加头信息。我们还可以为这个对象添加一个状态监听函数。一个 XMLHttpRequest 对象一共有 5 个状态，当它的状态变化时会触发onreadystatechange 事件，我们可以通过设置监听函数，来处理请求成功后的结果。当对象的 readyState 变为 4 的时候，代表服务器返回的数据接收完成，这个时候我们可以通过判断请求的状态，如果状态是 2xx 或者 304 的话则代表返回正常。这个时候我们就可以通过 response 中的数据来对页面进行更新了。
-
-当对象的属性和监听函数设置完成后，最后我们调用 sent 方法来向服务器发起请求，可以传入参数作为发送的数据体。
-```
+    当对象的属性和监听函数设置完成后，最后我们调用 sent 方法来向服务器发起请求，可以传入参数作为发送的数据体。
 
 详细资料可以参考：
 [《XMLHttpRequest 对象》](https://wangdoc.com/javascript/bom/xmlhttprequest.html)
@@ -1195,35 +1166,27 @@ function getJSON(url) {
 
 ### 56. 谈一谈浏览器的缓存机制？
 
-```
-浏览器的缓存机制指的是通过在一段时间内保留已接收到的 web 资源的一个副本，如果在资源的有效时间内，发起了对这个资源的再一次请求，那么浏览器会直接使用缓存的副本，而不是向服务器发起请求。使用 web 缓存可以有效地提高页面的打开速度，减少不必要的网络带宽的消耗。
+- 浏览器的缓存机制指的是通过在一段时间内保留已接收到的 web 资源的一个副本，如果在资源的有效时间内，发起了对这个资源的再一次请求，那么浏览器会直接使用缓存的副本，而不是向服务器发起请求。使用 web 缓存可以有效地提高页面的打开速度，减少不必要的网络带宽的消耗。
 
-web 资源的缓存策略一般由服务器来指定，可以分为两种，分别是强缓存策略和协商缓存策略。
+- web 资源的缓存策略一般由服务器来指定，可以分为两种，分别是强缓存策略和协商缓存策略。
 
-使用强缓存策略时，如果缓存资源有效，则直接使用缓存资源，不必再向服务器发起请求。强缓存策略可以通过两种方式来设置，分别是 http 头信息中的 Expires 属性和 Cache-Control 属性。
+- 使用强缓存策略时，如果缓存资源有效，则直接使用缓存资源，不必再向服务器发起请求。强缓存策略可以通过两种方式来设置，分别是 http 头信息中的 Expires 属性和 Cache-Control 属性。
 
-服务器通过在响应头中添加 Expires 属性，来指定资源的过期时间。在过期时间以内，该资源可以被缓存使用，不必再向服务器发送请求。这个时间是一个绝对时间，它是服务器的时间，因此可能存在这样的问题，就是客户端的时间和服务器端的时间不一致，或者用户可以对客户端时间进行修改的情况，这样就可能会影响缓存命中的结果。
+- 服务器通过在响应头中添加 Expires 属性，来指定资源的过期时间。在过期时间以内，该资源可以被缓存使用，不必再向服务器发送请求。这个时间是一个绝对时间，它是服务器的时间，因此可能存在这样的问题，就是客户端的时间和服务器端的时间不一致，或者用户可以对客户端时间进行修改的情况，这样就可能会影响缓存命中的结果。
 
-Expires 是 http1.0 中的方式，因为它的一些缺点，在 http 1.1 中提出了一个新的头部属性就是 Cache-Control 属性，
-它提供了对资源的缓存的更精确的控制。它有很多不同的值，常用的比如我们可以通过设置 max-age 来指定资源能够被缓存的时间
-的大小，这是一个相对的时间，它会根据这个时间的大小和资源第一次请求时的时间来计算出资源过期的时间，因此相对于 Expires
-来说，这种方式更加有效一些。常用的还有比如 private ，用来规定资源只能被客户端缓存，不能够代理服务器所缓存。还有如 n
-o-store ，用来指定资源不能够被缓存，no-cache 代表该资源能够被缓存，但是立即失效，每次都需要向服务器发起请求。
+- Expires 是 http1.0 中的方式，因为它的一些缺点，在 http 1.1 中提出了一个新的头部属性就是  Cache-Control 属性，它提供了对资源的缓存的更精确的控制。它有很多不同的值，常用的比如我们可以通过设置 max-age 来指定资源能够被缓存的时间的大小，这是一个相对的时间，它会根据这个时间的大小和资源第一次请求时的时间来计算出资源过期的时间，因此相对于 Expires 来说，这种方式更加有效一些。常用的还有比如 private ，用来规定资源只能被客户端缓存，不能够代理服务器所缓存。还有如 no-store ，用来指定资源不能够被缓存，no-cache 代表该资源能够被缓存，但是立即失效，每次都需要向服务器发起请求。
 
-一般来说只需要设置其中一种方式就可以实现强缓存策略，当两种方式一起使用时，Cache-Control 的优先级要高于 Expires 。
+- 一般来说只需要设置其中一种方式就可以实现强缓存策略，当两种方式一起使用时，Cache-Control 的优先级要高于 Expires。
 
-使用协商缓存策略时，会先向服务器发送一个请求，如果资源没有发生修改，则返回一个 304 状态，让浏览器使用本地的缓存副本。
-如果资源发生了修改，则返回修改后的资源。协商缓存也可以通过两种方式来设置，分别是 http 头信息中的 Etag 和 Last-Modified 属性。
+- 使用协商缓存策略时，会先向服务器发送一个请求，如果资源没有发生修改，则返回一个 304 状态，让浏览器使用本地的缓存副本。如果资源发生了修改，则返回修改后的资源。协商缓存也可以通过两种方式来设置，分别是 http 头信息中的 Etag 和 Last-Modified 属性。
 
-服务器通过在响应头中添加 Last-Modified 属性来指出资源最后一次修改的时间，当浏览器下一次发起请求时，会在请求头中添加一个 If-Modified-Since 的属性，属性值为上一次资源返回时的 Last-Modified 的值。当请求发送到服务器后服务器会通过这个属性来和资源的最后一次的修改时间来进行比较，以此来判断资源是否做了修改。如果资源没有修改，那么返回 304 状态，让客户端使用本地的缓存。如果资源已经被修改了，则返回修改后的资源。使用这种方法有一个缺点，就是 Last-Modified 标注的最后修改时间只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，那么文件已将改变了但是 Last-Modified 却没有改变，
-这样会造成缓存命中的不准确。
+- 服务器通过在响应头中添加 Last-Modified 属性来指出资源最后一次修改的时间，当浏览器下一次发起请求时，会在请求头中添加一个 If-Modified-Since 的属性，属性值为上一次资源返回时的 Last-Modified 的值。当请求发送到服务器后服务器会通过这个属性来和资源的最后一次的修改时间来进行比较，以此来判断资源是否做了修改。如果资源没有修改，那么返回 304 状态，让客户端使用本地的缓存。如果资源已经被修改了，则返回修改后的资源。使用这种方法有一个缺点，就是 Last-Modified 标注的最后修改时间只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，那么文件已将改变了但是 Last-Modified 却没有改变，这样会造成缓存命中的不准确。
 
-因为 Last-Modified 的这种可能发生的不准确性，http 中提供了另外一种方式，那就是 Etag 属性。服务器在返回资源的时候，在头信息中添加了 Etag 属性，这个属性是资源生成的唯一标识符，当资源发生改变的时候，这个值也会发生改变。在下一次资源请求时，浏览器会在请求头中添加一个 If-None-Match 属性，这个属性的值就是上次返回的资源的 Etag 的值。服务接收到请求后会根据这个值来和资源当前的 Etag 的值来进行比较，以此来判断资源是否发生改变，是否需要返回资源。通过这种方式，比 Last-Modified 的方式更加精确。
+- 因为 Last-Modified 的这种可能发生的不准确性，http 中提供了另外一种方式，那就是 Etag 属性。服务器在返回资源的时候，在头信息中添加了 Etag 属性，这个属性是资源生成的唯一标识符，当资源发生改变的时候，这个值也会发生改变。在下一次资源请求时，浏览器会在请求头中添加一个 If-None-Match 属性，这个属性的值就是上次返回的资源的 Etag 的值。服务接收到请求后会根据这个值来和资源当前的 Etag 的值来进行比较，以此来判断资源是否发生改变，是否需要返回资源。通过这种方式，比 Last-Modified 的方式更加精确。
 
-当 Last-Modified 和 Etag 属性同时出现的时候，Etag 的优先级更高。使用协商缓存的时候，服务器需要考虑负载平衡的问题，因此多个服务器上资源的 Last-Modified 应该保持一致，因为每个服务器上 Etag 的值都不一样，因此在考虑负载平衡时，最好不要设置 Etag 属性。
+- 当 Last-Modified 和 Etag 属性同时出现的时候，Etag 的优先级更高。使用协商缓存的时候，服务器需要考虑负载平衡的问题，因此多个服务器上资源的 Last-Modified 应该保持一致，因为每个服务器上 Etag 的值都不一样，因此在考虑负载平衡时，最好不要设置 Etag 属性。
 
-强缓存策略和协商缓存策略在缓存命中时都会直接使用本地的缓存副本，区别只在于协商缓存会向服务器发送一次请求。它们缓存不命中时，都会向服务器发送请求来获取资源。在实际的缓存机制中，强缓存策略和协商缓存策略是一起合作使用的。浏览器首先会根据请求的信息判断，强缓存是否命中，如果命中则直接使用资源。如果不命中则根据头信息向服务器发起请求，使用协商缓存，如果协商缓存命中的话，则服务器不返回资源，浏览器直接使用本地资源的副本，如果协商缓存不命中，则浏览器返回最新的资源给浏览器。
-```
+- 强缓存策略和协商缓存策略在缓存命中时都会直接使用本地的缓存副本，区别只在于协商缓存会向服务器发送一次请求。它们缓存不命中时，都会向服务器发送请求来获取资源。在实际的缓存机制中，强缓存策略和协商缓存策略是一起合作使用的。浏览器首先会根据请求的信息判断，强缓存是否命中，如果命中则直接使用资源。如果不命中则根据头信息向服务器发起请求，使用协商缓存，如果协商缓存命中的话，则服务器不返回资源，浏览器直接使用本地资源的副本，如果协商缓存不命中，则浏览器返回最新的资源给浏览器。
 
 详细资料可以参考：
 [《浅谈浏览器缓存》](https://segmentfault.com/a/1190000012573337)
@@ -1233,15 +1196,15 @@ o-store ，用来指定资源不能够被缓存，no-cache 代表该资源能够
 
 ### 57. Ajax 解决浏览器缓存问题？
 
-- 1.在 ajax 发送请求前加上 anyAjaxObj.setRequestHeader("If-Modified-Since","0")。
+1. 在 ajax 发送请求前加上 anyAjaxObj.setRequestHeader("If-Modified-Since","0")。
 
-- 2.在 ajax 发送请求前加上 anyAjaxObj.setRequestHeader("Cache-Control","no-cache")。
+2. 在 ajax 发送请求前加上 anyAjaxObj.setRequestHeader("Cache-Control","no-cache")。
 
-- 3.在 URL 后面加上一个随机数： "fresh=" + Math.random();。
+3. 在 URL 后面加上一个随机数： "fresh=" + Math.random();。
 
-- 4.在 URL 后面加上时间戳："nowtime=" + new Date().getTime();。
+4. 在 URL 后面加上时间戳："nowtime=" + new Date().getTime();。
 
-- 5.如果是使用 jQuery，直接这样就可以了\$.ajaxSetup({cache:false})。这样页面的所有 ajax 都会执行这条语句就是不需要保存缓存记录。
+5. 如果是使用 jQuery，直接这样就可以了\$.ajaxSetup({cache:false})。这样页面的所有 ajax 都会执行这条语句就是不需要保存缓存记录。
 
 详细资料可以参考：
 [《Ajax 中浏览器的缓存问题解决方法》](https://www.cnblogs.com/cwzqianduan/p/8632009.html)
@@ -1249,88 +1212,76 @@ o-store ，用来指定资源不能够被缓存，no-cache 代表该资源能够
 
 ### 58. 同步和异步的区别？
 
-相关知识点：
+- 相关知识点：
 
-```
-同步，可以理解为在执行完一个函数或方法之后，一直等待系统返回值或消息，这时程序是处于阻塞的，只有接收到返回的值或消息后才往下执行其他的命令。  
+  - 同步，可以理解为在执行完一个函数或方法之后，一直等待系统返回值或消息，这时程序是处于阻塞的，只有接收到返回的值或消息后才往下执行其他的命令。  
 
-异步，执行完函数或方法后，不必阻塞性地等待返回值或消息，只需要向系统委托一个异步过程，那么当系统接收到返回值或消息时，系统会自动触发委托的异步过程，从而完成一个完整的流程。 
-```
+  - 异步，执行完函数或方法后，不必阻塞性地等待返回值或消息，只需要向系统委托一个异步过程，那么当系统接收到返回值或消息时，系统会自动触发委托的异步过程，从而完成一个完整的流程。 
 
-回答：
+- 回答：
 
-```
-同步指的是当一个进程在执行某个请求的时候，如果这个请求需要等待一段时间才能返回，那么这个进程会一直等待下去，直到消息返
-回为止再继续向下执行。
+  - 同步指的是当一个进程在执行某个请求的时候，如果这个请求需要等待一段时间才能返回，那么这个进程会一直等待下去，直到消息返回为止再继续向下执行。
 
-异步指的是当一个进程在执行某个请求的时候，如果这个请求需要等待一段时间才能返回，这个时候进程会继续往下执行，不会阻塞等
-待消息的返回，当消息返回时系统再通知进程进行处理。
-```
+  - 异步指的是当一个进程在执行某个请求的时候，如果这个请求需要等待一段时间才能返回，这个时候进程会继续往下执行，不会阻塞等待消息的返回，当消息返回时系统再通知进程进行处理。
 
 详细资料可以参考：
 [《同步和异步的区别》](https://blog.csdn.net/tennysonsky/article/details/45111623)
 
 ### 59. 什么是浏览器的同源政策？
 
-```
-我对浏览器的同源政策的理解是，一个域下的 js 脚本在未经允许的情况下，不能够访问另一个域的内容。这里的同源的指的是两个
-域的协议、域名、端口号必须相同，否则则不属于同一个域。
+- 我对浏览器的同源政策的理解是，一个域下的 js 脚本在未经允许的情况下，不能够访问另一个域的内容。这里的同源的指的是两个域的协议、域名、端口号必须相同，否则则不属于同一个域。
 
-同源政策主要限制了三个方面
+- 同源政策主要限制了三个方面
 
-第一个是当前域下的 js 脚本不能够访问其他域下的 cookie、localStorage 和 indexDB。
+  第一个是当前域下的 js 脚本不能够访问其他域下的 cookie、localStorage 和 indexDB。
 
-第二个是当前域下的 js 脚本不能够操作访问操作其他域下的 DOM。
+  第二个是当前域下的 js 脚本不能够操作访问操作其他域下的 DOM。
 
-第三个是当前域下 ajax 无法发送跨域请求。
+  第三个是当前域下 ajax 无法发送跨域请求。
 
-同源政策的目的主要是为了保证用户的信息安全，它只是对 js 脚本的一种限制，并不是对浏览器的限制，对于一般的 img、或者
-script 脚本请求都不会有跨域的限制，这是因为这些操作都不会通过响应结果来进行可能出现安全问题的操作。
-```
+- 同源政策的目的主要是为了保证用户的信息安全，它只是对 js 脚本的一种限制，并不是对浏览器的限制，对于一般的 img、或者 script 脚本请求都不会有跨域的限制，这是因为这些操作都不会通过响应结果来进行可能出现安全问题的操作。
 
 ### 60. 如何解决跨域问题？
 
-相关知识点：
+- 相关知识点：
 
-- 1. 通过 jsonp 跨域
-- 2. document.domain + iframe 跨域
-- 3. location.hash + iframe
-- 4. window.name + iframe 跨域
-- 5. postMessage 跨域
-- 6. 跨域资源共享（CORS)
-- 7. nginx 代理跨域
-- 8. nodejs 中间件代理跨域
-- 9. WebSocket 协议跨域
+  1. 通过 jsonp 跨域。
+  2. document.domain + iframe 跨域。
+  3. location.hash + iframe。
+  4. window.name + iframe 跨域。
+  5. postMessage 跨域。
+  6. 跨域资源共享（CORS)。
+  7. nginx 代理跨域。
+  8. nodejs 中间件代理跨域。
+  9. WebSocket 协议跨域。
 
-回答：
+- 回答：
 
-```
-解决跨域的方法我们可以根据我们想要实现的目的来划分。
+  - 解决跨域的方法我们可以根据我们想要实现的目的来划分。
 
-首先我们如果只是想要实现主域名下的不同子域名的跨域操作，我们可以使用设置 document.domain 来解决。
+  - 首先我们如果只是想要实现主域名下的不同子域名的跨域操作，我们可以使用设置 document.domain 来解决。
 
-（1）将 document.domain 设置为主域名，来实现相同子域名的跨域操作，这个时候主域名下的 cookie 就能够被子域名所访问。同时如果文档中含有主域名相同，子域名不同的 iframe 的话，我们也可以对这个 iframe 进行操作。
+  （1）将 document.domain 设置为主域名，来实现相同子域名的跨域操作，这个时候主域名下的 cookie 就能够被子域名所访问。同时如果文档中含有主域名相同，子域名不同的 iframe 的话，我们也可以对这个 iframe 进行操作。
 
-如果是想要解决不同跨域窗口间的通信问题，比如说一个页面想要和页面的中的不同源的 iframe 进行通信的问题，我们可以使用 location.hash 或者 window.name 或者 postMessage 来解决。
+  如果是想要解决不同跨域窗口间的通信问题，比如说一个页面想要和页面的中的不同源的 iframe 进行通信的问题，我们可以使用 location.hash 或者 window.name 或者 postMessage 来解决。
 
-（2）使用 location.hash 的方法，我们可以在主页面动态的修改 iframe 窗口的 hash 值，然后在 iframe 窗口里实现监听函数来实现这样一个单向的通信。因为在 iframe 是没有办法访问到不同源的父级窗口的，所以我们不能直接修改父级窗口的 hash 值来实现通信，我们可以在 iframe 中再加入一个 iframe ，这个 iframe 的内容是和父级页面同源的，所以我们可以 window.parent.parent 来修改最顶级页面的 src，以此来实现双向通信。
+  （2）使用 location.hash 的方法，我们可以在主页面动态的修改 iframe 窗口的 hash 值，然后在 iframe 窗口里实现监听函数来实现这样一个单向的通信。因为在 iframe 是没有办法访问到不同源的父级窗口的，所以我们不能直接修改父级窗口的 hash 值来实现通信，我们可以在 iframe 中再加入一个 iframe ，这个 iframe 的内容是和父级页面同源的，所以我们可以 window.parent.parent 来修改最顶级页面的 src，以此来实现双向通信。
 
-（3）使用 window.name 的方法，主要是基于同一个窗口中设置了 window.name 后不同源的页面也可以访问，所以不同源的子页面可以首先在 window.name 中写入数据，然后跳转到一个和父级同源的页面。这个时候级页面就可以访问同源的子页面中 window.name 中的数据了，这种方式的好处是可以传输的数据量大。
+  （3）使用 window.name 的方法，主要是基于同一个窗口中设置了 window.name 后不同源的页面也可以访问，所以不同源的子页面可以首先在 window.name 中写入数据，然后跳转到一个和父级同源的页面。这个时候级页面就可以访问同源的子页面中 window.name 中的数据了，这种方式的好处是可以传输的数据量大。
 
-（4）使用 postMessage 来解决的方法，这是一个 h5 中新增的一个 api。通过它我们可以实现多窗口间的信息传递，通过获取到指定窗口的引用，然后调用 postMessage 来发送信息，在窗口中我们通过对 message 信息的监听来接收信息，以此来实现不同源间的信息交换。
+  （4）使用 postMessage 来解决的方法，这是一个 h5 中新增的一个 api。通过它我们可以实现多窗口间的信息传递，通过获取到指定窗口的引用，然后调用 postMessage 来发送信息，在窗口中我们通过对 message 信息的监听来接收信息，以此来实现不同源间的信息交换。
 
-如果是像解决 ajax 无法提交跨域请求的问题，我们可以使用 jsonp、cors、websocket 协议、服务器代理来解决问题。
+  如果是像解决 ajax 无法提交跨域请求的问题，我们可以使用 jsonp、cors、websocket 协议、服务器代理来解决问题。
 
-（5）使用 jsonp 来实现跨域请求，它的主要原理是通过动态构建 script  标签来实现跨域请求，因为浏览器对 script 标签的引入没有跨域的访问限制 。通过在请求的 url 后指定一个回调函数，然后服务器在返回数据的时候，构建一个 json 数据的包装，这个包装就是回调函数，然后返回给前端，前端接收到数据后，因为请求的是脚本文件，所以会直接执行，这样我们先前定义好的回调函数就可以被调用，从而实现了跨域请求的处理。这种方式只能用于 get 请求。
+  （5）使用 jsonp 来实现跨域请求，它的主要原理是通过动态构建 script 标签来实现跨域请求，因为浏览器对 script 标签的引入没有跨域的访问限制 。通过在请求的 url 后指定一个回调函数，然后服务器在返回数据的时候，构建一个 json 数据的包装，这个包装就是回调函数，然后返回给前端，前端接收到数据后，因为请求的是脚本文件，所以会直接执行，这样我们先前定义好的回调函数就可以被调用，从而实现了跨域请求的处理。这种方式只能用于 get 请求。
 
-（6）使用 CORS 的方式，CORS 是一个 W3C 标准，全称是"跨域资源共享"。CORS 需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，因此我们只需要在服务器端配置就行。浏览器将 CORS 请求分成两类：简单请求和非简单请求。对于简单请求，浏览器直接发出 CORS 请求。具体来说，就是会在头信息之中，增加一个 Origin 字段。Origin 字段用来说明本次请求来自哪个源。服务器根据这个值，决定是否同意这次请求。对于如果 Origin 指定的源，不在许可范围内，服务器会返回一个正常的 HTTP 回应。浏览器发现，这个回应的头信息没有包含 Access-Control-Allow-Origin 字段，就知道出错了，从而抛出一个错误，ajax 不会收到响应信息。如果成功的话会包含一些以 Access-Control- 开头的字段。
+  （6）使用 CORS 的方式，CORS 是一个 W3C 标准，全称是“跨域资源共享”。CORS 需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，因此我们只需要在服务器端配置就行。浏览器将 CORS 请求分成两类：简单请求和非简单请求。对于简单请求，浏览器直接发出 CORS 请求。具体来说，就是会在头信息之中，增加一个 Origin 字段。Origin 字段用来说明本次请求来自哪个源。服务器根据这个值，决定是否同意这次请求。对于如果 Origin 指定的源，不在许可范围内，服务器会返回一个正常的 HTTP 回应。浏览器发现，这个回应的头信息没有包含 Access-Control-Allow-Origin 字段，就知道出错了，从而抛出一个错误，ajax 不会收到响应信息。如果成功的话会包含一些以 Access-Control- 开头的字段。
 
-非简单请求，浏览器会先发出一次预检请求，来判断该域名是否在服务器的白名单中，如果收到肯定回复后才会发起请求。
+  非简单请求，浏览器会先发出一次预检请求，来判断该域名是否在服务器的白名单中，如果收到肯定回复后才会发起请求。
 
-（7）使用 websocket 协议，这个协议没有同源限制。
+  （7）使用 websocket 协议，这个协议没有同源限制。
 
-（8）使用服务器来代理跨域的访问请求，就是有跨域的请求操作时发送请求给后端，让后端代为请求，然后最后将获取的结果发返回。
-```
+  （8）使用服务器来代理跨域的访问请求，就是有跨域的请求操作时发送请求给后端，让后端代为请求，然后最后将获取的结果发返回。
 
 详细资料可以参考：
 [《前端常见跨域解决方案（全）》](https://segmentfault.com/a/1190000011145364)
@@ -1345,13 +1296,11 @@ script 脚本请求都不会有跨域的限制，这是因为这些操作都不�
 
 ### 62. 简单谈一下 cookie ？
 
-```
-我的理解是 cookie 是服务器提供的一种用于维护会话状态信息的数据，通过服务器发送到浏览器，浏览器保存在本地，当下一次有同源的请求时，将保存的 cookie 值添加到请求头部，发送给服务端。这可以用来实现记录用户登录状态等功能。cookie 一般可以存储 4k 大小的数据，并且只能够被同源的网页所共享访问。
+- 我的理解是 cookie 是服务器提供的一种用于维护会话状态信息的数据，通过服务器发送到浏览器，浏览器保存在本地，当下一次有同源的请求时，将保存的 cookie 值添加到请求头部，发送给服务端。这可以用来实现记录用户登录状态等功能。cookie 一般可以存储 4k 大小的数据，并且只能够被同源的网页所共享访问。
 
-服务器端可以使用 Set-Cookie 的响应头部来配置 cookie 信息。一条cookie 包括了5个属性值 expires、domain、path、secure、HttpOnly。其中 expires 指定了 cookie 失效的时间，domain 是域名、path是路径，domain 和 path 一起限制了 cookie 能够被哪些 url 访问。secure 规定了 cookie 只能在确保安全的情况下传输，HttpOnly 规定了这个 cookie 只能被服务器访问，不能使用 js 脚本访问。
+- 服务器端可以使用 Set-Cookie 的响应头部来配置 cookie 信息。一条cookie 包括了5个属性值 expires、domain、path、secure、HttpOnly。其中 expires 指定了 cookie 失效的时间，domain 是域名、path是路径，domain 和 path 一起限制了 cookie 能够被哪些 url 访问。secure 规定了 cookie 只能在确保安全的情况下传输，HttpOnly 规定了这个 cookie 只能被服务器访问，不能使用 js 脚本访问。
 
-在发生 xhr 的跨域请求的时候，即使是同源下的 cookie，也不会被自动添加到请求头部，除非显示地规定。
-```
+- 在发生 xhr 的跨域请求的时候，即使是同源下的 cookie，也不会被自动添加到请求头部，除非显示地规定。
 
 详细资料可以参考：
 [《HTTP cookies》 ](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies)
@@ -1359,18 +1308,13 @@ script 脚本请求都不会有跨域的限制，这是因为这些操作都不�
 
 ### 63. 模块化开发怎么做？
 
-```
-我对模块的理解是，一个模块是实现一个特定功能的一组方法。在最开始的时候，js 只实现一些简单的功能，所以并没有模块的概念
-，但随着程序越来越复杂，代码的模块化开发变得越来越重要。
+- 我对模块的理解是，一个模块是实现一个特定功能的一组方法。在最开始的时候，js 只实现一些简单的功能，所以并没有模块的概念，但随着程序越来越复杂，代码的模块化开发变得越来越重要。
 
-由于函数具有独立作用域的特点，最原始的写法是使用函数来作为模块，几个函数作为一个模块，但是这种方式容易造成全局变量的污
-染，并且模块间没有联系。
+- 由于函数具有独立作用域的特点，最原始的写法是使用函数来作为模块，几个函数作为一个模块，但是这种方式容易造成全局变量的污染，并且模块间没有联系。
 
-后面提出了对象写法，通过将函数作为一个对象的方法来实现，这样解决了直接使用函数作为模块的一些缺点，但是这种办法会暴露所
-有的所有的模块成员，外部代码可以修改内部属性的值。
+- 后面提出了对象写法，通过将函数作为一个对象的方法来实现，这样解决了直接使用函数作为模块的一些缺点，但是这种办法会暴露所有的所有的模块成员，外部代码可以修改内部属性的值。
 
-现在最常用的是立即执行函数的写法，通过利用闭包来实现模块私有作用域的建立，同时不会对全局作用域造成污染。
-```
+- 现在最常用的是立即执行函数的写法，通过利用闭包来实现模块私有作用域的建立，同时不会对全局作用域造成污染。
 
 详细资料可以参考：
 [《浅谈模块化开发》](https://juejin.im/post/5ab378c46fb9a028ce7b824f)
@@ -1380,47 +1324,37 @@ script 脚本请求都不会有跨域的限制，这是因为这些操作都不�
 
 ### 64. js 的几种模块规范？
 
-```
 js 中现在比较成熟的有四种模块加载方案。
 
-第一种是 CommonJS 方案，它通过 require 来引入模块，通过 module.exports 定义模块的输出接口。这种模块加载方案是
-服务器端的解决方案，它是以同步的方式来引入模块的，因为在服务端文件都存储在本地磁盘，所以读取非常快，所以以同步的方式
-加载没有问题。但如果是在浏览器端，由于模块的加载是使用网络请求，因此使用异步加载的方式更加合适。
+第一种是 CommonJS 方案，它通过 require 来引入模块，通过 module.exports 定义模块的输出接口。这种模块加载方案是服务器端的解决方案，它是以同步的方式来引入模块的，因为在服务端文件都存储在本地磁盘，所以读取非常快，所以以同步的方式加载没有问题。但如果是在浏览器端，由于模块的加载是使用网络请求，因此使用异步加载的方式更加合适。
 
-第二种是 AMD 方案，这种方案采用异步加载的方式来加载模块，模块的加载不影响后面语句的执行，所有依赖这个模块的语句都定
-义在一个回调函数里，等到加载完成后再执行回调函数。require.js 实现了 AMD 规范。
+第二种是 AMD 方案，这种方案采用异步加载的方式来加载模块，模块的加载不影响后面语句的执行，所有依赖这个模块的语句都定义在一个回调函数里，等到加载完成后再执行回调函数。require.js 实现了 AMD 规范。
 
-第三种是 CMD 方案，这种方案和 AMD 方案都是为了解决异步模块加载的问题，sea.js 实现了 CMD 规范。它和 require.js
-的区别在于模块定义时对依赖的处理不同和对依赖模块的执行时机的处理不同。参考60
+第三种是 CMD 方案，这种方案和 AMD 方案都是为了解决异步模块加载的问题，sea.js 实现了 CMD 规范。它和 require.js 的区别在于模块定义时对依赖的处理不同和对依赖模块的执行时机的处理不同。参考60
 
 第四种方案是 ES6 提出的方案，使用 import 和 export 的形式来导入导出模块。这种方案和上面三种方案都不同。参考 61。
-```
 
 ### 65. AMD 和 CMD 规范的区别？
 
 它们之间的主要区别有两个方面。
 
-（1）第一个方面是在模块定义时对依赖的处理不同。AMD 推崇依赖前置，在定义模块的时候就要声明其依赖的模块。而 CMD 推崇
-就近依赖，只有在用到某个模块的时候再去 require。
+（1）第一个方面是在模块定义时对依赖的处理不同。AMD 推崇依赖前置，在定义模块的时候就要声明其依赖的模块。而 CMD 推崇就近依赖，只有在用到某个模块的时候再去 require。
 
-（2）第二个方面是对依赖模块的执行时机处理不同。首先 AMD 和 CMD 对于模块的加载方式都是异步加载，不过它们的区别在于
-模块的执行时机，AMD 在依赖模块加载完成后就直接执行依赖模块，依赖模块的执行顺序和我们书写的顺序不一定一致。而 CMD
-在依赖模块加载完成后并不执行，只是下载而已，等到所有的依赖模块都加载好后，进入回调函数逻辑，遇到 require 语句
-的时候才执行对应的模块，这样模块的执行顺序就和我们书写的顺序保持一致了。
+（2）第二个方面是对依赖模块的执行时机处理不同。首先 AMD 和 CMD 对于模块的加载方式都是异步加载，不过它们的区别在于模块的执行时机，AMD 在依赖模块加载完成后就直接执行依赖模块，依赖模块的执行顺序和我们书写的顺序不一定一致。而 CMD 在依赖模块加载完成后并不执行，只是下载而已，等到所有的依赖模块都加载好后，进入回调函数逻辑，遇到 require 语句的时候才执行对应的模块，这样模块的执行顺序就和我们书写的顺序保持一致了。
 
 ```js
 // CMD
-define(function(require, exports, module) {
-  var a = require("./a");
+define(function (require, exports, module) {
+  var a = require('./a');
   a.doSomething();
   // 此处略去 100 行
-  var b = require("./b"); // 依赖可以就近书写
+  var b = require('./b'); // 依赖可以就近书写
   b.doSomething();
   // ...
 });
 
 // AMD 默认推荐
-define(["./a", "./b"], function(a, b) {
+define(['./a', './b'], function (a, b) {
   // 依赖必须一开始就写好
   a.doSomething();
   // 此处略去 100 行
@@ -1434,15 +1368,13 @@ define(["./a", "./b"], function(a, b) {
 
 ### 66. ES6 模块与 CommonJS 模块、AMD、CMD 的差异。
 
-- 1.CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。CommonJS 模块输出的是值的拷贝，也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析的时候，遇到模块加载命令 import，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。
+- CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。CommonJS 模块输出的是值的拷贝，也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析的时候，遇到模块加载命令 import，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。
 
-- 2.CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。CommonJS 模块就是对象，即在输入时是先加载整个模块，生成一个对象，然后再从这个对象上面读取方法，这种加载称为“运行时加载”。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
+- CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。CommonJS 模块就是对象，即在输入时是先加载整个模块，生成一个对象，然后再从这个对象上面读取方法，这种加载称为“运行时加载”。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
 
 ### 67. requireJS 的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何 缓存的？）
 
-```
-require.js 的核心原理是通过动态创建 script 脚本来异步引入模块，然后对每个脚本的 load 事件进行监听，如果每个脚本都加载完成了，再调用回调函数。
-```
+- require.js 的核心原理是通过动态创建 script 脚本来异步引入模块，然后对每个脚本的 load 事件进行监听，如果每个脚本都加载完成了，再调用回调函数。
 
 详细资料可以参考：
 [《requireJS 的用法和原理分析》](https://github.com/HRFE/blog/issues/10)
@@ -1457,11 +1389,9 @@ require.js 的核心原理是通过动态创建 script 脚本来异步引入模�
 
 ### 69. ECMAScript6 怎么写 class，为什么会出现 class 这种东西?
 
-```
-在我看来 ES6 新添加的 class 只是为了补充 js 中缺少的一些面向对象语言的特性，但本质上来说它只是一种语法糖，不是一个新的东西，其背后还是原型继承的思想。通过加入 class 可以有利于我们更好的组织代码。
+- 在我看来 ES6 新添加的 class 只是为了补充 js 中缺少的一些面向对象语言的特性，但本质上来说它只是一种语法糖，不是一个新的东西，其背后还是原型继承的思想。通过加入 class 可以有利于我们更好的组织代码。
 
-在 class 中添加的方法，其实是添加在类的原型上的。
-```
+- 在 class 中添加的方法，其实是添加在类的原型上的。
 
 详细资料可以参考：
 [《ECMAScript 6 实现了 class，对 JavaScript 前端开发有什么意义？》](https://www.zhihu.com/question/29789315)
@@ -1469,11 +1399,9 @@ require.js 的核心原理是通过动态创建 script 脚本来异步引入模�
 
 ### 70. documen.write 和 innerHTML 的区别？
 
-```
-document.write 的内容会代替整个文档内容，会重写整个页面。
+- document.write 的内容会代替整个文档内容，会重写整个页面。
 
-innerHTML 的内容只是替代指定元素的内容，只会重写页面中的部分内容。
-```
+- innerHTML 的内容只是替代指定元素的内容，只会重写页面中的部分内容。
 
 详细资料可以参考：
 [《简述 document.write 和 innerHTML 的区别。》](https://www.nowcoder.com/questionTerminal/2c5d8105b2694d85b06eff85e871cf50)
@@ -1826,7 +1754,7 @@ Polyfill 指的是用于实现浏览器并不支持的原生 API 的代码。
 
 // String.prototype.slice() 从上面计算的索引处提取文件的扩展名。如果索引比文件名的长度大，结果为""。
 function getFileExtension(filename) {
-  return filename.slice(((filename.lastIndexOf(".") - 1) >>> 0) + 2);
+  return filename.slice(((filename.lastIndexOf('.') - 1) >>> 0) + 2);
 }
 ```
 
@@ -1846,7 +1774,7 @@ function getFileExtension(filename) {
 function debounce(fn, wait) {
   var timer = null;
 
-  return function() {
+  return function () {
     var context = this,
       args = arguments;
 
@@ -1867,7 +1795,7 @@ function debounce(fn, wait) {
 function throttle(fn, delay) {
   var preTime = Date.now();
 
-  return function() {
+  return function () {
     var context = this,
       args = arguments,
       nowTime = Date.now();
@@ -1985,7 +1913,7 @@ UTF-8 是一种对 Unicode 的编码方式，它是一种变长的编码方式�
 
 function shallowCopy(object) {
   // 只拷贝对象
-  if (!object || typeof object !== "object") return;
+  if (!object || typeof object !== 'object') return;
 
   // 根据 object 的类型判断是新建一个数组还是对象
   let newObject = Array.isArray(object) ? [] : {};
@@ -2003,14 +1931,14 @@ function shallowCopy(object) {
 // 深拷贝的实现;
 
 function deepCopy(object) {
-  if (!object || typeof object !== "object") return;
+  if (!object || typeof object !== 'object') return;
 
   let newObject = Array.isArray(object) ? [] : {};
 
   for (let key in object) {
     if (object.hasOwnProperty(key)) {
       newObject[key] =
-        typeof object[key] === "object" ? deepCopy(object[key]) : object[key];
+        typeof object[key] === 'object' ? deepCopy(object[key]) : object[key];
     }
   }
 
@@ -2036,10 +1964,10 @@ function deepCopy(object) {
 
 ```js
 // call函数实现
-Function.prototype.myCall = function(context) {
+Function.prototype.myCall = function (context) {
   // 判断调用对象
-  if (typeof this !== "function") {
-    console.error("type error");
+  if (typeof this !== 'function') {
+    console.error('type error');
   }
 
   // 获取参数
@@ -2063,10 +1991,10 @@ Function.prototype.myCall = function(context) {
 
 // apply 函数实现
 
-Function.prototype.myApply = function(context) {
+Function.prototype.myApply = function (context) {
   // 判断调用对象是否为函数
-  if (typeof this !== "function") {
-    throw new TypeError("Error");
+  if (typeof this !== 'function') {
+    throw new TypeError('Error');
   }
 
   let result = null;
@@ -2091,10 +2019,10 @@ Function.prototype.myApply = function(context) {
 };
 
 // bind 函数实现
-Function.prototype.myBind = function(context) {
+Function.prototype.myBind = function (context) {
   // 判断调用对象是否为函数
-  if (typeof this !== "function") {
-    throw new TypeError("Error");
+  if (typeof this !== 'function') {
+    throw new TypeError('Error');
   }
 
   // 获取参数
@@ -2155,7 +2083,7 @@ function curry(fn, args) {
 
   args = args || [];
 
-  return function() {
+  return function () {
     let subArgs = args.slice(0);
 
     // 拼接得到现有的所有参数
@@ -2811,9 +2739,9 @@ Promise 是一个构造函数，接收一个函数作为参数，返回一个 Pr
 ### 137. 手写一个 Promise
 
 ```js
-const PENDING = "pending";
-const RESOLVED = "resolved";
-const REJECTED = "rejected";
+const PENDING = 'pending';
+const RESOLVED = 'resolved';
+const REJECTED = 'rejected';
 
 function MyPromise(fn) {
   // 保存初始化状态
@@ -2849,7 +2777,7 @@ function MyPromise(fn) {
         self.value = value;
 
         // 执行回调函数
-        self.resolvedCallbacks.forEach(callback => {
+        self.resolvedCallbacks.forEach((callback) => {
           callback(value);
         });
       }
@@ -2869,7 +2797,7 @@ function MyPromise(fn) {
         self.value = value;
 
         // 执行回调函数
-        self.rejectedCallbacks.forEach(callback => {
+        self.rejectedCallbacks.forEach((callback) => {
           callback(value);
         });
       }
@@ -2885,19 +2813,19 @@ function MyPromise(fn) {
   }
 }
 
-MyPromise.prototype.then = function(onResolved, onRejected) {
+MyPromise.prototype.then = function (onResolved, onRejected) {
   // 首先判断两个参数是否为函数类型，因为这两个参数是可选参数
   onResolved =
-    typeof onResolved === "function"
+    typeof onResolved === 'function'
       ? onResolved
-      : function(value) {
+      : function (value) {
           return value;
         };
 
   onRejected =
-    typeof onRejected === "function"
+    typeof onRejected === 'function'
       ? onRejected
-      : function(error) {
+      : function (error) {
           throw error;
         };
 
@@ -3163,17 +3091,17 @@ mixins 应该是我们最常使用的扩展组件的方式了。如果多个组�
 function getType(value) {
   // 判断数据是 null 的情况
   if (value === null) {
-    return value + "";
+    return value + '';
   }
 
   // 判断数据是引用类型的情况
-  if (typeof value === "object") {
+  if (typeof value === 'object') {
     let valueClass = Object.prototype.toString.call(value),
-      type = valueClass.split(" ")[1].split("");
+      type = valueClass.split(' ')[1].split('');
 
     type.pop();
 
-    return type.join("").toLowerCase();
+    return type.join('').toLowerCase();
   } else {
     // 判断数据是基本数据类型的情况和函数的情况
     return typeof value;
@@ -3200,8 +3128,8 @@ function checkNullObj(obj) {
 ```js
 // 使用闭包实现
 for (var i = 0; i < 5; i++) {
-  (function(i) {
-    setTimeout(function() {
+  (function (i) {
+    setTimeout(function () {
       console.log(i);
     }, i * 1000);
   })(i);
@@ -3210,7 +3138,7 @@ for (var i = 0; i < 5; i++) {
 // 使用 let 块级作用域
 
 for (let i = 0; i < 5; i++) {
-  setTimeout(function() {
+  setTimeout(function () {
     console.log(i);
   }, i * 1000);
 }
@@ -3221,38 +3149,36 @@ for (let i = 0; i < 5; i++) {
 ```js
 function jsonp(url, params, callback) {
   // 判断是否含有参数
-  let queryString = url.indexOf("?") === "-1" ? "?" : "&";
+  let queryString = url.indexOf('?') === '-1' ? '?' : '&';
 
   // 添加参数
   for (var k in params) {
     if (params.hasOwnProperty(k)) {
-      queryString += k + "=" + params[k] + "&";
+      queryString += k + '=' + params[k] + '&';
     }
   }
 
   // 处理回调函数名
-  let random = Math.random()
-      .toString()
-      .replace(".", ""),
-    callbackName = "myJsonp" + random;
+  let random = Math.random().toString().replace('.', ''),
+    callbackName = 'myJsonp' + random;
 
   // 添加回调函数
-  queryString += "callback=" + callbackName;
+  queryString += 'callback=' + callbackName;
 
   // 构建请求
-  let scriptNode = document.createElement("script");
+  let scriptNode = document.createElement('script');
   scriptNode.src = url + queryString;
 
-  window[callbackName] = function() {
+  window[callbackName] = function () {
     // 调用回调函数
     callback(...arguments);
 
     // 删除这个引入的脚本
-    document.getElementsByTagName("head")[0].removeChild(scriptNode);
+    document.getElementsByTagName('head')[0].removeChild(scriptNode);
   };
 
   // 发起请求
-  document.getElementsByTagName("head")[0].appendChild(scriptNode);
+  document.getElementsByTagName('head')[0].appendChild(scriptNode);
 }
 ```
 
@@ -3263,12 +3189,12 @@ function jsonp(url, params, callback) {
 ### 162. 手写一个观察者模式？
 
 ```js
-var events = (function() {
+var events = (function () {
   var topics = {};
 
   return {
     // 注册监听函数
-    subscribe: function(topic, handler) {
+    subscribe: function (topic, handler) {
       if (!topics.hasOwnProperty(topic)) {
         topics[topic] = [];
       }
@@ -3276,20 +3202,20 @@ var events = (function() {
     },
 
     // 发布事件，触发观察者回调事件
-    publish: function(topic, info) {
+    publish: function (topic, info) {
       if (topics.hasOwnProperty(topic)) {
-        topics[topic].forEach(function(handler) {
+        topics[topic].forEach(function (handler) {
           handler(info);
         });
       }
     },
 
     // 移除主题的一个观察者的回调事件
-    remove: function(topic, handler) {
+    remove: function (topic, handler) {
       if (!topics.hasOwnProperty(topic)) return;
 
       var handlerIndex = -1;
-      topics[topic].forEach(function(item, index) {
+      topics[topic].forEach(function (item, index) {
         if (item === handler) {
           handlerIndex = index;
         }
@@ -3301,7 +3227,7 @@ var events = (function() {
     },
 
     // 移除主题的所有观察者的回调事件
-    removeAll: function(topic) {
+    removeAll: function (topic) {
       if (topics.hasOwnProperty(topic)) {
         topics[topic] = [];
       }
@@ -3331,14 +3257,14 @@ class EventEmitter {
 
   off(event, callback) {
     let callbacks = this.events[event];
-    this.events[event] = callbacks && callbacks.filter(fn => fn !== callback);
+    this.events[event] = callbacks && callbacks.filter((fn) => fn !== callback);
 
     return this;
   }
 
   emit(event, ...args) {
     let callbacks = this.events[event];
-    callbacks.forEach(fn => {
+    callbacks.forEach((fn) => {
       fn(...args);
     });
 
@@ -3346,7 +3272,7 @@ class EventEmitter {
   }
 
   once(event, callback) {
-    let wrapFun = function(...args) {
+    let wrapFun = function (...args) {
       callback(...args);
 
       this.off(event, wrapFun);
@@ -3362,18 +3288,18 @@ class EventEmitter {
 
 ```js
 function Foo() {
-  getName = function() {
+  getName = function () {
     alert(1);
   };
   return this;
 }
-Foo.getName = function() {
+Foo.getName = function () {
   alert(2);
 };
-Foo.prototype.getName = function() {
+Foo.prototype.getName = function () {
   alert(3);
 };
-var getName = function() {
+var getName = function () {
   alert(4);
 };
 function getName() {
@@ -3519,18 +3445,17 @@ function findMostWord(article) {
   let wordList = article.match(/[a-z]+/g),
     visited = [],
     maxNum = 0,
-    maxWord = "";
+    maxWord = '';
 
-  article = " " + wordList.join("  ") + " ";
+  article = ' ' + wordList.join('  ') + ' ';
 
   // 遍历判断单词出现次数
-  wordList.forEach(function(item) {
+  wordList.forEach(function (item) {
     if (visited.indexOf(item) < 0) {
-
-      // 加入 visited 
+      // 加入 visited
       visited.push(item);
 
-      let word = new RegExp(" " + item + " ", "g"),
+      let word = new RegExp(' ' + item + ' ', 'g'),
         num = article.match(word).length;
 
       if (num > maxNum) {
@@ -3540,6 +3465,6 @@ function findMostWord(article) {
     }
   });
 
-  return maxWord + "  " + maxNum;
+  return maxWord + '  ' + maxNum;
 }
 ```
