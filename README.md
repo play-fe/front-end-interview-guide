@@ -5,11 +5,16 @@
 ## 目录
 
 - [HTML](./HTML)
+
 - [CSS](./CSS)
+
 - [JavaScript](./JavaScript)
+
 - [计算机网络](./Network)
+
 - [算法](./Algorithm)
-- 前端面试之道
+
+- 前端面试总结（一）
   - [基础知识点及常考面试题（一）](./前端面试之道/01.md)
   - [基础知识点及常考面试题（二）](./前端面试之道/02.md)
   - [ES6 知识点及常考面试题](./前端面试之道/03.md)
@@ -43,7 +48,8 @@
   - [常考算法题解析](./前端面试之道/31.md)
   - [CSS 常考面试题资料](./前端面试之道/32.md)
   - [如何写好一封简历](./前端面试之道/33.md)
-- front-end-interview-handbook
+
+- 前端面试总结（二）
   - [HTML 问题](./front-end-interview-handbook/01.md)
   - [CSS 问题](./front-end-interview-handbook/02.md)
   - [JavaScript 问题](./front-end-interview-handbook/03.md)
