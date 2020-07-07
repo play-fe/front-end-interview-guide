@@ -215,7 +215,8 @@
 
 - Blink：谷歌在 Chromium Blog 上发表博客，称将与苹果的开源浏览器核心 Webkit 分道扬镳，在 Chromium 项目中研发 Blink 渲染引擎（即浏览器核心），内置于 Chrome 浏览器之中。其实 Blink 引擎就是 Webkit 的一个分支，就像 webkit 是 KHTML 的分支一样。Blink 引擎现在是谷歌公司与 Opera Software 共同研发，上面提到过的，Opera 弃用了自己的 Presto 内核，加入 Google 阵营，跟随谷歌一起研发 Blink。
 
-详细的资料可以参考：  
+
+参考：  
 [《浏览器内核的解析和对比》](http://www.cnblogs.com/fullhouse/archive/2011/12/19/2293455.html)    
 [《五大主流浏览器内核的源起以及国内各大浏览器内核总结》](https://blog.csdn.net/Summer_15/article/details/71249203)
 
@@ -255,6 +256,7 @@
 
 值得注意的是，这个过程是逐步完成的，为了更好的用户体验，渲染引擎将会尽可能早的将内容现呈到屏幕上，并不会等到所有的 HTML 都解析完成之后再去构建和布局 render 树。它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。
 
+
 参考：  
 [《浏览器渲染原理》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc7207f265da613c09425d)  
 [《浏览器的渲染原理简介》](https://coolshell.cn/articles/9666.html)  
@@ -275,6 +277,7 @@
 
 - `async` 属性表示异步执行引入的 JavaScript，与 `defer` 的区别在于如果已经加载好，就会开始执行，也就是说它的执行仍然会阻塞文档的解析，只是它的加载过程不会阻塞。多个脚本的执行顺序无法保证。
 
+
 参考：  
 [《defer 和 async 的区别》](https://segmentfault.com/q/1010000000640869)
 
@@ -293,6 +296,7 @@
 - FOUC：主要指的是样式闪烁的问题，由于浏览器渲染机制（比如 Firefox ），在 CSS 加载之前，先呈现了 HTML，就会导致展示出无样式内容，然后样式突然呈现的现象。会出现这个问题的原因主要是 CSS 加载时间过长，或者 CSS 被放在了文档底部。
 
 - 白屏：有些浏览器渲染机制（比如 Chrome）要先构建 DOM 树和 CSSOM 树，构建完成后再进行渲染，如果 CSS 部分放在 HTML 尾部，由于 CSS 未加载完成，浏览器迟迟未渲染，从而导致白屏；也可能是把 JS 文件放在头部，脚本的加载会阻塞后面文档内容的解析，从而页面迟迟未渲染出来，出现白屏问题。
+
 
 参考：  
 [《前端魔法堂：解秘 FOUC》](https://juejin.im/entry/58f867045c497d0058e2ff3a)    
@@ -318,6 +322,7 @@
   2. 最大限度减少关键资源的数量：删除它们，延迟它们的下载，将它们标记为异步等。
   3. 优化关键字节数以缩短下载时间（往返次数）。
   4. 优化其余关键资源的加载顺序：您需要尽早下载所有关键资产，以缩短关键路径长度。
+
 
 参考：  
 [《优化关键渲染路径》](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path?hl=zh-cn)
@@ -350,6 +355,7 @@
 
 ![常见引起重绘属性和方法](https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/note-13.png)
 
+
 参考：  
 [《浏览器的回流与重绘》](https://juejin.im/post/5a9923e9518825558251c96a)
 
@@ -374,6 +380,7 @@
 - 当初始的 HTML 文档被完全加载和解析完成之后，`DOMContentLoaded` 事件被触发，而无需等待样式表、图像和子框架的加载完成。
 
 - `Load` 事件是当所有资源加载完成后触发的。
+
 
 参考：  
 [《DOMContentLoaded 事件 和 Load 事件的区别？》](https://www.jianshu.com/p/ca8dae435a2c)
@@ -432,6 +439,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
   - 从 HTML5 我们可以看出，标准是倾向于以语义化的方式来构建网页的，比如新增了 `header`、`footer` 这些语义标签，删除了 `big`、`font` 这些没有语义的标签。
 
+
 参考：  
 [《语义化的 HTML 结构到底有什么好处？》](https://www.html.cn/archives/1668)  
 [《如何理解 Web 语义化？》](https://www.zhihu.com/question/20455165)  
@@ -446,6 +454,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 - 而 `<em>` 和 `<strong>` 是语义样式标签。 `<em>` 表示一般的强调文本，而 `<strong>` 表示比 `<em>` 语义更强的强调文本。
 
 - 使用阅读设备阅读网页时：`<strong>` 会重读，而 `<b>` 是展示强调内容。
+
 
 参考：  
 [《HTML5 中的 b/strong，i/em 有什么区别？》](https://www.zhihu.com/question/19551271)
@@ -526,6 +535,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
   7. 当 `manifest` 文件发生改变时，资源请求本身也会触发更新。
 
+
 参考：  
 [《HTML5 离线缓存-manifest 简介》](https://yanhaijing.com/html/2014/12/28/html5-manifest/)
 [《有趣的 HTML5：离线存储》](https://segmentfault.com/a/1190000000732617)
@@ -543,6 +553,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 - 还有两种存储技术用于大规模数据存储，WebSQL（已被废除）和 indexDB。
 
 - IE 支持 userData 存储数据，但是基本很少使用到，除非有很强的浏览器兼容需求。
+
 
 参考：  
 [《很全很全的前端本地存储讲解》](https://segmentfault.com/a/1190000012578794#articleHeader0)
@@ -585,6 +596,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
   上面几种方式都是存储少量数据的时候的存储方式，当我们需要在本地存储大量数据的时候，我们可以使用浏览器的 indexDB 这是浏览器提供的一种本地的数据库存储机制。它不是关系型数据库，它内部采用对象仓库的形式存储数据，它更接近 NoSQL 数据库。
 
+
 参考：  
 [《请描述一下 cookies，sessionStorage 和 localStorage 的区别？》](https://segmentfault.com/a/1190000017423117)  
 [《浏览器数据库 IndexedDB 入门教程》](http://www.ruanyifeng.com/blog/2018/07/indexeddb.html)
@@ -604,6 +616,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
   4. 浏览器的后退按钮失效。
 
   5. 小型的移动设备无法完全显示框架。
+
 
 参考：  
 [《使用 iframe 的优缺点》](https://blog.csdn.net/yintianqin/article/details/72625785)  
@@ -650,8 +663,8 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
   - 还有一种方式是使用 `postMessage` 方法，如果我们能够获得对应标签页的引用，我们就可以使用 `postMessage` 方法，进行通信。
 
-参考：  
 
+参考：  
 [《WebSocket 教程》](http://www.ruanyifeng.com/blog/2017/05/websocket.html)  
 [《WebSocket 协议：5 分钟从入门到精通》](https://www.cnblogs.com/chyingp/p/websocket-deep-in.html)  
 [《WebSocket 学习（一）——基于 socket.io 实现简单多人聊天室》](https://segmentfault.com/a/1190000011538416)  
@@ -673,6 +686,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
   2. 网页动画。  
   3. 正在播放的音频或视频。
 
+
 参考：  
 [《Page Visibility API 教程》](http://www.ruanyifeng.com/blog/2018/10/page_visibility_api.html)
 
@@ -683,6 +697,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 - 纯 CSS 实现，使用 `border-radius`，当 `border-radius` 的长度等于宽高相等的元素值的一半时，即可实现一个圆形的点击区域。
 
 - 纯 JS 实现，判断一个点在不在圆上的简单算法，通过监听文档的点击事件，获取每次点击时鼠标的位置，判断该位置是否在我们规定的圆形区域内。
+
 
 参考：  
 [《如何在页面上实现一个圆形的可点击区域？》](https://maizi93.github.io/2017/08/29/%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%9C%86%E5%BD%A2%E7%9A%84%E5%8F%AF%E7%82%B9%E5%87%BB%E5%8C%BA%E5%9F%9F%EF%BC%9F/)  
@@ -707,6 +722,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 - Canvas 是一种通过 JavaScript 来绘制 2D 图形的方法。Canvas 是逐像素来进行渲染的，因此当我们对 Canvas 进行缩放时，会出现锯齿或者失真的情况。
 
 - SVG 是一种使用 XML 描述 2D 图形的语言。SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。我们可以为某个元素附加 JavaScript 事件监听函数。并且 SVG 保存的是图形的绘制方法，因此当 SVG 图形缩放时并不会失真。
+
 
 参考：  
 [《SVG 与 HTML5 的 canvas 各有什么优点，哪个更有前途？》](https://www.zhihu.com/question/19690014)
@@ -844,6 +860,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
 - `<meta http-equiv="pragma" content="no-cache">` 设置页面不缓存。
 
+
 参考：  
 [《Meta 标签用法大全》](http://www.cnblogs.com/qiumohanyu/p/5431859.html)
 
@@ -882,6 +899,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
   - CSS reset 是最早的一种解决浏览器间样式不兼容问题的方案，它的基本思想是将浏览器的所有样式都重置掉，从而达到所有浏览器样式保持一致的效果。但是使用这种方法，可能会带来一些性能上的问题，并且对于一些元素的不必要的样式的重置，其实反而会造成画蛇添足的效果。
 
   - 后面出现一种更好的解决浏览器间样式不兼容的方法，就是 normalize.css，它的思想是尽量的保留浏览器自带的样式，通过在原有的样式的基础上进行调整，来保持各个浏览器间的样式表现一致。相对与 css reset，normalize.css 的方法保留了有价值的默认值，并且修复了一些浏览器的 bug，而且使用 normalize.css 不会造成元素复杂的继承链。
+
 
 参考：  
 [《关于 CSS Reset 那些事（一）之 历史演变与 Normalize.css》](https://segmentfault.com/a/1190000003021766#articleHeader0)  
@@ -988,6 +1006,7 @@ getCurrentPosition()
 
   - 通过对 JavaScript 和 CSS 的文件进行压缩，来减小文件的体积。
 
+
 参考：  
 [《前端性能优化之雅虎 35 条军规》](https://juejin.im/post/5b73ef38f265da281e048e51#heading-10)  
 [《你真的了解 gzip 吗？》](https://juejin.im/entry/58709b9a128fe1006b29cd5d)  
@@ -1005,6 +1024,7 @@ getCurrentPosition()
 - 核心过程应该是：浏览器获得一个临时 `id`，通过长连接等待客户端扫描带有此 `id` 的二维码后，从长连接中获得客户端上报给 `server` 的帐号信息进行展示。并在客户端点击确认后，获得服务器授信的令牌，进行随后的信息交互过程。在超时、网络断开、其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程形成有效的安全防护。
 
 - 二维码登录网页的基本原理是，用户进入登录网页后，服务器生成一个 `uid` 来标识一个用户。对应的二维码对应了一个对应 `uid` 的链接，任何能够识别二维码的应用都可以获得这个链接，但是它们没有办法和对应登录的服务器响应。比如微信的二维码登录，只有用微信识这个二维码才有效。当微信客户端打开这个链接时，对应的登录服务器就获得了用户的相关信息。这个时候登录网页根据先前的长连接获取到服务器传过来的用户信息进行显示。然后提前预加载一些登录后可能用到的信息。当客户端点击确认授权登陆后，服务器生成一个权限令牌给网页，网页之后使用这个令牌进行信息的交互过程。由于整个授权的过程都是在手机端进行的，因此能够很好的防止 PC 上泛滥的病毒。并且在超时、网络断开、其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程能够形成有效的安全防护。
+
 
 参考：  
 [《微信扫描二维码登录网页》](https://www.zhihu.com/question/20368066)
