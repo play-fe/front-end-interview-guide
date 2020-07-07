@@ -215,8 +215,8 @@
 
 - Blink：谷歌在 Chromium Blog 上发表博客，称将与苹果的开源浏览器核心 Webkit 分道扬镳，在 Chromium 项目中研发 Blink 渲染引擎（即浏览器核心），内置于 Chrome 浏览器之中。其实 Blink 引擎就是 Webkit 的一个分支，就像 webkit 是 KHTML 的分支一样。Blink 引擎现在是谷歌公司与 Opera Software 共同研发，上面提到过的，Opera 弃用了自己的 Presto 内核，加入 Google 阵营，跟随谷歌一起研发 Blink。
 
-详细的资料可以参考：
-[《浏览器内核的解析和对比》](http://www.cnblogs.com/fullhouse/archive/2011/12/19/2293455.html)
+详细的资料可以参考：  
+[《浏览器内核的解析和对比》](http://www.cnblogs.com/fullhouse/archive/2011/12/19/2293455.html)    
 [《五大主流浏览器内核的源起以及国内各大浏览器内核总结》](https://blog.csdn.net/Summer_15/article/details/71249203)
 
 ### 16. 常见浏览器所用内核
@@ -255,11 +255,11 @@
 
 值得注意的是，这个过程是逐步完成的，为了更好的用户体验，渲染引擎将会尽可能早的将内容现呈到屏幕上，并不会等到所有的 HTML 都解析完成之后再去构建和布局 render 树。它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。
 
-参考：
-[《浏览器渲染原理》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc7207f265da613c09425d)
-[《浏览器的渲染原理简介》](https://coolshell.cn/articles/9666.html)
-[《前端必读：浏览器内部工作原理》](https://kb.cnblogs.com/page/129756/)
-[《深入浅出浏览器渲染原理》](https://blog.fundebug.com/2019/01/03/understand-browser-rendering/)
+参考：  
+[《浏览器渲染原理》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc7207f265da613c09425d)  
+[《浏览器的渲染原理简介》](https://coolshell.cn/articles/9666.html)  
+[《前端必读：浏览器内部工作原理》](https://kb.cnblogs.com/page/129756/)  
+[《深入浅出浏览器渲染原理》](https://blog.fundebug.com/2019/01/03/understand-browser-rendering/)  
 
 ### 18. 渲染过程中遇到 JS 文件怎么处理？（浏览器解析过程）
 
@@ -275,7 +275,7 @@
 
 - `async` 属性表示异步执行引入的 JavaScript，与 `defer` 的区别在于如果已经加载好，就会开始执行，也就是说它的执行仍然会阻塞文档的解析，只是它的加载过程不会阻塞。多个脚本的执行顺序无法保证。
 
-参考：
+参考：  
 [《defer 和 async 的区别》](https://segmentfault.com/q/1010000000640869)
 
 ### 20. 什么是文档的预解析？（浏览器解析过程）
@@ -294,8 +294,8 @@
 
 - 白屏：有些浏览器渲染机制（比如 Chrome）要先构建 DOM 树和 CSSOM 树，构建完成后再进行渲染，如果 CSS 部分放在 HTML 尾部，由于 CSS 未加载完成，浏览器迟迟未渲染，从而导致白屏；也可能是把 JS 文件放在头部，脚本的加载会阻塞后面文档内容的解析，从而页面迟迟未渲染出来，出现白屏问题。
 
-参考：
-[《前端魔法堂：解秘 FOUC》](https://juejin.im/entry/58f867045c497d0058e2ff3a)
+参考：  
+[《前端魔法堂：解秘 FOUC》](https://juejin.im/entry/58f867045c497d0058e2ff3a)    
 [《白屏问题和 FOUC》](https://www.jianshu.com/p/6617efa874b0)
 
 ### 23. 如何优化关键渲染路径？（浏览器渲染过程）
@@ -319,7 +319,7 @@
   3. 优化关键字节数以缩短下载时间（往返次数）。
   4. 优化其余关键资源的加载顺序：您需要尽早下载所有关键资产，以缩短关键路径长度。
 
-参考：
+参考：  
 [《优化关键渲染路径》](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path?hl=zh-cn)
 
 ### 24. 什么是重绘和回流？（浏览器绘制过程）
@@ -350,7 +350,7 @@
 
 ![常见引起重绘属性和方法](https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/note-13.png)
 
-参考：
+参考：  
 [《浏览器的回流与重绘》](https://juejin.im/post/5a9923e9518825558251c96a)
 
 ### 25. 如何减少回流？（浏览器绘制过程）
@@ -375,7 +375,7 @@
 
 - `Load` 事件是当所有资源加载完成后触发的。
 
-参考：
+参考：  
 [《DOMContentLoaded 事件 和 Load 事件的区别？》](https://www.jianshu.com/p/ca8dae435a2c)
 
 ### 28. HTML5 有哪些新特性？移除了那些元素？
@@ -432,9 +432,9 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
   - 从 HTML5 我们可以看出，标准是倾向于以语义化的方式来构建网页的，比如新增了 `header`、`footer` 这些语义标签，删除了 `big`、`font` 这些没有语义的标签。
 
-参考：
-[《语义化的 HTML 结构到底有什么好处？》](https://www.html.cn/archives/1668)
-[《如何理解 Web 语义化？》](https://www.zhihu.com/question/20455165)
+参考：  
+[《语义化的 HTML 结构到底有什么好处？》](https://www.html.cn/archives/1668)  
+[《如何理解 Web 语义化？》](https://www.zhihu.com/question/20455165)  
 [《我的 HTML 会说话——从实用出发，谈谈 HTML 的语义化》](https://juejin.im/post/5a9c8866f265da23741072bf#heading-5)
 
 ### 31. b 与 strong 的区别和 i 与 em 的区别？
@@ -447,7 +447,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
 - 使用阅读设备阅读网页时：`<strong>` 会重读，而 `<b>` 是展示强调内容。
 
-参考：
+参考：  
 [《HTML5 中的 b/strong，i/em 有什么区别？》](https://www.zhihu.com/question/19551271)
 
 ### 32. 前端需要注意哪些 SEO ？
@@ -526,7 +526,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
   7. 当 `manifest` 文件发生改变时，资源请求本身也会触发更新。
 
-参考：
+参考：  
 [《HTML5 离线缓存-manifest 简介》](https://yanhaijing.com/html/2014/12/28/html5-manifest/)
 [《有趣的 HTML5：离线存储》](https://segmentfault.com/a/1190000000732617)
 
@@ -544,7 +544,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
 - IE 支持 userData 存储数据，但是基本很少使用到，除非有很强的浏览器兼容需求。
 
-参考：
+参考：  
 [《很全很全的前端本地存储讲解》](https://segmentfault.com/a/1190000012578794#articleHeader0)
 
 ### 36. 请描述一下 cookies、sessionStorage 和 localStorage 的区别？
@@ -585,8 +585,8 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
   上面几种方式都是存储少量数据的时候的存储方式，当我们需要在本地存储大量数据的时候，我们可以使用浏览器的 indexDB 这是浏览器提供的一种本地的数据库存储机制。它不是关系型数据库，它内部采用对象仓库的形式存储数据，它更接近 NoSQL 数据库。
 
-参考：
-[《请描述一下 cookies，sessionStorage 和 localStorage 的区别？》](https://segmentfault.com/a/1190000017423117)
+参考：  
+[《请描述一下 cookies，sessionStorage 和 localStorage 的区别？》](https://segmentfault.com/a/1190000017423117)  
 [《浏览器数据库 IndexedDB 入门教程》](http://www.ruanyifeng.com/blog/2018/07/indexeddb.html)
 
 ### 37. iframe 有那些缺点？
@@ -605,8 +605,8 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
   5. 小型的移动设备无法完全显示框架。
 
-参考：
-[《使用 iframe 的优缺点》](https://blog.csdn.net/yintianqin/article/details/72625785)
+参考：  
+[《使用 iframe 的优缺点》](https://blog.csdn.net/yintianqin/article/details/72625785)  
 [《iframe 简单探索以及 iframe 跨域处理》](https://segmentfault.com/a/1190000009891683)
 
 ### 38. Label 的作用是什么？是怎么用的？
@@ -650,54 +650,57 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
   - 还有一种方式是使用 `postMessage` 方法，如果我们能够获得对应标签页的引用，我们就可以使用 `postMessage` 方法，进行通信。
 
-参考：
+参考：  
 
-[《WebSocket 教程》](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
-[《WebSocket 协议：5 分钟从入门到精通》](https://www.cnblogs.com/chyingp/p/websocket-deep-in.html)
-[《WebSocket 学习（一）——基于 socket.io 实现简单多人聊天室》](https://segmentfault.com/a/1190000011538416)
-[《使用 Web Storage API》](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
-[《JavaScript 的多线程，Worker 和 SharedWorker》](https://www.zhuwenlong.com/blog/article/590ea64fe55f0f385f9a12e5)
+[《WebSocket 教程》](http://www.ruanyifeng.com/blog/2017/05/websocket.html)  
+[《WebSocket 协议：5 分钟从入门到精通》](https://www.cnblogs.com/chyingp/p/websocket-deep-in.html)  
+[《WebSocket 学习（一）——基于 socket.io 实现简单多人聊天室》](https://segmentfault.com/a/1190000011538416)  
+[《使用 Web Storage API》](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)  
+[《JavaScript 的多线程，Worker 和 SharedWorker》](https://www.zhuwenlong.com/blog/article/590ea64fe55f0f385f9a12e5)  
 [《实现多个标签页之间通信的几种方法》](https://juejin.im/post/5acdba01f265da23826e5633#heading-1)
 
 ### 41. WebSocket 如何兼容低版本浏览器？
 
-- Adobe Flash Socket、ActiveX HTMLFile (IE)、基于 multipart 编码发送 XHR、基于长轮询的 XHR。
+- Adobe Flash Socket。
+- ActiveX HTMLFile (IE)。
+- 基于 multipart 编码发送 XHR。
+- 基于长轮询的 XHR。
 
 ### 42. 页面可见性（Page Visibility API）可以有哪些用途？
 
-- 这个新的 API 的意义在于，通过监听网页的可见性，可以预判网页的卸载，还可以用来节省资源，减缓电能的消耗。比如，一旦用户不看网页，下面这些网页行为都是可以暂停的。  
-  （1）对服务器的轮询。  
-  （2）网页动画。  
-  （3）正在播放的音频或视频。
+- 这个新的 API 的意义在于：通过监听网页的可见性，可以预判网页的卸载，还可以用来节省资源，减缓电能的消耗。比如，一旦用户不看网页，下面这些网页行为都是可以暂停的。  
+  1. 对服务器的轮询。  
+  2. 网页动画。  
+  3. 正在播放的音频或视频。
 
-详细资料可以参考：
+参考：  
 [《Page Visibility API 教程》](http://www.ruanyifeng.com/blog/2018/10/page_visibility_api.html)
 
 ### 43. 如何在页面上实现一个圆形的可点击区域？
 
-- 纯 HTML 实现，使用 area 来给 img 图像标记热点区域的方式，map 标签用来定义一个客户端图像映射，area 标签用来定义图像映射中的区域，area 元素永远嵌套在 map 元素内部，我们可以将 area 区域设置为圆形，从而实现可点击的圆形区域。
+- 纯 HTML 实现，使用 `area` 来给 `img` 图像标记热点区域的方式，`map` 标签用来定义一个客户端图像映射，`area` 标签用来定义图像映射中的区域，`area` 元素永远嵌套在 `map` 元素内部，我们可以将 `area` 区域设置为圆形，从而实现可点击的圆形区域。
 
-- 纯 CSS 实现，使用 border-radius ，当 border-radius 的长度等于宽高相等的元素值的一半时，即可实现一个圆形的点击区域。
+- 纯 CSS 实现，使用 `border-radius`，当 `border-radius` 的长度等于宽高相等的元素值的一半时，即可实现一个圆形的点击区域。
 
 - 纯 JS 实现，判断一个点在不在圆上的简单算法，通过监听文档的点击事件，获取每次点击时鼠标的位置，判断该位置是否在我们规定的圆形区域内。
 
-详细资料可以参考：
-[《如何在页面上实现一个圆形的可点击区域？》](https://maizi93.github.io/2017/08/29/%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%9C%86%E5%BD%A2%E7%9A%84%E5%8F%AF%E7%82%B9%E5%87%BB%E5%8C%BA%E5%9F%9F%EF%BC%9F/)
+参考：  
+[《如何在页面上实现一个圆形的可点击区域？》](https://maizi93.github.io/2017/08/29/%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%9C%86%E5%BD%A2%E7%9A%84%E5%8F%AF%E7%82%B9%E5%87%BB%E5%8C%BA%E5%9F%9F%EF%BC%9F/)  
 [《HTML <area><map> 标签及在实际开发中的应用》](https://www.zhangxinxu.com/wordpress/2017/05/html-area-map/)
 
 ### 44. 实现不使用 border 画出 1 px 高的线，在不同浏览器的标准模式与怪异模式下都能保持一致的效果。
 
-```
+```html
 <div style="height: 1px; overflow: hidden; background: red;"></div>
 ```
 
 ### 45. title 与 h1 的区别？
 
-- title 属性没有明确意义只表示是个标题，h1 则表示层次明确的标题，对页面信息的抓取也有很大的影响。
+- `title` 属性没有明确意义只表示是个标题，`h1` 则表示层次明确的标题，对页面信息的抓取也有很大的影响。
 
-### 46. `<img>` 的 title 和 alt 有什么区别？
+### 46. img标签 的 title 和 alt 有什么区别？
 
-- title 通常当鼠标滑动到元素上的时候显示 alt 是 `<img>` 的特有属性，是图片内容的等价描述，用于图片无法加载时显示、读屏器阅读图片。可提图片高可访问性，除了纯装饰图片外都必须设置有意义的值，搜索引擎会重点分析。
+- `title` 通常当鼠标滑动到元素上的时候显示 `alt` 是 `<img>` 的特有属性，是图片内容的等价描述，用于图片无法加载时显示、读屏器阅读图片。可提图片高可访问性，除了纯装饰图片外都必须设置有意义的值，搜索引擎会重点分析。
 
 ### 47. Canvas 和 SVG 有什么区别？
 
@@ -705,10 +708,10 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
 - SVG 是一种使用 XML 描述 2D 图形的语言。SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。我们可以为某个元素附加 JavaScript 事件监听函数。并且 SVG 保存的是图形的绘制方法，因此当 SVG 图形缩放时并不会失真。
 
-详细资料可以参考：
+参考：  
 [《SVG 与 HTML5 的 canvas 各有什么优点，哪个更有前途？》](https://www.zhihu.com/question/19690014)
 
-### 48. 网页验证码的作用？是为了解决什么安全问题
+### 48. 网页验证码的作用？是为了解决什么安全问题？
 
 - 区分用户是计算机还是人的公共全自动程序，可以防止恶意破解密码、刷票、论坛灌水。
 
@@ -722,11 +725,11 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
 ### 50. attribute 和 property 的区别是什么？
 
-- attribute 是 DOM 元素在文档中作为 HTML 标签拥有的属性；
+- `attribute` 是 DOM 元素在文档中作为 HTML 标签拥有的属性。
 
-- property 是 DOM 元素在 JS 中作为对象拥有的属性。
+- `property` 是 DOM 元素在 JS 中作为对象拥有的属性。
 
-- 对于 HTML 的标准属性来说，attribute 和 property 是同步的，是会自动更新的，但是对于自定义的属性来说，他们是不同步的。
+- 对于 HTML 的标准属性来说，`attribute` 和 `property` 是同步的，是会自动更新的，但是对于自定义的属性来说，他们是不同步的。
 
 ### 51. 对 Web 标准、可用性、可访问性的理解
 
@@ -739,7 +742,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 ### 52. IE 各版本和 Chrome 可以并行下载多少个资源？
 
 - IE6 2 个并发。
-- IE7 升级之后的 6 个并发，之后版本也是 6 个。
+- IE7 及之后版本 6 个。
 - Firefox、Chrome 也是 6 个。
 
 ### 53. Flash、Ajax 各自的优缺点，在使用中如何取舍？
@@ -782,11 +785,11 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
 ### 56. 常用的 meta 标签
 
-- meta 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
+- `meta` 标签可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
 
-- meta 标签位于文档的头部，不包含任何内容。
+- `meta` 标签位于文档的头部，不包含任何内容。
 
-- meta 标签的属性定义了与文档相关联的名称/值对。
+- `meta` 标签的属性定义了与文档相关联的名称/值对。
 
 - `<!DOCTYPE html>` H5 标准声明，使用 HTML5 doctype，不区分大小写。
 
@@ -813,7 +816,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
 - `<meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">` 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari）。
 
-- <meta name="apple-mobile-web-app-status-bar-style" content="black"/> 设置苹果工具栏颜色。
+- `<meta name="apple-mobile-web-app-status-bar-style" content="black"/>` 设置苹果工具栏颜色。
 
 - `<meta name="renderer" content="webkit">` 启用 360 浏览器的极速模式(webkit)。
 
@@ -841,12 +844,12 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
 - `<meta http-equiv="pragma" content="no-cache">` 设置页面不缓存。
 
-详细资料可以参考：
+参考：  
 [《Meta 标签用法大全》](http://www.cnblogs.com/qiumohanyu/p/5431859.html)
 
 ### 57. CSS reset 和 normalize.css 有什么区别？
 
-- 相关知识点：
+- 相关知识
 
   - 为什么会有 CSS Reset 的存在呢？那是因为早期的浏览器支持和理解的 CSS 规范不同，导致渲染页面时效果不一致，会出现很多兼容性问题。
 
@@ -854,39 +857,39 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
   - normalize 的理念则是尽量保留浏览器的默认样式，不进行太多的重置，而尽力让这些样式保持一致并尽可能与现代标准相符合。
 
-  - Normalize.css 保护了有价值的默认值 Reset
+  - normalize.css 保护了有价值的默认值 Reset。
 
-    通过为几乎所有的元素施加默认样式，强行使得元素有相同的视觉效果。相比之下，Normalize.css 保持了许多默认的浏览器样式。 这就意味着你不用再为所有公共的排版元素重新设置样式。当一个元素在不同的浏览器中有不同的默认值时，Normalize.css 会力求让这些样式保持一致并尽可能与现代标准相符合。
+    通过为几乎所有的元素施加默认样式，强行使得元素有相同的视觉效果。相比之下，normalize.css 保持了许多默认的浏览器样式。这就意味着你不用再为所有公共的排版元素重新设置样式。当一个元素在不同的浏览器中有不同的默认值时，normalize.css 会力求让这些样式保持一致并尽可能与现代标准相符合。
 
-  - Normalize.css 修复了浏览器的 bug
+  - normalize.css 修复了浏览器的 bug。
 
-    它修复了常见的桌面端和移动端浏览器的 bug。这往往超出了 Reset 所能做到的范畴。关于这一点，Normalize.css 修复的问题包含了 HTML5 元素的显示设置、预格式化文字的 font-size 问题、在 IE9 中 SVG 的溢出、许多出现在各浏览器和操作系统中的与表单相关的 bug。
+    它修复了常见的桌面端和移动端浏览器的 bug。这往往超出了 Reset 所能做到的范畴。关于这一点，normalize.css 修复的问题包含了 HTML5 元素的显示设置、预格式化文字的 `font-size` 问题、在 IE9 中 SVG 的溢出、许多出现在各浏览器和操作系统中的与表单相关的 bug。
 
-  - Normalize.css 没有复杂的继承链
+  - normalize.css 没有复杂的继承链。
 
-    使用 Reset 最让人困扰的地方莫过于在浏览器调试工具中大段大段的继承链。在 Normalize.css 中就不会有这样的问题，因为在我们的准则中对多选择器的使用时非常谨慎的，我们仅会有目的地对目标元素设置样式。
+    使用 Reset 最让人困扰的地方莫过于在浏览器调试工具中大段大段的继承链。在 normalize.css 中就不会有这样的问题，因为在我们的准则中对多选择器的使用时非常谨慎的，我们仅会有目的地对目标元素设置样式。
 
-  - Normalize.css 是模块化的
+  - normalize.css 是模块化的。
 
     这个项目已经被拆分为多个相关却又独立的部分，这使得你能够很容易也很清楚地知道哪些元素被设置了特定的值。因此这能让你自己选择性地移除掉某些永远不会用到部分（比如表单的一般化）。
 
-  - Normalize.css 拥有详细的文档
+  - normalize.css 拥有详细的文档
 
-    Normalize.css 的代码基于详细而全面的跨浏览器研究与测试。这个文件中拥有详细的代码说明并在 GitHub Wiki 中有进一步的说明。这意味着你可以找到每一行代码具体完成了什么工作、为什么要写这句代码、浏览器之间的差异，并且你可以更容易地进行自己的测试。
+    normalize.css 的代码基于详细而全面的跨浏览器研究与测试。这个文件中拥有详细的代码说明并在 GitHub Wiki 中有进一步的说明。这意味着你可以找到每一行代码具体完成了什么工作、为什么要写这句代码、浏览器之间的差异，并且你可以更容易地进行自己的测试。
 
-- 回答：
+- 回答
 
   - CSS reset 是最早的一种解决浏览器间样式不兼容问题的方案，它的基本思想是将浏览器的所有样式都重置掉，从而达到所有浏览器样式保持一致的效果。但是使用这种方法，可能会带来一些性能上的问题，并且对于一些元素的不必要的样式的重置，其实反而会造成画蛇添足的效果。
 
   - 后面出现一种更好的解决浏览器间样式不兼容的方法，就是 normalize.css，它的思想是尽量的保留浏览器自带的样式，通过在原有的样式的基础上进行调整，来保持各个浏览器间的样式表现一致。相对与 css reset，normalize.css 的方法保留了有价值的默认值，并且修复了一些浏览器的 bug，而且使用 normalize.css 不会造成元素复杂的继承链。
 
-详细资料可以参考：
-[《关于 CSS Reset 那些事（一）之 历史演变与 Normalize.css》](https://segmentfault.com/a/1190000003021766#articleHeader0)
+参考：  
+[《关于 CSS Reset 那些事（一）之 历史演变与 Normalize.css》](https://segmentfault.com/a/1190000003021766#articleHeader0)  
 [《Normalize.css 和 Reset CSS 有什么本质区别没？》](https://segmentfault.com/q/1010000000117189)
 
 ### 58. 用于预格式化文本的标签是？
 
-- 预格式化就是保留文字在源码中的格式 最后显示出来样式与源码中的样式一致 所见即所得。
+- 预格式化就是保留文字在源码中的格式，最后显示出来样式与源码中的样式一致 所见即所得。
 
 - `<pre>` 定义预格式文本，保持文本原有的格式。
 
@@ -910,19 +913,19 @@ HTML5 现在已经不是 SGML 的子集，主要是关于**图像**、**位置**
 
 - 这些标签可用在 head 部分：`<base>`、`<link>`、`<meta>`、`<script>`、`<style>` 以及 `<title>`。
 
-- `<title>` 定义文档的标题，它是 head 部分中唯一必需的元素。
+- `<title>` 定义文档的标题，它是 `head` 部分中唯一必需的元素。
 
 ### 61. HTML5 新增的表单元素有？
 
-- datalist 规定输入域的选项列表，通过 option 创建。
+- `datalist` 规定输入域的选项列表，通过 `option` 创建。
 
-- keygen 提供一种验证用户的可靠方法，密钥对生成器，私钥存于客户端，公钥发到服务器，用于之后验证客户端证书。
+- `keygen` 提供一种验证用户的可靠方法，密钥对生成器，私钥存于客户端，公钥发到服务器，用于之后验证客户端证书。
 
-- output 元素用于不同类型的输出。
+- `output` 元素用于不同类型的输出。
 
 ### 62. 在 HTML5 中，哪个方法用于获得用户的当前位置？
 
-```
+```js
 getCurrentPosition()
 ```
 
@@ -938,26 +941,26 @@ getCurrentPosition()
 
 ### 64. disabled 和 readonly 的区别？
 
-- disabled 指当 input 元素加载时禁用此元素。input 内容不会随着表单提交。
+- `disabled` 指当 `input` 元素加载时禁用此元素。`input` 内容不会随着表单提交。
 
-- readonly 规定输入字段为只读。input 内容会随着表单提交。
+- `readonly` 规定输入字段为只读。`input` 内容会随着表单提交。
 
-- 无论设置 readonly 还是 disabled，通过 JS 都能更改 input 的 value。
+- 无论设置 `readonly` 还是 `disabled`，通过 JS 都能更改 `input` 的 `value`。
 
 ### 65. 主流浏览器内核私有属性 CSS 前缀？
 
-- mozilla 内核 （firefox,flock 等） -moz
-- webkit 内核 （safari,chrome 等） -webkit
-- opera 内核 （opera 浏览器） -o
-- trident 内核 （ie 浏览器） -ms
+- mozilla 内核 （firefox，flock 等） -moz
+- webkit 内核 （safari，chrome 等）  -webkit
+- opera 内核 （opera 浏览器）        -o
+- trident 内核 （IE 浏览器）         -ms
 
 ### 66. 前端性能优化？
 
-- 前端性能优化主要是为了提高页面的加载速度，优化用户的访问体验。我认为可以从这些方面来进行优化。
+- 前端性能优化主要是为了提高页面的加载速度，优化用户的访问体验。我认为可以从以下方面来进行优化。
 
-- 第一个方面是页面的内容方面
+1. 页面的内容方面
 
-  - 通过文件合并、CSS 雪碧图、使用 base64 等方式来减少 HTTP 请求数，避免过多的请求造成等待的情况。
+  - 通过文件合并、CSS 雪碧图、使用 `base64` 等方式来减少 HTTP 请求数，避免过多的请求造成等待的情况。
 
   - 通过 DNS 缓存等机制来减少 DNS 的查询次数。
 
@@ -967,40 +970,41 @@ getCurrentPosition()
 
   - 通过用户行为，对某些资源使用预加载的方式，来提高用户需要访问资源时的响应速度。
 
-- 第二个方面是服务器方面
+2. 服务器方面
 
   - 使用 CDN 服务，来提高用户对于资源请求时的响应速度。
 
   - 服务器端启用 Gzip、Deflate 等方式对于传输的资源进行压缩，减小文件的体积。
 
-  - 尽可能减小 cookie 的大小，并且通过将静态资源分配到其他域名下，来避免对静态资源请求时携带不必要的 cookie。
+  - 尽可能减小 `cookie` 的大小，并且通过将静态资源分配到其他域名下，来避免对静态资源请求时携带不必要的 `cookie`。
 
-- 第三个方面是 CSS 和 JavaScript 方面
+3. CSS 和 JavaScript 方面
 
-  - 把样式表放在页面的 head 标签中，减少页面的首次渲染的时间。
+  - 把样式表放在页面的 `head` 标签中，减少页面的首次渲染的时间。
 
-  - 避免使用 @import 标签。
+  - 避免使用 `@import` 标签。
 
-  - 尽量把 JS 放在页面底部或者使用 defer 或 async 属性，避免脚本的加载和执行阻塞页面的渲染。
+  - 尽量把 JS 放在页面底部或者使用 `defer` 或 `async` 属性，避免脚本的加载和执行阻塞页面的渲染。
 
   - 通过对 JavaScript 和 CSS 的文件进行压缩，来减小文件的体积。
 
-详细的资料可以参考：
-[《前端性能优化之雅虎 35 条军规》](https://juejin.im/post/5b73ef38f265da281e048e51#heading-10)
-[《你真的了解 gzip 吗？》](https://juejin.im/entry/58709b9a128fe1006b29cd5d)
-[《前端性能优化之 gzip》](https://segmentfault.com/a/1190000012571492)
+参考：  
+[《前端性能优化之雅虎 35 条军规》](https://juejin.im/post/5b73ef38f265da281e048e51#heading-10)  
+[《你真的了解 gzip 吗？》](https://juejin.im/entry/58709b9a128fe1006b29cd5d)  
+[《前端性能优化之 gzip》](https://segmentfault.com/a/1190000012571492)  
 
 ### 67. Chrome 中的 Waterfall ？
 
-详细资料可以参考：
-[《前端性能之 Chrome 的 Waterfall》](https://blog.csdn.net/carian_violet/article/details/84954360)
-[《教你读懂网络请求的瀑布图》](https://blog.csdn.net/csdn_girl/article/details/54911632) [《前端妹子跟我抱怨她们的页面加载很慢的时候，如何在她面前优雅地装逼？》](https://www.zhihu.com/question/27085552/answer/35194131)
+参考：  
+[《前端性能之 Chrome 的 Waterfall》](https://blog.csdn.net/carian_violet/article/details/84954360)  
+[《教你读懂网络请求的瀑布图》](https://blog.csdn.net/csdn_girl/article/details/54911632)   
+[《前端妹子跟我抱怨她们的页面加载很慢的时候，如何在她面前优雅地装逼？》](https://www.zhihu.com/question/27085552/answer/35194131)
 
 ### 68. 扫描二维码登录网页是什么原理，前后两个事件是如何联系的？
 
-- 核心过程应该是：浏览器获得一个临时 id，通过长连接等待客户端扫描带有此 id 的二维码后，从长连接中获得客户端上报给 server 的帐号信息进行展示。并在客户端点击确认后，获得服务器授信的令牌，进行随后的信息交互过程。在超时、网络断开、其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程形成有效的安全防护。
+- 核心过程应该是：浏览器获得一个临时 `id`，通过长连接等待客户端扫描带有此 `id` 的二维码后，从长连接中获得客户端上报给 `server` 的帐号信息进行展示。并在客户端点击确认后，获得服务器授信的令牌，进行随后的信息交互过程。在超时、网络断开、其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程形成有效的安全防护。
 
-- 二维码登录网页的基本原理是，用户进入登录网页后，服务器生成一个 uid 来标识一个用户。对应的二维码对应了一个对应 uid 的链接，任何能够识别二维码的应用都可以获得这个链接，但是它们没有办法和对应登录的服务器响应。比如微信的二维码登录，只有用微信识这个二维码才有效。当微信客户端打开这个链接时，对应的登录服务器就获得了用户的相关信息。这个时候登录网页根据先前的长连接获取到服务器传过来的用户信息进行显示。然后提前预加载一些登录后可能用到的信息。当客户端点击确认授权登陆后，服务器生成一个权限令牌给网页，网页之后使用这个令牌进行信息的交互过程。由于整个授权的过程都是在手机端进行的，因此能够很好的防止 PC 上泛滥的病毒。并且在超时、网络断开、其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程能够形成有效的安全防护。
+- 二维码登录网页的基本原理是，用户进入登录网页后，服务器生成一个 `uid` 来标识一个用户。对应的二维码对应了一个对应 `uid` 的链接，任何能够识别二维码的应用都可以获得这个链接，但是它们没有办法和对应登录的服务器响应。比如微信的二维码登录，只有用微信识这个二维码才有效。当微信客户端打开这个链接时，对应的登录服务器就获得了用户的相关信息。这个时候登录网页根据先前的长连接获取到服务器传过来的用户信息进行显示。然后提前预加载一些登录后可能用到的信息。当客户端点击确认授权登陆后，服务器生成一个权限令牌给网页，网页之后使用这个令牌进行信息的交互过程。由于整个授权的过程都是在手机端进行的，因此能够很好的防止 PC 上泛滥的病毒。并且在超时、网络断开、其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程能够形成有效的安全防护。
 
-详细资料可以参考：
+参考：  
 [《微信扫描二维码登录网页》](https://www.zhihu.com/question/20368066)
