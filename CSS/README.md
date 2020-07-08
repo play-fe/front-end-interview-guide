@@ -548,71 +548,6 @@
 
 - 最简单的初始化方法：`* { padding: 0; margin: 0; }`。（强烈不建议）
 
-- 淘宝的样式初始化代码：
-  ```css
-  body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
-    margin: 0;
-    padding: 0;
-  }
-
-  body, button, input, select, textarea {
-    font: 12px/1.5tahoma, arial, \5b8b\4f53;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-size: 100%;
-  }
-
-  address, cite, dfn, em, var {
-    font-style: normal;
-  }
-
-  code, kbd, pre, samp {
-    font-family: couriernew, courier, monospace;
-  }
-
-  small {
-    font-size: 12px;
-  }
-
-  ul, ol {
-    list-style: none;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  sup {
-    vertical-align: text-top;
-  }
-
-  sub {
-    vertical-align: text-bottom;
-  }
-
-  legend {
-    color: #000;
-  }
-
-  fieldset, img {
-    border: 0;
-  }
-
-  button, input, select, textarea {
-    font-size: 100%;
-  }
-  
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  ```
-
 ### 20. 什么是包含块，对于包含块的理解?
 
 - 包含块（containingblock）就是元素用来计算和定位的一个框。
@@ -649,25 +584,23 @@
 
 ### 22. width:auto 和 width:100% 的区别
 
-- width:100% 会使元素 box 的宽度等于父元素的 contentbox 的宽度。
+- `width:100%` 会使元素的宽度等于父元素的 contentbox 的宽度。
 
-- width:auto 会使元素撑满整个父元素，margin、border、padding、content 区域会自动分配水平空间。
+- `width:auto` 会使元素撑满整个父元素，margin、border、padding、content 区域会自动分配水平空间。
 
 ### 23. 绝对定位元素与非绝对定位元素的百分比计算的区别
 
-- 绝对定位元素的宽高百分比是相对于临近的 position 不为 static 的祖先元素的 paddingbox 来计算的。
+- 绝对定位元素的宽高百分比是相对于临近的 `position` 不为 `static` 的祖先元素的 paddingbox 来计算的。
 
 - 非绝对定位元素的宽高百分比则是相对于父元素的 contentbox 来计算的。
 
-### 24. 简单介绍使用图片 base64 编码的优点和缺点。
+### 24. 简单介绍使用图片 base64 编码的优点和缺点
 
 - base64 编码是一种图片处理格式，通过特定的算法将图片编码成一长串字符串，在页面上显示的时候，可以用该字符串来代替图片的 url 属性。
 
-- 使用 base64 的优点是：
+- 使用 base64 的优点：减少一个图片的 HTTP 请求。
 
-  - 减少一个图片的 HTTP 请求。
-
-- 使用 base64 的缺点是：
+- 使用 base64 的缺点：
 
   - 根据 base64 的编码原理，编码后的大小会比原文件大 1/3，如果把大图片编码到 HTML 或 CSS 中，不仅会造成文件体积的增加，影响文件的加载速度，还会增加浏览器对 HTML 或 CSS 文件解析渲染的时间。
 
@@ -677,121 +610,77 @@
 
 - 一般一些网站的小图标可以使用 base64 图片来引入。
 
-详细资料可以参考：
-[《玩转图片 base64 编码》](https://www.cnblogs.com/coco1s/p/4375774.html)
-[《前端开发中，使用 base64 图片的弊端是什么？》](https://www.zhihu.com/question/31155574)
+参考：  
+[《玩转图片 base64 编码》](https://www.cnblogs.com/coco1s/p/4375774.html)  
+[《前端开发中，使用 base64 图片的弊端是什么？》](https://www.zhihu.com/question/31155574)  
 [《小 tip:base64:URL 背景图片与 web 页面性能优化》](https://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/)
 
 ### 25. display、position 和 float 的相互关系？
 
-- 首先我们判断 display 属性是否为 none，如果为 none，则 position 和 float 属性的值不影响元素最后的表现。
+- 首先我们判断 `display` 属性是否为 `none`，如果为 `none`，则 `position` 和 `float` 属性的值不影响元素最后的表现。
 
-- 然后判断 position 的值是否为 absolute 或者 fixed，如果是，则 float 属性失效，并且 display 的值应该被设置为 table 或者 block，具体转换需要看初始转换值。
+- 然后判断 `position` 的值是否为 `absolute` 或者 `fixed`，如果是，则 `float` 属性失效，并且 `display` 的值应该被设置为 `table` 或者 `block`，具体转换需要看初始转换值。
 
-- 如果 position 的值不为 absolute 或者 fixed，则判断 float 属性的值是否为 none，如果不是，则 display 的值则按上面的规则转换。注意，如果 position 的值为 relative 并且 float 属性的值存在，则 relative 相对于浮动后的最终位置定位。
+- 如果 `position` 的值不为 `absolute` 或者 `fixed`，则判断 `float` 属性的值是否为 `none`，如果不是，则 `display` 的值则按上面的规则转换。注意，如果 `position` 的值为 `relative` 并且 `float` 属性的值存在，则 `relative` 相对于浮动后的最终位置定位。
 
-- 如果 float 的值为 none，则判断元素是否为根元素，如果是根元素则 display 属性按照上面的规则转换，如果不是，则保持指定的 display 属性值不变。
+- 如果 `float` 的值为 `none`，则判断元素是否为根元素，如果是根元素则 `display` 属性按照上面的规则转换，如果不是，则保持指定的 `display` 属性值不变。
 
-- 总的来说，可以把它看作是一个类似优先级的机制 `"position: absolute";` 和 `position: fixed;` 优先级最高，有它存在的时候，浮动不起作用，display 的值也需要调整；其次，元素的 float 特性的值不是 none 的时候或者它是根元素的时候，调整 display 的值；最后，非根元素，并且非浮动元素，并且非绝对定位的元素，display 特性值同设置值。
+- 总的来说，可以把它看作是一个类似优先级的机制 `position: absolute;` 和 `position: fixed;` 优先级最高，有它存在的时候，浮动不起作用，`display` 的值也需要调整；其次，元素的 `float` 特性的值不是 `none` 的时候或者它是根元素的时候，调整 `display` 的值；最后，非根元素，并且非浮动元素，并且非绝对定位的元素，`display` 特性值同设置值。
 
-详细资料可以参考：
+参考：  
 [《position 跟 display、margincollapse、overflow、float 这些特性相互叠加后会怎么样？》](https://www.cnblogs.com/jackyWHJ/p/3756087.html)
 
-### 26.margin 重叠问题的理解。
+### 26. margin 重叠问题的理解
 
-- 相关知识点：
+margin 重叠指的是在垂直方向上，两个相邻元素的 margin 发生重叠的情况。
 
-  - 块级元素的上外边距（margin-top）与下外边距（margin-bottom）有时会合并为单个外边距，这样的现象称为“margin 合并”。
+一般来说可以分为四种情形：
 
-  - 产生折叠的必备条件：margin 必须是邻接的!
+- 第一种是相邻兄弟元素的 `marin-bottom` 和 `margin-top` 的值发生重叠。这种情况下我们可以通过设置其中一个元素为 BFC 来解决。
 
-  - 而根据 w3c 规范，两个 margin 是邻接的必须满足以下条件：
+- 第二种是父元素的 `margin-top` 和子元素的 `margin-top` 发生重叠。它们发生重叠是因为它们是相邻的，所以我们可以通过这一点来解决这个问题。我们可以为父元素设置 `border-top`、`padding-top` 值来分隔它们，当然我们也可以将父元素设置为 BFC 来解决。
 
-    - 必须是处于常规文档流（非 float 和绝对定位）的块级盒子，并且处于同一个 BFC 当中。
-    - 没有线盒，没有空隙，没有 padding 和 border 将他们分隔开。
-    - 都属于垂直方向上相邻的外边距，可以是下面任意一种情况。
-    - 元素的 margin-top 与其第一个常规文档流的子元素的 margin-top。
-    - 元素的 margin-bottom 与其下一个常规文档流的兄弟元素的 margin-top
-    - height 为 auto 的元素的 margin-bottom 与其最后一个常规文档流的子元素的 margin-bottom。
-    - 高度为 0 并且最小高度也为 0，不包含常规文档流的子元素，并且自身没有建立新的 BFC 的元素的 margin-top 和 margin-bottom。
+- 第三种是高度为 `auto` 的父元素的 `margin-bottom` 和子元素的 `margin-bottom` 发生重叠。它们发生重叠一个是因为它们相邻，一个是因为父元素的高度不固定。因此我们可以为父元素设置 `border-bottom`、`padding-bottom` 来分隔它们，也可以为父元素设置一个高度，`max-height` 和 `min-height` 也能解决这个问题。当然将父元素设置为 BFC 是最简单的方法。
 
-  - margin 合并的 3 种场景：
+- 第四种情况，是没有内容的元素，自身的 `margin-top` 和 `margin-bottom` 发生的重叠。我们可以通过为其设置 `border`、`padding` 或者高度来解决这个问题。
 
-    - 相邻兄弟元素 margin 合并。
-      解决办法：设置块状格式化上下文元素（BFC）。
+### 27. 对 BFC 规范（block formatting context 块级格式化上下文）的理解？
 
-    - 父级和第一个或最后一个子元素的 margin 合并。
-      解决办法：
-      对于 margin-top 合并，可以进行如下操作（满足一个条件即可）：
-      父元素设置为块状格式化上下文元素；
-      父元素设置 border-top 值；
-      父元素设置 padding-top 值；
-      父元素和第一个子元素之间添加内联元素进行分隔。
+#### 相关知识
 
-      对于 margin-bottom 合并，可以进行如下操作（满足一个条件即可）：
-      父元素设置为块状格式化上下文元素；
-      父元素设置 border-bottom 值；
-      父元素设置 padding-bottom 值；
-      父元素和最后一个子元素之间添加内联元素进行分隔；
-      父元素设置 height、min-height 或 max-height。
+- 块格式化上下文（Block Formatting Context，BFC）是 Web 页面的可视化 CSS 渲染的一部分，是布局过程中生成块级盒子的区域，也是浮动元素与其他元素的交互限定区域。
 
-    - 空块级元素的 margin 合并。
-      解决办法：
-      设置垂直方向的 border；
-      设置垂直方向的 padding；
-      里面添加内联元素（直接 Space 键空格是没用的）；
-      设置 height 或者 min-height。
+- 通俗来讲 BFC 是一个独立的布局环境，可以理解为一个容器，在这个容器中按照一定规则进行物品摆放，并且不会影响其它环境中的物品。
 
-- 回答：
+- 如果一个元素符合触发 BFC 的条件，则 BFC 中的元素布局不受外部影响。
 
-  - margin 重叠指的是在垂直方向上，两个相邻元素的 margin 发生重叠的情况。
-    一般来说可以分为四种情形：
+- 创建 BFC
+  1. 根元素或包含根元素的元素。
+  2. 浮动元素 float ＝ left|right 或 inherit（≠none）。
+  3. 绝对定位元素 position ＝ absolute 或 fixed。
+  4. display ＝ inline-block|flex|inline-flex|table-cell 或 table-caption。
+  5. overflow ＝ hidden|auto 或 scroll(≠visible)。
 
-  第一种是相邻兄弟元素的 marin-bottom 和 margin-top 的值发生重叠。这种情况下我们可以通过设置其中一个元素为 BFC 来解决。
-
-  第二种是父元素的 margin-top 和子元素的 margin-top 发生重叠。它们发生重叠是因为它们是相邻的，所以我们可以通过这一点来解决这个问题。我们可以为父元素设置 border-top、padding-top 值来分隔它们，当然我们也可以将父元素设置为 BFC 来解决。
-
-  第三种是高度为 auto 的父元素的 margin-bottom 和子元素的 margin-bottom 发生重叠。它们发生重叠一个是因为它们相邻，一个是因为父元素的高度不固定。因此我们可以为父元素设置 border-bottom、padding-bottom 来分隔它们，也可以为父元素设置一个高度，max-height 和 min-height 也能解决这个问题。当然将父元素设置为 BFC 是最简单的方法。
-
-  第四种情况，是没有内容的元素，自身的 margin-top 和 margin-bottom 发生的重叠。我们可以通过为其设置 border、padding 或者高度来解决这个问题。
-
-### 27.对 BFC 规范（块级格式化上下文：blockformattingcontext）的理解？
-
-- 相关知识点：
-
-  - 块格式化上下文（BlockFormattingContext，BFC）是 Web 页面的可视化 CSS 渲染的一部分，是布局过程中生成块级盒子的区域，也是浮动元素与其他元素的交互限定区域。
-
-  - 通俗来讲 BFC 是一个独立的布局环境，可以理解为一个容器，在这个容器中按照一定规则进行物品摆放，并且不会影响其它环境中的物品。
-
-  - 如果一个元素符合触发 BFC 的条件，则 BFC 中的元素布局不受外部影响。
-
-  - 创建 BFC
-    （1）根元素或包含根元素的元素。
-    （2）浮动元素 float ＝ left|right 或 inherit（≠none）。
-    （3）绝对定位元素 position ＝ absolute 或 fixed。
-    （4）display ＝ inline-block|flex|inline-flex|table-cell 或 table-caption。
-    （5）overflow ＝ hidden|auto 或 scroll(≠visible)。
-
-- 回答：
+#### 回答
 
 - BFC 指的是块级格式化上下文，一个元素形成了 BFC 之后，那么它内部元素产生的布局不会影响到外部元素，外部元素的布局也不会影响到 BFC 中的内部元素。一个 BFC 就像是一个隔离区域，和其他区域互不影响。
 
-- 一般来说根元素是一个 BFC 区域，浮动和绝对定位的元素也会形成 BFC，display 属性的值为 inline-block、flex 这些属性时也会创建 BFC。还有就是元素的 overflow 的值不为 visible 时都会创建 BFC。
+- 一般来说根元素是一个 BFC 区域，浮动和绝对定位的元素也会形成 BFC，`display` 属性的值为 `inline-block`、`flex` 这些属性时也会创建 BFC。还有就是元素的 `overflow` 的值不为 `visible` 时都会创建 BFC。
 
-详细资料可以参考：
-[《深入理解 BFC 和 MarginCollapse》](https://www.w3cplus.com/css/understanding-bfc-and-margin-collapse.html)
+参考：  
+[《深入理解 BFC 和 MarginCollapse》](https://www.w3cplus.com/css/understanding-bfc-and-margin-collapse.html)  
 [《前端面试题-BFC（块格式化上下文）》](https://segmentfault.com/a/1190000013647777)
 
 ### 28.IFC 是什么？
 
-- IFC 指的是行级格式化上下文，它有这样的一些布局规则：
+IFC 指的是行级格式化上下文，它有这样的一些布局规则：
 
-  - 行级上下文内部的盒子会在水平方向，一个接一个地放置。
-  - 当一行不够的时候会自动切换到下一行。
-  - 行级上下文的高度由内部最高的内联盒子的高度决定。
+- 行级上下文内部的盒子会在水平方向，一个接一个地放置。
+- 当一行不够的时候会自动切换到下一行。
+- 行级上下文的高度由内部最高的内联盒子的高度决定。
 
-详细资料可以参考：
-[《[译]:BFC 与 IFC》](https://segmentfault.com/a/1190000004466536#articleHeader5)
+参考：  
+[《[译]:BFC 与 IFC》](https://segmentfault.com/a/1190000004466536#articleHeader5)  
 [《BFC 和 IFC 的理解（布局）》](https://blog.csdn.net/paintandraw/article/details/80401741)
 
 ### 29.请解释一下为什么需要清除浮动？清除浮动的方式
@@ -802,26 +691,25 @@
 
 - 清除浮动的方式：
 
-  - 使用 clear 属性清除浮动。参考 28。
-
-  - 使用 BFC 块级格式化上下文来清除浮动。参考 26。
+  - 使用 clear 属性清除浮动。
+  - 使用 BFC 块级格式化上下文来清除浮动。
 
 - 因为 BFC 元素不会影响外部元素的特点，所以 BFC 元素也可以用来清除浮动的影响，因为如果不清除，子元素浮动则父元素高度塌陷，必然会影响后面元素布局和定位，这显然有违 BFC 元素的子元素不会影响外部元素的设定。
 
 ### 30. 使用 clear 属性清除浮动的原理？
 
-- 使用 clear 属性清除浮动，其语法如下：
+- 使用 `clear` 属性清除浮动，其语法如下：  
   `clear: none | left | right | both;`
 
 - 如果单看字面意思 `clear: left;` 应该是 “清除左浮动”，`clear: right;` 应该是“清除右浮动”的意思，实际上，这种解释是有问题的，因为浮动一直还在，并没有清除。
 
-- 官方对 clear 属性的解释是：元素盒子的边不能和前面的浮动元素相邻。我们对元素设置 clear 属性是为了避免浮动元素对该元素的影响，而不是清除掉浮动。
+- 官方对 `clear` 属性的解释是：元素盒子的边不能和前面的浮动元素相邻。我们对元素设置 `clear` 属性是为了避免浮动元素对该元素的影响，而不是清除掉浮动。
 
-- 还需要注意的一点是 clear 属性指的是元素盒子的边不能和前面的浮动元素相邻，注意这里“前面的”3 个字，也就是 clear 属性对“后面的”浮动元素是不闻不问的。考虑到 float 属性要么是 left，要么是 right，不可能同时存在，同时由于 clear 属性对“后面的”浮动元素不闻不问，因此，当 `clear: left;` 有效的时候，`clear: right` 必定无效，也就是此时 `clear: left;` 等同于设置 `clear: both;` 同样地，`clear: right;` 如果有效也是等同于设置 `clear: both;`。由此可见，`clear: left;` 和 `clear: right;` 这两个声明就没有任何使用的价值，至少在 CSS 世界中是如此，直接使用 `clear: both` 吧。
+- 还需要注意的一点是 `clear` 属性指的是元素盒子的边不能和前面的浮动元素相邻，注意这里“前面的” 3 个字，也就是 `clear` 属性对“后面的”浮动元素是不闻不问的。考虑到 `float` 属性要么是 `left`，要么是 `right`，不可能同时存在，同时由于 `clear` 属性对“后面的”浮动元素不闻不问，因此，当 `clear: left;` 有效的时候，`clear: right` 必定无效，也就是此时 `clear: left;` 等同于设置 `clear: both;` 同样地，`clear: right;` 如果有效也是等同于设置 `clear: both;`。由此可见，`clear: left;` 和 `clear: right;` 这两个声明就没有任何使用的价值，至少在 CSS 世界中是如此，直接使用 `clear: both` 吧。
 
 - 一般使用伪元素的方式清除浮动
 
-  ```
+  ```css
   .clear::after {
     content: '';
     display: table;
@@ -829,7 +717,7 @@
   }
   ```
 
-- clear 属性只有块级元素才有效的，而 ::after 等伪元素默认都是内联水平，这就是借助伪元素清除浮动影响时需要设置 display 属性值的原因。
+- `clear` 属性只有块级元素才有效的，而 `::after` 等伪元素默认都是内联水平，这就是借助伪元素清除浮动影响时需要设置 `display` 属性值的原因。
 
 ### 31. zoom:1 的清除浮动原理?
 
@@ -849,31 +737,31 @@
 
 - 包含了一个媒体类型和至少一个使用宽度、高度和颜色等媒体属性来限制样式表范围的表达式。CSS3 加入的媒体查询使得无需修改内容便可以使样式应用于某些特定的设备范围。
 
-详细资料可以参考：
-[《CSS3@media 查询》](http://www.runoob.com/cssref/css3-pr-mediaquery.html)
+参考：  
+[《CSS3@media 查询》](http://www.runoob.com/cssref/css3-pr-mediaquery.html)  
 [《响应式布局和自适应布局详解》](http://caibaojian.com/356.html)
 
 ### 33. 使用 CSS 预处理器吗？喜欢哪个？
 
-- SASS（SASS、LESS 没有本质区别，只因为团队前端都是用的 SASS）
+SASS（SASS、LESS 没有本质区别，只因为团队前端都是用的 SASS）
 
 ### 34. CSS 优化、提高性能的方法有哪些？
 
 - 加载性能：
 
   - CSS 压缩：将写好的 CSS 进行打包压缩，可以减少很多的体积。
-  - CSS 单一样式：当需要下边距和左边距的时候，很多时候选择 :margin: top 0 bottom 0; 但 margin-bottom: bottom;margin-left: left; 执行的效率更高。
-  - 减少使用 @import，而建议使用 link，因为后者在页面加载时一起加载，前者是等待页面加载完成之后再进行加载。
+  - CSS 单一样式：当需要下边距和左边距的时候，很多时候选择 `margin: top 0 bottom 0;` 但 `margin-bottom: bottom; margin-left: left;` 执行的效率更高。
+  - 减少使用 `@import`，而建议使用 `link`，因为后者在页面加载时一起加载，前者是等待页面加载完成之后再进行加载。
 
 - 选择器性能：
 
-  - 关键选择器（keyselector）。选择器的最后面的部分为关键选择器（即用来匹配目标元素的部分）。CSS 选择符是从右到左进行匹配的。当使用后代选择器的时候，浏览器会遍历所有子元素来确定是否是指定的元素等等；
+  - 关键选择器（keyselector）。选择器最后面的部分为关键选择器（即用来匹配目标元素的部分）。CSS 选择符是从右到左进行匹配。当使用后代选择器的时候，浏览器会遍历所有子元素来确定是否是指定的元素等等；
 
   - 如果规则拥有 ID 选择器作为其关键选择器，则不要为规则增加标签。过滤掉无关的规则（这样样式系统就不会浪费时间去匹配它们了）。
 
-  - 避免使用通配规则，如 \*{} 计算次数惊人！只对需要用到的元素进行选择。
+  - 避免使用通配规则，如 `\*{}` 计算次数惊人！只对需要用到的元素进行选择。
 
-  - 尽量少的去对标签进行选择，而是用 class。
+  - 尽量少的去对标签进行选择，而是用 `class`。
 
   - 尽量少的去使用后代选择器，降低选择器的权重值。后代选择器的开销是最高的，尽量将选择器的深度降到最低，最高不要超过三层，更多的使用类来关联每一个标签元素。
 
@@ -885,44 +773,44 @@
 
   - 尽量减少页面重排、重绘。
 
-  - 去除空规则：｛｝。空规则的产生原因一般来说是为了预留样式。去除这些空规则无疑能减少 CSS 文档体积。
+  - 去除空规则：`｛｝`。空规则的产生原因一般来说是为了预留样式。去除这些空规则无疑能减少 CSS 文档体积。
 
-  - 属性值为 0 时，不加单位。
+  - 属性值为 `0` 时，不加单位。
 
-  - 属性值为浮动小数 0.\*\*，可以省略小数点之前的 0。
+  - 属性值为浮动小数 `0.\*\*`，可以省略小数点之前的 `0`。
 
   - 标准化各种浏览器前缀：带浏览器前缀的在前。标准属性在后。
 
-  - 不使用 @import 前缀，它会影响 CSS 的加载速度。
+  - 不使用 `@import` 前缀，它会影响 CSS 的加载速度。
 
   - 选择器优化嵌套，尽量避免层级过深。
 
   - CSS 雪碧图，同一页面相近部分的小图标，方便使用，减少页面的请求次数，但是同时图片本身会变大，使用时，优劣考虑清楚，再使用。
 
-  - 正确使用 display 的属性，由于 display 的作用，某些样式组合会无效，徒增样式体积的同时也影响解析性能。
+  - 正确使用 `display` 的属性，由于 `display` 的作用，某些样式组合会无效，徒增样式体积的同时也影响解析性能。
 
   - 不滥用 web 字体。对于中文网站来说 WebFonts 可能很陌生，国外却很流行。webfonts 通常体积庞大，而且一些浏览器在下载 webfonts 时会阻塞页面渲染损伤性能。
 
 - 可维护性、健壮性：
 
-  - 将具有相同属性的样式抽离出来，整合并通过 class 在页面中进行使用，提高 CSS 的可维护性。
+  - 将具有相同属性的样式抽离出来，整合并通过 `class` 在页面中进行使用，提高 CSS 的可维护性。
 
   - 样式与内容分离：将 CSS 代码定义到外部 CSS 中。
 
-详细资料可以参考：
-[《CSS 优化、提高性能的方法有哪些？》](https://www.zhihu.com/question/19886806)
+参考：  
+[《CSS 优化、提高性能的方法有哪些？》](https://www.zhihu.com/question/19886806)  
 [《CSS 优化，提高性能的方法》](https://www.jianshu.com/p/4e673bf24a3b)
 
-### 35.浏览器是怎样解析 CSS 选择器的？
+### 35. 浏览器是怎样解析 CSS 选择器的？
 
 - 样式系统从关键选择器开始匹配，然后左移查找规则选择器的祖先元素。只要选择器的子树一直在工作，样式系统就会持续左移，直到和规则匹配，或者是因为不匹配而放弃该规则。
 
 - 试想一下，如果采用从左至右的方式读取 CSS 规则，那么大多数规则读到最后（最右）才会发现是不匹配的，这样做会费时耗能，最后有很多都是无用的；而如果采取从右向左的方式，那么只要发现最右边选择器不匹配，就可以直接舍弃了，避免了许多无效匹配。
 
-详细资料可以参考：
+参考：  
 [《探究 CSS 解析原理》](https://juejin.im/entry/5a123c55f265da432240cc90)
 
-### 36.在网页中应该使用奇数还是偶数的字体？为什么呢？
+### 36. 在网页中应该使用奇数还是偶数的字体？为什么呢？
 
 - 偶数字号相对更容易和 web 设计的其他部分构成比例关系。比如：当我用了 14px 的正文字号，我可能会在一些地方用 14×0.5=7px 的 margin，在另一些地方用 14×1.5=21px 的标题字号。
 
@@ -930,13 +818,15 @@
 
 - 系统差别，早期的 Windows 里，中易宋体点阵只有 12 和 14、15、16px，唯独缺少 13px。
 
-详细资料可以参考：
-[《谈谈网页中使用奇数字体和偶数字体》](https://blog.csdn.net/jian_xi/article/details/79346477)
+参考：  
+[《谈谈网页中使用奇数字体和偶数字体》](https://blog.csdn.net/jian_xi/article/details/79346477)  
 [《现在网页设计中的为什么少有人用 11px、13px、15px 等奇数的字体？》](https://www.zhihu.com/question/20440679)
 
-### 37.margin 和 padding 分别适合什么场景使用？
+### 37. margin 和 padding 分别适合什么场景使用？
 
-- margin 是用来隔开元素与元素的间距；padding 是用来隔开元素与内容的间隔。
+- margin 是用来隔开元素与元素的间距。
+
+- padding 是用来隔开元素与内容的间隔。
 
 - margin 用于布局分开元素使元素与元素互不相干。
 
@@ -951,18 +841,18 @@
 - 何时应当时用 padding：
   - 需要在 border 内测添加空白时。
   - 空白处需要背景（色）时。
-  - 上下相连的两个盒子之间的空白，希望等于两者之和时。如 15px+20px 的 padding，将得到 35px 的空白。
+  - 上下相连的两个盒子之间的空白，希望等于两者之和时。如 15px + 20px 的 padding，将得到 35px 的空白。
 
 ### 38.抽离样式模块怎么写，说出思路，有无实践经验？[阿里航旅的面试题]
 
-- 我的理解是把常用的 CSS 样式单独做成 CSS 文件，通用的和业务相关的分离出来，通用的做成样式模块儿共享，业务相关的，放进业务相关的库里面做成对应功能的模块儿。
+我的理解是把常用的 CSS 样式单独做成 CSS 文件，通用的和业务相关的分离出来，通用的做成样式模块共享，业务相关的，放进业务相关的库里面做成对应功能的模块。
 
-详细资料可以参考：
+参考：  
 [《CSS 规范-分类方法》](http://nec.netease.com/standard/css-sort.html)
 
 ### 39. 简单说一下 css3 的 all 属性。
 
-- all 属性实际上是所有 CSS 属性的缩写，表示，所有的 CSS 属性都怎样怎样，但是，不包括 unicode-bidi 和 direction 这两个 CSS 属性。支持三个 CSS 通用属性值，initial，inherit，unset。
+- all 属性实际上是所有 CSS 属性的缩写，表示所有的 CSS 属性都怎样怎样，但是，不包括 unicode-bidi 和 direction 这两个 CSS 属性。支持三个 CSS 通用属性值，initial，inherit，unset。
 
 - initial 是初始值的意思，也就是该元素元素都除了 unicode-bidi 和 direction 以外的 CSS 属性都使用属性的默认初始值。
 
@@ -970,14 +860,14 @@
 
 - unset 是取消设置的意思，也就是当前元素浏览器或用户设置的 CSS 忽略，然后如果是具有继承特性的 CSS，如 color，则使用继承值；如果是没有继承特性的 CSS 属性，如 background-color，则使用初始值。
 
-详细资料可以参考：
+参考：  
 [《简单了解 CSS3 的 all 属性》](https://www.zhangxinxu.com/wordpress/2016/03/know-about-css3-all/)
 
-### 40. 为什么不建议使用统配符初始化 css 样式。
+### 40. 为什么不建议使用统配符初始化 css 样式？
 
-- 采用 \*{pading:0;margin:0;} 这样的写法好处是写起来很简单，但是是通配符，需要把所有的标签都遍历一遍，当网站较大时，样式比较多，这样写就大大的加强了网站运行的负载，会使网站加载的时候需要很长一段时间，因此一般大型的网站都有分层次的一套初始化样式。
+- 采用 `* { pading: 0; margin: 0;}` 这样的写法好处是写起来很简单，但是是通配符，需要把所有的标签都遍历一遍，当网站较大时，样式比较多，这样写就大大的加强了网站运行的负载，会使网站加载的时候需要很长一段时间，因此一般大型的网站都有分层次的一套初始化样式。
 
-- 出于性能的考虑，并不是所有标签都会有 padding 和 margin，因此对常见的具有默认 padding 和 margin 的元素初始化即可，并不需使用通配符 \* 来初始化。
+- 出于性能的考虑，并不是所有标签都会有 `padding` 和 `margin`，因此对常见的具有默认 `padding` 和 `margin` 的元素初始化即可，并不需使用通配符 `*` 来初始化。
 
 ### 41. absolute 的 containingblock（包含块）计算方式跟正常流有什么不同？
 
