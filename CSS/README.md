@@ -50,19 +50,19 @@
 
 ### 3. ::before 和:after 中双冒号和单冒号有什么区别？解释一下这 2 个伪元素的作用。
 
-- 相关知识
+#### 相关知识
 
-  - 单冒号（:）用于 CSS3 **伪类**，双冒号（::）用于 CSS3 **伪元素**。（伪元素由双冒号和伪元素名称组成）双冒号是在当前规范中引入的，用于区分伪类和伪元素。不过浏览器需要同时支持旧的已经存在的伪元素写法，比如 `:first-line`、`:first-letter`、`:before`、`:after` 等，而新的在 CSS3 中引入的伪元素则不允许再支持旧的单冒号的写法。
+- 单冒号（:）用于 CSS3 **伪类**，双冒号（::）用于 CSS3 **伪元素**。（伪元素由双冒号和伪元素名称组成）双冒号是在当前规范中引入的，用于区分伪类和伪元素。不过浏览器需要同时支持旧的已经存在的伪元素写法，比如 `:first-line`、`:first-letter`、`:before`、`:after` 等，而新的在 CSS3 中引入的伪元素则不允许再支持旧的单冒号的写法。
 
-  - 想让插入的内容出现在其它内容前，使用 `::before`，否则使用 `::after`；
-    在代码顺序上，`::after` 生成的内容也比 `::before` 生成的内容靠后。
-    如果按堆栈视角，`::after` 生成的内容会在 `::before` 生成的内容之上。
+- 想让插入的内容出现在其它内容前，使用 `::before`，否则使用 `::after`。
+  在代码顺序上，`::after` 生成的内容也比 `::before` 生成的内容靠后。
+  如果按堆栈视角，`::after` 生成的内容会在 `::before` 生成的内容之上。
 
-- 回答
+#### 回答
 
-  - 在 CSS3 中使用单冒号来表示伪类，用双冒号来表示伪元素。但是为了兼容已有的伪元素的写法，在一些浏览器中也可以使用单冒号来表示伪元素。
+- 在 CSS3 中使用单冒号来表示伪类，用双冒号来表示伪元素。但是为了兼容已有的伪元素的写法，在一些浏览器中也可以使用单冒号来表示伪元素。
 
-  - 伪类一般匹配的是元素的一些特殊状态，如 `hover`、`link` 等，而伪元素一般匹配的特殊的位置，比 `after`、`before` 等。
+- 伪类一般匹配的是元素的一些特殊状态，如 `hover`、`link` 等，而伪元素一般匹配的特殊的位置，比如 `after`、`before` 等。
 
 ### 4. 伪类与伪元素的区别
 
@@ -79,47 +79,47 @@
 
 ### 5. CSS 中哪些属性可以继承？
 
-- 相关知识
+#### 相关知识
 
-  - 每个 CSS 属性定义的概述都指出了这个属性是默认继承的，还是默认不继承的。这决定了当你没有为元素的属性指定值时该如何计算值。
+- 每个 CSS 属性定义的概述都指出了这个属性是默认继承的，还是默认不继承的。这决定了当你没有为元素的属性指定值时该如何计算值。
 
-  - 当元素的一个继承属性没有指定值时，则取父元素的同属性的计算值。只有文档根元素取该属性的概述中给定的初始值（这里的意思应该是在该属性本身的定义中的默认值）。
+- 当元素的一个继承属性没有指定值时，则取父元素的同属性的计算值。只有文档根元素取该属性的概述中给定的初始值（这里的意思应该是在该属性本身的定义中的默认值）。
 
-  - 当元素的一个非继承属性（在 Mozillacode 里有时称之为 resetproperty）没有指定值时，则取属性的初始值 initialvalue（该值在该属性的概述里被指定）。
+- 当元素的一个非继承属性（在 Mozillacode 里有时称之为 resetproperty）没有指定值时，则取属性的初始值 initialvalue（该值在该属性的概述里被指定）。
 
-  - 有继承性的属性：
+- 有继承性的属性：
 
-    1. 字体系列属性
+  1. 字体系列属性
 
-       font、font-family、font-weight、font-size、font-style、font-variant、font-stretch、font-size-adjust。
+     font、font-family、font-weight、font-size、font-style、font-variant、font-stretch、font-size-adjust。
 
-    2. 文本系列属性
+  2. 文本系列属性
 
-       text-indent、text-align、text-shadow、line-height、word-spacing、letter-spacing、text-transform、direction、color。
+     text-indent、text-align、text-shadow、line-height、word-spacing、letter-spacing、text-transform、direction、color。
 
-    3. 表格布局属性
+  3. 表格布局属性
 
-       caption-side、border-collapse、empty-cells。
+     caption-side、border-collapse、empty-cells。
 
-    4. 列表属性
+  4. 列表属性
 
-       list-style-type、list-style-image、list-style-position、list-style。
+     list-style-type、list-style-image、list-style-position、list-style。
 
-    5. 光标属性 cursor。
+  5. 光标属性 cursor。
 
-    6. 元素可见性 visibility。
+  6. 元素可见性 visibility。
 
-    7. 还有一些不常用的 speak、page 设置嵌套引用的引号类型 quotes 等属性。
+  7. 还有一些不常用的 speak、page 设置嵌套引用的引号类型 quotes 等属性。
 
-  - 注意：当一个属性不是继承属性时，可以使用 `inherit` 关键字指定一个属性应从父元素继承它的值，`inherit` 关键字用于显式地指定继承性，可用于任何继承性/非继承性属性。
+- 注意：当一个属性不是继承属性时，可以使用 `inherit` 关键字指定一个属性应从父元素继承它的值，`inherit` 关键字用于显式地指定继承性，可用于任何继承性/非继承性属性。
 
-- 回答
+#### 回答
 
-  - 每一个属性在定义中都给出了这个属性是否具有继承性，一个具有继承性的属性会在没有指定值的时候，会使用父元素的同属性的值来作为自己的值。
+- 每一个属性在定义中都给出了这个属性是否具有继承性，一个具有继承性的属性会在没有指定值的时候，会使用父元素的同属性的值来作为自己的值。
 
-  - 一般具有继承性的属性有：字体相关的属性 font-size 和 font-weight 等。文本相关的属性 color 和 text-align 等。表格的一些布局属性、列表属性如 list-style 等。还有光标属性 cursor，元素可见性 visibility。
+- 一般具有继承性的属性有：字体相关的属性 font-size 和 font-weight 等。文本相关的属性 color 和 text-align 等。表格的一些布局属性、列表属性如 list-style 等。还有光标属性 cursor，元素可见性 visibility。
 
-  - 当一个属性不是继承属性的时候，我们也可以通过将它的值设置为 inherit 来使它从父元素那获取同名的属性值来继承。
+- 当一个属性不是继承属性的时候，我们也可以通过将它的值设置为 inherit 来使它从父元素那获取同名的属性值来继承。
 
 参考：  
 [《继承属性》](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inheritance)  
@@ -127,50 +127,50 @@
 
 ### 6. CSS 优先级算法如何计算？
 
-- 相关知识
+#### 相关知识
 
-  - CSS 的优先级是根据样式声明的特殊性值来判断的。
+- CSS 的优先级是根据样式声明的特殊性值来判断的。
 
-  - 选择器的特殊性值分为四个等级，如下：
+- 选择器的特殊性值分为四个等级，如下：
 
-    1. 标签内选择符 x 0 0 0。
-    2. ID 选择符 0 x 0 0。
-    3. class 选择符/属性选择符/伪类选择符 0 0 x 0。
-    4. 元素和伪元素选择符 0 0 0 x。
+  1. 标签内选择符 x 0 0 0。
+  2. ID 选择符 0 x 0 0。
+  3. class 选择符/属性选择符/伪类选择符 0 0 x 0。
+  4. 元素和伪元素选择符 0 0 0 x。
 
-  - 计算方法：
+- 计算方法：
 
-    - 每个等级的初始值为 0。
-    - 每个等级的叠加为选择器出现的次数相加。
-    - 不可进位，比如 0，99，99，99。
-    - 依次表示为：0，0，0，0。
-    - 每个等级计数之间没关联。
-    - 等级判断从左向右，如果某一位数值相同，则判断下一位数值。
-    - 如果两个优先级相同，则最后出现的优先级高，!important 也适用。
-    - 通配符选择器的特殊性值为：0，0，0，0。
-    - 继承样式优先级最低，通配符样式优先级高于继承样式。
-    - important（权重），它没有特殊性值，但它的优先级是最高的，为了方便记忆，可以认为它的特殊性值为 1，0，0，0，0。
+  - 每个等级的初始值为 0。
+  - 每个等级的叠加为选择器出现的次数相加。
+  - 不可进位，比如 0，99，99，99。
+  - 依次表示为：0，0，0，0。
+  - 每个等级计数之间没关联。
+  - 等级判断从左向右，如果某一位数值相同，则判断下一位数值。
+  - 如果两个优先级相同，则最后出现的优先级高，!important 也适用。
+  - 通配符选择器的特殊性值为：0，0，0，0。
+  - 继承样式优先级最低，通配符样式优先级高于继承样式。
+  - important（权重），它没有特殊性值，但它的优先级是最高的，为了方便记忆，可以认为它的特殊性值为 1，0，0，0，0。
 
-  - 计算实例：
+- 计算实例：
 
-    - `#demoa { color: orange; }` 特殊性值：0，1，0，1。
-    - `div#demoa{ color: red; }` 特殊性值：0，1，0，2。
+  - `#demoa { color: orange; }` 特殊性值：0，1，0，1。
+  - `div#demoa{ color: red; }` 特殊性值：0，1，0，2。
 
-  - 注意：
+- 注意：
 
-    - 样式应用时 CSS 会先查看规则的权重（!important），加了权重的优先级最高，当权重相同的时候，会比较规则的特殊性。
+  - 样式应用时 CSS 会先查看规则的权重（!important），加了权重的优先级最高，当权重相同的时候，会比较规则的特殊性。
 
-    - 特殊性值越大的声明优先级越高。
+  - 特殊性值越大的声明优先级越高。
 
-    - 相同特殊性值的声明，根据样式引入的顺序，后声明的规则优先级高（距离元素出现最近的）。
+  - 相同特殊性值的声明，根据样式引入的顺序，后声明的规则优先级高（距离元素出现最近的）。
 
-    - 部分浏览器由于字节溢出问题出现的进位表现不做考虑。
+  - 部分浏览器由于字节溢出问题出现的进位表现不做考虑。
 
-- 回答：
+#### 回答：
 
-  - 判断优先级时，首先我们会判断一条属性声明是否有权重，也就是是否在声明后面加上了 `!important`。一条声明如果加上了权重，那么它的优先级就是最高的，前提是它之后不再出现相同权重的声明。如果权重相同，我们则需要去比较匹配规则的特殊性。
+- 判断优先级时，首先我们会判断一条属性声明是否有权重，也就是是否在声明后面加上了 `!important`。一条声明如果加上了权重，那么它的优先级就是最高的，前提是它之后不再出现相同权重的声明。如果权重相同，我们则需要去比较匹配规则的特殊性。
 
-  - 一条匹配规则一般由多个选择器组成，一条规则的特殊性由组成它的选择器的特殊性累加而成。选择器的特殊性可以分为四个等级，第一个等级是行内样式，为 1000，第二个等级是 id 选择器，为 0100，第三个等级是类选择器、伪类选择器和属性选择器，为 0010，第四个等级是元素选择器和伪元素选择器，为 0001。规则中每出现一个选择器，就将它的特殊性进行叠加，这个叠加只限于对应的等级的叠加，不会产生进位。选择器特殊性值的比较是从左向右排序的，也就是说以 1 开头的特殊性值比所有以 0 开头的特殊性值要大。比如说特殊性值为 1000 的规则优先级就要比特殊性值为 0999 的规则高。如果两个规则的特殊性值相等的时候，那么就会根据它们引入的顺序，后出现的规则的优先级最高。
+- 一条匹配规则一般由多个选择器组成，一条规则的特殊性由组成它的选择器的特殊性累加而成。选择器的特殊性可以分为四个等级，第一个等级是行内样式，为 1000，第二个等级是 id 选择器，为 0100，第三个等级是类选择器、伪类选择器和属性选择器，为 0010，第四个等级是元素选择器和伪元素选择器，为 0001。规则中每出现一个选择器，就将它的特殊性进行叠加，这个叠加只限于对应的等级的叠加，不会产生进位。选择器特殊性值的比较是从左向右排序的，也就是说以 1 开头的特殊性值比所有以 0 开头的特殊性值要大。比如说特殊性值为 1000 的规则优先级就要比特殊性值为 0999 的规则高。如果两个规则的特殊性值相等的时候，那么就会根据它们引入的顺序，后出现的规则的优先级最高。
 
 参考：  
 [《CSS 优先级计算及应用》](https://www.jianshu.com/p/1c4e639ff7d5)  
@@ -365,23 +365,23 @@
 
 ### 11. position 的值 relative 和 absolute 定位原点是？
 
-- 相关知识
+#### 相关知识
 
-  - `absolute` 生成绝对定位的元素，相对于值不为 `static` 的第一个父元素的 `paddingbox` 进行定位，也可以理解为离自己这一级元素最近的一级 `position` 设置为 `absolute` 或者 `relative` 的父元素的 `paddingbox` 的左上角为原点的。
+- `absolute` 生成绝对定位的元素，相对于值不为 `static` 的第一个父元素的 `paddingbox` 进行定位，也可以理解为离自己这一级元素最近的一级 `position` 设置为 `absolute` 或者 `relative` 的父元素的 `paddingbox` 的左上角为原点的。
 
-  - `fixed`（老 IE 不支持）生成绝对定位的元素，相对于浏览器窗口进行定位。
+- `fixed`（老 IE 不支持）生成绝对定位的元素，相对于浏览器窗口进行定位。
 
-  - `relative` 生成相对定位的元素，相对于其元素本身所在正常位置进行定位。
+- `relative` 生成相对定位的元素，相对于其元素本身所在正常位置进行定位。
 
-  - `static` 默认值。没有定位，元素出现在正常的流中（忽略 `top`、`bottom`、`left`、`right`、`z-index` 声明）。
+- `static` 默认值。没有定位，元素出现在正常的流中（忽略 `top`、`bottom`、`left`、`right`、`z-index` 声明）。
 
-  - `inherit` 规定从父元素继承 `position` 属性的值。
+- `inherit` 规定从父元素继承 `position` 属性的值。
 
-- 回答
+#### 回答
 
-  - `relative` 定位的元素，是相对于元素本身的正常位置来进行定位的。
+- `relative` 定位的元素，是相对于元素本身的正常位置来进行定位的。
 
-  - `absolute` 定位的元素，是相对于它的第一个 `position` 值不为 `static` 的祖先元素的 `paddingbox` 来进行定位的。这句话我们可以这样来理解，我们首先需要找到绝对定位元素的一个 `position` 的值不为 `static` 的祖先元素，然后相对于这个祖先元素的 `paddingbox` 来定位，也就是说在计算定位距离的时候，`padding` 的值也要算进去。
+- `absolute` 定位的元素，是相对于它的第一个 `position` 值不为 `static` 的祖先元素的 `paddingbox` 来进行定位的。这句话我们可以这样来理解，我们首先需要找到绝对定位元素的一个 `position` 的值不为 `static` 的祖先元素，然后相对于这个祖先元素的 `paddingbox` 来定位，也就是说在计算定位距离的时候，`padding` 的值也要算进去。
 
 ### 12. CSS3 有哪些新特性？（根据项目回答）
 
@@ -397,51 +397,51 @@
 
 ### 13. 请解释一下 CSS3 的 flexbox（弹性盒布局模型），以及适用场景？
 
-- 相关知识
+#### 相关知识
 
-  - flex 是 FlexibleBox 的缩写，意为“弹性布局”，用来为盒状模型提供最大的灵活性。
+- flex 是 FlexibleBox 的缩写，意为“弹性布局”，用来为盒状模型提供最大的灵活性。
 
-  - 任何一个容器都可以指定为 flex 布局。行内元素也可以使用 flex 布局。注意，设为 flex 布局以后，子元素的 `float`、`clear` 和 `vertical-align` 属性将失效。
+- 任何一个容器都可以指定为 flex 布局。行内元素也可以使用 flex 布局。注意，设为 flex 布局以后，子元素的 `float`、`clear` 和 `vertical-align` 属性将失效。
 
-  - 采用 flex 布局的元素，称为 flex 容器（flexcontainer），简称“容器”。它的所有子元素自动成为容器成员，称为 flex 项（flexitem），简称“项目”。
+- 采用 flex 布局的元素，称为 flex 容器（flexcontainer），简称“容器”。它的所有子元素自动成为容器成员，称为 flex 项（flexitem），简称“项目”。
 
-  - 容器默认存在两根轴：水平的主轴（mainaxis）和垂直的交叉轴（crossaxis），项目默认沿主轴排列。
+- 容器默认存在两根轴：水平的主轴（mainaxis）和垂直的交叉轴（crossaxis），项目默认沿主轴排列。
 
-  - 以下 6 个属性设置在“容器”上。
+- 以下 6 个属性设置在“容器”上。
 
-    `flex-direction` 属性决定主轴的方向（即项目的排列方向）。
+  `flex-direction` 属性决定主轴的方向（即项目的排列方向）。
 
-    `flex-wrap` 属性定义，如果一条轴线排不下，如何换行。
+  `flex-wrap` 属性定义，如果一条轴线排不下，如何换行。
 
-    `flex-flow` 属性是 `flex-direction` 属性和 `flex-wrap` 属性的简写形式，默认值为 `rownowrap`。
+  `flex-flow` 属性是 `flex-direction` 属性和 `flex-wrap` 属性的简写形式，默认值为 `rownowrap`。
 
-    `justify-content` 属性定义了项目在主轴上的对齐方式。
+  `justify-content` 属性定义了项目在主轴上的对齐方式。
 
-    `align-items` 属性定义项目在交叉轴上如何对齐。
+  `align-items` 属性定义项目在交叉轴上如何对齐。
 
-    `align-content` 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+  `align-content` 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
 
-  - 以下 6 个属性设置在“项目”上。
+- 以下 6 个属性设置在“项目”上。
 
-    `order` 属性定义项目的排列顺序。数值越小，排列越靠前，默认为 `0`。
+  `order` 属性定义项目的排列顺序。数值越小，排列越靠前，默认为 `0`。
 
-    `flex-grow` 属性定义项目的放大比例，默认为 `0`，即如果存在剩余空间，也不放大。
+  `flex-grow` 属性定义项目的放大比例，默认为 `0`，即如果存在剩余空间，也不放大。
 
-    `flex-shrink` 属性定义了项目的缩小比例，默认为 `1`，即如果空间不足，该项目将缩小。
+  `flex-shrink` 属性定义了项目的缩小比例，默认为 `1`，即如果空间不足，该项目将缩小。
 
-    `flex-basis` 属性定义了在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为 `auto`，即项的本来大小。
+  `flex-basis` 属性定义了在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为 `auto`，即项的本来大小。
 
-    `flex` 属性是 `flex-grow`，`flex-shrink` 和 `flex-basis` 的简写，默认值为 `0 1 auto`。
+  `flex` 属性是 `flex-grow`，`flex-shrink` 和 `flex-basis` 的简写，默认值为 `0 1 auto`。
 
-    `align-self` 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖 `align-items` 属性。默认值为 `auto`，表示继承父元素的 `align-items` 属性，如果没有父元素，则等同于 `stretch`。
+  `align-self` 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖 `align-items` 属性。默认值为 `auto`，表示继承父元素的 `align-items` 属性，如果没有父元素，则等同于 `stretch`。
 
-- 回答：
+#### 回答：
 
-  - flex 布局是 CSS3 新增的一种布局方式，我们可以通过将一个元素的 `display` 属性值设置为 `flex` 从而使它成为一个 `flex` 容器，它的所有子元素都会成为它的项目。
+- flex 布局是 CSS3 新增的一种布局方式，我们可以通过将一个元素的 `display` 属性值设置为 `flex` 从而使它成为一个 `flex` 容器，它的所有子元素都会成为它的项目。
 
-  - 一个容器默认有两条轴，一个是水平的主轴，一个是与主轴垂直的交叉轴。我们可以使用 `flex-direction` 来指定主轴的方向。我们可以使用 `justify-content` 来指定元素在主轴上的排列方式，使用 `align-items` 来指定元素在交叉轴上的排列方式。还可以使用 `flex-wrap` 来规定当一行排列不下时的换行方式。
+- 一个容器默认有两条轴，一个是水平的主轴，一个是与主轴垂直的交叉轴。我们可以使用 `flex-direction` 来指定主轴的方向。我们可以使用 `justify-content` 来指定元素在主轴上的排列方式，使用 `align-items` 来指定元素在交叉轴上的排列方式。还可以使用 `flex-wrap` 来规定当一行排列不下时的换行方式。
 
-  - 对于容器中的项目，我们可以使用 `order` 属性来指定项目的排列顺序，还可以使用 `flex-grow` 来指定当排列空间有剩余的时候，项目的放大比例。还可以使用 `flex-shrink` 来指定当排列空间不足时，项目的缩小比例。
+- 对于容器中的项目，我们可以使用 `order` 属性来指定项目的排列顺序，还可以使用 `flex-grow` 来指定当排列空间有剩余的时候，项目的放大比例。还可以使用 `flex-shrink` 来指定当排列空间不足时，项目的缩小比例。
 
 参考：  
 [《Flex 布局教程：语法篇》](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)  
@@ -550,94 +550,63 @@
 
 - 淘宝的样式初始化代码：
   ```css
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  hr,
-  p,
-  blockquote,
-  dl,
-  dt,
-  dd,
-  ul,
-  ol,
-  li,
-  pre,
-  form,
-  fieldset,
-  legend,
-  button,
-  input,
-  textarea,
-  th,
-  td {
+  body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
     margin: 0;
     padding: 0;
   }
-  body,
-  button,
-  input,
-  select,
-  textarea {
+
+  body, button, input, select, textarea {
     font: 12px/1.5tahoma, arial, \5b8b\4f53;
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+
+  h1, h2, h3, h4, h5, h6 {
     font-size: 100%;
   }
-  address,
-  cite,
-  dfn,
-  em,
-  var {
+
+  address, cite, dfn, em, var {
     font-style: normal;
   }
-  code,
-  kbd,
-  pre,
-  samp {
+
+  code, kbd, pre, samp {
     font-family: couriernew, courier, monospace;
   }
+
   small {
     font-size: 12px;
   }
-  ul,
-  ol {
+
+  ul, ol {
     list-style: none;
   }
+
   a {
     text-decoration: none;
   }
+
   a:hover {
     text-decoration: underline;
   }
+
   sup {
     vertical-align: text-top;
   }
+
   sub {
     vertical-align: text-bottom;
   }
+
   legend {
     color: #000;
   }
-  fieldset,
-  img {
+
+  fieldset, img {
     border: 0;
   }
-  button,
-  input,
-  select,
-  textarea {
+
+  button, input, select, textarea {
     font-size: 100%;
   }
+  
   table {
     border-collapse: collapse;
     border-spacing: 0;
