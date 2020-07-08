@@ -7,29 +7,29 @@
 
 ### 1. 介绍一下标准的 CSS 的盒子模型？低版本 IE 的盒子模型有什么不同？
 
-- 相关知识
+相关知识
 
-  - 有两种盒子模型：IE 盒模型（border-box）、W3C 标准盒模型（content-box）。
+- 有两种盒子模型：IE 盒模型（border-box）、W3C 标准盒模型（content-box）。
 
-  - 盒模型：分为内容（content）、填充（padding）、边界（margin）、边框（border）四个部分。
+- 盒模型：分为内容（content）、填充（padding）、边界（margin）、边框（border）四个部分。
 
-  - IE 盒模型和 W3C 标准盒模型的区别：
+- IE 盒模型和 W3C 标准盒模型的区别：
 
-    - W3C 标准盒模型：属性 width、height 只包含内容 content，不包含 border 和 padding。
-      `width/height = content`
+  - W3C 标准盒模型：属性 width、height 只包含内容 content，不包含 border 和 padding。  
+    `width/height = content`
 
-    - IE 盒模型：属性 width、height 包含 content、border 和 padding，指的是 content + padding + border。
-      `width/height = content + padding + border`
+  - IE 盒模型：属性 width、height 包含 content、border 和 padding，指的是 content + padding + border。  
+    `width/height = content + padding + border`
 
-  - 在 IE8+ 浏览器中使用哪个盒模型可以由 `box-sizing`（CSS 新增的属性）控制，默认值为 `content-box`，即标准盒模型；如果将 `box-sizing` 设为 `border-box` 则用的是 IE 盒模型。如果在 IE6/7/8 中 DOCTYPE 缺失会将盒子模型解释为 IE 盒子模型。若在页面中声明了 DOCTYPE 类型，所有的浏览器都会把盒模型解释为 W3C 盒模型。
+- 在 IE8+ 浏览器中使用哪个盒模型可以由 `box-sizing`（CSS 新增的属性）控制，默认值为 `content-box`，即标准盒模型；如果将 `box-sizing` 设为 `border-box` 则用的是 IE 盒模型。如果在 IE6/7/8 中 DOCTYPE 缺失会将盒子模型解释为 IE 盒子模型。若在页面中声明了 DOCTYPE 类型，所有的浏览器都会把盒模型解释为 W3C 盒模型。
 
-- 回答
+回答
 
-  - 盒模型都是由四个部分组成的，分别是 `content`、`border`、`margin` 和 `padding`。
+- 盒模型都是由四个部分组成的，分别是 `content`、`border`、`margin` 和 `padding`。
 
-  - 标准盒模型和 IE 盒模型的区别在于设置 `width` 和 `height` 时，所对应的范围不同。标准盒模型的 `width` 和 `height` 属性的范围只包含了 `content`，而 IE 盒模型的 `width` 和 `height` 属性的范围包含了 `border`、`padding` 和 `content`。
+- 标准盒模型和 IE 盒模型的区别在于设置 `width` 和 `height` 时，所对应的范围不同。标准盒模型的 `width` 和 `height` 属性的范围只包含了 `content`，而 IE 盒模型的 `width` 和 `height` 属性的范围包含了 `border`、`padding` 和 `content`。
 
-  - 一般来说，我们可以通过修改元素的 `box-sizing` 属性来改变元素的盒模型。
+- 一般来说，我们可以通过修改元素的 `box-sizing` 属性来改变元素的盒模型。
 
 参考：  
 [《CSS 盒模型详解》](https://juejin.im/post/59ef72f5f265da4320026f76)
@@ -122,7 +122,7 @@
   - 当一个属性不是继承属性的时候，我们也可以通过将它的值设置为 inherit 来使它从父元素那获取同名的属性值来继承。
 
 参考：  
-[《继承属性》](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inheritance)
+[《继承属性》](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inheritance)  
 [《CSS 有哪些属性可以继承？》](https://www.jianshu.com/p/34044e3c9317)
 
 ### 6. CSS 优先级算法如何计算？
@@ -473,7 +473,6 @@
 
 - 利用 flex 布局中项目 `align-items` 属性默认为 `stretch`，如果项目未设置高度或设为 `auto`，将占满整个容器的高度的特性，来实现多列等高。
 
-
 参考：  
 [《前端应该掌握的 CSS 实现多列等高布局》](https://juejin.im/post/5b0fb34151882515662238fd)  
 [《CSS：多列等高布局》](https://codepen.io/yangbo5207/post/equh)
@@ -487,7 +486,11 @@
 - IE6 双边距 bug。在 IE6 下，如果对元素设置了浮动，同时又设置了 `margin-left` 或 `margin-right`，`margin` 值会加倍。
 
   ```css
-  #box { float: left; width: 10px; margin: 0 0 0 10px; }
+  #box {
+    float: left;
+    width: 10px;
+    margin: 0 0 0 10px;
+  }
   ```
 
   这种情况之下 IE 会产生 20px 的距离。解决方案：在 `float` 的标签样式控制中加入 `display: inline;` 将其转化为行内属性。(这个符号只有 IE6 会识别)。
@@ -498,10 +501,10 @@
 
   ```css
   .bb {
-    background-color: #f1ee18;     /* 所有识别 */
-    .background-color: #00deff\9;  /* IE6/7/8 识别 */
-    +background-color: #a200ff;    /* IE6/7 识别 */
-    _background-color: #1e0bd1;    /* IE6 识别 */
+    background-color: #f1ee18; /* 所有识别 */
+    .background-color: #00deff\9; /* IE6/7/8 识别 */
+    +background-color: #a200ff; /* IE6/7 识别 */
+    _background-color: #1e0bd1; /* IE6 识别 */
   }
   ```
 
@@ -512,6 +515,7 @@
 - Chrome 中文界面下默认会将小于 `12px` 的文本强制按照 `12px` 显示。
 
   解决方法：
+
   1. 可通过加入 CSS 属性 `-webkit-text-size-adjust: none;` 解决。但是，在 Chrome 更新到 27 版本之后就不可以用了。
   2. 还可以使用 `-webkit-transform:scale(0.5);` 注意 `-webkit-transform:scale(0.75);` 收缩的是整个 `span` 的大小，这时候，必须要将 `span` 转换成块元素，可以使用 `display: block;` 或 `display: inline-block;`；
 
@@ -533,7 +537,6 @@
 
   - 消除 `<ul>` 的字符间隔 `letter-spacing: -8px;`，不足：这也设置了 `<li>` 内的字符间隔，因此需要将 `<li>` 内的字符间隔设为默认 `letter-spacing: normal;`。
 
-
 参考：  
 [《li 与 li 之间有看不见的空白间隔是什么原因引起的？》](https://blog.csdn.net/sjinsa/article/details/70919546)
 
@@ -547,34 +550,98 @@
 
 - 淘宝的样式初始化代码：
   ```css
-  body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
-    margin: 0; padding: 0;
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  hr,
+  p,
+  blockquote,
+  dl,
+  dt,
+  dd,
+  ul,
+  ol,
+  li,
+  pre,
+  form,
+  fieldset,
+  legend,
+  button,
+  input,
+  textarea,
+  th,
+  td {
+    margin: 0;
+    padding: 0;
   }
-  body, button, input, select, textarea {
+  body,
+  button,
+  input,
+  select,
+  textarea {
     font: 12px/1.5tahoma, arial, \5b8b\4f53;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-size:100%;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 100%;
   }
-  address, cite, dfn, em, var {
-    font-style:normal;
+  address,
+  cite,
+  dfn,
+  em,
+  var {
+    font-style: normal;
   }
-  code, kbd, pre, samp {
+  code,
+  kbd,
+  pre,
+  samp {
     font-family: couriernew, courier, monospace;
   }
-  small { font-size: 12px;
+  small {
+    font-size: 12px;
   }
-  ul, ol {
+  ul,
+  ol {
     list-style: none;
   }
-  a { text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  sup { vertical-align: text-top; }
-  sub { vertical-align: text-bottom; }
-  legend { color:#000; }
-  fieldset, img { border: 0; }
-  button, input, select, textarea { font-size:100%; }
-  table { border-collapse: collapse; border-spacing: 0; }
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  sup {
+    vertical-align: text-top;
+  }
+  sub {
+    vertical-align: text-bottom;
+  }
+  legend {
+    color: #000;
+  }
+  fieldset,
+  img {
+    border: 0;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font-size: 100%;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
   ```
 
 ### 20. 什么是包含块，对于包含块的理解?
@@ -607,7 +674,6 @@
   - 在谷歌浏览器里，使用 `collapse` 值和使用 `hidden` 值没有什么区别。
 
   - 在火狐浏览器、Opera 和 IE11 里，使用 `collapse` 值的效果就如它的字面意思：`table` 的行会消失，它的下面一行会补充它的位置。
-
 
 参考：  
 [《CSS 里的 visibility 属性有个鲜为人知的属性值：collapse》](http://www.webhek.com/post/visibility-collapse.html)
