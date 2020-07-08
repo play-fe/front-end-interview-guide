@@ -7,7 +7,7 @@
 
 ### 1. 介绍一下标准的 CSS 的盒子模型？低版本 IE 的盒子模型有什么不同？
 
-相关知识
+#### 相关知识
 
 - 有两种盒子模型：IE 盒模型（border-box）、W3C 标准盒模型（content-box）。
 
@@ -23,7 +23,7 @@
 
 - 在 IE8+ 浏览器中使用哪个盒模型可以由 `box-sizing`（CSS 新增的属性）控制，默认值为 `content-box`，即标准盒模型；如果将 `box-sizing` 设为 `border-box` 则用的是 IE 盒模型。如果在 IE6/7/8 中 DOCTYPE 缺失会将盒子模型解释为 IE 盒子模型。若在页面中声明了 DOCTYPE 类型，所有的浏览器都会把盒模型解释为 W3C 盒模型。
 
-回答
+#### 回答
 
 - 盒模型都是由四个部分组成的，分别是 `content`、`border`、`margin` 和 `padding`。
 
