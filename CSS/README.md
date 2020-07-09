@@ -1044,18 +1044,18 @@ transition: all 1000ms ease;
 
 ### 56. overflow:scroll 时不能平滑滚动的问题怎么处理？
 
-- 以下代码可解决这种卡顿的问题：-webkit-overflow-scrolling: touch; 是因为这行代码启用了硬件加速特性，所以滑动很流畅。
+这行代码可解决这种卡顿的问题 `-webkit-overflow-scrolling: touch;` 是因为这行代码启用了硬件加速特性，所以滑动很流畅。
 
-详细资料可以参考：
+参考：  
 [《解决页面使用 overflow:scroll 在 iOS 上滑动卡顿的问题》](https://www.jianshu.com/p/1f4693d0ad2d)
 
 ### 57. 有一个高度自适应的 div，里面有两个 div，一个高度 100px，希望另一个填满剩下的高度。
 
-- 外层 div 使用 position: relative; 高度要求自适应的 div 使用 `position: absolute; top: 100px; bottom: 0; left: 0; right: 0;`。
+- 外层 div 使用 `position: relative;` 高度要求自适应的 div 使用 `position: absolute; top: 100px; bottom: 0; left: 0; right: 0;`。
 
-- 使用 flex 布局，设置主轴为竖轴，第二个 div 的 flex-grow 为 1。
+- 使用 flex 布局，设置主轴为竖轴，第二个 div 的 `flex-grow` 为 `1`。
 
-详细资料可以参考：
+参考：  
 [《有一个高度自适应的 div，里面有两个 div，一个高度 100px，希望另一个填满剩下的高度(三种方案)》](https://blog.csdn.net/xutongbao/article/details/79408522)
 
 ### 58. png、jpg、gif 这些图片格式解释一下，分别什么时候用。有没有了解过 webp？
