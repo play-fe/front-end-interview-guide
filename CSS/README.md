@@ -871,58 +871,59 @@ SASS（SASS、LESS 没有本质区别，只因为团队前端都是用的 SASS�
 
 ### 41. absolute 的 containingblock（包含块）计算方式跟正常流有什么不同？
 
-- 内联元素也可以作为“包含块”所在的元素；
+- 内联元素也可以作为“包含块”所在的元素。
 
-- “包含块”所在的元素不是父块级元素，而是最近的 position 不为 static 的祖先元素或根元素；
+- “包含块”所在的元素不是父块级元素，而是最近的 `position` 不为 `static` 的祖先元素或根元素；
 
 - 边界是 paddingbox 而不是 contentbox。
 
-### 42.对于 hasLayout 的理解？
+### 42. 对于 hasLayout 的理解？
 
-- hasLayout 是 IE 特有的一个属性。很多的 IE 下的 CSS Bug 都与其息息相关。在 IE 中，一个元素要么自己对自身的内容进行计算大小和组织，要么依赖于父元素来计算尺寸和组织内容。当一个元素的 hasLayout 属性值为 true 时，它负责对自己和可能的子孙元素进行尺寸计算和定位。虽然这意味着这个元素需要花更多的代价来维护自身和里面的内容，而不是依赖于祖先元素来完成这些工作。
+hasLayout 是 IE 特有的一个属性。很多的 IE 下的 CSS Bug 都与其息息相关。在 IE 中，一个元素要么自己对自身的内容进行计算大小和组织，要么依赖于父元素来计算尺寸和组织内容。当一个元素的 hasLayout 属性值为 true 时，它负责对自己和可能的子孙元素进行尺寸计算和定位。虽然这意味着这个元素需要花更多的代价来维护自身和里面的内容，而不是依赖于祖先元素来完成这些工作。
 
-详细资料可以参考：
-[《CSS 基础篇--CSS 中 IE 浏览器的 hasLayout，IE 低版本的 bug 根源》](https://segmentfault.com/a/1190000010883974)
+参考：  
+[《CSS 基础篇--CSS 中 IE 浏览器的 hasLayout，IE 低版本的 bug 根源》](https://segmentfault.com/a/1190000010883974)  
 [《CSS 魔法堂：hasLayout 原来是这样的！》](https://segmentfault.com/a/1190000004632071)
 
-### 43.元素竖向的百分比设定是相对于容器的高度吗？
+### 43. 元素竖向的百分比设定是相对于容器的高度吗？
 
-- 如果是 height 的话，是相对于包含块的高度。
+- 如果是 `height` 的话，是相对于包含块的高度。
 
-- 如果是 padding 或者 margin 竖直方向的属性则是相对于包含块的宽度。
+- 如果是 `padding` 或者 `margin` 竖直方向的属性则是相对于包含块的宽度。
 
 ### 44. 全屏滚动的原理是什么？用到了 CSS 的哪些属性？（待深入实践）
 
-- 原理：有点类似于轮播，整体的元素一直排列下去，假设有 5 个需要展示的全屏页面，那么高度是 500%，只是展示 100%，容器及容器内的页面取当前可视区高度，同时容器的父级元素 overflow 属性值设为 hidden，通过更改容器可视区的位置来实现全屏滚动效果。主要是响应鼠标事件，页面通过 CSS 的动画效果，进行移动。
-  ```css
-  overflow: hidden;
-  transition: all 1000ms ease;
-  ```
+原理：有点类似于轮播，整体的元素一直排列下去，假设有 5 个需要展示的全屏页面，那么高度是 500%，只是展示 100%，容器及容器内的页面取当前可视区高度，同时容器的父级元素 `overflow` 属性值设为 `hidden`，通过更改容器可视区的位置来实现全屏滚动效果。主要是响应鼠标事件，页面通过 CSS 的动画效果，进行移动。
 
-详细资料可以参考：
-[《js 实现网页全屏切换（平滑过渡），鼠标滚动切换》](https://blog.csdn.net/liona_koukou/article/details/52680409)
+```css
+overflow: hidden;
+transition: all 1000ms ease;
+```
+
+参考：  
+[《js 实现网页全屏切换（平滑过渡），鼠标滚动切换》](https://blog.csdn.net/liona_koukou/article/details/52680409)  
 [《用 ES6 写全屏滚动插件》](https://juejin.im/post/5aeef41cf265da0ba0630de0)
 
 ### 45. 什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的 IE？（待深入了解）
 
-- 响应式网站设计是一个网站能够兼容多个终端，而不是为每一个终端做一个特定的版本。基本原理是通过媒体查询检测不同的设备屏幕尺寸做处理。页面头部必须有 meta 声明的 viewport。
+响应式网站设计是一个网站能够兼容多个终端，而不是为每一个终端做一个特定的版本。基本原理是通过媒体查询检测不同的设备屏幕尺寸做处理。页面头部必须有 `meta` 声明的 `viewport`。
 
-详细资料可以参考：
-[《响应式布局原理》](https://blog.csdn.net/dreamerframework/article/details/8994741)
+参考：  
+[《响应式布局原理》](https://blog.csdn.net/dreamerframework/article/details/8994741)  
 [《响应式布局的实现方法和原理》](http://www.mahaixiang.cn/wzsj/278.html)
 
 ### 46. 视差滚动效果，如何给每页做不同的动画？（回到顶部，向下滑动要再次出现，和只出现一次分别怎么做？）
 
-- 视差滚动是指多层背景以不同的速度移动，形成立体的运动效果，带来非常出色的视觉体验。
+视差滚动是指多层背景以不同的速度移动，形成立体的运动效果，带来非常出色的视觉体验。
 
-详细资料可以参考：
+参考：  
 [《如何实现视差滚动效果的网页？》](https://www.zhihu.com/question/20990029)
 
 ### 47. 如何修改 chrome 记住密码后自动填充表单的黄色背景？
 
-- chrome 表单自动填充后，input 文本框的背景会变成黄色的，通过审查元素可以看到这是由于 chrome 会默认给自动填充的 input 表单加上 `input:-webkit-autofill` 私有属性，然后对其赋予以下样式：
+- chrome 表单自动填充后，input 文本框的背景会变成黄色的，通过审查元素可以看到这是由于 chrome 会默认给自动填充的 input 表单加上 `input: -webkit-autofill` 私有属性，然后对其赋予以下样式：
 
-  ```
+  ```css
   {
     background-color: rgb(250,255,189) !important;
     background-image: none !important;
@@ -930,9 +931,10 @@ SASS（SASS、LESS 没有本质区别，只因为团队前端都是用的 SASS�
   }
   ```
 
-- 对 chrome 默认定义的 background-color，background-image，color 使用 important 是不能提高其优先级的，但是其他属性可使用。
+- 对 chrome 默认定义的 `background-color`，`background-image`，`color` 使用 `important` 是不能提高其优先级的，但是其他属性可使用。
 
-- 使用足够大的纯色内阴影来覆盖 input 输入框的黄色背景，处理如下
+- 使用足够大的纯色内阴影来覆盖 `input` 输入框的黄色背景，处理如下：
+
   ```css
   input:-webkit-autofill,
   textarea:-webkit-autofill,
@@ -942,59 +944,59 @@ SASS（SASS、LESS 没有本质区别，只因为团队前端都是用的 SASS�
   }
   ```
 
-详细资料可以参考：
-[《去掉 chrome 记住密码后的默认填充样式》](https://blog.csdn.net/zsl_955200/article/details/78276209)
+参考：  
+[《去掉 chrome 记住密码后的默认填充样式》](https://blog.csdn.net/zsl_955200/article/details/78276209)  
 [《修改谷歌浏览器 chrome 记住密码后自动填充表单的黄色背景》](https://blog.csdn.net/M_agician/article/details/73381706)
 
-### 48. 怎么让 Chrome 支持小于 12px 的文字？
+### 48. 怎么让 Chrome 浏览器支持小于 12px 的文字？
 
-- 在谷歌下 CSS 设置字体大小为 12px 及以下时，显示都是一样大小，都是默认 12px。
+- 在 Chrome 浏览器下 CSS 设置字体大小为 12px 及以下时，显示都是一样大小，都是默认 12px。
 
 - 解决办法：
 
-  - 可以使用 Webkit 的内核的 -webkit-text-size-adjust 的私有 CSS 属性来解决，只要加了 -webkit-text-size-adjust:none; 字体大小就不受限制了。但是 chrome 更新到 27 版本之后就不可以用了。所以高版本 chrome 谷歌浏览器已经不再支持 -webkit-text-size-adjust 样式，所以要使用时候慎用。
+  - 可以使用 Webkit 的内核的 `-webkit-text-size-adjust` 的私有 CSS 属性来解决，只要加了 `-webkit-text-size-adjust: none;` 字体大小就不受限制了。但是 chrome 更新到 27 版本之后就不可以用了。
 
-  - 还可以使用 CSS3 的 transform 缩放属 -webkit-transform:scale(0.5); 注意 -webkit-transform:scale(0.75); 收缩的是整个元素的大小，这时候，如果是内联元素，必须要将内联元素转换成块元素，可以使用 display：block/inline-block/...；
+  - 还可以使用 CSS3 的 `transform` 缩放属性 `-webkit-transform:scale(0.5);` 注意 `-webkit-transform:scale(0.75);` 收缩的是整个元素的大小，这时候，如果是内联元素，必须要将内联元素转换成块元素，可以使用 `display: block/inline-block/...;`。
 
   - 使用图片：如果是内容固定不变情况下，使用将小于 12px 文字内容切出做图片，这样不影响兼容也不影响美观。
 
-详细资料可以参考：
+参考：  
 [《谷歌浏览器不支持 CSS 设置小于 12px 的文字怎么办？》](https://570109268.iteye.com/blog/2406562)
 
 ### 49. 让页面里的字体变清晰，变细用 CSS 怎么做？
 
-- webkit 内核的私有属性：-webkit-font-smoothing，用于字体抗锯齿，使用后字体看起来会更清晰舒服。
+- webkit 内核的私有属性：`-webkit-font-smoothing`，用于字体抗锯齿，使用后字体看起来会更清晰舒服。
 
-- 在 MacOS 测试环境下面设置 -webkit-font-smoothing: antialiased; 但是这个属性仅仅是面向 MacOS，其他操作系统设置后无效。
+- 在 MacOS 测试环境下面设置 `-webkit-font-smoothing: antialiased;` 但是这个属性仅仅是面向 MacOS，其他操作系统设置后无效。
 
-详细资料可以参考：
+参考：  
 [《让字体变的更清晰 CSS 中-webkit-font-smoothing》](https://blog.csdn.net/huo_bao/article/details/50251585)
 
-### 50.font-style 属性中 italic 和 oblique 的区别？
+### 50. font-style 属性中 italic 和 oblique 的区别？
 
-- italic 和 oblique 这两个关键字都表示“斜体”的意思。
+- `italic` 和 `oblique` 这两个关键字都表示“斜体”的意思。
 
-- 它们的区别在于：italic 是使用当前字体的斜体字体，而 oblique 只是单纯地让文字倾斜。如果当前字体没有对应的斜体字体，则退而求其次，解析为 oblique，也就是单纯形状倾斜。
+- 区别在于：`italic` 是使用当前字体的斜体字体，而 `oblique` 只是单纯地让文字倾斜。如果当前字体没有对应的斜体字体，则退而求其次，解析为 `oblique`，也就是单纯形状倾斜。
 
-### 51. 设备像素、css 像素、设备独立像素、dpr、ppi 之间的区别？
+### 51. 设备像素、CSS 像素、设备独立像素、dpr、ppi 之间的区别？
 
 - 设备像素指的是物理像素，一般手机的分辨率指的就是设备像素，一个设备的设备像素是不可变的。
 
 - CSS 像素和设备独立像素是等价的，不管在何种分辨率的设备上，CSS 像素的大小应该是一致的，CSS 像素是一个相对单位，它是相对于设备像素的，一个 CSS 像素的大小取决于页面缩放程度和 dpr 的大小。
 
-- dpr 指的是设备像素和设备独立像素的比值，一般的 pc 屏幕，dpr=1。在 iPhone4 时，苹果推出了 retina 屏幕，它的 dpr 为 2。屏幕的缩放会改变 dpr 的值。
+- dpr 指的是设备像素和设备独立像素的比值，一般的 PC 屏幕 `dpr=1`。在 iPhone4 时，苹果推出了 retina 屏幕，它的 dpr 为 2。屏幕的缩放会改变 dpr 的值。
 
 - ppi 指的是每英寸的物理像素的密度，ppi 越大，屏幕的分辨率越大。
 
-详细资料可以参考：
-[《什么是物理像素、虚拟像素、逻辑像素、设备像素，什么又是 PPI,DPI,DPR 和 DIP》](https://www.cnblogs.com/libin-1/p/7148377.html)
-[《前端工程师需要明白的「像素」》](https://www.jianshu.com/p/af6dad66e49a)
-[《CSS 像素、物理像素、逻辑像素、设备像素比、PPI、Viewport》](https://github.com/jawil/blog/issues/21)
+参考：  
+[《什么是物理像素、虚拟像素、逻辑像素、设备像素，什么又是 PPI,DPI,DPR 和 DIP》](https://www.cnblogs.com/libin-1/p/7148377.html)  
+[《前端工程师需要明白的「像素」》](https://www.jianshu.com/p/af6dad66e49a)  
+[《CSS 像素、物理像素、逻辑像素、设备像素比、PPI、Viewport》](https://github.com/jawil/blog/issues/21)  
 [《前端开发中像素的概念》](https://github.com/wujunchuan/wujunchuan.github.io/issues/15)
 
 ### 52. layoutviewport、visualviewport 和 idealviewport 的区别？
 
-- 相关知识点：
+#### 相关知识
 
 - 如果把移动设备上浏览器的可视区域设为 viewport 的话，某些网站就会因为 viewport 太窄而显示错乱，所以这些浏览器就决定默认情况下把 viewport 设为一个较宽的值，比如 980px，这样的话即使是那些为桌面设计的网站也能在移动浏览器上正常显示了。ppk 把这个浏览器默认的 viewport 叫做 layoutviewport。
 
@@ -1002,9 +1004,9 @@ SASS（SASS、LESS 没有本质区别，只因为团队前端都是用的 SASS�
 
 - idealviewport 是最适合移动设备的 viewport，idealviewport 的宽度等于移动设备的屏幕宽度，只要在 CSS 中把某一元素的宽度设为 idealviewport 的宽度（单位用 px），那么这个元素的宽度就是设备屏幕的宽度了，也就是宽度为 100% 的效果。
 
-- idealviewport 的意义在于，无论在何种分辨率的屏幕下，那些针对 idealviewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。
+- idealviewport 的意义在于：无论在何种分辨率的屏幕下，那些针对 idealviewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。
 
-- 回答：
+#### 回答
 
 - 移动端一共需要理解三个 viewport 的概念的理解。
 
@@ -1012,33 +1014,32 @@ SASS（SASS、LESS 没有本质区别，只因为团队前端都是用的 SASS�
 
 - 第二个视口指的是视觉视口，visualviewport 指的是移动设备上我们可见的区域的视口大小，一般为屏幕的分辨率的大小。visualviewport 和 layoutviewport 的关系，就像是我们通过窗户看外面的风景，视觉视口就是窗户，而外面的风景就是布局视口中的网页内容。
 
-- 第三个视口是理想视口，由于 layoutviewport 一般比 visualviewport 要大，所以想要看到整个页面必须通过拖动和缩放才
-  能实现。所以又提出了 idealviewport 的概念，idealviewport 下用户不用缩放和滚动条就能够查看到整个页面，并且页面在不同分辨率下显示的内容大小相同。idealviewport 其实就是通过修改 layoutviewport 的大小，让它等于设备的宽度，这个宽度可以理解为是设备独立像素，因此根据 idealviewport 设计的页面，在不同分辨率的屏幕下，显示应该相同。
+- 第三个视口是理想视口，由于 layoutviewport 一般比 visualviewport 要大，所以想要看到整个页面必须通过拖动和缩放才能实现。所以又提出了 idealviewport 的概念，idealviewport 下用户不用缩放和滚动条就能够查看到整个页面，并且页面在不同分辨率下显示的内容大小相同。idealviewport 其实就是通过修改 layoutviewport 的大小，让它等于设备的宽度，这个宽度可以理解为是设备独立像素，因此根据 idealviewport 设计的页面，在不同分辨率的屏幕下，显示应该相同。
 
-详细资料可以参考：
-[《移动前端开发之 viewport 的深入理解》](https://www.cnblogs.com/2050/p/3877280.html)
-[《说说移动前端中 viewport（视口）》](https://www.html.cn/archives/5975)
+参考：  
+[《移动前端开发之 viewport 的深入理解》](https://www.cnblogs.com/2050/p/3877280.html)  
+[《说说移动前端中 viewport（视口）》](https://www.html.cn/archives/5975)  
 [《移动端适配知识你到底知多少》](https://juejin.im/post/5b6d21daf265da0f9d1a2ed7#heading-14)
 
-### 53. position:fixed;在 android 下无效怎么处理？
+### 53. position: fixed; 在 android 下无效怎么处理？
 
 - 因为移动端浏览器默认的 viewport 叫做 layoutviewport。在移动端显示时，因为 layoutviewport 的宽度大于移动端屏幕的宽度，所以页面会出现滚动条左右移动，fixed 的元素是相对 layoutviewport 来固定位置的，而不是移动端屏幕来固定位置的，所以会出现感觉 fixed 无效的情况。
 
 - 如果想实现 fixed 相对于屏幕的固定效果，我们需要改变的是 viewport 的大小为 idealviewport，可以如下设置：
+
+  ```html
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
   ```
-  <metaname="viewport"content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-sca
-  le=1.0,user-scalable=no"/>
-  ```
 
-### 54. 如果需要手动写动画，你认为最小时间间隔是多久，为什么？（阿里）
+### 54. 如果需要手动写动画，你认为最小时间间隔是多久？为什么？（阿里）
 
-- 多数显示器默认频率是 60 Hz，即 1 秒刷新 60 次，所以理论上最小间隔为 1/60\*1000ms ＝ 16.7ms。
+多数显示器默认频率是 60 Hz，即 1 秒刷新 60 次，所以理论上最小间隔为 `1/60\*1000ms ＝ 16.7ms`。
 
-### 55.如何让去除 inline-block 元素间间距？
+### 55. 如何让去除 inline-block 元素间间距？
 
-- 移除空格、使用 margin 负值、使用 font-size: 0、letter-spacing、word-spacing；
+移除空格、使用 margin 负值、使用 font-size: 0、letter-spacing、word-spacing；
 
-详细资料可以参考：
+参考：  
 [《去除 inline-block 元素间间距的 N 种方法》](https://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/)
 
 ### 56. overflow:scroll 时不能平滑滚动的问题怎么处理？
