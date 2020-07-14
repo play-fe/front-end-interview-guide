@@ -1998,7 +1998,7 @@ function curry(fn, ...args) {
 
 参考  
 [《浅析前端开发中的 MVC/MVP/MVVM 模式》](https://juejin.im/post/593021272f301e0058273468)  
-[《MVC，MVP 和 MVVM 的图示》](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)   
+[《MVC，MVP 和 MVVM 的图示》](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)  
 [《MVVM》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc72e6e51d45054f664dbf)  
 [《一篇文章了解架构模式：MVC/MVP/MVVM》](https://segmentfault.com/a/1190000015310674)
 
@@ -2034,7 +2034,7 @@ function curry(fn, ...args) {
 
 - 我对 Virtual DOM 的理解是：
 
-- 首先对我们将要插入到文档中的 DOM 树结构进行分析，使用 js 对象将其表示出来，比如一个元素对象，包含 TagName、props 和 Children 这些属性。然后我们将这个 js 对象树给保存下来，最后再将 DOM 片段插入到文档中。
+- 首先对我们将要插入到文档中的 DOM 树结构进行分析，使用 JS 对象将其表示出来，比如一个元素对象，包含 TagName、props 和 Children 这些属性。然后我们将这个 JS 对象树给保存下来，最后再将 DOM 片段插入到文档中。
 
 - 当页面的状态发生改变，我们需要对页面的 DOM 的结构进行调整的时候，我们首先根据变更的状态，重新构建起一棵对象树，然后将这棵新的对象树和旧的对象树进行比较，记录下两棵树的的差异。
 
@@ -2042,10 +2042,10 @@ function curry(fn, ...args) {
 
 - 我认为 Virtual DOM 这种方法对于我们需要有大量的 DOM 操作的时候，能够很好的提高我们的操作效率，通过在操作前确定需要做的最小修改，尽可能的减少 DOM 操作带来的重流和重绘的影响。其实 Virtual DOM 并不一定比我们真实的操作 DOM 要快，这种方法的目的是为了提高我们开发时的可维护性，在任意的情况下，都能保证一个尽量小的性能消耗去进行操作。
 
-详细资料可以参考：
-[《Virtual DOM》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc72e6e51d45054f664dbf)
-[《理解 Virtual DOM》](https://github.com/y8n/blog/issues/5)
-[《深度剖析：如何实现一个 Virtual DOM 算法》](https://github.com/livoras/blog/issues/13)
+参考  
+[《Virtual DOM》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc72e6e51d45054f664dbf)  
+[《理解 Virtual DOM》](https://github.com/y8n/blog/issues/5)  
+[《深度剖析：如何实现一个 Virtual DOM 算法》](https://github.com/livoras/blog/issues/13)  
 [《网上都说操作真实 DOM 慢，但测试结果却比 React 更快，为什么？》](https://www.zhihu.com/question/31809713/answer/53544875)
 
 ### 113. 如何比较两个 DOM 树的差异？
@@ -2058,13 +2058,13 @@ function curry(fn, ...args) {
 
 ### 114. 什么是 requestAnimationFrame ？
 
-详细资料可以参考：
-[《你需要知道的 requestAnimationFrame》](https://juejin.im/post/5a82f0626fb9a06358657c9c)
+参考  
+[《你需要知道的 requestAnimationFrame》](https://juejin.im/post/5a82f0626fb9a06358657c9c)  
 [《CSS3 动画那么强，requestAnimationFrame 还有毛线用？》](https://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/)
 
 ### 115. 谈谈你对 webpack 的看法
 
-- 我当时使用 webpack 的一个最主要原因是为了简化页面依赖的管理，并且通过将其打包为一个文件来降低页面加载时请求的资源数。
+- 使用 webpack 的一个最主要原因是为了简化页面依赖的管理，并且通过将其打包为一个文件来降低页面加载时请求的资源数。
 
 - 我认为 webpack 的主要原理是，它将所有的资源都看成是一个模块，并且把页面逻辑当作一个整体，通过一个给定的入口文件，webpack 从这个文件开始，找到所有的依赖文件，将各个依赖文件模块通过 loader 和 plugins 处理后，然后打包在一起，最后输出一个浏览器可识别的 JS 文件。
 
@@ -2080,91 +2080,91 @@ function curry(fn, ...args) {
 
 - 使用 webpack 的确能够提供我们对于项目的管理，但是它的缺点就是调试和配置起来太麻烦了。但现在 webpack4.0 的免配置一定程度上解决了这个问题。但是我感觉就是对我来说，就是一个黑盒，很多时候出现了问题，没有办法很好的定位。
 
-详细资料可以参考：
-[《不聊 webpack 配置，来说说它的原理》](https://juejin.im/post/5b38d27451882574d87aa5d5#heading-0)
-[《前端工程化——构建工具选型：grunt、gulp、webpack》](https://juejin.im/entry/5b5724d05188251aa01647fd)
-[《浅入浅出 webpack》](https://juejin.im/post/5afa9cd0f265da0b981b9af9#heading-0)
+参考  
+[《不聊 webpack 配置，来说说它的原理》](https://juejin.im/post/5b38d27451882574d87aa5d5#heading-0)  
+[《前端工程化——构建工具选型：grunt、gulp、webpack》](https://juejin.im/entry/5b5724d05188251aa01647fd)  
+[《浅入浅出 webpack》](https://juejin.im/post/5afa9cd0f265da0b981b9af9#heading-0)  
 [《前端构建工具发展及其比较》](https://juejin.im/entry/5ae5c8c9f265da0b9f400d8e)
 
-### 116. offsetWidth/offsetHeight,clientWidth/clientHeight 与 scrollWidth/scrollHeight 的区别？
+### 116. offsetWidth/offsetHeight、clientWidth/clientHeight 与 scrollWidth/scrollHeight 的区别？
 
-- clientWidth/clientHeight 返回的是元素的内部宽度，它的值只包含 content + padding，如果有滚动条，不包含滚动条。
+- `clientWidth/clientHeight` 返回的是元素的内部宽度，它的值只包含 content + padding，如果有滚动条，不包含滚动条。
   clientTop 返回的是上边框的宽度。
   clientLeft 返回的左边框的宽度。
 
-- offsetWidth/offsetHeight 返回的是元素的布局宽度，它的值包含 content + padding + border 包含了滚动条。
+- `offsetWidth/offsetHeight` 返回的是元素的布局宽度，它的值包含 content + padding + border 包含了滚动条。
   offsetTop 返回的是当前元素相对于其 offsetParent 元素的顶部的距离。
   offsetLeft 返回的是当前元素相对于其 offsetParent 元素的左部的距离。
 
-- scrollWidth/scrollHeight 返回值包含 content + padding + 溢出内容的尺寸。
+- `scrollWidth/scrollHeight` 返回值包含 content + padding + 溢出内容的尺寸。
   scrollTop 属性返回的是一个元素的内容垂直滚动的像素数。
   scrollLeft 属性返回的是元素滚动条到元素左边的距离。
 
-详细资料可以参考：
-[《最全的获取元素宽高及位置的方法》](https://juejin.im/post/5bc9366d5188255c4834e75a)
+参考  
+[《最全的获取元素宽高及位置的方法》](https://juejin.im/post/5bc9366d5188255c4834e75a)  
 [《用 Javascript 获取页面元素的位置》](http://www.ruanyifeng.com/blog/2009/09/find_element_s_position_using_javascript.html)
 
 ### 117. 谈一谈你理解的函数式编程？
 
-- 简单说，"函数式编程"是一种"编程范式"（programming paradigm），也就是如何编写程序的方法论。
+- 简单说“函数式编程”是一种编程范式（programming paradigm），也就是如何编写程序的方法论。
 
-- 它具有以下特性：闭包和高阶函数、惰性计算、递归、函数是"第一等公民"、只用"表达式"。
+- 它具有以下特性：闭包和高阶函数、惰性计算、递归、函数是“第一等公民”、只用“表达式”。
 
-详细资料可以参考：
+参考  
 [《函数式编程初探》](http://www.ruanyifeng.com/blog/2012/04/functional_programming.html)
 
 ### 118. 异步编程的实现方式？
 
-- 相关知识点：
+#### 相关知识
 
-  回调函数
+- 回调函数
   优点：简单、容易理解。
   缺点：不利于维护，代码耦合高。
 
-  事件监听（采用时间驱动模式，取决于某个事件是否发生）：
-  优点：容易理解，可以绑定多个事件，每个事件可以指定多个回调函数
-  缺点：事件驱动型，流程不够清晰
+- 事件监听（采用时间驱动模式，取决于某个事件是否发生）
+  优点：容易理解，可以绑定多个事件，每个事件可以指定多个回调函数。
+  缺点：事件驱动型，流程不够清晰。
 
-  发布/订阅（观察者模式）
-  类似于事件监听，但是可以通过‘消息中心’，了解现在有多少发布者，多少订阅者。
+- 发布/订阅（观察者模式）
+  类似于事件监听，但是可以通过“消息中心”，了解现在有多少发布者，多少订阅者。
 
-  Promise 对象
-  优点：可以利用 then 方法，进行链式写法；可以书写错误时的回调函数；
+- Promise 对象
+  优点：可以利用 then 方法，进行链式写法；可以书写错误时的回调函数。
   缺点：编写和理解，相对比较难。
 
-  Generator 函数
+- Generator 函数
   优点：函数体内外的数据交换、错误处理机制。
   缺点：流程管理不方便。
 
-  async 函数
+- async 函数
   优点：内置执行器、更好的语义、更广的适用性、返回的是 Promise、结构清晰。
-  缺点：错误处理机制
+  缺点：错误处理机制。
 
-- 回答：
+#### 回答
 
-  js 中的异步机制可以分为以下几种：
+JS 中的异步机制可以分为以下几种：
 
-  第一种最常见的是使用回调函数的方式，使用回调函数的方式有一个缺点是，多个回调函数嵌套的时候会造成回调函数地狱，上下两层的回调函数间的代码耦合度太高，不利于代码的可维护。
+第一种最常见的是使用回调函数的方式，使用回调函数的方式有一个缺点是，多个回调函数嵌套的时候会造成回调函数地狱，上下两层的回调函数间的代码耦合度太高，不利于代码的可维护。
 
-  第二种是 Promise 的方式，使用 Promise 的方式可以将嵌套的回调函数作为链式调用。但是使用这种方法，有时会造成多个 then 的链式调用，可能会造成代码的语义不够明确。
+第二种是 Promise 的方式，使用 Promise 的方式可以将嵌套的回调函数作为链式调用。但是使用这种方法，有时会造成多个 then 的链式调用，可能会造成代码的语义不够明确。
 
-  第三种是使用 generator 的方式，它可以在函数的执行过程中，将函数的执行权转移出去，在函数外部我们还可以将执行权转移回来。当我们遇到异步函数执行的时候，将函数执行权转移出去，当异步函数执行完毕的时候我们再将执行权给转移回来。因此我们在 generator 内部对于异步操作的方式，可以以同步的顺序来书写。使用这种方式我们需要考虑的问题是何时将函数的控制权转移回来，因此我们需要有一个自动执行 generator 的机制，比如说 co 模块等方式来实现 generator 的自动执行。
+第三种是使用 generator 的方式，它可以在函数的执行过程中，将函数的执行权转移出去，在函数外部我们还可以将执行权转移回来。当我们遇到异步函数执行的时候，将函数执行权转移出去，当异步函数执行完毕的时候我们再将执行权给转移回来。因此我们在 generator 内部对于异步操作的方式，可以以同步的顺序来书写。使用这种方式我们需要考虑的问题是何时将函数的控制权转移回来，因此我们需要有一个自动执行 generator 的机制，比如说 co 模块等方式来实现 generator 的自动执行。
 
-  第四种是使用 async 函数的形式，async 函数是 generator 和 promise 实现的一个自动执行的语法糖，它内部自带执行器，当函数内部执行到一个 await 语句的时候，如果语句返回一个 promise 对象，那么函数将会等待 promise 对象的状态变为 resolve 后再继续向下执行。因此我们可以将异步逻辑，转化为同步的顺序来书写，并且这个函数可以自动执行。
+第四种是使用 async 函数的形式，async 函数是 generator 和 promise 实现的一个自动执行的语法糖，它内部自带执行器，当函数内部执行到一个 await 语句的时候，如果语句返回一个 promise 对象，那么函数将会等待 promise 对象的状态变为 resolve 后再继续向下执行。因此我们可以将异步逻辑，转化为同步的顺序来书写，并且这个函数可以自动执行。
 
-### 119. Js 动画与 CSS 动画区别及相应实现
+### 119. JS 动画与 CSS3 动画区别及相应实现
 
-- CSS3 的动画的优点
+- CSS3 动画
 
-  - 在性能上会稍微好一些，浏览器会对 CSS3 的动画做一些优化。
-  - 代码相对简单。
+  - 优点：
+    在性能上会稍微好一些，浏览器会对 CSS3 的动画做一些优化。
+    代码相对简单。
 
-- 缺点
+  - 缺点：
+    在动画控制上不够灵活。
+    兼容性不好。
 
-  - 在动画控制上不够灵活
-  - 兼容性不好
-
-- JavaScript 的动画正好弥补了这两个缺点，控制能力很强，可以单帧的控制、变换，同时写得好完全可以兼容 IE6，并且功能强大。对于一些复杂控制的动画，使用 javascript 会比较靠谱。而在实现一些小的交互动效的时候，就多考虑考虑 CSS 吧。
+- JavaScript 的动画正好弥补了这两个缺点，控制能力很强，可以单帧的控制、变换，同时写得好完全可以兼容 IE6，并且功能强大。对于一些复杂控制的动画，使用 JS 会比较靠谱。而在实现一些小的交互动效的时候，就多考虑考虑 CSS3。
 
 ### 120. get 请求传参长度的误区
 
@@ -2172,10 +2172,10 @@ function curry(fn, ...args) {
 
 - 实际上 HTTP 协议从未规定 GET/POST 的请求长度限制是多少。对 get 请求参数的限制是来源与浏览器或 web 服务器，浏览器或 web 服务器限制了 url 的长度。为了明确这个概念，我们必须再次强调下面几点:
 
-- HTTP 协议未规定 GET 和 POST 的长度限制。
-- GET 的最大长度显示是因为浏览器和 web 服务器限制了 URI 的长度。
-- 不同的浏览器和 WEB 服务器，限制的最大长度不一样。
-- 要支持 IE，则最大长度为 2083byte，若只支持 Chrome，则最大长度 8182byte。
+  - HTTP 协议未规定 GET 和 POST 的长度限制。
+  - GET 的最大长度显示是因为浏览器和 web 服务器限制了 URI 的长度。
+  - 不同的浏览器和 WEB 服务器，限制的最大长度不一样。
+  - 要支持 IE，则最大长度为 2083byte，若只支持 Chrome，则最大长度 8182byte。
 
 ### 121. URL 和 URI 的区别？
 
