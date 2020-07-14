@@ -1308,7 +1308,7 @@ removeAttribute(key);
 
 - 数组和字符串的转换方法：`toString()`、`toLocalString()`、`join()` 其中 `join()` 方法可以指定转换为字符串时的分隔符。
 
-- 数组尾部操作的方法 `pop()` 和 `push()``，push` 方法可以传入多个参数。
+- 数组尾部操作的方法 `pop()` 和 ` push()``，push ` 方法可以传入多个参数。
 
 - 数组首部操作的方法 `shift()` 和 `unshift()` 重排序的方法 `reverse()` 和 `sort()`，`sort()` 方法可以传入一个函数来进行比较，传入前后两个值，如果返回值为正数，则交换两个参数的位置。
 
@@ -1365,55 +1365,57 @@ removeAttribute(key);
 
 ### 80. 简单介绍一下 V8 引擎的垃圾回收机制
 
-- v8 的垃圾回收机制基于分代回收机制，这个机制又基于世代假说，这个假说有两个特点，一是新生的对象容易早死，另一个是不死的对象会活得更久。基于这个假说，v8 引擎将内存分为了新生代和老生代。
+- V8 的垃圾回收机制基于分代回收机制，这个机制又基于世代假说，这个假说有两个特点，一是新生的对象容易早死，另一个是不死的对象会活得更久。基于这个假说，V8 引擎将内存分为了新生代和老生代。
 
 - 新创建的对象或者只经历过一次的垃圾回收的对象被称为新生代。经历过多次垃圾回收的对象被称为老生代。
 
-- 新生代被分为 From 和 To 两个空间，To 一般是闲置的。当 From 空间满了的时候会执行 Scavenge 算法进行垃圾回收。当我们执行垃圾回收算法的时候应用逻辑将会停止，等垃圾回收结束后再继续执行。这个算法分为三步：
+- 新生代被分为 From 和 To 两个空间，To 一般是闲置的。当 From 空间满了的时候会执行 Scavenge 算法进行垃圾回收。当我们执行垃圾回收算法的时候应用逻辑将会停止，等垃圾回收结束后再继续执行。
 
-  （1）首先检查 From 空间的存活对象，如果对象存活则判断对象是否满足晋升到老生代的条件，如果满足条件则晋升到老生代。如果不满足条件则移动 To 空间。
+  这个算法分为三步：
 
-  （2）如果对象不存活，则释放对象的空间。
+  1. 首先检查 From 空间的存活对象，如果对象存活则判断对象是否满足晋升到老生代的条件，如果满足条件则晋升到老生代。如果不满足条件则移动 To 空间。
 
-  （3）最后将 From 空间和 To 空间角色进行交换。
+  2. 如果对象不存活，则释放对象的空间。
+
+  3. 最后将 From 空间和 To 空间角色进行交换。
 
   新生代对象晋升到老生代有两个条件：
 
-  （1）第一个是判断是对象否已经经过一次 Scavenge 回收。若经历过，则将对象从 From 空间复制到老生代中；若没有经历，则复制到 To 空间。
+  1. 第一个是判断是对象否已经经过一次 Scavenge 回收。若经历过，则将对象从 From 空间复制到老生代中；若没有经历，则复制到 To 空间。
 
-  （2）第二个是 To 空间的内存使用占比是否超过限制。当对象从 From 空间复制到 To 空间时，若 To 空间使用超过 25%，则对象直接晋升到老生代中。设置 25% 的原因主要是因为算法结束后，两个空间结束后会交换位置，如果 To 空间的内存太小，会影响后续的内存分配。
+  2. 第二个是 To 空间的内存使用占比是否超过限制。当对象从 From 空间复制到 To 空间时，若 To 空间使用超过 25%，则对象直接晋升到老生代中。设置 25% 的原因主要是因为算法结束后，两个空间结束后会交换位置，如果 To 空间的内存太小，会影响后续的内存分配。
 
 - 老生代采用了标记清除法和标记压缩法。标记清除法首先会对内存中存活的对象进行标记，标记结束后清除掉那些没有标记的对象。由于标记清除后会造成很多的内存碎片，不便于后面的内存分配。所以了解决内存碎片的问题引入了标记压缩法。
 
 - 由于在进行垃圾回收的时候会暂停应用的逻辑，对于新生代方法由于内存小，每次停顿的时间不会太长，但对于老生代来说每次垃圾回收的时间长，停顿会造成很大的影响。 为了解决这个问题 V8 引入了增量标记的方法，将一次停顿进行的过程分为了多步，每次执行完一小步就让运行逻辑执行一会，就这样交替运行。
 
-详细资料可以参考：
-[《深入理解 V8 的垃圾回收原理》](https://www.jianshu.com/p/b8ed21e8a4fb)
+参考  
+[《深入理解 V8 的垃圾回收原理》](https://www.jianshu.com/p/b8ed21e8a4fb)  
 [《JavaScript 中的垃圾回收》](https://zhuanlan.zhihu.com/p/23992332)
 
 ### 81. 哪些操作会造成内存泄漏？
 
-- 相关知识点：
+#### 相关知识
 
-  - 意外的全局变量
-  - 被遗忘的计时器或回调函数
-  - 脱离 DOM 的引用
-  - 闭包
+- 意外的全局变量。
+- 被遗忘的计时器或回调函数。
+- 脱离 DOM 的引用。
+- 闭包。
 
-- 回答：
+#### 回答
 
-  - 第一种情况是我们由于使用未声明的变量，而意外的创建了一个全局变量，而使这个变量一直留在内存中无法被回收。
+- 第一种情况是我们由于使用未声明的变量，而意外的创建了一个全局变量，而使这个变量一直留在内存中无法被回收。
 
-  - 第二种情况是我们设置了 setInterval 定时器，而忘记取消它，如果循环函数有对外部变量的引用的话，那么这个变量会被一直留在内存中，而无法被回收。
+- 第二种情况是我们设置了 setInterval 定时器，而忘记取消它，如果循环函数有对外部变量的引用的话，那么这个变量会被一直留在内存中，而无法被回收。
 
-  - 第三种情况是我们获取一个 DOM 元素的引用，而后面这个元素被删除，由于我们一直保留了对这个元素的引用，所以它也无法被回收。
+- 第三种情况是我们获取一个 DOM 元素的引用，而后面这个元素被删除，由于我们一直保留了对这个元素的引用，所以它也无法被回收。
 
-  - 第四种情况是不合理的使用闭包，从而导致某些变量一直被留在内存当中。
+- 第四种情况是不合理的使用闭包，从而导致某些变量一直被留在内存当中。
 
-详细资料可以参考：
-[《JavaScript 内存泄漏教程》](http://www.ruanyifeng.com/blog/2017/04/memory-leak.html)
-[《4 类 JavaScript 内存泄漏及如何避免》](https://jinlong.github.io/2016/05/01/4-Types-of-Memory-Leaks-in-JavaScript-and-How-to-Get-Rid-Of-Them/)
-[《杜绝 js 中四种内存泄漏类型的发生》](https://juejin.im/entry/5a64366c6fb9a01c9332c706)
+参考  
+[《JavaScript 内存泄漏教程》](http://www.ruanyifeng.com/blog/2017/04/memory-leak.html)  
+[《4 类 JavaScript 内存泄漏及如何避免》](https://jinlong.github.io/2016/05/01/4-Types-of-Memory-Leaks-in-JavaScript-and-How-to-Get-Rid-Of-Them/)  
+[《杜绝 js 中四种内存泄漏类型的发生》](https://juejin.im/entry/5a64366c6fb9a01c9332c706)  
 [《javascript 典型内存泄漏及 chrome 的排查方法》](https://segmentfault.com/a/1190000008901861)
 
 ### 82. 需求：实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？
@@ -1422,8 +1424,8 @@ removeAttribute(key);
 
 - 使用 pushState 来实现有两个问题，一个是打开首页时没有记录，我们可以使用 replaceState 来将首页的记录替换，另一个问题是当一个页面刷新的时候，仍然会向服务器端请求数据，因此如果请求的 url 需要后端的配合将其重定向到一个页面。
 
-详细资料可以参考：
-[《pushState + ajax 实现浏览器无刷新前进后退》](http://blog.chenxu.me/post/detail?id=ed4f0732-897f-48e4-9d4f-821e82f17fad)
+参考  
+[《pushState + ajax 实现浏览器无刷新前进后退》](http://blog.chenxu.me/post/detail?id=ed4f0732-897f-48e4-9d4f-821e82f17fad)  
 [《Manipulating the browser history》](https://developer.mozilla.org/zh-CN/docs/Web/API/History_API)
 
 ### 83. 如何判断当前脚本运行在浏览器还是 node 环境中？（阿里）
@@ -1434,11 +1436,11 @@ removeAttribute(key);
 
 ### 84. 把 script 标签放在页面的最底部的 body 封闭之前和封闭之后有什么区别？浏览器会如何解析它们？
 
-详细资料可以参考：
-[《为什么把 script 标签放在 body 结束标签之后 html 结束标签之前？》](https://www.zhihu.com/question/20027966)
+参考  
+[《为什么把 script 标签放在 body 结束标签之后 html 结束标签之前？》](https://www.zhihu.com/question/20027966)  
 [《从 Chrome 源码看浏览器如何加载资源》](https://zhuanlan.zhihu.com/p/30558018)
 
-### 85. 移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？
+### 85. 移动端的点击事件有延迟，时间是多久，为什么会有？怎么解决这个延时？
 
 - 移动端点击有 300ms 的延迟是因为移动端会有双击缩放的这个操作，因此浏览器在 click 之后要等待 300ms，看用户有没有下一次点击，来判断这次操作是不是双击。
 
@@ -1450,7 +1452,7 @@ removeAttribute(key);
 
 - click 延时问题还可能引起点击穿透的问题，就是如果我们在一个元素上注册了 touchStart 的监听事件，这个事件会将这个元素隐藏掉，我们发现当这个元素隐藏后，触发了这个元素下的一个元素的点击事件，这就是点击穿透。
 
-详细资料可以参考：
+参考  
 [《移动端 300ms 点击延迟和点击穿透》](https://juejin.im/post/5b3cc9836fb9a04f9a5cb0e0)
 
 ### 86. 什么是“前端路由”？什么时候适合使用“前端路由”？“前端路由”有哪些优点和缺点？
@@ -1471,28 +1473,28 @@ removeAttribute(key);
 
 - 前端路由一共有两种实现方式，一种是通过 hash 的方式，一种是通过使用 pushState 的方式。
 
-详细资料可以参考：
-[《什么是“前端路由”》](https://segmentfault.com/q/1010000005336260)
-[《浅谈前端路由》 ](https://github.com/kaola-fed/blog/issues/137)
+参考  
+[《什么是“前端路由”》](https://segmentfault.com/q/1010000005336260)  
+[《浅谈前端路由》 ](https://github.com/kaola-fed/blog/issues/137)  
 [《前端路由是什么东西？》](https://www.zhihu.com/question/53064386)
 
-### 87. 如何测试前端代码么？ 知道 BDD, TDD, Unit Test 么？ 知道怎么测试你的前端工程么(mocha, sinon, jasmin, qUnit..)？
+### 87. 如何测试前端代码么？知道 BDD, TDD, Unit Test 么？ 知道怎么测试你的前端工程吗(mocha, sinon, jasmin, qUnit..)？
 
-详细资料可以参考：
+参考  
 [《浅谈前端单元测试》](https://juejin.im/post/5b2da89cf265da597f1c7cab)
 
 ### 88. 检测浏览器版本版本有哪些方式？
 
-- 检测浏览器版本一共有两种方式：
+检测浏览器版本一共有两种方式：
 
-  - 一种是检测 window.navigator.userAgent 的值，但这种方式很不可靠，因为 userAgent 可以被改写，并且早期的浏览器如 ie，会通过伪装自己的 userAgent 的值为 Mozilla 来躲过服务器的检测。
+- 一种是检测 window.navigator.userAgent 的值，但这种方式很不可靠，因为 userAgent 可以被改写，并且早期的浏览器如 IE 会通过伪装自己的 userAgent 的值为 Mozilla 来躲过服务器的检测。
 
-  - 第二种方式是功能检测，根据每个浏览器独有的特性来进行判断，如 ie 下独有的 ActiveXObject。
+- 第二种方式是功能检测，根据每个浏览器独有的特性来进行判断，如 IE 下独有的 ActiveXObject。
 
-详细资料可以参考：
+参考  
 [《JavaScript 判断浏览器类型》](https://www.jianshu.com/p/d99f4ca385ac)
 
-### 89. 什么是 Polyfill ？
+### 89. 什么是 Polyfill？
 
 - Polyfill 指的是用于实现浏览器并不支持的原生 API 的代码。
 
@@ -1500,8 +1502,8 @@ removeAttribute(key);
 
 一个 shim 是一个库，有自己的 API，而不是单纯实现原生不支持的 API。
 
-详细资料可以参考：
-[《Web 开发中的“黑话”》](https://segmentfault.com/a/1190000002593432)
+参考  
+[《Web 开发中的“黑话”》](https://segmentfault.com/a/1190000002593432)  
 [《Polyfill 为何物》](https://juejin.im/post/5a579bc7f265da3e38496ba1)
 
 ### 90. 使用 JS 实现获取文件扩展名？
@@ -1517,12 +1519,12 @@ function getFileExtension(filename) {
 }
 ```
 
-详细资料可以参考：
+参考  
 [《如何更有效的获取文件扩展名》](https://segmentfault.com/a/1190000004993946)
 
 ### 91. 介绍一下 js 的节流与防抖？
 
-相关知识点：
+#### 相关知识
 
 ```js
 // 函数防抖： 在事件被触发 n 秒后再执行回调，如果在这 n 秒内事件又被触发，则重新计时。
@@ -1568,52 +1570,54 @@ function throttle(fn, delay) {
 }
 ```
 
-回答：
+#### 回答
 
 - 函数防抖是指在事件被触发 n 秒后再执行回调，如果在这 n 秒内事件又被触发，则重新计时。这可以使用在一些点击请求的事件上，避免因为用户的多次点击向后端发送多次请求。
 
 - 函数节流是指规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。节流可以使用在 scroll 函数的事件监听上，通过事件节流来降低事件调用的频率。
 
-详细资料可以参考：
-[《轻松理解 JS 函数节流和函数防抖》](https://juejin.im/post/5a35ed25f265da431d3cc1b1)
-[《JavaScript 事件节流和事件防抖》](https://juejin.im/post/5aa60b0e518825556b6c6d1a)
+参考  
+[《轻松理解 JS 函数节流和函数防抖》](https://juejin.im/post/5a35ed25f265da431d3cc1b1)  
+[《JavaScript 事件节流和事件防抖》](https://juejin.im/post/5aa60b0e518825556b6c6d1a)  
 [《JS 的防抖与节流》](https://juejin.im/entry/5b1d2d54f265da6e2545bfa4)
 
 ### 92. Object.is() 与原来的比较操作符 “===”、“==” 的区别？
 
-- 相关知识点：
+#### 相关知识
 
-  - 两等号判等，会在比较时进行类型转换。
+- 两等号判等，会在比较时进行类型转换。
 
-  - 三等号判等（判断严格），比较时不进行隐式类型转换，（类型不同则会返回 false）。
+- 三等号判等（判断严格），比较时不进行隐式类型转换（类型不同则会返回 false）。
 
-  - Object.is 在三等号判等的基础上特别处理了 NaN 、-0 和 +0 ，保证 -0 和 +0 不再相同，但 Object.is(NaN, NaN) 会返回 true.
+- Object.is 在三等号判等的基础上特别处理了 NaN 、-0 和 +0 ，保证 -0 和 +0 不再相同，但 Object.is(NaN, NaN) 会返回 true.
 
-  - Object.is 应被认为有其特殊的用途，而不能用它认为它比其它的相等对比更宽松或严格。
+- Object.is 应被认为有其特殊的用途，而不能用它认为它比其它的相等对比更宽松或严格。
 
-- 回答：
+#### 回答
 
-  - 使用双等号进行相等判断时，如果两边的类型不一致，则会进行强制类型转化后再进行比较。
+- 使用双等号进行相等判断时，如果两边的类型不一致，则会进行强制类型转化后再进行比较。
 
-  - 使用三等号进行相等判断时，如果两边的类型不一致时，不会做强制类型准换，直接返回 false。
+- 使用三等号进行相等判断时，如果两边的类型不一致时，不会做强制类型准换，直接返回 false。
 
-  - 使用 Object.is 来进行相等判断时，一般情况下和三等号的判断相同，它处理了一些特殊的情况，比如 -0 和 +0 不再相等，两个 NaN 认定为是相等的。
+- 使用 Object.is 来进行相等判断时，一般情况下和三等号的判断相同，它处理了一些特殊的情况，比如 -0 和 +0 不再相等，两个 NaN 认定为是相等的。
 
-### 93. escape,encodeURI,encodeURIComponent 有什么区别？
+### 93. escape、encodeURI 和 encodeURIComponent 有什么区别？
 
-- 相关知识点：
+#### 相关知识
 
-  - escape 和 encodeURI 都属于 Percent-encoding，基本功能都是把 URI 非法字符转化成合法字符，转化后形式类似「%\*」。它们的根本区别在于，escape 在处理 0xff 之外字符的时候，是直接使用字符的 unicode 在前面加上一个「%u」，而 encode URI 则是先进行 UTF-8，再在 UTF-8 的每个字节码前加上一个「%」；在处理 0xff 以内字符时，编码方式是一样的（都是「%XX」，XX 为字符的 16 进制 unicode，同时也是字符的 UTF-8），只是范围（即哪些字符编码哪些字符不编码）不一样。
+`escape` 和 `encodeURI` 都属于 Percent-encoding，基本功能都是把 URI 非法字符转化成合法字符，转化后形式类似 `%*`。
 
-- 回答：
+它们的根本区别在于：`escape` 在处理 `0xff` 之外字符的时候，是直接使用字符的 `unicode` 在前面加上一个 `%u`，而 encode URI 则是先进行 UTF-8，再在 UTF-8 的每个字节码前加上一个`%`；在处理 `0xff` 以内字符时，编码方式是一样的（都是 `%XX`，XX 为字符的 16 进制 unicode，同时也是字符的 UTF-8），只是范围（即哪些字符编码哪些字符不编码）不一样。
 
-  - encodeURI 是对整个 URI 进行转义，将 URI 中的非法字符转换为合法字符，所以对于一些在 URI 中有特殊意义的字符不会进行转义。
+#### 回答
 
-  - encodeURIComponent 是对 URI 的组成部分进行转义，所以一些特殊字符也会得到转义。
+- encodeURI 是对整个 URI 进行转义，将 URI 中的非法字符转换为合法字符，所以对于一些在 URI 中有特殊意义的字符不会进行转义。
 
-  - escape 和 encodeURI 的作用相同，不过它们对于 unicode 编码为 0xff 之外字符的时候会有区别，escape 是直接在字符的 unicode 编码前加上 %u，而 encodeURI 首先会将字符转换为 UTF-8 的格式，再在每个字节前加上 %。
+- encodeURIComponent 是对 URI 的组成部分进行转义，所以一些特殊字符也会得到转义。
 
-详细资料可以参考：
+- escape 和 encodeURI 的作用相同，不过它们对于 unicode 编码为 0xff 之外字符的时候会有区别，escape 是直接在字符的 unicode 编码前加上 %u，而 encodeURI 首先会将字符转换为 UTF-8 的格式，再在每个字节前加上 %。
+
+参考  
 [《escape,encodeURI,encodeURIComponent 有什么区别?》](https://www.zhihu.com/question/21861899)
 
 ### 94. Unicode 和 UTF-8 之间的关系？
@@ -1622,201 +1626,197 @@ function throttle(fn, delay) {
 
 - UTF-8 是一种对 Unicode 的编码方式，它是一种变长的编码方式，可以用 1~4 个字节来表示一个字符。
 
-详细资料可以参考：
-[《字符编码详解》](https://blog.51cto.com/polaris/377468)
+参考  
+[《字符编码详解》](https://blog.51cto.com/polaris/377468)  
 [《字符编码笔记：ASCII，Unicode 和 UTF-8》](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
 
-### 95. js 的事件循环是什么？
+### 95. JS 的事件循环是什么？
 
-- 相关知识点：
+#### 相关知识
 
-  - 事件队列是一个存储着待执行任务的队列，其中的任务严格按照时间先后顺序执行，排在队头的任务将会率先执行，而排在队尾的任务会最后执行。事件队列每次仅执行一个任务，在该任务执行完毕之后，再执行下一个任务。执行栈则是一个类似于函数调用栈的运行容器，当执行栈为空时，JS 引擎便检查事件队列，如果不为空的话，事件队列便将第一个任务压入执行栈中运行。
+事件队列是一个存储着待执行任务的队列，其中的任务严格按照时间先后顺序执行，排在队头的任务将会率先执行，而排在队尾的任务会最后执行。事件队列每次仅执行一个任务，在该任务执行完毕之后，再执行下一个任务。执行栈则是一个类似于函数调用栈的运行容器，当执行栈为空时，JS 引擎便检查事件队列，如果不为空的话，事件队列便将第一个任务压入执行栈中运行。
 
-- 回答：
+#### 回答
 
-  - 因为 js 是单线程运行的，在代码执行的时候，通过将不同函数的执行上下文压入执行栈中来保证代码的有序执行。在执行同步代码的时候，如果遇到了异步事件，js 引擎并不会一直等待其返回结果，而是会将这个事件挂起，继续执行执行栈中的其他任务。当异步事件执行完毕后，再将异步事件对应的回调加入到与当前执行栈中不同的另一个任务队列中等待执行。任务队列可以分为宏任务对列和微任务对列，当当前执行栈中的事件执行完毕后，js 引擎首先会判断微任务对列中是否有任务可以执行，如果有就将微任务队首的事件压入栈中执行。当微任务对列中的任务都执行完成后再去判断宏任务对列中的任务。
+- 因为 JS 是单线程运行的，在代码执行的时候，通过将不同函数的执行上下文压入执行栈中来保证代码的有序执行。在执行同步代码的时候，如果遇到了异步事件，JS 引擎并不会一直等待其返回结果，而是会将这个事件挂起，继续执行执行栈中的其他任务。当异步事件执行完毕后，再将异步事件对应的回调加入到与当前执行栈中不同的另一个任务队列中等待执行。任务队列可以分为宏任务队列和微任务队列，当当前执行栈中的事件执行完毕后，JS 引擎首先会判断微任务对列中是否有任务可以执行，如果有就将微任务队首的事件压入栈中执行。当微任务对列中的任务都执行完成后再去判断宏任务对列中的任务。
 
-  - 微任务包括了 promise 的回调、node 中的 process.nextTick 、对 Dom 变化监听的 MutationObserver。
+- 微任务包括了 promise 的回调、node 中的 process.nextTick、对 DOM 变化监听的 MutationObserver。
 
-  - 宏任务包括了 script 脚本的执行、setTimeout ，setInterval ，setImmediate 一类的定时事件，还有如 I/O 操作、UI 渲染等。
+- 宏任务包括了 script 脚本的执行、setTimeout、setInterval、setImmediate 一类的定时事件，还有如 I/O 操作、UI 渲染等。
 
-详细资料可以参考：
-[《浏览器事件循环机制（event loop）》](https://juejin.im/post/5afbc62151882542af04112d)
-[《详解 JavaScript 中的 Event Loop（事件循环）机制》](https://zhuanlan.zhihu.com/p/33058983)
-[《什么是 Event Loop？》](http://www.ruanyifeng.com/blog/2013/10/event_loop.html)
+参考  
+[《浏览器事件循环机制（event loop）》](https://juejin.im/post/5afbc62151882542af04112d)  
+[《详解 JavaScript 中的 Event Loop（事件循环）机制》](https://zhuanlan.zhihu.com/p/33058983)  
+[《什么是 Event Loop？》](http://www.ruanyifeng.com/blog/2013/10/event_loop.html)  
 [《这一次，彻底弄懂 JavaScript 执行机制》](https://juejin.im/post/59e85eebf265da430d571f89)
 
-### 96. js 中的深浅拷贝实现？
+### 96. JS 中的深浅拷贝实现？
 
-- 相关资料：
+#### 相关知识
 
-  ```js
-  // 浅拷贝的实现;
+```js
+// 浅拷贝的实现;
+function shallowCopy(object) {
+  // 只拷贝对象
+  if (!object || typeof object !== 'object') return;
 
-  function shallowCopy(object) {
-    // 只拷贝对象
-    if (!object || typeof object !== 'object') return;
+  // 根据 object 的类型判断是新建一个数组还是对象
+  let newObject = Array.isArray(object) ? [] : {};
 
-    // 根据 object 的类型判断是新建一个数组还是对象
-    let newObject = Array.isArray(object) ? [] : {};
-
-    // 遍历 object，并且判断是 object 的属性才拷贝
-    for (let key in object) {
-      if (object.hasOwnProperty(key)) {
-        newObject[key] = object[key];
-      }
+  // 遍历 object，并且判断是 object 的属性才拷贝
+  for (let key in object) {
+    if (object.hasOwnProperty(key)) {
+      newObject[key] = object[key];
     }
-
-    return newObject;
   }
 
-  // 深拷贝的实现;
+  return newObject;
+}
 
-  function deepCopy(object) {
-    if (!object || typeof object !== 'object') return;
+// 深拷贝的实现;
+function deepCopy(object) {
+  if (!object || typeof object !== 'object') return;
 
-    let newObject = Array.isArray(object) ? [] : {};
+  let newObject = Array.isArray(object) ? [] : {};
 
-    for (let key in object) {
-      if (object.hasOwnProperty(key)) {
-        newObject[key] =
-          typeof object[key] === 'object' ? deepCopy(object[key]) : object[key];
-      }
+  for (let key in object) {
+    if (object.hasOwnProperty(key)) {
+      newObject[key] =
+        typeof object[key] === 'object' ? deepCopy(object[key]) : object[key];
     }
-
-    return newObject;
   }
-  ```
 
-- 回答：
+  return newObject;
+}
+```
 
-  - 浅拷贝指的是将一个对象的属性值复制到另一个对象，如果有的属性的值为引用类型的话，那么会将这个引用的地址复制给对象，因此两个对象会有同一个引用类型的引用。浅拷贝可以使用 Object.assign 和展开运算符来实现。
+#### 回答
 
-  - 深拷贝相对浅拷贝而言，如果遇到属性值为引用类型的时候，它新建一个引用类型并将对应的值复制给它，因此对象获得的一个新的引用类型而不是一个原有类型的引用。深拷贝对于一些对象可以使用 JSON 的两个函数来实现，但是由于 JSON 的对象格式比 js 的对象格式更加严格，所以如果属性值里边出现函数或者 Symbol 类型的值时，会转换失败。
+- 浅拷贝指的是将一个对象的属性值复制到另一个对象，如果有的属性的值为引用类型的话，那么会将这个引用的地址复制给对象，因此两个对象会有同一个引用类型的引用。浅拷贝可以使用 `Object.assign` 和展开运算符来实现。
 
-详细资料可以参考：
-[《JavaScript 专题之深浅拷贝》](https://github.com/mqyqingfeng/Blog/issues/32)
+- 深拷贝相对浅拷贝而言，如果遇到属性值为引用类型的时候，它新建一个引用类型并将对应的值复制给它，因此对象获得的一个新的引用类型而不是一个原有类型的引用。深拷贝对于一些对象可以使用 JSON 的两个函数来实现，但是由于 JSON 的对象格式比 JS 的对象格式更加严格，所以如果属性值里边出现函数或者 Symbol 类型的值时，会转换失败。
+
+参考  
+[《JavaScript 专题之深浅拷贝》](https://github.com/mqyqingfeng/Blog/issues/32)  
 [《前端面试之道》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bed40d951882545f73004f6)
 
 ### 97. 手写 call、apply 及 bind 函数
 
-- 相关知识点：
+#### 相关知识
 
-  ```js
-  // call函数实现
-  Function.prototype.myCall = function (context) {
-    // 判断调用对象
-    if (typeof this !== 'function') {
-      console.error('type error');
-    }
+```js
+// call函数实现
+Function.prototype.myCall = function (context) {
+  // 判断调用对象
+  if (typeof this !== 'function') {
+    console.error('type error');
+  }
 
-    // 获取参数
-    let args = [...arguments].slice(1),
-      result = null;
+  // 获取参数
+  let args = [...arguments].slice(1),
+    result = null;
 
-    // 判断 context 是否传入，如果未传入则设置为 window
-    context = context || window;
+  // 判断 context 是否传入，如果未传入则设置为 window
+  context = context || window;
 
-    // 将调用函数设为对象的方法
-    context.fn = this;
+  // 将调用函数设为对象的方法
+  context.fn = this;
 
-    // 调用函数
-    result = context.fn(...args);
+  // 调用函数
+  result = context.fn(...args);
 
-    // 将属性删除
-    delete context.fn;
+  // 将属性删除
+  delete context.fn;
 
-    return result;
+  return result;
+};
+
+// apply 函数实现
+Function.prototype.myApply = function (context) {
+  // 判断调用对象是否为函数
+  if (typeof this !== 'function') {
+    throw new TypeError('Error');
+  }
+
+  let result = null;
+
+  // 判断 context 是否存在，如果未传入则为 window
+  context = context || window;
+
+  // 将函数设为对象的方法
+  context.fn = this;
+
+  // 调用方法
+  if (arguments[1]) {
+    result = context.fn(...arguments[1]);
+  } else {
+    result = context.fn();
+  }
+
+  // 将属性删除
+  delete context.fn;
+
+  return result;
+};
+
+// bind 函数实现
+Function.prototype.myBind = function (context) {
+  // 判断调用对象是否为函数
+  if (typeof this !== 'function') {
+    throw new TypeError('Error');
+  }
+
+  // 获取参数
+  var args = [...arguments].slice(1),
+    fn = this;
+
+  return function Fn() {
+    // 根据调用方式，传入不同绑定值
+    return fn.apply(
+      this instanceof Fn ? this : context,
+      args.concat(...arguments)
+    );
   };
+};
+```
 
-  // apply 函数实现
+#### 回答
 
-  Function.prototype.myApply = function (context) {
-    // 判断调用对象是否为函数
-    if (typeof this !== 'function') {
-      throw new TypeError('Error');
-    }
+call 函数的实现步骤：
 
-    let result = null;
+1. 判断调用对象是否为函数，即使我们是定义在函数的原型上的，但是可能出现使用 call 等方式调用的情况。
+2. 判断传入上下文对象是否存在，如果不存在，则设置为 window 。
+3. 处理传入的参数，截取第一个参数后的所有参数。
+4. 将函数作为上下文对象的一个属性。
+5. 使用上下文对象来调用这个方法，并保存返回结果。
+6. 删除刚才新增的属性。
+7. 返回结果。
 
-    // 判断 context 是否存在，如果未传入则为 window
-    context = context || window;
+apply 函数的实现步骤：
 
-    // 将函数设为对象的方法
-    context.fn = this;
+1. 判断调用对象是否为函数，即使我们是定义在函数的原型上的，但是可能出现使用 call 等方式调用的情况。
+2. 判断传入上下文对象是否存在，如果不存在，则设置为 window 。
+3. 将函数作为上下文对象的一个属性。
+4. 判断参数值是否传入
+5. 使用上下文对象来调用这个方法，并保存返回结果。
+6. 删除刚才新增的属性
+7. 返回结果。
 
-    // 调用方法
-    if (arguments[1]) {
-      result = context.fn(...arguments[1]);
-    } else {
-      result = context.fn();
-    }
+bind 函数的实现步骤：
 
-    // 将属性删除
-    delete context.fn;
+1. 判断调用对象是否为函数，即使我们是定义在函数的原型上的，但是可能出现使用 call 等方式调用的情况。
+2. 保存当前函数的引用，获取其余传入参数值。
+3. 创建一个函数返回
+4. 函数内部使用 apply 来绑定函数调用，需要判断函数作为构造函数的情况，这个时候需要传入当前函数的 this 给 apply 调用，其余情况都传入指定的上下文对象。
 
-    return result;
-  };
-
-  // bind 函数实现
-  Function.prototype.myBind = function (context) {
-    // 判断调用对象是否为函数
-    if (typeof this !== 'function') {
-      throw new TypeError('Error');
-    }
-
-    // 获取参数
-    var args = [...arguments].slice(1),
-      fn = this;
-
-    return function Fn() {
-      // 根据调用方式，传入不同绑定值
-      return fn.apply(
-        this instanceof Fn ? this : context,
-        args.concat(...arguments)
-      );
-    };
-  };
-  ```
-
-- 回答：
-
-  call 函数的实现步骤：
-
-  1. 判断调用对象是否为函数，即使我们是定义在函数的原型上的，但是可能出现使用 call 等方式调用的情况。
-  2. 判断传入上下文对象是否存在，如果不存在，则设置为 window 。
-  3. 处理传入的参数，截取第一个参数后的所有参数。
-  4. 将函数作为上下文对象的一个属性。
-  5. 使用上下文对象来调用这个方法，并保存返回结果。
-  6. 删除刚才新增的属性。
-  7. 返回结果。
-
-  apply 函数的实现步骤：
-
-  1. 判断调用对象是否为函数，即使我们是定义在函数的原型上的，但是可能出现使用 call 等方式调用的情况。
-  2. 判断传入上下文对象是否存在，如果不存在，则设置为 window 。
-  3. 将函数作为上下文对象的一个属性。
-  4. 判断参数值是否传入
-  5. 使用上下文对象来调用这个方法，并保存返回结果。
-  6. 删除刚才新增的属性
-  7. 返回结果
-
-  bind 函数的实现步骤：
-
-  1. 判断调用对象是否为函数，即使我们是定义在函数的原型上的，但是可能出现使用 call 等方式调用的情况。
-  2. 保存当前函数的引用，获取其余传入参数值。
-  3. 创建一个函数返回
-  4. 函数内部使用 apply 来绑定函数调用，需要判断函数作为构造函数的情况，这个时候需要传入当前函数的 this 给 apply 调用，其余情况都传入指定的上下文对象。
-
-详细资料可以参考：
-[《手写 call、apply 及 bind 函数》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdd0d8e6fb9a04a044073fe)
+参考  
+[《手写 call、apply 及 bind 函数》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdd0d8e6fb9a04a044073fe)  
 [《JavaScript 深入之 call 和 apply 的模拟实现》](https://github.com/mqyqingfeng/Blog/issues/11)
 
 ### 98. 函数柯里化的实现
 
 ```js
 // 函数柯里化指的是一种将使用多个参数的一个函数转换成一系列使用一个参数的函数的技术。
-
 function curry(fn, args) {
   // 获取函数需要的参数长度
   let length = fn.length;
@@ -1842,36 +1842,36 @@ function curry(fn, args) {
   };
 }
 
-// es6 实现
+// ES6 实现
 function curry(fn, ...args) {
   return fn.length <= args.length ? fn(...args) : curry.bind(null, fn, ...args);
 }
 ```
 
-详细资料可以参考：
+参考  
 [《JavaScript 专题之函数柯里化》](https://github.com/mqyqingfeng/Blog/issues/42)
 
 ### 99. 为什么 0.1 + 0.2 != 0.3？如何解决这个问题？
 
-- 当计算机计算 0.1+0.2 的时候，实际上计算的是这两个数字在计算机里所存储的二进制，0.1 和 0.2 在转换为二进制表示的时候会出现位数无限循环的情况。js 中是以 64 位双精度格式来存储数字的，只有 53 位的有效数字，超过这个长度的位数会被截取掉这样就造成了精度丢失的问题。这是第一个会造成精度丢失的地方。在对两个以 64 位双精度格式的数据进行计算的时候，首先会进行对阶的处理，对阶指的是将阶码对齐，也就是将小数点的位置对齐后，再进行计算，一般是小阶向大阶对齐，因此小阶的数在对齐的过程中，有效数字会向右移动，移动后超过有效位数的位会被截取掉，这是第二个可能会出现精度丢失的地方。当两个数据阶码对齐后，进行相加运算后，得到的结果可能会超过 53 位有效数字，因此超过的位数也会被截取掉，这是可能发生精度丢失的第三个地方。
+- 当计算机计算 0.1+0.2 的时候，实际上计算的是这两个数字在计算机里所存储的二进制，0.1 和 0.2 在转换为二进制表示的时候会出现位数无限循环的情况。JS 中是以 64 位双精度格式来存储数字的，只有 53 位的有效数字，超过这个长度的位数会被截取掉这样就造成了精度丢失的问题。这是第一个会造成精度丢失的地方。在对两个以 64 位双精度格式的数据进行计算的时候，首先会进行对阶的处理，对阶指的是将阶码对齐，也就是将小数点的位置对齐后，再进行计算，一般是小阶向大阶对齐，因此小阶的数在对齐的过程中，有效数字会向右移动，移动后超过有效位数的位会被截取掉，这是第二个可能会出现精度丢失的地方。当两个数据阶码对齐后，进行相加运算后，得到的结果可能会超过 53 位有效数字，因此超过的位数也会被截取掉，这是可能发生精度丢失的第三个地方。
 
 - 对于这样的情况，我们可以将其转换为整数后再进行运算，运算后再转换为对应的小数，以这种方式来解决这个问题。
 
-- 我们还可以将两个数相加的结果和右边相减，如果相减的结果小于一个极小数，那么我们就可以认定结果是相等的，这个极小数可以使用 es6 的 Number.EPSILON
+- 我们还可以将两个数相加的结果和右边相减，如果相减的结果小于一个极小数，那么我们就可以认定结果是相等的，这个极小数可以使用 ES6 的 `Number.EPSILON`。
 
-详细资料可以参考：
-[《十进制的 0.1 为什么不能用二进制很好的表示？》](https://blog.csdn.net/Lixuanshengchao/article/details/82049191)
-[《十进制浮点数转成二进制》](https://blog.csdn.net/zhengyanan815/article/details/78550073)
-[《浮点数的二进制表示》](http://www.ruanyifeng.com/blog/2010/06/ieee_floating-point_representation.html)
-[《js 浮点数存储精度丢失原理》](https://juejin.im/post/5b372f106fb9a00e6714aa21)
-[《浮点数精度之谜》](https://juejin.im/post/594a31d0a0bb9f006b0b2624)
-[《JavaScript 浮点数陷阱及解法》](https://github.com/camsong/blog/issues/9)
-[《0.1+0.2 !== 0.3？》](https://juejin.im/post/5bd2f10a51882555e072d0c4)
+参考  
+[《十进制的 0.1 为什么不能用二进制很好的表示？》](https://blog.csdn.net/Lixuanshengchao/article/details/82049191)  
+[《十进制浮点数转成二进制》](https://blog.csdn.net/zhengyanan815/article/details/78550073)  
+[《浮点数的二进制表示》](http://www.ruanyifeng.com/blog/2010/06/ieee_floating-point_representation.html)  
+[《js 浮点数存储精度丢失原理》](https://juejin.im/post/5b372f106fb9a00e6714aa21)  
+[《浮点数精度之谜》](https://juejin.im/post/594a31d0a0bb9f006b0b2624)  
+[《JavaScript 浮点数陷阱及解法》](https://github.com/camsong/blog/issues/9)  
+[《0.1+0.2 !== 0.3？》](https://juejin.im/post/5bd2f10a51882555e072d0c4)  
 [《JavaScript 中奇特的~运算符》](https://juejin.im/entry/59cdd7fb6fb9a00a600f8eef)
 
 ### 100. 原码、反码和补码的介绍
 
-原码是计算机中对数字的二进制的定点表示方法，最高位表示符号位，其余位表示数值位。优点是易于分辨，缺点是不能够直接参与运算。
+原码是计算机中对数字二进制的定点表示方法，最高位表示符号位，其余位表示数值位。优点是易于分辨，缺点是不能够直接参与运算。
 
 正数的反码和其原码一样；负数的反码，符号位为 1，数值部分按原码取反。
 如 [+7]原 = 00000111，[+7]反 = 00000111； [-7]原 = 10000111，[-7]反 = 11111000。
@@ -1883,14 +1883,14 @@ function curry(fn, ...args) {
 
 之所以在计算机中使用补码来表示负数的原因是，这样可以将加法运算扩展到所有的数值计算上，因此在数字电路中我们只需要考虑加法器的设计就行了，而不用再为减法设置新的数字电路。
 
-详细资料可以参考：
+参考  
 [《关于 2 的补码》](http://www.ruanyifeng.com/blog/2009/08/twos_complement.html)
 
 ### 101. toPrecision 和 toFixed 和 Math.round 的区别？
 
-- toPrecision 用于处理精度，精度是从左至右第一个不为 0 的数开始数起。
-- toFixed 是对小数点后指定位数取整，从小数点开始数起。
-- Math.round 是将一个数字四舍五入到一个整数。
+- `toPrecision` 用于处理精度，精度是从左至右第一个不为 0 的数开始数起。
+- `toFixed` 是对小数点后指定位数取整，从小数点开始数起。
+- `Math.round` 是将一个数字四舍五入到一个整数。
 
 ### 102. 什么是 XSS 攻击？如何防范 XSS 攻击？
 
@@ -1900,11 +1900,11 @@ function curry(fn, ...args) {
 
 - XSS 一般分为存储型、反射型和 DOM 型。
 
-- 存储型指的是恶意代码提交到了网站的数据库中，当用户请求数据的时候，服务器将其拼接为 HTML 后返回给了用户，从而导致了恶意代码的执行。
+  - 存储型指的是恶意代码提交到了网站的数据库中，当用户请求数据的时候，服务器将其拼接为 HTML 后返回给了用户，从而导致了恶意代码的执行。
 
-- 反射型指的是攻击者构建了特殊的 URL，当服务器接收到请求后，从 URL 中获取数据，拼接到 HTML 后返回，从而导致了恶意代码的执行。
+  - 反射型指的是攻击者构建了特殊的 URL，当服务器接收到请求后，从 URL 中获取数据，拼接到 HTML 后返回，从而导致了恶意代码的执行。
 
-- DOM 型指的是攻击者构建了特殊的 URL，用户打开网站后，js 脚本从 URL 中获取数据，从而导致了恶意代码的执行。
+  - DOM 型指的是攻击者构建了特殊的 URL，用户打开网站后，JS 脚本从 URL 中获取数据，从而导致了恶意代码的执行。
 
 - XSS 攻击的预防可以从两个方面入手，一个是恶意代码提交的时候，一个是浏览器执行恶意代码的时候。
 
@@ -1912,26 +1912,26 @@ function curry(fn, ...args) {
 
 - 因此我们可以从浏览器的执行来进行预防，一种是使用纯前端的方式，不用服务器端拼接后返回。另一种是对需要插入到 HTML 中的代码做好充分的转义。对于 DOM 型的攻击，主要是前端脚本的不可靠而造成的，我们对于数据获取渲染和字符串拼接的时候应该对可能出现的恶意代码情况进行判断。
 
-- 还有一些方式，比如使用 CSP ，CSP 的本质是建立一个白名单，告诉浏览器哪些外部资源可以加载和执行，从而防止恶意代码的注入攻击。
+- 还有一些方式，比如使用 CSP，CSP 的本质是建立一个白名单，告诉浏览器哪些外部资源可以加载和执行，从而防止恶意代码的注入攻击。
 
 - 还可以对一些敏感信息进行保护，比如 cookie 使用 http-only ，使得脚本无法获取。也可以使用验证码，避免脚本伪装成用户执行一些操作。
 
-详细资料可以参考：
+参考  
 [《前端安全系列（一）：如何防止 XSS 攻击？》](https://juejin.im/post/5bad9140e51d450e935c6d64)
 
 ### 103. 什么是 CSP？
 
 - CSP 指的是内容安全策略，它的本质是建立一个白名单，告诉浏览器哪些外部资源可以加载和执行。我们只需要配置规则，如何拦截由浏览器自己来实现。
 
-- 通常有两种方式来开启 CSP，一种是设置 HTTP 首部中的 Content-Security-Policy，一种是设置 meta 标签的方式 `<meta http-equiv="Content-Security-Policy">`
+- 通常有两种方式来开启 CSP，一种是设置 HTTP 首部中的 Content-Security-Policy，一种是设置 meta 标签的方式 `<meta http-equiv="Content-Security-Policy">`。
 
-详细资料可以参考：
-[《内容安全策略（CSP）》](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)
+参考  
+[《内容安全策略（CSP）》](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)  
 [《前端面试之道》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc721851882516c33430a2)
 
 ### 104. 什么是 CSRF 攻击？如何防范 CSRF 攻击？
 
-- CSRF 攻击指的是跨站请求伪造攻击，攻击者诱导用户进入一个第三方网站，然后该网站向被攻击网站发送跨站请求。如果用户在被攻击网站中保存了登录状态，那么攻击者就可以利用这个登录状态，绕过后台的用户验证，冒充用户向服务器执行一些操作。
+- CSRF 攻击指的是**跨站请求伪造攻击**，攻击者诱导用户进入一个第三方网站，然后该网站向被攻击网站发送跨站请求。如果用户在被攻击网站中保存了登录状态，那么攻击者就可以利用这个登录状态，绕过后台的用户验证，冒充用户向服务器执行一些操作。
 
 - CSRF 攻击的本质是利用了 cookie 会在同源请求中携带发送给服务器的特点，以此来实现用户的冒充。
 
@@ -1941,7 +1941,7 @@ function curry(fn, ...args) {
 
   - 第二种是 POST 类型的 CSRF 攻击，比如说构建一个表单，然后隐藏它，当用户进入页面时，自动提交这个表单。
 
-  - 第三种是链接类型的 CSRF 攻击，比如说在 a 标签的 href 属性里构建一个请求，然后诱导用户去点击。
+  - 第三种是链接类型的 CSRF 攻击，比如说在 `a` 标签的 href 属性里构建一个请求，然后诱导用户去点击。
 
 - CSRF 可以用下面几种方法来防护：
 
@@ -1953,8 +1953,8 @@ function curry(fn, ...args) {
 
   - 第四种方式是使用在设置 cookie 属性的时候设置 Samesite ，限制 cookie 不能作为被第三方使用，从而可以避免被攻击者利用。Samesite 一共有两种模式，一种是严格模式，在严格模式下 cookie 在任何情况下都不可能作为第三方 Cookie 使用，在宽松模式下，cookie 可以被请求是 GET 请求，且会发生页面跳转的请求所使用。
 
-详细资料可以参考：
-[《前端安全系列之二：如何防止 CSRF 攻击？》](https://juejin.im/post/5bc009996fb9a05d0a055192)
+参考  
+[《前端安全系列之二：如何防止 CSRF 攻击？》](https://juejin.im/post/5bc009996fb9a05d0a055192)  
 [《[ HTTP 趣谈] origin, referer 和 host 区别》](https://www.jianshu.com/p/1f9c71850299)
 
 ### 105. 什么是 Samesite Cookie 属性？
@@ -1973,18 +1973,18 @@ function curry(fn, ...args) {
 
 - 我们可以在 http 相应头中设置 X-FRAME-OPTIONS 来防御用 iframe 嵌套的点击劫持攻击。通过不同的值，可以规定页面在特定的一些情况才能作为 iframe 来使用。
 
-详细资料可以参考：
+参考  
 [《web 安全之--点击劫持攻击与防御技术简介》](https://www.jianshu.com/p/251704d8ff18)
 
 ### 107. SQL 注入攻击？
 
 - SQL 注入攻击指的是攻击者在 HTTP 请求中注入恶意的 SQL 代码，服务器使用参数构建数据库 SQL 命令时，恶意 SQL 被一起构造，破坏原有 SQL 结构，并在数据库中执行，达到编写程序时意料之外结果的攻击行为。
 
-详细资料可以参考：
-[《Web 安全漏洞之 SQL 注入》](https://juejin.im/post/5bd5b820e51d456f72531fa8)
+参考  
+[《Web 安全漏洞之 SQL 注入》](https://juejin.im/post/5bd5b820e51d456f72531fa8)  
 [《如何防范常见的 Web 攻击》](http://blog.720ui.com/2016/security_web/#SQL%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB)
 
-### 108. 什么是 MVVM？比之 MVC 有什么区别？什么又是 MVP ？
+### 108. 什么是 MVVM？跟 MVC 有什么区别？什么又是 MVP ？
 
 - MVC、MVP 和 MVVM 是三种常见的软件架构设计模式，主要通过分离关注点的方式来组织代码结构，优化我们的开发效率。
 
@@ -1996,17 +1996,17 @@ function curry(fn, ...args) {
 
 - MVVM 模式中的 VM，指的是 ViewModel，它和 MVP 的思想其实是相同的，不过它通过双向的数据绑定，将 View 和 Model 的同步更新给自动化了。当 Model 发生变化的时候，ViewModel 就会自动更新；ViewModel 变化了，View 也会更新。这样就将 Presenter 中的工作给自动化了。我了解过一点双向数据绑定的原理，比如 vue 是通过使用数据劫持和发布订阅者模式来实现的这一功能。
 
-详细资料可以参考：
-[《浅析前端开发中的 MVC/MVP/MVVM 模式》](https://juejin.im/post/593021272f301e0058273468)
-[《MVC，MVP 和 MVVM 的图示》](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)
-[《MVVM》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc72e6e51d45054f664dbf)
+参考  
+[《浅析前端开发中的 MVC/MVP/MVVM 模式》](https://juejin.im/post/593021272f301e0058273468)  
+[《MVC，MVP 和 MVVM 的图示》](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)   
+[《MVVM》](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc72e6e51d45054f664dbf)  
 [《一篇文章了解架构模式：MVC/MVP/MVVM》](https://segmentfault.com/a/1190000015310674)
 
 ### 109. vue 双向数据绑定原理？
 
-- vue 通过使用双向数据绑定，来实现了 View 和 Model 的同步更新。vue 的双向数据绑定主要是通过使用数据劫持和发布订阅者模式来实现的。
+- vue 通过使用双向数据绑定，来实现了 View 和 Model 的同步更新。vue 的双向数据绑定主要是通过使用**数据劫持**和**发布订阅者模式**来实现的。
 
-- 首先我们通过 Object.defineProperty() 方法来对 Model 数据各个属性添加访问器属性，以此来实现数据的劫持，因此当 Model 中的数据发生变化的时候，我们可以通过配置的 setter 和 getter 方法来实现对 View 层数据更新的通知。
+- 首先我们通过 `Object.defineProperty()` 方法来对 Model 数据各个属性添加访问器属性，以此来实现数据的劫持，因此当 Model 中的数据发生变化的时候，我们可以通过配置的 `setter` 和 `getter` 方法来实现对 View 层数据更新的通知。
 
 - 数据在 html 模板中一共有两种绑定情况，一种是使用 v-model 来对 value 值进行绑定，一种是作为文本绑定，在对模板引擎进行解析的过程中。
 
@@ -2014,21 +2014,21 @@ function curry(fn, ...args) {
 
 - 如果遇到了绑定的文本节点，我们使用 Model 中对应的属性的值来替换这个文本。对于文本节点的更新，我们使用了发布订阅者模式，属性作为一个主题，我们为这个节点设置一个订阅者对象，将这个订阅者对象加入这个属性主题的订阅者列表中。当 Model 层数据发生改变的时候，Model 作为发布者向主题发出通知，主题收到通知再向它的所有订阅者推送，订阅者收到通知后更改自己的数据。
 
-详细资料可以参考：
+参考  
 [《Vue.js 双向绑定的实现原理》](http://www.cnblogs.com/kidney/p/6052935.html?utm_source=gold_browser_extension)
 
 ### 110. Object.defineProperty 介绍？
 
-- Object.defineProperty 函数一共有三个参数，第一个参数是需要定义属性的对象，第二个参数是需要定义的属性，第三个是该属性描述符。
+- `Object.defineProperty` 函数一共有三个参数，第一个参数是需要定义属性的对象，第二个参数是需要定义的属性，第三个是该属性描述符。
 
 - 一个属性的描述符有四个属性，分别是 value 属性的值，writable 属性是否可写，enumerable 属性是否可枚举，configurable 属性是否可配置修改。
 
-详细资料可以参考：
+参考  
 [《Object.defineProperty()》](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 
 ### 111. 使用 Object.defineProperty() 来进行数据劫持有什么缺点？
 
-- 有一些对属性的操作，使用这种方法无法拦截，比如说通过下标方式修改数组数据或者给对象新增属性，vue 内部通过重写函数解决了这个问题。在 Vue3.0 中已经不使用这种方式了，而是通过使用 Proxy 对对象进行代理，从而实现数据劫持。使用 Proxy 的好处是它可以完美的监听到任何方式的数据改变，唯一的缺点是兼容性的问题，因为这是 ES6 的语法。
+有一些对属性的操作，使用这种方法无法拦截，比如说通过下标方式修改数组数据或者给对象新增属性，vue 内部通过重写函数解决了这个问题。在 Vue3.0 中已经不使用这种方式了，而是通过使用 Proxy 对对象进行代理，从而实现数据劫持。使用 Proxy 的好处是它可以完美的监听到任何方式的数据改变，唯一的缺点是兼容性的问题，因为这是 ES6 的语法。
 
 ### 112. 什么是 Virtual DOM？为什么 Virtual DOM 比原生 DOM 快？
 
