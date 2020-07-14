@@ -1145,7 +1145,7 @@ define(function (require, exports, module) {
   var a = require('./a');
   a.doSomething();
   // 此处略去 100 行
-  var b = require('./b');  // 依赖可以就近书写
+  var b = require('./b'); // 依赖可以就近书写
   b.doSomething();
   // ...
 });
@@ -1177,30 +1177,30 @@ require.js 的核心原理是通过动态创建 script 脚本来异步引入模�
 [《requireJS 的用法和原理分析》](https://github.com/HRFE/blog/issues/10)  
 [《requireJS 的核心原理是什么？》](https://zhuanlan.zhihu.com/p/55039478)  
 [《从 RequireJs 源码剖析脚本加载原理》](https://www.cnblogs.com/dong-xu/p/7160919.html)  
-[《requireJS 原理分析》](https://www.jianshu.com/p/5a39535909e4)  
+[《requireJS 原理分析》](https://www.jianshu.com/p/5a39535909e4)
 
 ### 68. JS 模块加载器的轮子怎么造，也就是如何实现一个模块加载器？
 
-详细资料可以参考：
+参考  
 [《JS 模块加载器加载原理是怎么样的？》](https://www.zhihu.com/question/21157540)
 
 ### 69. ECMAScript6 怎么写 class，为什么会出现 class 这种东西?
 
-- 在我看来 ES6 新添加的 class 只是为了补充 js 中缺少的一些面向对象语言的特性，但本质上来说它只是一种语法糖，不是一个新的东西，其背后还是原型继承的思想。通过加入 class 可以有利于我们更好的组织代码。
+- 在我看来 ES6 新添加的 class 只是为了补充 JS 中缺少的一些面向对象语言的特性，但本质上来说它只是一种语法糖，不是一个新的东西，其背后还是原型继承的思想。通过加入 class 可以有利于我们更好的组织代码。
 
 - 在 class 中添加的方法，其实是添加在类的原型上的。
 
-详细资料可以参考：
-[《ECMAScript 6 实现了 class，对 JavaScript 前端开发有什么意义？》](https://www.zhihu.com/question/29789315)
+参考  
+[《ECMAScript 6 实现了 class，对 JavaScript 前端开发有什么意义？》](https://www.zhihu.com/question/29789315)  
 [《Class 的基本语法》](http://es6.ruanyifeng.com/#docs/class)
 
 ### 70. documen.write 和 innerHTML 的区别？
 
-- document.write 的内容会代替整个文档内容，会重写整个页面。
+- `document.write` 的内容会代替整个文档内容，会重写整个页面。
 
-- innerHTML 的内容只是替代指定元素的内容，只会重写页面中的部分内容。
+- `innerHTML` 的内容只是替代指定元素的内容，只会重写页面中的部分内容。
 
-详细资料可以参考：
+参考  
 [《简述 document.write 和 innerHTML 的区别。》](https://www.nowcoder.com/questionTerminal/2c5d8105b2694d85b06eff85e871cf50)
 
 ### 71. DOM 操作——怎样添加、移除、移动、复制、创建和查找节点？
@@ -1216,10 +1216,10 @@ createTextNode(text);
 （2）添加、移除、替换、插入
 
 ```js
-appendChild(node)
-removeChild(node)
-replaceChild(new,old)
-insertBefore(new,old)
+appendChild(node);
+removeChild(node);
+replaceChild(new, old);
+insertBefore(new, old);
 ```
 
 （3）查找
@@ -1242,29 +1242,29 @@ hasAttribute(key);
 removeAttribute(key);
 ```
 
-详细资料可以参考：
-[《DOM 概述》](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model/Introduction#DOM_interfaces)
-[《原生 JavaScript 的 DOM 操作汇总》](https://harttle.land/2015/10/01/javascript-dom-api.html)
+参考  
+[《DOM 概述》](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model/Introduction#DOM_interfaces)  
+[《原生 JavaScript 的 DOM 操作汇总》](https://harttle.land/2015/10/01/javascript-dom-api.html)  
 [《原生 JS 中 DOM 节点相关 API 合集》](https://microzz.com/2017/04/06/jsdom/)
 
 ### 72. innerHTML 与 outerHTML 的区别？
 
 对于这样一个 HTML 元素：`<div>content<br/></div>`。
 
-innerHTML：内部 HTML，`content<br/>`；
-outerHTML：外部 HTML，`<div>content<br/></div>`；
-innerText：内部文本，`content`；
-outerText：内部文本，`content`；
+- innerHTML：内部 HTML，`content<br/>`；
+- outerHTML：外部 HTML，`<div>content<br/></div>`；
+- innerText：内部文本，`content`；
+- outerText：内部文本，`content`；
 
 ### 73. .call() 和 .apply() 的区别？
 
-- 它们的作用一模一样，区别仅在于传入参数的形式的不同。
+- 它们的作用一模一样，区别仅在于传入参数形式的不同。
 
 - apply 接受两个参数，第一个参数指定了函数体内 this 对象的指向，第二个参数为一个带下标的集合，这个集合可以为数组，也可以为类数组，apply 方法把这个集合中的元素作为参数传递给被调用的函数。
 
 - call 传入的参数数量不固定，跟 apply 相同的是，第一个参数也是代表函数体内的 this 指向，从第二个参数开始往后，每个参数被依次传入函数。
 
-详细资料可以参考：
+参考  
 [《apply、call 的区别和用途》](https://juejin.im/entry/58d0a7b22f301e007e5a15ae)
 
 ### 74. JavaScript 类数组对象的定义？
@@ -1275,64 +1275,64 @@ outerText：内部文本，`content`；
 
 - 常见的类数组转换为数组的方法有这样几种：
 
-  （1）通过 call 调用数组的 slice 方法来实现转换。
+  - 通过 call 调用数组的 slice 方法来实现转换。
 
   ```js
   Array.prototype.slice.call(arrayLike);
   ```
 
-  （2）通过 call 调用数组的 splice 方法来实现转换。
+  - 通过 call 调用数组的 splice 方法来实现转换。
 
   ```js
   Array.prototype.splice.call(arrayLike, 0);
   ```
 
-  （3）通过 apply 调用数组的 concat 方法来实现转换。
+  - 通过 apply 调用数组的 concat 方法来实现转换。
 
   ```js
   Array.prototype.concat.apply([], arrayLike);
   ```
 
-  （4）通过 Array.from 方法来实现转换。
+  - 通过 Array.from 方法来实现转换。
 
   ```js
   Array.from(arrayLike);
   ```
 
-详细的资料可以参考：
-[《JavaScript 深入之类数组对象与 arguments》](https://github.com/mqyqingfeng/Blog/issues/14)
-[《javascript 类数组》](https://segmentfault.com/a/1190000000415572)
+参考  
+[《JavaScript 深入之类数组对象与 arguments》](https://github.com/mqyqingfeng/Blog/issues/14)  
+[《javascript 类数组》](https://segmentfault.com/a/1190000000415572)  
 [《深入理解 JavaScript 类数组》](https://blog.lxxyx.cn/2016/05/07/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JavaScript%E7%B1%BB%E6%95%B0%E7%BB%84/)
 
 ### 75. 数组和对象有哪些原生方法，列举一下？
 
-- 数组和字符串的转换方法：toString()、toLocalString()、join() 其中 join() 方法可以指定转换为字符串时的分隔符。
+- 数组和字符串的转换方法：`toString()`、`toLocalString()`、`join()` 其中 `join()` 方法可以指定转换为字符串时的分隔符。
 
-- 数组尾部操作的方法 pop() 和 push()，push 方法可以传入多个参数。
+- 数组尾部操作的方法 `pop()` 和 `push()``，push` 方法可以传入多个参数。
 
-- 数组首部操作的方法 shift() 和 unshift() 重排序的方法 reverse() 和 sort()，sort() 方法可以传入一个函数来进行比较，传入前后两个值，如果返回值为正数，则交换两个参数的位置。
+- 数组首部操作的方法 `shift()` 和 `unshift()` 重排序的方法 `reverse()` 和 `sort()`，`sort()` 方法可以传入一个函数来进行比较，传入前后两个值，如果返回值为正数，则交换两个参数的位置。
 
-- 数组连接的方法 concat() ，返回的是拼接好的数组，不影响原数组。
+- 数组连接的方法 `concat()`，返回的是拼接好的数组，不影响原数组。
 
-- 数组截取办法 slice()，用于截取数组中的一部分返回，不影响原数组。
+- 数组截取办法 `slice()`，用于截取数组中的一部分返回，不影响原数组。
 
-- 数组插入方法 splice()，影响原数组查找特定项的索引的方法，indexOf() 和 lastIndexOf() 迭代方法 every()、some()、filter()、map() 和 forEach() 方法。
+- 数组插入方法 `splice()`，影响原数组查找特定项的索引的方法，`indexOf()` 和 `lastIndexOf()` 迭代方法 `every()`、`some()`、`filter()`、`map()` 和 `forEach()` 方法。
 
-- 数组归并方法 reduce() 和 reduceRight() 方法。
+- 数组归并方法 `reduce()` 和 `reduceRight()` 方法。
 
-详细资料可以参考：
+参考  
 [《JavaScript 深入理解之 Array 类型详解》](http://cavszhouyou.top/JavaScript%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%B9%8BArray%E8%AF%A6%E8%A7%A3.html)
 
 ### 76. 数组的 fill 方法？
 
-- fill() 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。不包括终止索引。
+- `fill()` 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。不包括终止索引。
 
-- fill 方法接受三个参数 value，start 以及 end，start 和 end 参数是可选的，其默认值分别为 0 和 this 对象的 length 属性值。
+- `fill()` 接受三个参数 value，start 以及 end，start 和 end 参数是可选的，其默认值分别为 0 和 this 对象的 length 属性值。
 
-详细资料可以参考：
+参考  
 [《Array.prototype.fill()》](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/fill)
 
-### 77. [,,,] 的长度？
+### 77. JS 尾后逗号？
 
 - 尾后逗号 （有时叫做“终止逗号”）在向 JavaScript 代码添加元素、参数、属性时十分有用。如果你想要添加新的属性，并且上一行已经使用了尾后逗号，你可以仅仅添加新的一行，而不需要修改上一行。这使得版本控制更加清晰，以及代码维护麻烦更少。
 
@@ -1341,26 +1341,26 @@ outerText：内部文本，`content`；
 - 如果使用了多于一个尾后逗号，会产生间隙。 带有间隙的数组叫做稀疏数组（密致数组没有间隙）。稀疏数组的长度为逗号的数
   量。
 
-详细资料可以参考：
+参考  
 [《尾后逗号》](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Trailing_commas)
 
 ### 78. JavaScript 中的作用域与变量声明提升？
 
 - 变量提升的表现是，无论我们在函数中何处位置声明的变量，好像都被提升到了函数的首部，我们可以在变量声明前访问到而不会报错。
 
-- 造成变量声明提升的本质原因是 js 引擎在代码执行前有一个解析的过程，创建了执行上下文，初始化了一些代码执行时需要用到的对象。当我们访问一个变量时，我们会到当前执行上下文中的作用域链中去查找，而作用域链的首端指向的是当前执行上下文的变量对象，这个变量对象是执行上下文的一个属性，它包含了函数的形参、所有的函数和变量声明，这个对象的是在代码解析的时候创建的。这就是会出现变量声明提升的根本原因。
+- 造成变量声明提升的本质原因是 JS 引擎在代码执行前有一个解析的过程，创建了执行上下文，初始化了一些代码执行时需要用到的对象。当我们访问一个变量时，我们会到当前执行上下文中的作用域链中去查找，而作用域链的首端指向的是当前执行上下文的变量对象，这个变量对象是执行上下文的一个属性，它包含了函数的形参、所有的函数和变量声明，这个对象的是在代码解析的时候创建的。这就是会出现变量声明提升的根本原因。
 
-详细资料可以参考：
+参考  
 [《JavaScript 深入理解之变量对象》](http://cavszhouyou.top/JavaScript%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E4%B9%8B%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1.html)
 
-### 79. 如何编写高性能的 Javascript ？
+### 79. 如何编写高性能的 JavaScript？
 
 - 使用位运算代替一些简单的四则运算。
 - 避免使用过深的嵌套循环。
 - 不要使用未定义的变量。
 - 当需要多次访问数组长度时，可以用变量保存起来，避免每次都会去进行属性查找。
 
-详细资料可以参考：
+参考  
 [《如何编写高性能的 Javascript？》](https://zhuanlan.zhihu.com/p/34780474)
 
 ### 80. 简单介绍一下 V8 引擎的垃圾回收机制
