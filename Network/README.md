@@ -2,6 +2,67 @@
 
 ## 目录
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [应用层](#%E5%BA%94%E7%94%A8%E5%B1%82)
+  - [HTTP 协议](#http-%E5%8D%8F%E8%AE%AE)
+    - [概况](#%E6%A6%82%E5%86%B5)
+    - [HTTP 请求报文](#http-%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87)
+    - [HTTP 响应报文](#http-%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87)
+    - [首部行](#%E9%A6%96%E9%83%A8%E8%A1%8C)
+    - [HTTP/1.1 协议缺点](#http11-%E5%8D%8F%E8%AE%AE%E7%BC%BA%E7%82%B9)
+  - [HTTP/2 协议](#http2-%E5%8D%8F%E8%AE%AE)
+    - [HTTP/2 协议缺点](#http2-%E5%8D%8F%E8%AE%AE%E7%BC%BA%E7%82%B9)
+    - [HTTP/3 协议](#http3-%E5%8D%8F%E8%AE%AE)
+  - [HTTPS 协议](#https-%E5%8D%8F%E8%AE%AE)
+    - [HTTP 存在的问题](#http-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98)
+    - [HTTPS 简介](#https-%E7%AE%80%E4%BB%8B)
+    - [TLS 握手过程](#tls-%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B)
+    - [实现原理](#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+  - [DNS 协议](#dns-%E5%8D%8F%E8%AE%AE)
+    - [概况](#%E6%A6%82%E5%86%B5-1)
+    - [域名的层级结构](#%E5%9F%9F%E5%90%8D%E7%9A%84%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84)
+    - [查询过程](#%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B)
+    - [DNS 记录和报文](#dns-%E8%AE%B0%E5%BD%95%E5%92%8C%E6%8A%A5%E6%96%87)
+    - [递归查询和迭代查询](#%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2)
+    - [DNS 缓存](#dns-%E7%BC%93%E5%AD%98)
+    - [DNS 实现负载平衡](#dns-%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%B9%B3%E8%A1%A1)
+- [传输层](#%E4%BC%A0%E8%BE%93%E5%B1%82)
+  - [多路复用与多路分解](#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E4%B8%8E%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3)
+  - [UDP 协议](#udp-%E5%8D%8F%E8%AE%AE)
+    - [UDP 报文段结构](#udp-%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84)
+  - [TCP 协议](#tcp-%E5%8D%8F%E8%AE%AE)
+    - [TCP 报文段结构](#tcp-%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84)
+    - [TCP 三次握手的过程](#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B)
+    - [TCP 四次挥手的过程](#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B)
+    - [状态转化图](#%E7%8A%B6%E6%80%81%E8%BD%AC%E5%8C%96%E5%9B%BE)
+    - [ARQ 协议](#arq-%E5%8D%8F%E8%AE%AE)
+    - [TCP 的可靠运输机制](#tcp-%E7%9A%84%E5%8F%AF%E9%9D%A0%E8%BF%90%E8%BE%93%E6%9C%BA%E5%88%B6)
+    - [TCP 的流量控制机制](#tcp-%E7%9A%84%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E6%9C%BA%E5%88%B6)
+    - [TCP 的拥塞控制机制](#tcp-%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%9C%BA%E5%88%B6)
+  - [网络层](#%E7%BD%91%E7%BB%9C%E5%B1%82)
+  - [数据链路层](#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82)
+  - [物理层](#%E7%89%A9%E7%90%86%E5%B1%82)
+- [常考面试题](#%E5%B8%B8%E8%80%83%E9%9D%A2%E8%AF%95%E9%A2%98)
+    - [1. Post 和 Get 的区别？](#1-post-%E5%92%8C-get-%E7%9A%84%E5%8C%BA%E5%88%AB)
+    - [2. TLS/SSL 中什么一定要用三个随机数，来生成“会话密钥”？](#2-tlsssl-%E4%B8%AD%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%94%A8%E4%B8%89%E4%B8%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E6%9D%A5%E7%94%9F%E6%88%90%E4%BC%9A%E8%AF%9D%E5%AF%86%E9%92%A5)
+    - [3. SSL 连接断开后如何恢复？](#3-ssl-%E8%BF%9E%E6%8E%A5%E6%96%AD%E5%BC%80%E5%90%8E%E5%A6%82%E4%BD%95%E6%81%A2%E5%A4%8D)
+    - [4. RSA 算法的安全性保障？](#4-rsa-%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%BF%9D%E9%9A%9C)
+    - [5. DNS 为什么使用 UDP 协议作为传输层协议？](#5-dns-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-udp-%E5%8D%8F%E8%AE%AE%E4%BD%9C%E4%B8%BA%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE)
+    - [6. 当你在浏览器中输入 Google.com 并且按下回车之后发生了什么？](#6-%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5-googlecom-%E5%B9%B6%E4%B8%94%E6%8C%89%E4%B8%8B%E5%9B%9E%E8%BD%A6%E4%B9%8B%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88)
+    - [7. 谈谈 CDN 服务？](#7-%E8%B0%88%E8%B0%88-cdn-%E6%9C%8D%E5%8A%A1)
+    - [8. 什么是正向代理和反向代理？](#8-%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86)
+    - [9. 负载平衡的两种实现方式？](#9-%E8%B4%9F%E8%BD%BD%E5%B9%B3%E8%A1%A1%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F)
+    - [10. http 请求方法 options 方法有什么用？](#10-http-%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95-options-%E6%96%B9%E6%B3%95%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8)
+    - [11. http1.1 和 http1.0 之间有哪些区别？](#11-http11-%E5%92%8C-http10-%E4%B9%8B%E9%97%B4%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB)
+    - [12. 网站域名加 www 与不加 www 的区别？](#12-%E7%BD%91%E7%AB%99%E5%9F%9F%E5%90%8D%E5%8A%A0-www-%E4%B8%8E%E4%B8%8D%E5%8A%A0-www-%E7%9A%84%E5%8C%BA%E5%88%AB)
+    - [13. 即时通讯的实现，短轮询、长轮询、SSE 和 WebSocket 间的区别？](#13-%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%9F%AD%E8%BD%AE%E8%AF%A2%E9%95%BF%E8%BD%AE%E8%AF%A2sse-%E5%92%8C-websocket-%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB)
+    - [14. 怎么实现多个网站之间共享登录状态](#14-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%B8%AA%E7%BD%91%E7%AB%99%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E7%99%BB%E5%BD%95%E7%8A%B6%E6%80%81)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## 应用层
 
 应用层协议定义了应用进程间的交互和通信规则，不同主机的应用进程间如何相互传递报文，比如传递的报文的类型、格式、有哪些字段等等。
