@@ -5,7 +5,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [应用层](#%E5%BA%94%E7%94%A8%E5%B1%82)
   - [HTTP 协议](#http-%E5%8D%8F%E8%AE%AE)
     - [概况](#%E6%A6%82%E5%86%B5)
