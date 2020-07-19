@@ -14,7 +14,7 @@
 
 - [算法](./Algorithm)
 
-- 前端面试总结（一）
+- 前端知识总结（一）
   - [基础知识点及常考面试题（一）](./前端面试之道/01.md)
   - [基础知识点及常考面试题（二）](./前端面试之道/02.md)
   - [ES6 知识点及常考面试题](./前端面试之道/03.md)
@@ -49,10 +49,13 @@
   - [CSS 常考面试题资料](./前端面试之道/32.md)
   - [如何写好一封简历](./前端面试之道/33.md)
 
-- 前端面试总结（二）
+- 前端知识总结（二）
   - [HTML 问题](./front-end-interview-handbook/01.md)
   - [CSS 问题](./front-end-interview-handbook/02.md)
   - [JavaScript 问题](./front-end-interview-handbook/03.md)
+
+- [前端知识总结（三）](./重学前端/README.md)
+
 
 ## 排版
 
